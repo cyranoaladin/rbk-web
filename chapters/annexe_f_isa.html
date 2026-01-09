@@ -1,0 +1,526 @@
+<div class="space-y-16 animate-in fade-in duration-700">
+    <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-emerald-500/20 rounded-full blur-[100px]"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-4 mb-4">
+                <span
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-600 font-mono">G</span>
+                <div class="h-12 w-px bg-white/10"></div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">Annexe F — Bourse d'Excellence & ISA</h1>
+            </div>
+            <p class="text-sm text-slate-400 max-w-2xl">
+                Un mécanisme d'élite pour l'élite. L'ISA n'est plus un standard, mais une récompense. Réservé aux 2
+                meilleurs talents.
+            </p>
+        </div>
+    </header>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="scale" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Principes & Éligibilité</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div class="p-6 rounded-2xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-sm uppercase mb-3">Philosophie</h4>
+                <p class="text-[11px] text-slate-300 leading-relaxed mb-4">
+                    L'étudiant ne paie que s'il dépasse un seuil. Le risque de crédit est porté par RBK ; la valeur
+                    créée est capturée à la source via capture programmable et oracle on-chain. Musharaka compatible.
+                </p>
+                <div class="bg-black/40 p-3 rounded border border-white/5 text-[10px] text-slate-400">
+                    <strong class="text-white block mb-1">Répartition des risques</strong>
+                    <ul class="list-disc list-inside">
+                        <li><span class="text-blue-400">RBK</span> : financement, gouvernance & slashing</li>
+                        <li><span class="text-purple-400">Nexus</span> : exécution pédagogique & certification</li>
+                        <li><span class="text-amber-400">Alumni Council</span> : arbitrage décentralisé (Realms)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="p-6 rounded-2xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-sm uppercase mb-3">Critères d'Éligibilité Stricts</h4>
+                <ul class="space-y-3 text-[11px] text-slate-300">
+                    <li class="flex items-start gap-2"><i data-lucide="trophy"
+                            class="w-4 h-4 text-amber-400 mt-0.5"></i><span><strong>Top 2 Technique :</strong> Sélection
+                            sur classement Piscine (Algo + Soft Skills).</span></li>
+                    <li class="flex items-start gap-2"><i data-lucide="shield-alert"
+                            class="w-4 h-4 text-emerald-500 mt-0.5"></i><span><strong>Quota Absolu :</strong> Limité à 2
+                            bénéficiaires par cohorte, sans exception.</span></li>
+                    <li class="flex items-start gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-emerald-500 mt-0.5"></i><span><strong>Objectif :</strong> Méritocratie
+                            absolue. Inclusion des hauts potentiels sans ressources.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="server-cog" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Architecture Trustless (EVM)</h2>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2">Wallet & Abstraction</h4>
+                <p class="text-[10px] text-slate-300"><strong>Safe 2/3</strong> (Apprenant / Guardian RBK / Recovery).
+                    <strong>ERC-4337</strong> + Paymaster sponsorise gaz de graduation & transferts initiaux.
+                    <strong>Zodiac Roles</strong> restreint destinations (pas de mixers, whiteliste RBK).
+                </p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2">In-Share 90/10</h4>
+                <p class="text-[10px] text-slate-300"><strong>0xSplits V2</strong> immuable : 90% Trésor RBK →
+                    governance pool, 10% Pocket → wallet apprenant. <strong>Gelato/Chainlink</strong> automatise
+                    distribute() chaque semaine. <strong>Interdiction</strong> : mixers, routes non-KYC.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2">On-ramp & Oracles</h4>
+                <p class="text-[10px] text-slate-300"><strong>Monerium</strong> IBAN → EURe on-chain. <strong>Request
+                        Network</strong> : factures routées directement Splitter. <strong>Reclaim zkTLS</strong> :
+                    preuves bancaires TND off-chain, SBT de revenus on-chain.</p>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2">Engagement programmable</h4>
+                <p class="text-[10px] text-slate-300"><strong>ERC-3525 (CPPS)</strong> minté à graduation : units=cap
+                    (20k TND), slots=matricule apprenant. <strong>amortize()</strong> décrémente value chaque mois.
+                    <strong>burn()</strong> auto à cap atteint ou 36 mois. Transférable via slot splitting.
+                </p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2">Streaming 15%</h4>
+                <p class="text-[10px] text-slate-300"><strong>Sablier V2 LockupDynamic</strong> : 15% de chaque revenu
+                    streamés seconde par seconde vers Trésor RBK. <strong>Cliff=0</strong>, duration=36 mois.
+                    <strong>Cancelable par apprenant</strong> (déclencheur d'alerte). Withdrawal auto hook.
+                </p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2">Réputation & Arbitrage</h4>
+                <p class="text-[10px] text-slate-300"><strong>SBT ERC-5192</strong> (non-transférable, émetteur=RBK) :
+                    états Vert (OK) → Jaune (Alert) → Rouge (Défaut). <strong>Kleros Governor</strong> ERC-792 : verdict
+                    arbitrage → execution via proxy pour revoke/burn. Frais remboursés si apprenant gagnant.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="zap" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Architecture Haute Fréquence (Solana)</h2>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2">Multisig OpSec</h4>
+                <p class="text-[10px] text-slate-300"><strong>Squads V4</strong> 2/3 (Apprenant / Guardian RBK /
+                    Recovery). <strong>RBAC</strong> : Guardian peut proposer, RBK exécute. <strong>Spending
+                        limits</strong> : 10% SOL/USDC libre, transferts >threshold co-sign RBK.
+                    <strong>Sub-comptes</strong> pour segmenter fonds ($10B AUM sécurisé).
+                </p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2">Split natif Pull</h4>
+                <p class="text-[10px] text-slate-300"><strong>Metaplex Hydra Fanout</strong> : wallet de "fanout" reçoit
+                    USDC/SOL. <strong>PDA-based</strong> : chaque bénéficiaire a slot. Crank (Helius/Clockwork/Tuktuk)
+                    exécute <strong>distribute()</strong> → calcule (Total * % Part) - Réclamé. <strong>90/10 split
+                        atomique</strong>.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2">On-ramp & Facturation</h4>
+                <p class="text-[10px] text-slate-300"><strong>Kast</strong> : IBAN/ACH → USDC <1min. <strong>Helio Pay
+                        Streams</strong> : paiements récurrents pré-autorisés, Shopify webhook. <strong>Reclaim
+                            zkTLS</strong> : preuves revenu TND tunisien sans doxxing identité.</p>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2">Engagement Token-2022</h4>
+                <p class="text-[10px] text-slate-300"><strong>Token-2022 Mint</strong> non-transférable (via extension).
+                    <strong>Transfer Hook</strong> : rejette ANY transfert sauf burn (RBK delegate). <strong>Metadata
+                        slot</strong> : cap restant en UI. <strong>Permanent Delegate</strong> : RBK peut burn si défaut
+                    sans signature apprenant.
+                </p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2">Streaming continu</h4>
+                <p class="text-[10px] text-slate-300"><strong>Streamflow</strong> native Solana : flux seconde par
+                    seconde (15%), <0.0001 SOL frais. <strong>Withdrawable automatically</strong> via crank.
+                        <strong>Cancellable</strong> par apprenant → Watchtower alert. <strong>Pont EVM</strong> :
+                        Wormhole pour sync Sablier.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2">Gouvernance & DAO</h4>
+                <p class="text-[10px] text-slate-300"><strong>SPL Governance (Realms)</strong> : vote communauté sur
+                    paramètres ISA (seuil, cap, durée). <strong>Alumni Council</strong> via Squads V4 : arbitrage
+                    premier niveau sur disputes. <strong>Verified builds</strong> : code on-chain matché GitHub source
+                    (Ellipsis). Optionnel : pont Kleros via Wormhole.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="cpu" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Standards d'Actifs Programmables (Token-2022)</h2>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2">Transfer Hooks</h4>
+                <p class="text-[10px] text-slate-300"><strong>Logique programmée au protocole</strong> : chaque
+                    transfert invoque hook programme (RBK Governor). <strong>Cas d'usage ISA</strong> :<br />
+                    1. Vérifier status SBT apprenant (pas Rouge)<br />
+                    2. Rejeter si revenu
+                    < seuil (oracle check)<br />
+                    3. Logs audit immuable<br />
+                    <strong>Sécurité</strong> : comptes READ-ONLY durant hook, apprenant ne peut signer, hook ne peut
+                    drain.
+                </p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2">Non-Transferable (Debt SBT)</h4>
+                <p class="text-[10px] text-slate-300"><strong>Extension native</strong> : token intransférable dès mint.
+                    Seul <strong>Permanent Delegate</strong> (RBK) peut brûler. <strong>Use Case</strong> :<br />
+                    • Diplôme : non-transférable, autorité RBK revoke si fraude<br />
+                    • Tokens d'engagement : apprenant ne peut vendre, RBK gère burn<br />
+                    <strong>Récupération</strong> : delegate permet transfert vers new wallet si compromission (clé
+                    perdue).
+                </p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2">Interest-Bearing Tokens</h4>
+                <p class="text-[10px] text-slate-300"><strong>Séparation Amount UI vs Raw Amount</strong> : token
+                    affiche 100 mais raw=110 (10% rendement). Wallets calculent auto UI. <strong>Solana ISA</strong> :
+                    Debt tokens portent intérêt négatif (amortize) : 20k TND initial → décrémente vers 0 au fil des
+                    paiements, sans tx supplémentaires.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2">Confidential Transfers</h4>
+                <p class="text-[10px] text-slate-300"><strong>zkTLS + Confidential Amounts</strong> : montants
+                    encrypted, adresses publiques. <strong>ISA Use Case</strong> : salaires apprenant vs RBK
+                    confidentiels (B2B), audit key (RBK) décrypte pour conformité. <strong>Limite MTU</strong> : tx
+                    Solana=1232 octets, Address Lookup Tables (ALTs) compressent références.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="shield-check" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Identité Souveraine & Crédit Sous-Collatéralisé</h2>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2">Reclaim Protocol (zkTLS)</h4>
+                <p class="text-[10px] text-slate-300"><strong>Zero-Knowledge TLS</strong> : apprenant génère preuve ZK
+                    qu'il s'est connecté à banque tunisienne HTTPS, données revenus ∈ [Min, Max]. <strong>Flow</strong>
+                    :<br />
+                    1. dApp demande "Revenu > 2500 TND?"<br />
+                    2. Client ouvre session HTTPS cachée (ADP, Tunisie banque)<br />
+                    3. MPC + TLS notarisation<br />
+                    4. Preuve ZK générée (sans doxxer creds)<br />
+                    5. Submit Solana/EVM → SBT "HighEarner" minté<br />
+                    <strong>Privacy</strong> : identité off-chain reste secrète, on-chain vérifiable.
+                </p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2">Solana ID & Scoring</h4>
+                <p class="text-[10px] text-slate-300"><strong>Solana Attestation Service (SAS)</strong> : agrège Reclaim
+                    + on-chain history → "Solana ID" unique. <strong>Score crédit</strong> :<br />
+                    • Historique remboursement (past ISA, loans)<br />
+                    • Solvabilité off-chain (via Reclaim)<br />
+                    • Présence réseau (staking, governance)<br />
+                    <strong>RociFi</strong> : prêts sous-collatéralisés via score. <strong>ISA Implication</strong> :
+                    apprenant avec score >700 peut accélérer ISA (délai réduit) ou receiving bonus (10% cap up).
+                </p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2">Authentification Multi-Données</h4>
+                <p class="text-[10px] text-slate-300"><strong>Preuve Composite</strong> :<br />
+                    1. Reclaim : revenu bancaire TND<br />
+                    2. Passport (Worldcoin) : KYC tier<br />
+                    3. SBT RBK : statut alumni<br />
+                    4. Chainlink VRF : fraud resistance<br />
+                    <strong>ISA Gate</strong> : ne s'active QUE si tous 4 signaux verts. Réduit fraude à <0.1%.< /p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2">On-Ramp Institutional</h4>
+                <p class="text-[10px] text-slate-300"><strong>TradFi ↔ DeFi</strong> : <br />
+                    • Monerium (EVM) : IBAN → EURe<br />
+                    • Kast (Solana) : IBAN/ACH → USDC<br />
+                    • Helio (Solana) : e-commerce → auto routing<br />
+                    <strong>Conformité</strong> : toutes passerelles KYC niveau III. RBK gate + Reclaim = compliance
+                    layer native.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="route" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Flux end-to-end ISA</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            <div class="p-4 rounded-xl bg-emerald-900/10 border border-emerald-500/20">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-3 flex items-center gap-2"><i
+                        data-lucide="log-in" class="w-4 h-4"></i> 1. Onboarding</h4>
+                <p class="text-[10px] text-slate-300 mb-2"><strong>EVM</strong> : Safe 2/3 déployé, ERC-4337 Paymaster
+                    activé, Zodiac Roles configured.</p>
+                <p class="text-[10px] text-slate-300 mb-2"><strong>Solana</strong> : Squads V4 2/3 + spending limits,
+                    ALTs pré-chargées.</p>
+                <p class="text-[10px] text-slate-300"><strong>Both</strong> : SBT admission minté (Vert), Reclaim
+                    session initialisée, Splitter/Fanout déployés.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-emerald-900/10 border border-emerald-500/20">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-3 flex items-center gap-2"><i
+                        data-lucide="book" class="w-4 h-4"></i> 2. Formation (90/10)</h4>
+                <p class="text-[10px] text-slate-300 mb-2">Bounties (Genesis → Architecte) versées sur Splitter/Fanout.
+                </p>
+                <p class="text-[10px] text-slate-300 mb-2"><strong>90% auto</strong> → RBK Trésor + governance pool.</p>
+                <p class="text-[10px] text-slate-300"><strong>10% auto</strong> → Wallet apprenant (pocket money).
+                    Venture Engine vérifie routing chaque mois.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-emerald-900/10 border border-emerald-500/20">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-3 flex items-center gap-2"><i
+                        data-lucide="graduation-cap" class="w-4 h-4"></i> 3. Graduation</h4>
+                <p class="text-[10px] text-slate-300 mb-2"><strong>EVM</strong> : ERC-3525 CPPS minté (20k TND cap,
+                    slot=matricule), SBT diplôme ERC-5192 actif.</p>
+                <p class="text-[10px] text-slate-300 mb-2"><strong>Solana</strong> : Token-2022 non-transférable minté
+                    (transfer hooks, delegate RBK).</p>
+                <p class="text-[10px] text-slate-300"><strong>Sablier + Streamflow</strong> configurés (36 mois, 15%, 0
+                    cliff).</p>
+            </div>
+            <div class="p-4 rounded-xl bg-blue-900/10 border border-blue-500/20">
+                <h4 class="text-blue-400 font-bold text-xs uppercase mb-3 flex items-center gap-2"><i
+                        data-lucide="briefcase" class="w-4 h-4"></i> 4. Emploi & Détection</h4>
+                <p class="text-[10px] text-slate-300 mb-2"><strong>Invoice Oracle</strong> : Monerium (IBAN), Kast
+                    (ACH), Request Network (B2B), ou Reclaim zkTLS (paie).</p>
+                <p class="text-[10px] text-slate-300 mb-2"><strong>Watchtower</strong> (Gelato/Chainlink) scrute revenu
+                    ∈ [2.5k, ∞) TND. Divergence → SBT Jaune (Challenge 10j).</p>
+                <p class="text-[10px] text-slate-300"><strong>Pause auto</strong> si revenu < 2.5k (pas de stream, pas
+                        de penalty).</p>
+            </div>
+            <div class="p-4 rounded-xl bg-blue-900/10 border border-blue-500/20">
+                <h4 class="text-blue-400 font-bold text-xs uppercase mb-3 flex items-center gap-2"><i
+                        data-lucide="arrow-up-right" class="w-4 h-4"></i> 5. Remboursement</h4>
+                <p class="text-[10px] text-slate-300 mb-2"><strong>EVM</strong> : Sablier stream 15% → RBK, ERC-3525
+                    amortize() décrémente value.</p>
+                <p class="text-[10px] text-slate-300 mb-2"><strong>Solana</strong> : Streamflow 15% → Fanout Trésor,
+                    Token-2022 amount réduit chaque retrait.</p>
+                <p class="text-[10px] text-slate-300"><strong>EURC bridge</strong> : convertit USDC → EURC → TND via DEX
+                    à taux marché (Orca/Aerodrome).</p>
+            </div>
+            <div class="p-4 rounded-xl bg-blue-900/10 border border-blue-500/20">
+                <h4 class="text-blue-400 font-bold text-xs uppercase mb-3 flex items-center gap-2"><i data-lucide="flag"
+                        class="w-4 h-4"></i> 6. Sorties</h4>
+                <p class="text-[10px] text-slate-300 mb-2"><strong>Normal</strong> : Cap 20k ou 36 mois atteint →
+                    ERC-3525/Token-2022 burn() auto, SBT reste Vert.</p>
+                <p class="text-[10px] text-slate-300 mb-2"><strong>Défaut</strong> : SBT Rouge → Kleros (EVM) ou Alumni
+                    Council (Solana) arbitrage. Si verdict RBK, burn exécuté.</p>
+                <p class="text-[10px] text-slate-300"><strong>Profil public</strong> : Arcx/Spectra met à jour score ISA
+                    (repos building possible après 2 ans).</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="sliders" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Paramètres Financiers (G.3)</h2>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+            <div class="p-4 rounded-xl bg-emerald-900/10 border border-emerald-500/30 text-center">
+                <span class="text-[10px] text-slate-400 uppercase block mb-1">Seuil Activation</span>
+                <span class="text-2xl font-black text-white">2 500</span>
+                <span class="text-[9px] text-emerald-400 block mt-1">TND brut / mois</span>
+                <span class="text-[8px] text-slate-500 block mt-1">(Oracle : Monerium / Reclaim)</span>
+            </div>
+            <div class="p-4 rounded-xl bg-emerald-900/10 border border-emerald-500/30 text-center">
+                <span class="text-[10px] text-slate-400 uppercase block mb-1">% Partage</span>
+                <span class="text-2xl font-black text-white">15%</span>
+                <span class="text-[9px] text-emerald-400 block mt-1">Au-dessus du seuil</span>
+                <span class="text-[8px] text-slate-500 block mt-1">(Stream: Sablier/Streamflow)</span>
+            </div>
+            <div class="p-4 rounded-xl bg-emerald-900/10 border border-emerald-500/30 text-center">
+                <span class="text-[10px] text-slate-400 uppercase block mb-1">Cap Plafond</span>
+                <span class="text-2xl font-black text-white">20 000</span>
+                <span class="text-[9px] text-emerald-400 block mt-1">TND total</span>
+                <span class="text-[8px] text-slate-500 block mt-1">(Auto-burn @ ERC-3525 / Token-2022)</span>
+            </div>
+            <div class="p-4 rounded-xl bg-emerald-900/10 border border-emerald-500/30 text-center">
+                <span class="text-[10px] text-slate-400 uppercase block mb-1">Durée Max</span>
+                <span class="text-2xl font-black text-white">36</span>
+                <span class="text-[9px] text-emerald-400 block mt-1">Mensualités</span>
+                <span class="text-[8px] text-slate-500 block mt-1">(Cliff=0, lockup 3 ans)</span>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="calculator" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Scénarios & Règles (G.7)</h2>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 glass-card !p-0 overflow-hidden border-white/10">
+                <table class="w-full text-left text-[10px]">
+                    <thead class="bg-emerald-900/20 text-emerald-400 uppercase font-bold">
+                        <tr>
+                            <th class="p-3">Scénario</th>
+                            <th class="p-3 text-right">Salaire (TND)</th>
+                            <th class="p-3 text-right">Mensualité</th>
+                            <th class="p-3">Statut Final</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5 text-slate-300">
+                        <tr>
+                            <td class="p-3 font-bold text-white">A. Junior Local</td>
+                            <td class="p-3 text-right font-mono">3 500</td>
+                            <td class="p-3 text-right font-mono text-emerald-300">525</td>
+                            <td class="p-3">Arrêt à 36 mois (< Cap)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-bold text-white">B. Profil Solide</td>
+                            <td class="p-3 text-right font-mono">5 000</td>
+                            <td class="p-3 text-right font-mono text-emerald-300">750</td>
+                            <td class="p-3 text-[#14F195]">Cap atteint (27 mois)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-bold text-white">C. Remote (EURC)</td>
+                            <td class="p-3 text-right font-mono">1 800 €</td>
+                            <td class="p-3 text-right font-mono text-emerald-300">270 €</td>
+                            <td class="p-3 text-[#14F195] font-bold">Cap atteint (23 mois)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-bold text-slate-500">D. Chômage</td>
+                            <td class="p-3 text-right font-mono text-slate-500">0</td>
+                            <td class="p-3 text-right font-mono text-slate-500">0</td>
+                            <td class="p-3 text-slate-500">Pause auto, SBT Jaune (Watchtower)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="space-y-4">
+                <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                    <h4 class="text-white font-bold text-xs uppercase mb-2 flex items-center gap-2"><i
+                            data-lucide="pause-circle" class="w-4 h-4 text-emerald-400"></i> Pause Auto</h4>
+                    <p class="text-[10px] text-slate-400">Revenu < 2500 TND : paiement=0, pas de rattrapage, SBT passe
+                            Jaune (10j challenge). Pas de penalty, timer reprend si revenu>seuil.</p>
+                </div>
+                <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                    <h4 class="text-white font-bold text-xs uppercase mb-2 flex items-center gap-2"><i
+                            data-lucide="globe" class="w-4 h-4 text-emerald-400"></i> Expatriation</h4>
+                    <p class="text-[10px] text-slate-400">Salaire en EUR/USD : conversion en TND au taux du mois de
+                        versement (Monerium/Kast prix). EURC bridge via DEX (Orca) pour liquidité.</p>
+                </div>
+                <div class="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30">
+                    <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2 flex items-center gap-2"><i
+                            data-lucide="heart-handshake" class="w-4 h-4"></i> Éthique & Conformité</h4>
+                    <p class="text-[10px] text-emerald-200">Musharaka compatible : partage du risque de défaut et du
+                        succès. Sharia-compliant avec Reclaim (pas de riba implicite, oracle transparence).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="shield-off" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Contrôles, Slashing & Arbitrage Avancés</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2 flex items-center gap-2"><i
+                        data-lucide="radar" class="w-4 h-4"></i> Surveillance (Watchtower)</h4>
+                <p class="text-[10px] text-slate-300 mb-2"><strong>EVM</strong> : Gelato AutomationV2 scrute Monerium
+                    IBAN → balance. Divergence (revenu off-chain vs stream) → alerter.</p>
+                <p class="text-[10px] text-slate-300 mb-2"><strong>Solana</strong> : Clockwork crank sur Reclaim proof.
+                    Si preuve expirée ou revenu <seuil → SBT Jaune.</p>
+                        <p class="text-[10px] text-slate-300"><strong>Challenge</strong> : 10 jours pour apprenant
+                            justifier (nouvelle preuve Reclaim, paie attestée). Silence → Rouge.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2 flex items-center gap-2"><i
+                        data-lucide="trending-up" class="w-4 h-4"></i> Réputation & Scoring</h4>
+                <p class="text-[10px] text-slate-300 mb-2"><strong>SBT Multi-État</strong> : Vert (OK) → Jaune
+                    (Challenge) → Rouge (Défaut). Registre public on-chain.</p>
+                <p class="text-[10px] text-slate-300 mb-2"><strong>Solana ID Integration</strong> : score RociFi mis à
+                    jour après chaque verdict. Score <400 → futures ISAs blocké. Score>700 → bonus acceleration (cap
+                        +10%, durée -3mois).</p>
+                <p class="text-[10px] text-slate-300"><strong>Arcx/Spectra</strong> : metadonnées publiques, recovery
+                    après 24 mois sans incident.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2 flex items-center gap-2"><i
+                        data-lucide="zap-off" class="w-4 h-4"></i> Exécution & Slashing</h4>
+                <p class="text-[10px] text-slate-300 mb-2"><strong>EVM</strong> : Kleros Governor exécute via proxy
+                    (0xSplits + ERC-3525). <strong>Verdict Rouge</strong> → Governor appelle <code
+                        class="text-blue-300">revoke()</code> + <code class="text-blue-300">burn(CPPS)</code>.</p>
+                <p class="text-[10px] text-slate-300 mb-2"><strong>Solana</strong> : Alumni Council (Realms vote) ou
+                    Kleros pont (Wormhole). <strong>Exécution</strong> : Permanent Delegate RBK appelle <code
+                        class="text-blue-300">burn(Token-2022)</code> atomiquement.</p>
+                <p class="text-[10px] text-slate-300"><strong>Penalty</strong> : montant brûlé = cap restant * 1.2 (120%
+                    slashing pour dissuasion). Frais arbitrage non-remboursables.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2 flex items-center gap-2"><i
+                        data-lucide="gavel" class="w-4 h-4"></i> Arbitrage Décentralisé</h4>
+                <p class="text-[10px] text-slate-300 mb-2"><strong>Tier 1 (Inclus)</strong> : Alumni Council (Realms)
+                    juge disputes <10k TND. Vote quadratique. Délai=10j.</p>
+                        <p class="text-[10px] text-slate-300 mb-2"><strong>Tier 2 (Kleros ERC-792)</strong> : Disputes
+                            >10k ou appel. Jurés internationaux, preuves on/off-chain. Frais rembour si apprenant
+                            gagnant. Délai=30j.</p>
+                        <p class="text-[10px] text-slate-300"><strong>Tier 3 (TBD)</strong> : Recourse légale
+                            hors-chaîne en Tunisie (notaire + contrat local). RBK couvre frais si apprenant gagn.
+                            Fallback déf.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="code" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Architecture Interopérabilité & Scaling</h2>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2">Bridge: Wormhole & IBC</h4>
+                <p class="text-[10px] text-slate-300 mb-2"><strong>EVM ↔ Solana</strong> : Wormhole bridge pour sync SBT
+                    state (Vert/Jaune/Rouge). Observateurs multisig (ex: Lido, Uniswap, Certus One) valident xfers.</p>
+                <p class="text-[10px] text-slate-300 mb-2"><strong>Debt Sync</strong> : ERC-3525 amortize() logs
+                    triggerent Wormhole → Token-2022 amount update. Latence <12sec (2 blocs Solana).</p>
+                        <p class="text-[10px] text-slate-300"><strong>Optional</strong> : Kleros arbitrage via Wormhole
+                            (écrire verdict depuis Solana Realms → Kleros EVM).</p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2">Optimisation Coûts</h4>
+                <p class="text-[10px] text-slate-300 mb-2"><strong>EVM</strong> : Arbitrum / Optimism pour réduire gaz
+                    (safe 200k gas ≈ 0.001€ vs Mainnet 50€). Volmex L2 pour Sablier streams.</p>
+                <p class="text-[10px] text-slate-300 mb-2"><strong>Solana</strong> : <0.001 SOL/tx (≈0.00004€). State
+                        compression (Heydra) pour 10M ISAs. Verified builds assurent pas d'upgrade malveillant.</p>
+                        <p class="text-[10px] text-slate-300"><strong>Target</strong> : cost per ISA lifecycle <0.1€
+                                (budget fee pool RBK Trésor).</p>
+            </div>
+        </div>
+    </section>
+</div>

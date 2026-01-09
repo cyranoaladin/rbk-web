@@ -1,0 +1,232 @@
+<div class="space-y-16 animate-in fade-in duration-700">
+
+    <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-rose-600/20 rounded-full blur-[100px]"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-4 mb-4">
+                <span
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-red-700 font-mono">U</span>
+                <div class="h-12 w-px bg-white/10"></div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">Registre des Risques</h1>
+            </div>
+            <p class="text-sm text-slate-400 max-w-2xl">
+                Version opérationnelle (v1). Identification, évaluation (P x I) et plans d'atténuation des risques
+                critiques.
+            </p>
+        </div>
+    </header>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="activity" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Échelles & Matrice</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div class="space-y-4">
+                <div class="p-4 bg-white/5 border border-white/10 rounded-xl">
+                    <h4 class="text-blue-400 font-bold text-xs uppercase mb-2">Probabilité (P)</h4>
+                    <div class="flex gap-2 text-[10px] text-slate-300">
+                        <span class="px-2 py-1 bg-blue-500/10 rounded border border-blue-500/20">1: Rare</span>
+                        <span class="px-2 py-1 bg-blue-500/10 rounded border border-blue-500/20">3: Plausible</span>
+                        <span class="px-2 py-1 bg-blue-500/10 rounded border border-blue-500/20">5: Très Probable</span>
+                    </div>
+                </div>
+                <div class="p-4 bg-white/5 border border-white/10 rounded-xl">
+                    <h4 class="text-rose-400 font-bold text-xs uppercase mb-2">Impact (I)</h4>
+                    <div class="flex gap-2 text-[10px] text-slate-300">
+                        <span class="px-2 py-1 bg-rose-500/10 rounded border border-rose-500/20">1: Mineur</span>
+                        <span class="px-2 py-1 bg-rose-500/10 rounded border border-rose-500/20">3: Significatif</span>
+                        <span class="px-2 py-1 bg-rose-500/10 rounded border border-rose-500/20">5: Critique</span>
+                    </div>
+                </div>
+                <div class="text-[10px] text-slate-400 italic">
+                    Score = P x I. <span class="text-rose-400 font-bold">Critique > 15</span>. <span
+                        class="text-orange-400 font-bold">Élevé > 10</span>.
+                </div>
+            </div>
+
+            <div
+                class="bg-black/40 p-6 rounded-xl border border-white/5 flex flex-col items-center justify-center relative">
+
+                <div class="absolute inset-0 bg-gradient-to-br from-rose-500/5 to-transparent pointer-events-none">
+                </div>
+                <div class="grid grid-cols-2 gap-4 w-full mt-4">
+                    <div
+                        class="col-span-2 p-2 bg-rose-900/30 border border-rose-500/50 rounded flex justify-between items-center">
+                        <span class="text-rose-300 text-[10px] font-bold">R-05: Hétérogénéité Niveaux</span>
+                        <span class="bg-rose-500 text-white text-[9px] font-black px-1.5 py-0.5 rounded">16</span>
+                    </div>
+                    <div
+                        class="col-span-2 p-2 bg-rose-900/30 border border-rose-500/50 rounded flex justify-between items-center">
+                        <span class="text-rose-300 text-[10px] font-bold">R-15: Usage IA Irresponsable</span>
+                        <span class="bg-rose-500 text-white text-[9px] font-black px-1.5 py-0.5 rounded">16</span>
+                    </div>
+                    <div
+                        class="col-span-2 p-2 bg-rose-900/30 border border-rose-500/50 rounded flex justify-between items-center">
+                        <span class="text-rose-300 text-[10px] font-bold">R-18: Programme Trop Dense</span>
+                        <span class="bg-rose-500 text-white text-[9px] font-black px-1.5 py-0.5 rounded">16</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="list-x" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Registre Détaillé (v1)</h2>
+        </div>
+
+        <div class="glass-card !p-0 overflow-x-auto border-white/10 mb-8">
+            <table class="w-full text-left text-[10px]">
+                <thead class="bg-slate-800 text-slate-400 uppercase font-bold sticky top-0">
+                    <tr>
+                        <th class="p-3 w-12">ID</th>
+                        <th class="p-3 w-48">Risque</th>
+                        <th class="p-3 w-16 text-center">Score</th>
+                        <th class="p-3 min-w-[200px]">Prévention & Contingence</th>
+                        <th class="p-3 w-24">Owner</th>
+                        <th class="p-3 w-16 text-center">Statut</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-slate-300">
+
+                    <tr class="bg-rose-900/10">
+                        <td class="p-3 font-mono text-rose-400 font-bold">R-05</td>
+                        <td class="p-3"><strong class="text-white">Hétérogénéité Niveaux</strong><br><span
+                                class="text-slate-500">Écart trop grand = décrochage.</span></td>
+                        <td class="p-3 text-center"><span
+                                class="bg-rose-500 text-white px-2 py-1 rounded font-bold">16</span></td>
+                        <td class="p-3">
+                            <strong class="text-rose-300">P:</strong> Test d'entrée PR+ entretien.<br>
+                            <strong class="text-slate-400">C:</strong> Séparer sous-groupes, Augmenter TAs.
+                        </td>
+                        <td class="p-3">HoP</td>
+                        <td class="p-3 text-center"><span class="text-[#14F195]">Ouvert</span></td>
+                    </tr>
+                    <tr class="bg-rose-900/10">
+                        <td class="p-3 font-mono text-rose-400 font-bold">R-15</td>
+                        <td class="p-3"><strong class="text-white">Usage IA Irresponsable</strong><br><span
+                                class="text-slate-500">"Vibe coding", plagiat, triche.</span></td>
+                        <td class="p-3 text-center"><span
+                                class="bg-rose-500 text-white px-2 py-1 rounded font-bold">16</span></td>
+                        <td class="p-3">
+                            <strong class="text-rose-300">P:</strong> Règles IA "Cyborg", Oral Defense.<br>
+                            <strong class="text-slate-400">C:</strong> Sanctions, Rework sans IA.
+                        </td>
+                        <td class="p-3">HoP, SecLead</td>
+                        <td class="p-3 text-center"><span class="text-[#14F195]">Ouvert</span></td>
+                    </tr>
+                    <tr class="bg-rose-900/10">
+                        <td class="p-3 font-mono text-rose-400 font-bold">R-18</td>
+                        <td class="p-3"><strong class="text-white">Programme Trop Dense</strong><br><span
+                                class="text-slate-500">Fatigue, baisse qualité.</span></td>
+                        <td class="p-3 text-center"><span
+                                class="bg-rose-500 text-white px-2 py-1 rounded font-bold">16</span></td>
+                        <td class="p-3">
+                            <strong class="text-rose-300">P:</strong> Modularisation, MoSCoW.<br>
+                            <strong class="text-slate-400">C:</strong> Couper "Could", Étaler semaines.
+                        </td>
+                        <td class="p-3">HoP, CEO</td>
+                        <td class="p-3 text-center"><span class="text-[#14F195]">Ouvert</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="p-3 font-mono text-orange-400">R-01</td>
+                        <td class="p-3"><strong class="text-white">Sous-remplissage Cohorte</strong></td>
+                        <td class="p-3 text-center"><span
+                                class="bg-orange-500/20 text-orange-400 px-2 py-1 rounded font-bold">15</span></td>
+                        <td class="p-3"><strong class="text-slate-300">P:</strong> Funnel documenté. <strong
+                                class="text-slate-400">C:</strong> Réduire taille, Bourses.</td>
+                        <td class="p-3">Mkt, CEO</td>
+                        <td class="p-3 text-center">Ouvert</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 font-mono text-orange-400">R-06</td>
+                        <td class="p-3"><strong class="text-white">Méthode "Studio" Ignorée</strong><br><span
+                                class="text-slate-500">Merge sans tests.</span></td>
+                        <td class="p-3 text-center"><span
+                                class="bg-orange-500/20 text-orange-400 px-2 py-1 rounded font-bold">15</span></td>
+                        <td class="p-3"><strong class="text-slate-300">P:</strong> CI rouge bloquante. <strong
+                                class="text-slate-400">C:</strong> Freeze release, Remediation.</td>
+                        <td class="p-3">HoP, SecLead</td>
+                        <td class="p-3 text-center">Ouvert</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 font-mono text-orange-400">R-08</td>
+                        <td class="p-3"><strong class="text-white">Vulnérabilité Capstone</strong></td>
+                        <td class="p-3 text-center"><span
+                                class="bg-orange-500/20 text-orange-400 px-2 py-1 rounded font-bold">15</span></td>
+                        <td class="p-3"><strong class="text-slate-300">P:</strong> Liste de Contrôle sécu, Threat Model.
+                            <strong class="text-slate-400">C:</strong> Bloquer livraison.</td>
+                        <td class="p-3">SecLead</td>
+                        <td class="p-3 text-center">Ouvert</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 font-mono text-orange-400">R-14</td>
+                        <td class="p-3"><strong class="text-white">Insertion Pro Insuffisante</strong></td>
+                        <td class="p-3 text-center"><span
+                                class="bg-orange-500/20 text-orange-400 px-2 py-1 rounded font-bold">15</span></td>
+                        <td class="p-3"><strong class="text-slate-300">P:</strong> Service carrière, Portfolio. <strong
+                                class="text-slate-400">C:</strong> Prolonger support.</td>
+                        <td class="p-3">Career</td>
+                        <td class="p-3 text-center">Ouvert</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 font-mono text-orange-400">R-02</td>
+                        <td class="p-3"><strong class="text-white">Dérive Budgétaire</strong></td>
+                        <td class="p-3 text-center"><span
+                                class="bg-orange-500/20 text-orange-400 px-2 py-1 rounded font-bold">12</span></td>
+                        <td class="p-3"><strong class="text-slate-300">P:</strong> Réserve 10%. <strong
+                                class="text-slate-400">C:</strong> Geler options, Renégocier.</td>
+                        <td class="p-3">CEO, Ops</td>
+                        <td class="p-3 text-center">Ouvert</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 font-mono text-orange-400">R-07</td>
+                        <td class="p-3"><strong class="text-white">Pannes RPC / Infra</strong></td>
+                        <td class="p-3 text-center"><span
+                                class="bg-orange-500/20 text-orange-400 px-2 py-1 rounded font-bold">12</span></td>
+                        <td class="p-3"><strong class="text-slate-300">P:</strong> Multi-providers. <strong
+                                class="text-slate-400">C:</strong> Basculer local/mocks.</td>
+                        <td class="p-3">Ops, TL</td>
+                        <td class="p-3 text-center">Ouvert</td>
+                    </tr>
+
+                    <tr>
+                        <td class="p-3 font-mono text-yellow-500">R-11</td>
+                        <td class="p-3">Risque Change / Inflation</td>
+                        <td class="p-3 text-center"><span
+                                class="bg-yellow-500/20 text-yellow-500 px-2 py-1 rounded font-bold">9</span></td>
+                        <td class="p-3"><span class="text-slate-400">Hedging soft, Négociation en TND.</span></td>
+                        <td class="p-3">CEO</td>
+                        <td class="p-3 text-center">Ouvert</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 font-mono text-yellow-500">R-22</td>
+                        <td class="p-3">Absence de PCA (Backups)</td>
+                        <td class="p-3 text-center"><span
+                                class="bg-yellow-500/20 text-yellow-500 px-2 py-1 rounded font-bold">8</span></td>
+                        <td class="p-3"><span class="text-slate-400">Backups auto, Restauration testée.</span></td>
+                        <td class="p-3">Ops</td>
+                        <td class="p-3 text-center">Ouvert</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div
+            class="p-4 bg-slate-800 rounded-xl border border-white/5 text-[10px] text-slate-400 italic flex gap-3 items-center">
+            <i data-lucide="info" class="w-4 h-4 shrink-0"></i>
+            <p>
+                Ce registre est vivant. À mettre à jour à chaque COPIL. Statuts : Ouvert, Fermé, Mitigé.
+            </p>
+        </div>
+    </section>
+
+</div>

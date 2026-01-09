@@ -1,0 +1,132 @@
+<div class="space-y-16 animate-in fade-in duration-700">
+    
+    <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-rose-500/20 rounded-full blur-[100px]"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-4 mb-4">
+                <span class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-red-600 font-mono">E</span>
+                <div class="h-12 w-px bg-white/10"></div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">Template Rapport d'Audit</h1>
+            </div>
+            <p class="text-sm text-slate-400 max-w-2xl">
+                Standard industriel. Un rapport doit être clair, complet et actionnable.
+            </p>
+        </div>
+    </header>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="layout" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Structure du Rapport (E.1)</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-rose-500/50 transition-colors">
+                <span class="text-rose-400 font-black text-2xl mb-2 block">01</span>
+                <h4 class="text-white font-bold text-xs uppercase mb-2">Executive Summary</h4>
+                <p class="text-[10px] text-slate-400">Résumé pour les décideurs. Score de sécurité global et analyse des risques business.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-rose-500/50 transition-colors">
+                <span class="text-rose-400 font-black text-2xl mb-2 block">02</span>
+                <h4 class="text-white font-bold text-xs uppercase mb-2">Scope</h4>
+                <p class="text-[10px] text-slate-400">Périmètre exact. Liste des fichiers audités et Hash du Commit (pour figer la version).</p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-rose-500/50 transition-colors">
+                <span class="text-rose-400 font-black text-2xl mb-2 block">03</span>
+                <h4 class="text-white font-bold text-xs uppercase mb-2">Findings</h4>
+                <p class="text-[10px] text-slate-400">Cœur du rapport. Liste détaillée des vulnérabilités classées par sévérité.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-rose-500/50 transition-colors">
+                <span class="text-rose-400 font-black text-2xl mb-2 block">04</span>
+                <h4 class="text-white font-bold text-xs uppercase mb-2">Recommendations</h4>
+                <p class="text-[10px] text-slate-400">Conseils d'architecture généraux et bonnes pratiques pour durcir le code.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="siren" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Classification des Risques (E.2)</h2>
+        </div>
+
+        <div class="glass-card !p-0 overflow-hidden border-white/10 mb-8">
+            <table class="w-full text-left text-[10px]">
+                <thead class="bg-slate-800 text-slate-400 uppercase font-bold">
+                    <tr>
+                        <th class="p-3 w-24 text-center">Niveau</th>
+                        <th class="p-3 w-1/3">Impact</th>
+                        <th class="p-3">Exemple</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-slate-300">
+                    <tr>
+                        <td class="p-3 text-center"><span class="bg-rose-600 text-white px-2 py-1 rounded font-black text-[9px]">CRITICAL</span></td>
+                        <td class="p-3 text-rose-300 font-bold">Perte de fonds directe, Gel définitif.</td>
+                        <td class="p-3">Reentrancy, Owner Key compromise.</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 text-center"><span class="bg-orange-500 text-black px-2 py-1 rounded font-black text-[9px]">HIGH</span></td>
+                        <td class="p-3 text-orange-300 font-bold">Dégradation sévère, Perte partielle.</td>
+                        <td class="p-3">DoS, Price Oracle manipulation.</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 text-center"><span class="bg-yellow-500 text-black px-2 py-1 rounded font-black text-[9px]">MEDIUM</span></td>
+                        <td class="p-3 text-yellow-200">Grief mineur, Coût Gas élevé.</td>
+                        <td class="p-3">Griefing attack, Unbounded Loop.</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 text-center"><span class="bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2 py-1 rounded font-bold text-[9px]">LOW/INFO</span></td>
+                        <td class="p-3 text-slate-400">Bonnes pratiques, Lisibilité.</td>
+                        <td class="p-3">Typo, Dead code, Style.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="bug" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Gabarit : Fiche Finding (E.3)</h2>
+        </div>
+
+        <div class="p-6 rounded-xl bg-[#0d1117] border border-white/10 relative overflow-hidden">
+            <div class="flex justify-between items-start border-b border-white/10 pb-4 mb-4">
+                <div>
+                    <h3 class="text-orange-400 font-bold text-sm mb-1">ID-01 : Unchecked External Call (H-01)</h3>
+                    <div class="flex gap-2 text-[9px]">
+                        <span class="bg-white/10 px-2 py-0.5 rounded text-slate-400 font-mono">Fichier : vault.rs</span>
+                        <span class="bg-orange-500/20 text-orange-400 border border-orange-500/30 px-2 py-0.5 rounded uppercase font-bold">Sévérité : HIGH</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-[11px]">
+                <div>
+                    <strong class="text-white block mb-1">Description</strong>
+                    <p class="text-slate-400">L'appel CPI vers le programme Token ne vérifie pas le code retour (Result).</p>
+                </div>
+                
+                <div>
+                    <strong class="text-white block mb-1">Impact</strong>
+                    <p class="text-slate-400">Un attaquant peut forcer l'échec silencieux du transfert et créditer son solde interne sans que les fonds ne soient réellement bougés.</p>
+                </div>
+
+                <div>
+                    <strong class="text-white block mb-1">Recommandation</strong>
+                    <div class="bg-black/50 p-3 rounded border border-white/5 font-mono text-green-400 mt-1">
+                        Utiliser anchor_lang::solana_program::program::invoke_signed et gérer le Result avec `?` ou un `require!`.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>

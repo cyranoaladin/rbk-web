@@ -1,0 +1,84 @@
+<div class="space-y-12 animate-in fade-in duration-700">
+
+    <header class="space-y-4">
+        <div class="flex items-center gap-3">
+            <span class="px-3 py-1 bg-indigo-500/10 text-indigo-300 rounded-lg text-lg font-mono">Tech</span>
+            <h1 class="text-3xl font-extrabold text-white tracking-tight">Program Vision</h1>
+        </div>
+        <p class="text-sm text-slate-400 max-w-3xl">
+            Train Solana-first architects who can design, audit, and operate distributed systems, with AI as a copilot and production-grade rigor.
+        </p>
+    </header>
+
+    <section class="space-y-6">
+        <h2 class="text-2xl font-bold text-white flex items-center gap-3">
+            <i data-lucide="target" class="text-emerald-400"></i> Builder Manifesto
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-6 bg-white/5 border border-white/10 rounded-2xl space-y-3">
+                <h3 class="text-xs uppercase text-emerald-300 font-bold">Posture</h3>
+                <ul class="text-[11px] text-slate-300 space-y-2">
+                    <li class="flex gap-2 items-start"><i data-lucide="cpu" class="w-4 h-4 text-emerald-400 mt-0.5"></i><span>Think like an architect: invariants, attack surface, perf/security trade-offs.</span></li>
+                    <li class="flex gap-2 items-start"><i data-lucide="git-branch" class="w-4 h-4 text-emerald-400 mt-0.5"></i><span>Iterate fast with AI tools, keep human review as a gate.</span></li>
+                    <li class="flex gap-2 items-start"><i data-lucide="shield" class="w-4 h-4 text-emerald-400 mt-0.5"></i><span>Security-by-default: threat modeling, negative tests, observability.</span></li>
+                </ul>
+            </div>
+            <div class="p-6 bg-black/30 border border-white/10 rounded-2xl space-y-4">
+                <h3 class="text-xs uppercase text-indigo-300 font-bold">Impact Goals</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px] text-slate-300">
+                    <div class="p-3 rounded-lg bg-white/5 border border-white/10">
+                        <strong class="text-white block mb-1">Production</strong>
+                        <span>Auditable artifacts (code, ADRs, diagrams).</span>
+                    </div>
+                    <div class="p-3 rounded-lg bg-white/5 border border-white/10">
+                        <strong class="text-white block mb-1">Autonomy</strong>
+                        <span>End-to-end mastery: IDE → CI/CD → deployments.</span>
+                    </div>
+                    <div class="p-3 rounded-lg bg-white/5 border border-white/10">
+                        <strong class="text-white block mb-1">Reliability</strong>
+                        <span>Observability, tests, incident runbooks.</span>
+                    </div>
+                    <div class="p-3 rounded-lg bg-white/5 border border-white/10">
+                        <strong class="text-white block mb-1">Foresight</strong>
+                        <span>Compare stacks (SVM/EVM) and choose with context.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="space-y-4">
+        <h2 class="text-2xl font-bold text-white flex items-center gap-3">
+            <i data-lucide="activity" class="text-blue-400"></i> Risks we neutralize
+        </h2>
+        <div class="glass-card !p-0 overflow-hidden border-white/5 shadow-2xl">
+            <table class="w-full text-left text-[11px] border-collapse">
+                <thead class="bg-white/5 text-slate-500 font-black uppercase">
+                    <tr>
+                        <th class="p-4 w-1/4">Domain</th>
+                        <th class="p-4 w-1/2">Typical failure</th>
+                        <th class="p-4 text-right">Remedy</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-slate-300">
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 font-bold text-white">Smart Contracts</td>
+                        <td class="p-4">Missing access control, reentrancy, bad PDA seeds.</td>
+                        <td class="p-4 text-right font-mono text-emerald-300">Negative tests + fuzzing</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 font-bold text-white">Infrastructure</td>
+                        <td class="p-4">No monitoring, no incident runbook.</td>
+                        <td class="p-4 text-right font-mono text-emerald-300">Obs + drills</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 font-bold text-white">Data & APIs</td>
+                        <td class="p-4">No rate limits, unsigned data.</td>
+                        <td class="p-4 text-right font-mono text-emerald-300">API threat modeling</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</div>

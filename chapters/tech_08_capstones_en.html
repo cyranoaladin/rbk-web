@@ -1,0 +1,255 @@
+<div class="space-y-16 animate-in fade-in duration-700">
+
+    <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-emerald-500/20 rounded-full blur-[100px]"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-4 mb-4">
+                <span class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-500 font-mono">Capstones</span>
+                <div class="h-12 w-px bg-white/10"></div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">Signature projects (Mainnet-Ready)</h1>
+            </div>
+            <p class="text-sm text-slate-400 max-w-2xl">
+                Studio standards: auditable products, security first, reproducible deliverables.
+            </p>
+        </div>
+    </header>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="briefcase" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Philosophy</h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div class="p-6 rounded-2xl bg-white/5 border border-white/10">
+                <p class="text-xs text-slate-300 leading-relaxed text-justify mb-4">
+                    Each capstone is treated like a studio product: threat model before code, exhaustive tests, green CI, and runbook-grade documentation.
+                </p>
+                <div class="bg-black/20 p-3 rounded border border-white/5 text-center">
+                    <span class="text-white font-bold text-xs uppercase">Mindset</span>
+                    <p class="text-[#14F195] font-black text-lg">Audit Ready</p>
+                </div>
+            </div>
+
+            <div class="glass-card !p-0 overflow-hidden border-white/10">
+                <div class="px-4 py-3 bg-emerald-500/10 border-b border-emerald-500/20">
+                    <h4 class="text-emerald-400 font-bold text-xs uppercase">Studio checklist (non negotiable)</h4>
+                </div>
+                <table class="w-full text-left text-[10px]">
+                    <tbody class="divide-y divide-emerald-500/10 text-slate-300">
+                        <tr>
+                            <td class="p-3 font-bold text-white">Security</td>
+                            <td class="p-3">Formalized threat model before code</td>
+                            <td class="p-3 text-right text-slate-500">STRIDE doc</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-bold text-white">Quality</td>
+                            <td class="p-3">Zero linter warnings, high coverage</td>
+                            <td class="p-3 text-right text-slate-500">CI report</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-bold text-white">Ops</td>
+                            <td class="p-3">Scripted, reproducible deployment</td>
+                            <td class="p-3 text-right text-slate-500">Makefile/CI</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="space-y-8">
+        <div class="flex items-center gap-3">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="layers" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">The 3 signature projects</h2>
+        </div>
+
+        <div class="glass-card p-6 bg-blue-500/5 border border-blue-500/20 relative group hover:border-blue-500/40 transition-all">
+            <div class="absolute -top-3 left-6 px-3 py-1 bg-blue-500 text-black text-[10px] font-bold uppercase rounded">Capstone 1</div>
+            <h3 class="text-blue-400 font-bold text-lg mb-1 mt-2">Wallet & Reliability Pack</h3>
+            <p class="text-[10px] text-slate-400 mb-4 uppercase font-bold tracking-widest">Focus: Frontend / UX / RPC Failover</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-[11px] text-slate-300">
+                <div>
+                    <strong class="text-white block mb-2 border-b border-white/10 pb-1">User stories</strong>
+                    <ul class="space-y-1 list-disc list-inside text-slate-400">
+                        <li>Precise feedback (signing/confirming).</li>
+                        <li>Auto retry (backoff).</li>
+                        <li>Failure journal.</li>
+                    </ul>
+                </div>
+                <div>
+                    <strong class="text-white block mb-2 border-b border-white/10 pb-1">Tech specs</strong>
+                    <ul class="space-y-1 list-disc list-inside text-slate-400">
+                        <li>Next.js + TanStack Query.</li>
+                        <li>Strict state machine.</li>
+                        <li>RPC failover (primary + fallback).</li>
+                    </ul>
+                </div>
+                <div>
+                    <strong class="text-white block mb-2 border-b border-white/10 pb-1">Security checklist</strong>
+                    <ul class="space-y-1 text-blue-300">
+                        <li class="flex gap-2"><i data-lucide="shield" class="w-3 h-3"></i> No private keys stored.</li>
+                        <li class="flex gap-2"><i data-lucide="shield" class="w-3 h-3"></i> Sanitized inputs.</li>
+                        <li class="flex gap-2"><i data-lucide="shield" class="w-3 h-3"></i> Slippage handling.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-card p-6 bg-emerald-500/5 border border-emerald-500/20 relative group hover:border-emerald-500/40 transition-all">
+            <div class="absolute -top-3 left-6 px-3 py-1 bg-emerald-500 text-black text-[10px] font-bold uppercase rounded">Capstone 2</div>
+            <h3 class="text-emerald-400 font-bold text-lg mb-1 mt-2">Tokenization & Admin Control</h3>
+            <p class="text-[10px] text-slate-400 mb-4 uppercase font-bold tracking-widest">Focus: RBAC / Business logic / DeFi</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-[11px] text-slate-300">
+                <div>
+                    <strong class="text-white block mb-2 border-b border-white/10 pb-1">User stories</strong>
+                    <ul class="space-y-1 list-disc list-inside text-slate-400">
+                        <li>SuperAdmin: appoint/revoke operator.</li>
+                        <li>Operator: freeze suspicious account.</li>
+                        <li>Auditor: on-chain log of admin actions.</li>
+                    </ul>
+                </div>
+                <div>
+                    <strong class="text-white block mb-2 border-b border-white/10 pb-1">Tech specs</strong>
+                    <ul class="space-y-1 list-disc list-inside text-slate-400">
+                        <li>Solidity (AccessControl) / Anchor (PDA).</li>
+                        <li>Invariants supply = sum balances.</li>
+                        <li>Events for every mutation.</li>
+                    </ul>
+                </div>
+                <div>
+                    <strong class="text-white block mb-2 border-b border-white/10 pb-1">Security checklist</strong>
+                    <ul class="space-y-1 text-emerald-300">
+                        <li class="flex gap-2"><i data-lucide="shield" class="w-3 h-3"></i> Two-step transfer (admin).</li>
+                        <li class="flex gap-2"><i data-lucide="shield" class="w-3 h-3"></i> Checks-Effects-Interactions.</li>
+                        <li class="flex gap-2"><i data-lucide="shield" class="w-3 h-3"></i> Strict access control.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-card p-6 bg-purple-500/5 border border-purple-500/20 relative group hover:border-purple-500/40 transition-all">
+            <div class="absolute -top-3 left-6 px-3 py-1 bg-purple-500 text-white text-[10px] font-bold uppercase rounded">Capstone 3</div>
+            <h3 class="text-purple-400 font-bold text-lg mb-1 mt-2">Digital Assets & Utility</h3>
+            <p class="text-[10px] text-slate-400 mb-4 uppercase font-bold tracking-widest">Focus: Performance / NFT / Gaming</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-[11px] text-slate-300">
+                <div>
+                    <strong class="text-white block mb-2 border-b border-white/10 pb-1">User stories</strong>
+                    <ul class="space-y-1 list-disc list-inside text-slate-400">
+                        <li>NFT-based gating.</li>
+                        <li>Daily rewards.</li>
+                        <li>Optimized mint.</li>
+                    </ul>
+                </div>
+                <div>
+                    <strong class="text-white block mb-2 border-b border-white/10 pb-1">Tech specs</strong>
+                    <ul class="space-y-1 list-disc list-inside text-slate-400">
+                        <li>Merkle tree or signature verifier.</li>
+                        <li>Compression (cNFT) or ERC721A.</li>
+                    </ul>
+                </div>
+                <div>
+                    <strong class="text-white block mb-2 border-b border-white/10 pb-1">Security checklist</strong>
+                    <ul class="space-y-1 text-purple-300">
+                        <li class="flex gap-2"><i data-lucide="shield" class="w-3 h-3"></i> Bot protection.</li>
+                        <li class="flex gap-2"><i data-lucide="shield" class="w-3 h-3"></i> Anti-replay.</li>
+                        <li class="flex gap-2"><i data-lucide="shield" class="w-3 h-3"></i> Metadata IPFS/Arweave.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="clipboard-check" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Evaluation matrix</h2>
+        </div>
+
+        <div class="glass-card !p-0 overflow-hidden border-white/10">
+            <table class="w-full text-left text-[11px]">
+                <thead class="bg-white/5 text-slate-500 uppercase font-black">
+                    <tr>
+                        <th class="p-4 w-1/6">Pillar</th>
+                        <th class="p-4 w-16 text-center">Pts</th>
+                        <th class="p-4 w-1/3">Criteria</th>
+                        <th class="p-4 text-rose-400">Fail condition</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-slate-300">
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 font-bold text-white">Engineering</td>
+                        <td class="p-4 text-center font-bold">40</td>
+                        <td class="p-4">Clean arch, modularity, error handling.</td>
+                        <td class="p-4 text-rose-300 italic">Monolithic code, unchecked unwraps.</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 font-bold text-white">Security</td>
+                        <td class="p-4 text-center font-bold">30</td>
+                        <td class="p-4">Threat model, validations, edge tests.</td>
+                        <td class="p-4 text-rose-300 italic">Critical vulnerability.</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 font-bold text-white">Delivery</td>
+                        <td class="p-4 text-center font-bold">20</td>
+                        <td class="p-4">CI/CD, Git flow, reproducibility.</td>
+                        <td class="p-4 text-rose-300 italic">Broken build, missing docs.</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 font-bold text-white">Comms</td>
+                        <td class="p-4 text-center font-bold">10</td>
+                        <td class="p-4">Clear demo, pitch, rationale.</td>
+                        <td class="p-4 text-rose-300 italic">Messy pitch, unable to explain.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="package-check" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Packaging</h2>
+        </div>
+
+        <div class="glass-card bg-black/40 p-8 flex flex-col items-center justify-center relative overflow-hidden">
+            <h4 class="text-white font-bold text-xs uppercase mb-8">Pipeline</h4>
+            <div class="flex items-center gap-4 relative z-10 w-full justify-center">
+                <div class="p-3 bg-white/5 border border-white/20 rounded-lg text-center w-24">
+                    <span class="text-white font-bold text-xs block">Code</span>
+                    <span class="text-[9px] text-slate-400">Clean</span>
+                </div>
+                <i data-lucide="arrow-right" class="text-slate-500 w-4 h-4"></i>
+                <div class="p-3 bg-white/5 border border-white/20 rounded-lg text-center w-24">
+                    <span class="text-white font-bold text-xs block">Test</span>
+                    <span class="text-[9px] text-slate-400">CI Pass</span>
+                </div>
+                <i data-lucide="arrow-right" class="text-slate-500 w-4 h-4"></i>
+                <div class="p-3 bg-amber-500/10 border border-amber-500/30 rounded-lg text-center w-24">
+                    <span class="text-amber-400 font-bold text-xs block">Audit Doc</span>
+                    <span class="text-[9px] text-slate-400">Self-audit</span>
+                </div>
+                <i data-lucide="arrow-right" class="text-slate-500 w-4 h-4"></i>
+                <div class="p-3 bg-white/5 border border-white/20 rounded-lg text-center w-24">
+                    <span class="text-white font-bold text-xs block">Release</span>
+                    <span class="text-[9px] text-slate-400">Package</span>
+                </div>
+                <i data-lucide="arrow-right" class="text-slate-500 w-4 h-4"></i>
+                <div class="p-3 bg-[#14F195]/10 border border-[#14F195]/30 rounded-lg text-center w-24">
+                    <span class="text-[#14F195] font-bold text-xs block">Demo</span>
+                    <span class="text-[9px] text-slate-400">Video</span>
+                </div>
+            </div>
+            <p class="text-[10px] text-slate-500 mt-6 italic">The package is the production proof and portfolio basis.</p>
+        </div>
+    </section>
+
+</div>

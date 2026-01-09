@@ -1,0 +1,98 @@
+<div class="space-y-12 animate-in fade-in duration-700">
+
+    <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-purple-500/15 rounded-full blur-[100px]"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-4 mb-3">
+                <span class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500 font-mono">Guide</span>
+                <div class="h-12 w-px bg-white/10"></div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">Guide du Formateur</h1>
+            </div>
+            <p class="text-sm text-slate-400 max-w-3xl">Cadre de conduite pour les formateurs et mentors : posture, usage des outils IA et critères d'évaluation technique.</p>
+        </div>
+    </header>
+
+    <section class="space-y-4">
+        <h2 class="text-xl font-bold text-white flex items-center gap-3">
+            <i data-lucide="users" class="text-emerald-400"></i> Mentorat vs Cours magistral
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+                <h3 class="text-xs uppercase text-emerald-300 font-bold mb-2">Ce que l'on privilégie</h3>
+                <ul class="text-[11px] text-slate-300 space-y-2">
+                    <li class="flex gap-2 items-start"><i data-lucide="message-circle" class="w-4 h-4 text-emerald-300 mt-0.5"></i><span>Coaching live sur des cas réels, pair-debugging, relectures ciblées.</span></li>
+                    <li class="flex gap-2 items-start"><i data-lucide="compass" class="w-4 h-4 text-emerald-300 mt-0.5"></i><span>Questions guidées plutôt que solutions directes pour préserver l'autonomie.</span></li>
+                    <li class="flex gap-2 items-start"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-300 mt-0.5"></i><span>Définition claire des critères de Done (tests, docs, perf, sécurité).</span></li>
+                </ul>
+            </div>
+            <div class="p-5 rounded-2xl bg-black/20 border border-white/10">
+                <h3 class="text-xs uppercase text-rose-300 font-bold mb-2">À éviter</h3>
+                <ul class="text-[11px] text-slate-300 space-y-2">
+                    <li class="flex gap-2 items-start"><i data-lucide="ban" class="w-4 h-4 text-rose-400 mt-0.5"></i><span>Slides longues sans pratique.</span></li>
+                    <li class="flex gap-2 items-start"><i data-lucide="ban" class="w-4 h-4 text-rose-400 mt-0.5"></i><span>Corrections non reproductibles ou sans tests.</span></li>
+                    <li class="flex gap-2 items-start"><i data-lucide="ban" class="w-4 h-4 text-rose-400 mt-0.5"></i><span>Oublier l'accessibilité (UI), la sécurité (backend) ou la traçabilité.</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="space-y-4">
+        <h2 class="text-xl font-bold text-white flex items-center gap-3">
+            <i data-lucide="sparkles" class="text-blue-400"></i> Utilisation des outils IA en classe
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h3 class="text-xs uppercase text-blue-300 font-bold mb-2">Préparation</h3>
+                <p class="text-[11px] text-slate-300">Prompt d'amorçage partagé, exemples attendus, limites explicites (pas de copie de code critique sans revue).</p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h3 class="text-xs uppercase text-blue-300 font-bold mb-2">Exécution</h3>
+                <p class="text-[11px] text-slate-300">Comparaison de 2-3 propositions IA, justification des choix, validation par tests automatisés.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h3 class="text-xs uppercase text-blue-300 font-bold mb-2">Traçabilité</h3>
+                <p class="text-[11px] text-slate-300">Mention des assistants utilisés dans les PR, conservation des prompts pertinents dans la documentation de sprint.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="space-y-4">
+        <h2 class="text-xl font-bold text-white flex items-center gap-3">
+            <i data-lucide="clipboard-check" class="text-amber-400"></i> Critères d'évaluation technique
+        </h2>
+        <div class="glass-card !p-0 overflow-hidden border-white/10">
+            <table class="w-full text-left text-[11px]">
+                <thead class="bg-white/5 text-slate-500 uppercase font-black">
+                    <tr>
+                        <th class="p-4 w-1/4">Axe</th>
+                        <th class="p-4 w-1/2">Attendus</th>
+                        <th class="p-4 text-right">Check</th>
+                    </tr>
+                </thead>
+            <tbody class="divide-y divide-white/5 text-slate-300">
+                <tr class="hover:bg-white/5">
+                    <td class="p-4 font-bold text-white">Code & Tests</td>
+                    <td class="p-4">Tests unitaires + négatifs, couverture des invariants, CI verte.</td>
+                    <td class="p-4 text-right font-mono text-emerald-300">OK / À compléter</td>
+                </tr>
+                <tr class="hover:bg-white/5">
+                    <td class="p-4 font-bold text-white">Sécurité</td>
+                    <td class="p-4">Threat model succinct, checklist de sécurité appliquée, pas de secrets en dur.</td>
+                    <td class="p-4 text-right font-mono text-emerald-300">OK / À compléter</td>
+                </tr>
+                <tr class="hover:bg-white/5">
+                    <td class="p-4 font-bold text-white">Observabilité</td>
+                    <td class="p-4">Logs structurés, métriques clés, plan de rollback documenté.</td>
+                    <td class="p-4 text-right font-mono text-emerald-300">OK / À compléter</td>
+                </tr>
+                <tr class="hover:bg-white/5">
+                    <td class="p-4 font-bold text-white">UX & Accessibilité</td>
+                    <td class="p-4">Navigation clavier, rôles ARIA, erreurs gérées et affichées.</td>
+                    <td class="p-4 text-right font-mono text-emerald-300">OK / À compléter</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </section>
+
+</div>

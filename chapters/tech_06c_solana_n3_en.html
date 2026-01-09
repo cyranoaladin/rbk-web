@@ -1,0 +1,133 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <header class="relative p-8 rounded-3xl overflow-hidden border border-white/10 bg-slate-900/60">
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-slate-900/0"></div>
+        <div class="relative z-10 space-y-4">
+            <div class="flex items-center gap-4">
+                <span class="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-fuchsia-300">N3</span>
+                <h1 class="text-3xl font-bold text-white tracking-tight">Level 3 — Studio Architect & Validator Ops</h1>
+            </div>
+            <p class="text-sm text-slate-400 max-w-3xl">
+                20 weeks to master performance, formal security, interoperability, and Web3 studio operations (protocols and validators).
+            </p>
+        </div>
+    </header>
+
+    <section class="glass-card">
+        <div class="flex items-center gap-3 mb-4">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="target" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Phases Alpha / Beta / Gamma</h2>
+        </div>
+        <div class="space-y-3 text-[13px] text-slate-300">
+            <p><strong class="text-sm text-white">Alpha (W29-W38)</strong> — Performance & observability: load testing, parallelism, compute budget.</p>
+            <p><strong class="text-sm text-white">Beta (W39-W44)</strong> — Formal security, game theory, red/blue team.</p>
+            <p><strong class="text-sm text-white">Gamma (W45-W48)</strong> — Production studio: governance, compliance, launch simulation.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-4">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="columns" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Deep modules</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-[13px]">
+            <article class="glass-card p-5 border-l-4 border-blue-400">
+                <h3 class="text-sm uppercase tracking-[0.3em] text-blue-300 mb-2">Performance & architecture</h3>
+                <ul class="list-disc list-inside space-y-1 text-slate-300">
+                    <li>Shard-then-aggregate, WAL, materialized views.</li>
+                    <li>Load tests 100k TPS, chaos, recovery benchmarks.</li>
+                    <li>Atomic batching, ALT, and precise compute budget.</li>
+                </ul>
+            </article>
+            <article class="glass-card p-5 border-l-4 border-emerald-400">
+                <h3 class="text-sm uppercase tracking-[0.3em] text-emerald-300 mb-2">Formal security</h3>
+                <ul class="list-disc list-inside space-y-1 text-slate-300">
+                    <li>CTL/LTL invariants, fairness, proofs of non-repudiation.</li>
+                    <li>72h red/blue team with jury.</li>
+                    <li>Offensive audit: hooks, CPI, oracle, RWA.</li>
+                </ul>
+            </article>
+            <article class="glass-card p-5 border-l-4 border-purple-400">
+                <h3 class="text-sm uppercase tracking-[0.3em] text-purple-300 mb-2">Interop & cross-chain</h3>
+                <ul class="list-disc list-inside space-y-1 text-slate-300">
+                    <li>Wormhole, LayerZero, state proofs, hybrid architectures.</li>
+                    <li>Unified pricing, atomic settlement, state compression.</li>
+                </ul>
+            </article>
+            <article class="glass-card p-5 border-l-4 border-amber-400">
+                <h3 class="text-sm uppercase tracking-[0.3em] text-amber-300 mb-2">Governance & RWA</h3>
+                <ul class="list-disc list-inside space-y-1 text-slate-300">
+                    <li>Compliance by design (KYC/AML, geo-lock).</li>
+                    <li>Timelocks, kill switch, reporting.</li>
+                    <li>RWA tokenization: identity registry + Transfer Hook.</li>
+                </ul>
+            </article>
+            <article class="glass-card p-5 border-l-4 border-cyan-400">
+                <h3 class="text-sm uppercase tracking-[0.3em] text-cyan-300 mb-2">Launch & industrial ops</h3>
+                <ul class="list-disc list-inside space-y-1 text-slate-300">
+                    <li>Canary releases, blue-green upgrades, post-mortems.</li>
+                    <li>Protocol launch simulation (pre / day / post).</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <section class="glass-card">
+        <div class="flex items-center gap-3 mb-4">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="server" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Validator & infra</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-[13px] text-slate-300">
+            <div class="glass-card !p-4 border border-white/5 bg-slate-900/40">
+                <strong class="text-xs uppercase tracking-[0.3em] text-slate-400">Validator Ops</strong>
+                <ul class="list-disc list-inside space-y-1 mt-2">
+                    <li>Bare-metal, Agave/Jito/Firedancer clients, TIG monitoring.</li>
+                    <li>Recovery playbooks, alerting, incident drills.</li>
+                </ul>
+            </div>
+            <div class="glass-card !p-4 border border-white/5 bg-slate-900/40">
+                <strong class="text-xs uppercase tracking-[0.3em] text-slate-400">Data & Storage</strong>
+                <ul class="list-disc list-inside space-y-1 mt-2">
+                    <li>State compression, SubQuery/Sqd indexers.</li>
+                    <li>Hybrid RPCs, QoS, multi providers.</li>
+                    <li>Immutable storage (Arweave/Shadow Drive) for metadata.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="glass-card">
+        <div class="flex items-center gap-3 mb-4">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="repeat" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">CI/CD & launch readiness</h2>
+        </div>
+        <ul class="text-[13px] text-slate-300 list-disc list-inside space-y-2">
+            <li>GitHub Actions: lint, tests, Anchor build, multisig proposal generation.</li>
+            <li>Verifiable builds (binary hash aligned to source).</li>
+            <li>Performance + security test suite, protocol analytics.</li>
+        </ul>
+    </section>
+
+    <section class="glass-card">
+        <div class="flex items-center gap-3 mb-4">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="award" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Certification & portfolio</h2>
+        </div>
+        <ul class="text-[13px] text-slate-300 list-disc list-inside space-y-2">
+            <li>Mandatory portfolio: 3 architectures, 1 formal audit, 1 open-source contribution, 1 whitepaper, 1 presentation.</li>
+            <li>Certification by a mixed board (mentors, external expert, community rep).</li>
+            <li>Tiered badges (Junior, Senior, Principal) with utilities (mentoring, voting, access gating).</li>
+        </ul>
+    </section>
+
+</div>

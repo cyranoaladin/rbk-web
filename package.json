@@ -1,0 +1,24 @@
+{
+  "name": "rbk-web",
+  "version": "0.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tailwindcss -i styles/tailwind.css -o assets/tailwind.css --watch --content index.html,chapters/**/*.html,script.js",
+    "build": "tailwindcss -i styles/tailwind.css -o assets/tailwind.css --minify --content index.html,chapters/**/*.html,script.js",
+    "lint": "npx prettier --check .",
+    "format": "npx prettier --write ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "private": "true",
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.10",
+    "tailwindcss-animate": "^1.0.7"
+  }
+}

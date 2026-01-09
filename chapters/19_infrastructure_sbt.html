@@ -1,0 +1,186 @@
+<div class="space-y-16 animate-in fade-in duration-700">
+
+    <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-indigo-500/20 rounded-full blur-[100px]"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-4 mb-4">
+                <span
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-600 font-mono">19B</span>
+                <div class="h-12 w-px bg-white/10"></div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">19b. Infrastructure SBT & Certification</h1>
+            </div>
+            <p class="text-sm text-slate-400 max-w-2xl">
+                La certification n'est pas un PDF. C'est une preuve cryptographique On-chain, incensurable et composable
+                (Soulbound Token).
+            </p>
+        </div>
+    </header>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="shield-check" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Philosophie : "Don't Trust, Verify"</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div
+                class="p-6 rounded-2xl bg-white/5 border border-white/10 text-center hover:bg-white/10 transition-colors">
+                <div class="w-12 h-12 mx-auto bg-indigo-500/20 rounded-full flex items-center justify-center mb-4"><i
+                        data-lucide="anchor" class="w-6 h-6 text-indigo-400"></i></div>
+                <h4 class="text-white font-bold text-sm mb-2">Permanent</h4>
+                <p class="text-[10px] text-slate-400">Ancré sur la blockchain (Solana/Polygon). Impossible à falsifier.
+                </p>
+            </div>
+            <div
+                class="p-6 rounded-2xl bg-white/5 border border-white/10 text-center hover:bg-white/10 transition-colors">
+                <div class="w-12 h-12 mx-auto bg-rose-500/20 rounded-full flex items-center justify-center mb-4"><i
+                        data-lucide="flame" class="w-6 h-6 text-rose-400"></i></div>
+                <h4 class="text-white font-bold text-sm mb-2">Révocable</h4>
+                <p class="text-[10px] text-slate-400">Mécanisme de slashing en cas de triche avérée post-diplomation.
+                </p>
+            </div>
+            <div
+                class="p-6 rounded-2xl bg-white/5 border border-white/10 text-center hover:bg-white/10 transition-colors">
+                <div class="w-12 h-12 mx-auto bg-[#14F195]/20 rounded-full flex items-center justify-center mb-4"><i
+                        data-lucide="database" class="w-6 h-6 text-[#14F195]"></i></div>
+                <h4 class="text-white font-bold text-sm mb-2">Riche</h4>
+                <p class="text-[10px] text-slate-400">Métadonnées prouvant les compétences (Hash commits, Liens repos).
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="code" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Stack Technique (ERC-5192)</h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="space-y-4">
+                <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                    <h4 class="text-indigo-400 font-bold text-xs uppercase mb-2">Choix du Standard</h4>
+                    <ul class="text-[11px] text-slate-300 space-y-2">
+                        <li class="flex justify-between border-b border-white/5 pb-1">
+                            <span>Réseau</span>
+                            <strong class="text-white">Polygon POS / Solana (cNFT)</strong>
+                        </li>
+                        <li class="flex justify-between border-b border-white/5 pb-1">
+                            <span>Standard</span>
+                            <strong class="text-white">ERC-5192 (Minimal Soulbound)</strong>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Coût</span>
+                            <strong class="text-[#14F195]">Frais nuls (Gasless)</strong>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="relative group">
+                <div
+                    class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200">
+                </div>
+                <div
+                    class="relative rounded-lg bg-[#0d1117] border border-white/10 p-4 font-mono text-[10px] overflow-x-auto">
+                    <div class="flex items-center justify-between mb-2 pb-2 border-b border-white/10">
+                        <span class="text-xs text-slate-400">ISoulbound.sol</span>
+                        <div class="flex gap-1.5">
+                            <div class="w-2 h-2 rounded-full bg-red-500"></div>
+                            <div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+                            <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                        </div>
+                    </div>
+                    <pre><code class="language-solidity text-slate-300">interface ISoulbound {
+  <span class="text-slate-500">/// @notice Émis quand minté. Locké par défaut.</span>
+  event Locked(uint256 tokenId);
+
+  <span class="text-slate-500">/// @notice Transfert impossible sauf burn.</span>
+  function locked(uint256 tokenId) external view returns (bool);
+
+  <span class="text-slate-500">/// @notice Seul l'admin peut révoquer.</span>
+  function revoke(uint256 tokenId) external onlyRole(ADMIN);
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="refresh-cw" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Workflow d'Émission Automatisé</h2>
+        </div>
+
+        <div class="glass-card bg-black/40 p-8 relative overflow-hidden mb-8 flex flex-col items-center">
+            <h4 class="text-white font-bold text-sm uppercase mb-6 tracking-widest">Fig 19B.1 : Pipeline de
+                Certification</h4>
+            <div class="w-full overflow-x-auto flex justify-center">
+                <pre class="mermaid text-sm leading-relaxed">
+flowchart TD
+  LMS["LMS (Off-chain)"] --> ORA["Oracle RBK (Relayer)"]
+  ORA --> SC["Smart Contract (On-chain)"]
+  SC --> MINT["Mint SBT"]
+  MINT --> WALLET["Wallet Étudiant"]
+  style LMS fill:#0b1220,stroke:#64748b,color:#e2e8f0,stroke-width:2px
+  style ORA fill:#0b1220,stroke:#64748b,color:#e2e8f0,stroke-width:2px
+  style SC fill:#0b1220,stroke:#64748b,color:#e2e8f0,stroke-width:2px
+  style MINT fill:#14532d,stroke:#14F195,color:#fff,stroke-width:2px
+  style WALLET fill:#0b1220,stroke:#64748b,color:#e2e8f0,stroke-width:2px
+  linkStyle 0,1,2,3 stroke:#64748b,stroke-width:2px;
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="lock" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Conformité RGPD & Privacy</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-5 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-amber-400 font-bold text-xs uppercase mb-3 flex items-center gap-2">
+                    <i data-lucide="hash" class="w-4 h-4"></i> On-Chain
+                </h4>
+                <p class="text-[10px] text-slate-300">
+                    Un pointeur vers le credential (hash + CID IPFS) et un indicateur d'état (Actif/Révoqué).
+                    <strong class="text-white block mt-1">Aucune donnée nominative stockée.</strong>
+                </p>
+            </div>
+
+            <div class="p-5 rounded-xl bg-white/5 border border-white/10">
+                <h4 class="text-blue-400 font-bold text-xs uppercase mb-3 flex items-center gap-2">
+                    <i data-lucide="file-check" class="w-4 h-4"></i> Off-Chain (VC)
+                </h4>
+                <p class="text-[10px] text-slate-300">
+                    Infos identifiantes conservées dans une base chiffrée RBK. Preuve exposée via W3C Verifiable
+                    Credentials.
+                    <strong class="text-white block mt-1">Droit à l'oubli via Burn + Purge.</strong>
+                </p>
+            </div>
+        </div>
+
+        <div class="mt-6 p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-xl flex items-start gap-4">
+            <div class="p-2 bg-indigo-500/20 rounded-lg shrink-0"><i data-lucide="search"
+                    class="w-5 h-5 text-indigo-400"></i></div>
+            <div>
+                <h4 class="text-indigo-400 font-bold text-sm mb-1">Recrutement Instantané</h4>
+                <p class="text-[10px] text-slate-300 italic">
+                    "Montre-moi tous les wallets qui détiennent le SBT 'Solana Advanced' ET 'Security Auditor'."
+                </p>
+                <p class="text-[10px] text-slate-400 mt-1">Réduit le screening de 5 jours à 50ms.</p>
+            </div>
+        </div>
+    </section>
+
+</div>

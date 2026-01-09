@@ -1,0 +1,108 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <header class="relative p-8 rounded-3xl overflow-hidden border border-white/10 bg-slate-900/60">
+        <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-slate-900/0"></div>
+        <div class="relative z-10 space-y-4">
+            <div class="flex items-center gap-4">
+                <span class="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-slate-300">N1</span>
+                <h1 class="text-3xl font-bold text-white tracking-tight">Niveau 1 — La Forge (Junior Web3 Builder)</h1>
+            </div>
+            <p class="text-sm text-slate-400 max-w-3xl">
+                12 semaines pour installer les réflexes Rust/Solana natif, la rigueur sécurité et la reproductibilité des livrables.
+            </p>
+        </div>
+    </header>
+
+    <section class="glass-card">
+        <div class="flex items-center gap-3 mb-4">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="flame" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Vision & posture</h2>
+        </div>
+        <p class="text-slate-300 leading-relaxed mb-3">
+            Sécurité dès le jour 1, livrables vérifiables, usage d’IA encadré. Chaque bloc se termine par un test ou un mini-audit.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300">
+            <div class="bg-slate-900/40 border border-white/5 rounded-2xl p-4">
+                <h3 class="text-xs uppercase tracking-[0.25em] text-emerald-300 mb-2">Security snippets</h3>
+                <p>5 minutes par session sur un bug type (unwrap, signer, rent, confusion de comptes).</p>
+            </div>
+            <div class="bg-slate-900/40 border border-white/5 rounded-2xl p-4">
+                <h3 class="text-xs uppercase tracking-[0.25em] text-emerald-300 mb-2">Cercles IA</h3>
+                <ul class="list-disc list-inside space-y-1 text-[12px]">
+                    <li>S1-S4 : IA documentaire uniquement.</li>
+                    <li>S5-S8 : IA en pair debugging, prompts archivés.</li>
+                    <li>S9-S12 : IA en support d’architecture, revue humaine obligatoire.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="space-y-6">
+        <div class="flex items-center gap-3">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="building-2" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Modules fondamentaux</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-[13px]">
+            <article class="glass-card p-5 border-l-4 border-emerald-400">
+                <h3 class="text-sm uppercase tracking-[0.3em] text-emerald-300 mb-2">S1-S3 — Rust & Système</h3>
+                <ul class="list-disc list-inside space-y-1 text-slate-300">
+                    <li>Ownership/borrowing, heap/stack, lifetimes.</li>
+                    <li>Exos CLI (« ls », « grep ») et clippy clean.</li>
+                    <li>Perf & observabilité (bpftrace, profiling).</li>
+                </ul>
+            </article>
+            <article class="glass-card p-5 border-l-4 border-amber-400">
+                <h3 class="text-sm uppercase tracking-[0.3em] text-amber-300 mb-2">S4-S6 — Crypto & primitives</h3>
+                <ul class="list-disc list-inside space-y-1 text-slate-300">
+                    <li>Signatures Ed25519, SHA-256, Merkle.</li>
+                    <li>Wallet CLI (seed BIP-39, sign/verify offline).</li>
+                    <li>Mini CTF crypto (replay, mauvaises clés, collisions).</li>
+                </ul>
+            </article>
+            <article class="glass-card p-5 border-l-4 border-sky-400">
+                <h3 class="text-sm uppercase tracking-[0.3em] text-sky-300 mb-2">S7-S9 — Solana natif</h3>
+                <ul class="list-disc list-inside space-y-1 text-slate-300">
+                    <li>process_instruction, Borsh manuel, PDAs & bump.</li>
+                    <li>Bug patterns : CPI reentrancy, confusion de comptes.</li>
+                    <li>Capstone : compteur décentralisé Devnet sans Anchor.</li>
+                </ul>
+            </article>
+            <article class="glass-card p-5 border-l-4 border-purple-400">
+                <h3 class="text-sm uppercase tracking-[0.3em] text-purple-300 mb-2">S10-S12 — Intégration & CI</h3>
+                <ul class="list-disc list-inside space-y-1 text-slate-300">
+                    <li>Web3.js 2.0, Wallet Adapters, gestion des statuts tx.</li>
+                    <li>CI GitHub Actions (build, tests, déploiement Devnet vérifiable).</li>
+                    <li>Full-stack dApp : UX robuste, feedback d’état.</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <section class="glass-card">
+        <div class="flex items-center gap-3 mb-4">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="shield-check" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Sécurité & validation</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-[12px] text-slate-300">
+            <div class="bg-slate-900/40 border border-white/5 rounded-2xl p-3">
+                <strong class="block text-xs uppercase tracking-[0.3em] text-slate-400 mb-1">Block Checks</strong>
+                <p>Seuils progressifs : 70% (S3), 75% (S6), 80% (S9), 85% (S12) + challenges bonus.</p>
+            </div>
+            <div class="bg-slate-900/40 border border-white/5 rounded-2xl p-3">
+                <strong class="block text-xs uppercase tracking-[0.3em] text-slate-400 mb-1">Checklist Guardian</strong>
+                <p>Unwrap, signer/owner, rent exempt, compute budget, collisions PDA vérifiés avant merge.</p>
+            </div>
+            <div class="bg-slate-900/40 border border-white/5 rounded-2xl p-3">
+                <strong class="block text-xs uppercase tracking-[0.3em] text-slate-400 mb-1">Badges</strong>
+                <p>rust_fundamentals, cryptography, native_solana, security_mindset (hashés, traçables).</p>
+            </div>
+        </div>
+    </section>
+
+</div>

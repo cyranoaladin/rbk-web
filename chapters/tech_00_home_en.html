@@ -1,0 +1,82 @@
+<section class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#0a0a0a] selection:bg-[#9945FF]/30">
+
+    <div class="absolute top-6 right-6 z-50 flex items-center gap-1 p-1 rounded-lg bg-white/5 border border-white/10 backdrop-blur-md">
+        <button onclick="setLanguage('fr')" id="btn-fr" class="px-3 py-1 text-xs font-bold rounded-md transition-all text-slate-500 hover:text-white">FR</button>
+        <button onclick="setLanguage('en')" id="btn-en" class="px-3 py-1 text-xs font-bold rounded-md transition-all bg-white/10 text-white shadow-sm">EN</button>
+    </div>
+
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGZCIHN0cm9rZT0iIzk5NDVGRiIgc3Ryb2tlLXdpZHRaD0iMC41IiBvcGFjaXR5PSIwLjEiPjxwYXRoIGQ9Ik0zMCAwIEwzMCA2MCIvPjxwYXRoIGQ9Ik0wIDMwIEw2MCAzMCIvPjwvZz48L3N2Zz4=')] opacity-20 pointer-events-none mask-image:radial-gradient(circle,black,transparent)"></div>
+    <div class="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] bg-purple-600/30 rounded-full blur-[150px] -translate-y-1/2 animate-pulse-slow mix-blend-screen"></div>
+    <div class="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-[#14F195]/20 rounded-full blur-[150px] translate-y-1/3 mix-blend-screen"></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto text-center px-6">
+
+        <div class="inline-flex items-center gap-2 mb-10 px-4 py-1.5 rounded-full bg-[#9945FF]/10 border border-[#9945FF]/30 backdrop-blur-md animate-in fade-in slide-in-from-top-4 duration-1000">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#14F195] opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-[#14F195]"></span>
+            </span>
+            <span class="text-[11px] font-mono text-[#14F195] uppercase tracking-widest font-bold">High-Performance Builder Initiative • North Africa</span>
+        </div>
+
+        <div id="content-en" class="transition-opacity duration-500">
+            <h1 class="text-5xl md:text-8xl font-black text-white tracking-tighter mb-8 leading-[1] animate-in fade-in zoom-in duration-1000 delay-200 contains-gradient">
+                FORGING THE <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#9945FF] to-[#14F195]">HARD CORE</span><br>
+                SOLANA.
+            </h1>
+            <p class="text-lg md:text-2xl text-slate-300 max-w-3xl mx-auto font-light leading-relaxed mb-14 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-400">
+                We don't train spectators. <strong class="text-white font-semibold">We arm the builders</strong> capable of shipping on the world's fastest blockchain. <br>
+                Join the effort to install the <span class="text-[#14F195] font-bold">Solana community ethos</span> in North Africa.
+            </p>
+            <div class="animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-1000">
+                <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 px-6 py-5 md:px-8 md:py-6 shadow-[0_25px_80px_-40px_rgba(0,0,0,0.8)] backdrop-blur">
+                    <div class="absolute inset-0 pointer-events-none bg-gradient-to-r from-[#9945FF]/15 via-transparent to-[#14F195]/20"></div>
+                    <div class="flex flex-col md:flex-row items-center md:items-center gap-4 md:gap-6 relative z-10">
+                        <div class="text-left">
+                            <p class="text-[11px] uppercase tracking-[0.25em] text-slate-400 font-bold mb-1">Direct access</p>
+                            <p class="text-sm text-slate-200 font-semibold">Pick your entry point: mission or Solana hub.</p>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                            <button onclick="loadPage('tech_intro')" class="group relative flex-1 sm:flex-none px-6 py-3.5 bg-gradient-to-r from-[#9945FF] to-[#14F195] text-black font-black rounded-xl transition-all duration-300 shadow-[0_0_30px_rgba(153,69,255,0.35)] hover:shadow-[0_0_50px_rgba(20,241,149,0.5)] hover:-translate-y-0.5">
+                                <span class="flex items-center justify-center gap-2 tracking-tight">
+                                    EXPLORE THE MISSION
+                                    <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                                </span>
+                            </button>
+                            <button onclick="loadPage('tech_solana_hub')" class="flex-1 sm:flex-none px-6 py-3.5 bg-[#0f1624]/60 border border-white/10 text-white font-semibold rounded-xl hover:border-[#14F195]/60 hover:bg-white/5 transition-all tracking-tight">
+                                <span class="flex items-center justify-center gap-2">
+                                    View Solana Hub
+                                    <i data-lucide="compass" class="w-4 h-4 text-[#14F195]"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-10">
+                <div class="relative overflow-hidden rounded-2xl border border-white/10 shadow-[0_30px_120px_-60px_rgba(0,0,0,0.65)]">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none"></div>
+                    <img src="assets/images/solana_tunisia.png" alt="Solana builders in Tunisia" class="w-full h-[320px] md:h-[420px] object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 p-4 md:p-6 flex justify-between items-center text-white text-sm md:text-base">
+                        <span class="font-semibold tracking-tight">Solana Hub — Tunis & remote squads</span>
+                        <span class="text-[11px] uppercase tracking-[0.3em] text-[#14F195] font-bold">Speed • Community • Rust</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-28 animate-in fade-in delay-1000">
+                <p class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-6">Open call to the ecosystem forces</p>
+                <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-6 opacity-60 hover:opacity-100 transition-all duration-700">
+                    <span class="text-xl font-black text-white tracking-tighter">SUPERTEAM</span>
+                    <span class="text-xl font-black text-white tracking-tighter flex items-center gap-2"><i data-lucide="boxes" class="w-5 h-5 text-[#9945FF]"></i> BUILDERS</span>
+                    <span class="text-xl font-black text-white tracking-tighter flex items-center gap-2"><i data-lucide="network" class="w-5 h-5 text-[#14F195]"></i> FOUNDATIONS</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    .contains-gradient span { display: inline-block; padding-bottom: 0.1em; }
+</style>
