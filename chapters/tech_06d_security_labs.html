@@ -1,0 +1,235 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <!-- Header -->
+    <section class="max-w-4xl mx-auto space-y-8">
+        <h1 class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-rose-400">
+            Security Labs
+        </h1>
+        <p class="text-xl text-slate-400">
+            La sécurité n'est pas une option. Dans ce lab, vous allez <strong>auditer, exploiter et patcher</strong>
+            6 vulnérabilités réelles de l'écosystème Solana.
+        </p>
+
+        <div class="p-6 bg-slate-900 border-l-4 border-red-500 rounded-r-xl">
+            <h3 class="text-sm font-bold text-red-400 uppercase tracking-widest mb-2">Méthodologie du Lab</h3>
+            <ol class="space-y-2 text-slate-300 list-decimal list-inside">
+                <li>Identifier la faille dans le snippet "Buggy".</li>
+                <li>Comprendre le vecteur d'attaque (Exploit).</li>
+                <li>Ecrire le correctif (Patch).</li>
+                <li>Vérifier avec un test de régression.</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Lab 1: Missing Owner Check -->
+    <section class="max-w-4xl mx-auto border-t border-white/10 pt-12">
+        <div class="flex items-center gap-4 mb-6">
+            <span
+                class="w-8 h-8 rounded bg-red-500/20 text-red-500 font-bold flex items-center justify-center border border-red-500/30">01</span>
+            <h2 class="text-2xl font-bold text-white">Missing Owner Check</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Buggy -->
+            <div class="bg-[#0b1221] p-4 rounded-xl border border-red-900/30">
+                <div class="text-xs font-bold text-red-400 mb-2 uppercase">🔴 Vulnerable Code</div>
+                <pre class="text-[10px] text-slate-400 overflow-x-auto font-mono">
+pub fn withdraw(ctx: Context&lt;Withdraw&gt;, amount: u64) -> Result&lt;()&gt; {
+    let from = &ctx.accounts.vault;
+    let to = &ctx.accounts.user_wallet;
+    // (Implémentation du transfert non sécurisée ici)
+    let cpi_accounts = Transfer {
+        from: ctx.accounts.from.to_account_info(),
+        to: ctx.accounts.to.to_account_info(),
+        authority: ctx.accounts.authority.to_account_info(),
+    };
+    let cpi_program = ctx.accounts.token_program.to_account_info();
+    let cpi_ctx = CpiContext::new(cpi_program, cpi_accounts);
+    token::transfer(cpi_ctx, amount)?;
+    Ok(())
+}
+// ACCOUNT VALIDATION
+#[account(mut)]
+pub vault: Account&lt;'info, TokenAccount&gt;,
+#[account(mut)]
+pub user_wallet: Account&lt;'info, TokenAccount&gt;, // ⚠️ No check!
+                </pre>
+            </div>
+
+            <!-- Context -->
+            <div class="space-y-4">
+                <div>
+                    <h4 class="font-bold text-white">Why it's a vuln?</h4>
+                    <p class="text-sm text-slate-400">
+                        N'importe quel wallet peut être passé comme <code>user_wallet</code>.
+                        Un attaquant peut passer <em>son</em> wallet au lieu de celui du propriétaire légitime du vault.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-emerald-400">The Patch</h4>
+                    <p class="text-sm text-slate-400">
+                        Vérifier que <code>vault.owner == authority.key()</code> ou utiliser les contraintes Anchor.
+                    </p>
+                    <div class="mt-2 bg-[#0b1221] p-2 rounded border border-emerald-900/30">
+                        <pre class="text-[10px] text-emerald-400 font-mono">
+#[account(
+    mut,
+    token::authority = authority // ✅ Enforced
+)]
+pub vault: Account&lt;'info, TokenAccount&gt;,
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lab 2: PDA Mismatch -->
+    <section class="max-w-4xl mx-auto border-t border-white/10 pt-12">
+        <div class="flex items-center gap-4 mb-6">
+            <span
+                class="w-8 h-8 rounded bg-red-500/20 text-red-500 font-bold flex items-center justify-center border border-red-500/30">02</span>
+            <h2 class="text-2xl font-bold text-white">PDA Derivation / Seeds Spoof</h2>
+        </div>
+        <p class="text-slate-400 mb-4">
+            Si vous ne vérifiez pas les seeds d'un compte passé en paramètre, un attaquant peut créer un "Fake PDA" avec
+            des données corrompues et le passer à votre instruction.
+        </p>
+        <div class="p-4 bg-slate-900 rounded-lg border border-white/10">
+            <h4 class="font-bold text-white mb-2">Attack Vector</h4>
+            <p class="text-sm text-slate-400">
+                L'instruction attend un compte <code>Config</code>. Anchor vérifie généralement le discriminator, mais
+                si vous utilisez <code>AccountInfo</code> (unsafe) ou si les seeds sont dynamiques et mal contraintes,
+                on peut substituer le compte.
+            </p>
+        </div>
+    </section>
+
+    <!-- Lab 3: Signer Confusion -->
+    <section class="max-w-4xl mx-auto border-t border-white/10 pt-12">
+        <div class="flex items-center gap-4 mb-6">
+            <span
+                class="w-8 h-8 rounded bg-red-500/20 text-red-500 font-bold flex items-center justify-center border border-red-500/30">03</span>
+            <h2 class="text-2xl font-bold text-white">Signer vs Authority</h2>
+        </div>
+        <p class="text-slate-400 mb-4">
+            Confondre "celui qui envoie la transaction" (Payer) et "celui qui a le droit d'agir" (Authority).
+        </p>
+    </section>
+
+    <!-- Lab 4: Unchecked Data -->
+    <section class="max-w-4xl mx-auto border-t border-white/10 pt-12">
+        <div class="flex items-center gap-4 mb-6">
+            <span
+                class="w-8 h-8 rounded bg-red-500/20 text-red-500 font-bold flex items-center justify-center border border-red-500/30">04</span>
+            <h2 class="text-2xl font-bold text-white">Arbitrary Data Injection</h2>
+        </div>
+        <p class="text-slate-400 mb-4">
+            Deserialiser manuellement des données sans vérifier le type de compte ou son propriétaire (Owner Check
+            bypass).
+        </p>
+    </section>
+
+    <!-- Lab 5: Privilege Escalation (CPI) -->
+    <section class="max-w-4xl mx-auto border-t border-white/10 pt-12">
+        <div class="flex items-center gap-4 mb-6">
+            <span
+                class="w-8 h-8 rounded bg-red-500/20 text-red-500 font-bold flex items-center justify-center border border-red-500/30">05</span>
+            <h2 class="text-2xl font-bold text-white">Fake CPI Program</h2>
+        </div>
+        <p class="text-slate-400 mb-4">
+            Si votre instruction appelle un programme externe passé en argument (ex: Token Program), vous DEVEZ vérifier
+            que c'est bien le programme officiel.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-[#0b1221] p-4 rounded-xl border border-red-900/30">
+                <div class="text-xs font-bold text-red-400 mb-2 uppercase">🔴 Vulnerable Code</div>
+                <pre class="text-[10px] text-slate-400 overflow-x-auto font-mono">
+pub fn swap(ctx: Context&lt;Swap&gt;) -> Result&lt;()&gt; {
+    let ix = spl_token::instruction::transfer(token_program_id, source, dest, authority, &[], amount)?;
+    // ⚠️ Invoking whatever program is passed!
+    invoke(&ix, &[ctx.accounts.token_program.clone(), ctx.accounts.source.clone(), ctx.accounts.dest.clone(), ctx.accounts.authority.clone()])
+}
+                </pre>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <h4 class="font-bold text-emerald-400">The Patch</h4>
+                    <p class="text-sm text-slate-400">Anchor le fait souvent automatiquement si vous typer correctement,
+                        mais en raw :</p>
+                    <div class="mt-2 bg-[#0b1221] p-2 rounded border border-emerald-900/30">
+                        <pre class="text-[10px] text-emerald-400 font-mono">
+if *token_program.key != spl_token::ID {
+    return Err(ProgramError::IncorrectProgramId.into());
+}
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lab 6: Integer Overflow / Math -->
+    <section class="max-w-4xl mx-auto border-t border-white/10 pt-12">
+        <div class="flex items-center gap-4 mb-6">
+            <span
+                class="w-8 h-8 rounded bg-red-500/20 text-red-500 font-bold flex items-center justify-center border border-red-500/30">06</span>
+            <h2 class="text-2xl font-bold text-white">Integer Overflow & Rounding</h2>
+        </div>
+        <p class="text-slate-400 mb-4">
+            En Rust release mode, l'overflow "wrap around" (silencieux) au lieu de paniquer. Cela peut permettre
+            d'imprimer de l'argent ou de vider un pool.
+        </p>
+        <div class="p-4 bg-slate-900 rounded-lg border border-white/10">
+            <h4 class="font-bold text-white mb-2">Defense</h4>
+            <p class="text-sm text-slate-400">
+                Toujours utiliser <code class="text-indigo-400">checked_add</code>, <code
+                    class="text-indigo-400">checked_mul</code>, etc.
+                Dans Anchor, activez <code class="font-mono">overflow-checks = true</code> dans Cargo.toml pour le
+                profil release.
+            </p>
+        </div>
+    </section>
+
+    <!-- Stretch Goals (Optional) -->
+    <section class="max-w-4xl mx-auto border-t border-white/10 pt-12 opacity-80 hover:opacity-100 transition-opacity">
+        <div
+            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 text-slate-400 text-xs font-bold uppercase tracking-widest mb-6">
+            Stretch Goals (Avancé)
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-4 bg-slate-900/50 rounded-lg border border-white/5">
+                <div class="font-bold text-slate-300">07. Re-entrancy (CPI callbacks)</div>
+                <div class="text-xs text-slate-500">Pertinent si utilisation de Transfer Hooks complexes.</div>
+            </div>
+            <div class="p-4 bg-slate-900/50 rounded-lg border border-white/5">
+                <div class="font-bold text-slate-300">08. Initialization Front-running</div>
+                <div class="text-xs text-slate-500">Un attaquant initialise votre GlobalState avant vous.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Validation Block -->
+    <section class="max-w-4xl mx-auto mt-20 p-8 bg-slate-900 rounded-xl border border-slate-800">
+        <h3 class="text-lg font-bold text-white mb-4">Validation du Module</h3>
+        <p class="text-sm text-slate-400 mb-4">
+            Pour valider ce module, vous devez fournir un rapport d'audit sur le repo <code>vulnerable-defi</code>
+            fourni, contenant :
+        </p>
+        <ul class="space-y-2 text-sm text-slate-300">
+            <li class="flex items-center gap-2">
+                <i data-lucide="file-text" class="w-4 h-4 text-indigo-400"></i>
+                6 Tests d'exploitation (failing tests).
+            </li>
+            <li class="flex items-center gap-2">
+                <i data-lucide="file-check" class="w-4 h-4 text-emerald-400"></i>
+                6 Correctifs appliqués.
+            </li>
+            <li class="flex items-center gap-2">
+                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+                Tests de régression passants (All Green).
+            </li>
+        </ul>
+    </section>
+
+</div>

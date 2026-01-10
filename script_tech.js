@@ -6,26 +6,43 @@ document.addEventListener('DOMContentLoaded', () => {
     try { lucide.createIcons(); } catch { }
   }
 
-  // Mapping strict par langue
+  // Mapping full par langue
+  // Mapping full par langue
   const pagesByLang = {
     fr: {
       tech_00_home: "chapters/tech_00_home.html",
       tech_intro: "chapters/tech_00_intro.html",
+
+      // Pedagogie
       tech_methodology: "chapters/tech_01_methodology.html",
-      tech_syllabus: "chapters/tech_02_syllabus.html",
-      tech_stack: "chapters/tech_03_stack.html",
       tech_pedagogy_guide: "chapters/tech_04_pedagogy_guide.html",
       tech_soft_skills: "chapters/tech_05_soft_skills.html",
+
+      // Backbone
+      tech_syllabus: "chapters/tech_02_syllabus.html",
+      tech_stack: "chapters/tech_03_stack.html",
+      tech_competencies: "chapters/tech_09_competencies.html",
+
+      // Tracks
       tech_solana_hub: "chapters/tech_06_solana_hub.html",
-      tech_solana_n1: "chapters/tech_06a_solana_n1.html",
-      tech_solana_n2: "chapters/tech_06b_solana_n2.html",
-      tech_solana_n3: "chapters/tech_06c_solana_n3.html",
+      tech_06_foundations: "chapters/tech_06_foundations.html",
+
+      tech_06a_solana_n1: "chapters/tech_06a_solana_n1.html",
+      tech_06b_solana_n2: "chapters/tech_06b_solana_n2.html",
+      tech_06c_solana_n3: "chapters/tech_06c_solana_n3.html",
+      tech_06d_security_labs: "chapters/tech_06d_security_labs.html",
+      tech_06e_tokens_and_cpi: "chapters/tech_06e_tokens_and_cpi.html",
+      tech_06f_build_an_amm: "chapters/tech_06f_build_an_amm.html",
+      tech_06g_validator_infra_overview: "chapters/tech_06g_validator_infra_overview.html",
+
+      // EVM + autres
       tech_evm_hub: "chapters/tech_07_evm_hub.html",
       tech_capstones: "chapters/tech_08_capstones.html",
-      tech_competencies: "chapters/tech_09_competencies.html",
-      tech_mentor_guide: "chapters/tech_10_mentor_guide.html"
+      tech_mentor_guide: "chapters/tech_10_mentor_guide.html",
     },
+
     en: {
+      // Core
       tech_00_home: "chapters/tech_00_home_en.html",
       tech_intro: "chapters/tech_00_intro_en.html",
       tech_methodology: "chapters/tech_01_methodology_en.html",
@@ -33,30 +50,268 @@ document.addEventListener('DOMContentLoaded', () => {
       tech_stack: "chapters/tech_03_stack_en.html",
       tech_pedagogy_guide: "chapters/tech_04_pedagogy_guide_en.html",
       tech_soft_skills: "chapters/tech_05_soft_skills_en.html",
+
+      // Solana Hub + progression Odo
       tech_solana_hub: "chapters/tech_06_solana_hub_en.html",
-      tech_solana_n1: "chapters/tech_06a_solana_n1_en.html",
-      tech_solana_n2: "chapters/tech_06b_solana_n2_en.html",
-      tech_solana_n3: "chapters/tech_06c_solana_n3_en.html",
+      tech_06_foundations: "chapters/tech_06_foundations_en.html",
+      tech_06a_solana_n1: "chapters/tech_06a_solana_n1_en.html",
+      tech_06b_solana_n2: "chapters/tech_06b_solana_n2_en.html",
+      tech_06c_solana_n3: "chapters/tech_06c_solana_n3_en.html",
+      tech_06d_security_labs: "chapters/tech_06d_security_labs_en.html",
+      tech_06e_tokens_and_cpi: "chapters/tech_06e_tokens_and_cpi_en.html",
+      tech_06f_build_an_amm: "chapters/tech_06f_build_an_amm_en.html",
+      tech_06g_validator_infra_overview: "chapters/tech_06g_validator_infra_overview_en.html",
+
+      // EVM + autres
       tech_evm_hub: "chapters/tech_07_evm_hub_en.html",
       tech_capstones: "chapters/tech_08_capstones_en.html",
       tech_competencies: "chapters/tech_09_competencies_en.html",
-      tech_mentor_guide: "chapters/tech_10_mentor_guide_en.html"
+      tech_mentor_guide: "chapters/tech_10_mentor_guide_en.html",
     }
   };
 
-  let currentLang = localStorage.getItem('wb_lang') || 'fr';
+
+  // ---------- Routing safety net (legacy IDs -> canonical IDs) ----------
+  // Canonical IDs are the keys of pagesByLang.<lang>.
+  // This table exists to avoid 404 when older fragments / bookmarks still point to legacy IDs.
+  const LOADPAGE_ALIAS = {
+    // Legacy "whitepaper" entrypoints
+    '00_executive_summary': 'tech_00_home',
+    '00_executive_summary_en': 'tech_00_home',
+
+    // Solana track legacy names
+    'tech_solana_n1': 'tech_06a_solana_n1',
+    'tech_solana_n2': 'tech_06b_solana_n2',
+    'tech_solana_n3': 'tech_06c_solana_n3',
+
+    // Legacy chapter IDs (older fragments)
+    'tech_06_solana_hub': 'tech_solana_hub',
+    'tech_06d_security': 'tech_06d_security_labs',
+    'tech_06e_tokens': 'tech_06e_tokens_and_cpi',
+    'tech_06f_amm': 'tech_06f_build_an_amm',
+    'tech_06g_validator': 'tech_06g_validator_infra_overview',
+
+    // Safety-net for accidental "_en" suffixes in IDs (language is handled by pagesByLang)
+    'tech_intro_en': 'tech_intro',
+    'tech_06_foundations_en': 'tech_06_foundations',
+    'tech_06a_solana_n1_en': 'tech_06a_solana_n1',
+    'tech_06b_solana_n2_en': 'tech_06b_solana_n2',
+    'tech_06c_solana_n3_en': 'tech_06c_solana_n3',
+    'tech_06d_security_labs_en': 'tech_06d_security_labs',
+    'tech_06e_tokens_and_cpi_en': 'tech_06e_tokens_and_cpi',
+    'tech_06f_build_an_amm_en': 'tech_06f_build_an_amm',
+    'tech_06g_validator_infra_overview_en': 'tech_06g_validator_infra_overview',
+    'tech_solana_hub_en': 'tech_solana_hub',
+    'tech_evm_hub_en': 'tech_evm_hub',
+    'tech_capstones_en': 'tech_capstones',
+    'tech_competencies_en': 'tech_competencies',
+    'tech_mentor_guide_en': 'tech_mentor_guide',
+  };
+
+  function normalizePageId(inputId) {
+    let id = (inputId || '').trim();
+
+    // If someone passes an "_en" ID (legacy), strip it first.
+    if (id.endsWith('_en')) id = id.slice(0, -3);
+
+    // Apply alias chain safely (max depth to avoid loops).
+    for (let i = 0; i < 5; i++) {
+      const next = LOADPAGE_ALIAS[id];
+      if (!next || next === id) break;
+      id = next;
+    }
+    return id;
+  }
+
+  // Allow pagesByLang to resolve legacy IDs (no 404 even if a fragment calls loadPage('legacy')).
+  // NOTE: Logic moved to normalizePageId only. We do not pollute pagesByLang keys anymore.
+
+  // ---------- Fragment wrapper (strict, never double-wrap exact wrapper) ----------
+  const ROOT_WRAPPER_CLASS = 'space-y-14 animate-in fade-in duration-700';
+
+  function ensureRootWrapperStrict(html) {
+    const trimmed = (html || '').trim();
+
+    // Already wrapped (exact): do nothing.
+    const exactOpen = `<div class="${ROOT_WRAPPER_CLASS}">`;
+    if (trimmed.startsWith(exactOpen) && trimmed.endsWith('</div>')) return trimmed;
+
+    // If it starts with another top-level wrapper, do not wrap again.
+    if (trimmed.startsWith('<div class="space-y-')) return trimmed;
+
+    // Otherwise wrap once.
+    return `${exactOpen}\n\n${trimmed}\n\n</div>`;
+  }
+
+  const sidebarConfig = [
+    {
+      type: 'section',
+      labelFr: 'Start Here',
+      labelEn: 'Start Here',
+      items: [
+        { id: 'tech_00_home', icon: 'flag', labelFr: 'ACCUEIL / MANIFESTO', labelEn: 'HOME / MANIFESTO' },
+        { id: 'tech_intro', icon: 'compass', labelFr: 'Vision & Objectifs', labelEn: 'Vision & Objectives' },
+
+        { id: 'tech_methodology', labelFr: 'Méthodologie active', labelEn: 'Active methodology' },
+        { id: 'tech_pedagogy_guide', labelFr: 'Guide pédagogique', labelEn: 'Pedagogy guide' },
+        { id: 'tech_soft_skills', labelFr: 'Soft skills & mindset', labelEn: 'Soft skills & mindset' },
+      ]
+    },
+
+    {
+      type: 'section',
+      labelFr: 'Program Backbone',
+      labelEn: 'Program Backbone',
+      items: [
+        { id: 'tech_syllabus', labelFr: 'Feuille de route globale', labelEn: 'Global timeline' },
+        { id: 'tech_stack', labelFr: 'Stack technique', labelEn: 'Technical stack' },
+        { id: 'tech_competencies', labelFr: 'Matrice de compétences', labelEn: 'Competency matrix' },
+      ]
+    },
+
+    {
+      type: 'section',
+      labelFr: 'Tracks',
+      labelEn: 'Tracks',
+      items: [
+        {
+          id: 'tech_solana_hub',
+          labelFr: 'Track A : Solana (Rust)',
+          labelEn: 'Track A: Solana (Rust)',
+          children: [
+            { id: 'tech_06_foundations', labelFr: '↳ Foundations — Théorie Solana', labelEn: '↳ Foundations — Solana theory' },
+
+            { id: 'tech_06a_solana_n1', labelFr: '↳ N1 — Rust utile + outils', labelEn: '↳ N1 — Rust + tools (Solana)' },
+            { id: 'tech_06b_solana_n2', labelFr: '↳ N2 — Anchor : Counter → Patterns', labelEn: '↳ N2 — Anchor: Counter → Patterns' },
+            { id: 'tech_06c_solana_n3', labelFr: '↳ N3 — Capstone Anchor → Native', labelEn: '↳ N3 — Capstone Anchor → Native' },
+
+            { id: 'tech_06d_security_labs', labelFr: '↳ Security Labs (Anchor + Native)', labelEn: '↳ Security labs (Anchor + Native)' },
+            { id: 'tech_06e_tokens_and_cpi', labelFr: '↳ Tokens / Token-2022 / CPI', labelEn: '↳ Tokens / Token-2022 / CPI' },
+            { id: 'tech_06f_build_an_amm', labelFr: '↳ Build an AMM', labelEn: '↳ Build an AMM' },
+            { id: 'tech_06g_validator_infra_overview', labelFr: '↳ Validator/Infra (ouverture)', labelEn: '↳ Validator/Infra (overview)' },
+          ]
+        },
+
+        { id: 'tech_evm_hub', labelFr: 'Track B : EVM (Solidity)', labelEn: 'Track B: EVM (Solidity)' },
+      ]
+    },
+
+    {
+      type: 'section',
+      labelFr: 'Capstones',
+      labelEn: 'Capstones',
+      items: [
+        { id: 'tech_capstones', labelFr: 'Projets capstone', labelEn: 'Capstone projects' },
+      ]
+    },
+
+    {
+      type: 'section',
+      labelFr: 'Espace Mentors',
+      labelEn: 'Mentor Space',
+      items: [
+        { id: 'tech_mentor_guide', labelFr: 'Guide mentors', labelEn: 'Mentor guide' },
+      ]
+    },
+  ];
+
+  let currentLang = localStorage.getItem('rbk_lang') || 'fr';
   let currentPageId = null;
+
+  function renderSidebar() {
+    const nav = document.querySelector('aside nav');
+    if (!nav) return;
+    nav.innerHTML = ''; // Clean slate
+
+    sidebarConfig.forEach(section => {
+      // 1. Section Header (if type section/divider)
+      if (section.labelFr) {
+        const titleDiv = document.createElement('div');
+        titleDiv.className = 'px-4 py-2 mt-4 text-[9px] uppercase font-bold text-indigo-400 tracking-wider border-t border-white/5 pt-4 first:mt-2 first:pt-2 first:border-0';
+        titleDiv.textContent = currentLang === 'fr' ? section.labelFr : section.labelEn;
+        nav.appendChild(titleDiv);
+      }
+
+      // 2. Items
+      if (section.items) {
+        section.items.forEach(item => {
+          // Parent Item
+          const a = document.createElement('a');
+          a.href = '#';
+          a.dataset.page = item.id;
+          a.className = 'flex items-center gap-3 px-6 py-1.5 text-xs hover:text-white transition-colors group';
+
+          // Styling specifique pour HOME/INTRO qui ont des icones et texte plus grand/gras dans le design original
+          if (item.icon) {
+            a.className = 'flex items-center gap-3 px-6 py-2 text-xs font-bold text-white hover:bg-white/5 hover:text-white transition-colors border-b border-white/5 mb-1';
+            if (item.id === 'tech_intro') a.classList.add('text-indigo-400'); // restore original color hint
+            const i = document.createElement('i');
+            i.setAttribute('data-lucide', item.icon);
+            i.className = 'w-4 h-4 text-slate-400 group-hover:text-white transition-colors';
+            if (item.id === 'tech_intro') i.classList.add('text-indigo-400');
+            a.appendChild(i);
+          } else {
+            a.classList.add('text-slate-400');
+          }
+
+          const span = document.createElement('span');
+          span.textContent = currentLang === 'fr' ? item.labelFr : item.labelEn;
+          a.appendChild(span);
+
+          nav.appendChild(a);
+
+          // Children (Sub-items)
+          if (item.children) {
+            const childContainer = document.createElement('div');
+            childContainer.className = 'pl-4 space-y-0.5 mt-1 mb-2';
+            item.children.forEach(child => {
+              const subA = document.createElement('a');
+              subA.href = '#';
+              subA.dataset.page = child.id;
+              subA.className = 'flex items-center gap-3 px-6 py-1 text-[10px] text-slate-500 hover:text-white transition-colors';
+              subA.textContent = currentLang === 'fr' ? child.labelFr : child.labelEn;
+              childContainer.appendChild(subA);
+            });
+            nav.appendChild(childContainer);
+          }
+        });
+      }
+    });
+
+    // Spacer at bottom
+    const spacer = document.createElement('div');
+    spacer.className = 'h-12';
+    nav.appendChild(spacer);
+
+    // Re-bind clicks
+    nav.querySelectorAll('a[data-page]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        loadPage(link.dataset.page);
+        // Mobile close
+        if (window.innerWidth < 768) {
+          document.getElementById('sidebar')?.classList.add('-translate-x-full');
+        }
+      });
+    });
+
+    if (window.lucide) lucide.createIcons();
+    if (currentPageId) setActiveLink(currentPageId);
+  }
 
   function applyNavLanguage() {
     document.querySelectorAll('[data-lang]').forEach((el) => {
+      // Toggle visibility based on current language
       el.classList.toggle('hidden', el.dataset.lang !== currentLang);
     });
+    // Re-render valid sidebar for current language
+    renderSidebar();
   }
 
   function setLanguage(lang, reload = true) {
     if (!pagesByLang[lang]) return;
     currentLang = lang;
-    localStorage.setItem('wb_lang', lang);
+    localStorage.setItem('rbk_lang', lang);
     applyNavLanguage();
     if (reload && currentPageId) {
       loadPage(currentPageId);
@@ -247,29 +502,91 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function setActiveLink(pageId) {
+    // Re-select all links (dynamic)
+    const links = document.querySelectorAll('aside nav a');
     links.forEach((l) => {
-      if (l.dataset.lang && l.dataset.lang !== currentLang) {
-        l.classList.remove('bg-white/10', 'text-white', 'border-r-2', 'border-indigo-500');
-        l.classList.add('text-slate-400', 'hover:text-white');
-        return;
-      }
+      // Clean previous state
+      l.classList.remove('bg-white/10', 'text-white', 'border-l-4', 'border-indigo-500', 'focus:outline-none', 'focus:ring-2', 'focus:ring-indigo-500/60');
+      l.classList.add('text-slate-400', 'border-l-4', 'border-transparent');
+      l.removeAttribute('aria-current');
+
+      l.querySelector('i[data-lucide]')?.classList.remove('text-indigo-400', 'text-white');
+      l.querySelector('i[data-lucide]')?.classList.add('text-slate-400');
+
       if (l.dataset.page === pageId) {
-        l.classList.add('bg-white/10', 'text-white', 'border-r-2', 'border-indigo-500');
-        l.classList.remove('text-slate-400', 'hover:text-white');
-      } else {
-        l.classList.remove('bg-white/10', 'text-white', 'border-r-2', 'border-indigo-500');
-        l.classList.add('text-slate-400', 'hover:text-white');
+        // Active state strict styling
+        l.classList.add('bg-white/10', 'text-white', 'border-indigo-500');
+        l.classList.remove('text-slate-400', 'border-transparent');
+        l.setAttribute('aria-current', 'page');
+
+        // Focus accessibility
+        l.classList.add('focus:outline-none', 'focus:ring-2', 'focus:ring-indigo-500/60');
+
+        // Icon highlight
+        const icon = l.querySelector('i[data-lucide]');
+        if (icon) {
+          icon.classList.remove('text-slate-400');
+          icon.classList.add('text-indigo-400');
+        }
       }
     });
 
-    // Keep active link visible in sidebar (avoid querySelector on class with "/")
-    const nav = document.querySelector('aside nav');
-    const active = Array.from(document.querySelectorAll('aside nav a')).find(a =>
-      a.classList.contains('bg-white/10') || (a.classList.contains('text-white') && a.classList.contains('border-indigo-500'))
-    );
-    if (active && nav) {
+    const active = document.querySelector(`aside nav a[data-page="${pageId}"]`);
+    if (active) {
       try { active.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); } catch { }
+      updateBreadcrumbs(active, pageId);
     }
+  }
+
+  function updateBreadcrumbs(activeLink, pageId) {
+    const breadcrumbContainer = document.getElementById('breadcrumbs');
+    if (!breadcrumbContainer) return; // Need to create it in DOM if not exists or assume it exists in layout
+
+    // Build path from DOM structure
+    // Sidebar structure: Section Label -> Group Label (optional) -> Link
+    let path = [];
+
+    // 1. Current Page
+    path.unshift({ label: activeLink.textContent.trim(), id: pageId });
+
+    // 2. Check parents
+    // Hierarchy in sidebar is flat DOM visual but logical via indentation or containers?
+    // In our renderSidebar, we flatten groups but keeping structure would be hard to deduce from DOM unless we used nested ULs.
+    // However, our renderSidebar used flat buttons.
+    // WE NEED TO USE THE CONFIG to deduce structure!
+
+    const configPath = findPathInConfig(sidebarConfig, pageId);
+    if (configPath) {
+      // configPath = [{ labelFr: '...', ... }, ... ]
+      const labels = configPath.map(item => currentLang === 'fr' ? item.labelFr : item.labelEn);
+      const html = labels.map((label, idx) => {
+        const isLast = idx === labels.length - 1;
+        const cls = isLast ? 'text-white font-bold' : 'text-slate-500 hover:text-slate-300 transition-colors';
+        // We can't easily link parents if they are just grouping labels (no ID).
+        return `<span class="${cls}">${label}</span>`;
+      }).join('<span class="mx-2 text-slate-600">/</span>');
+
+      breadcrumbContainer.innerHTML = html;
+      breadcrumbContainer.classList.remove('opacity-0');
+      breadcrumbContainer.classList.add('opacity-100');
+    }
+  }
+
+  function findPathInConfig(nodes, targetId) {
+    for (const node of nodes) {
+      // If node is the item
+      if (node.id === targetId) return [node];
+
+      // If node has children/items
+      const children = node.items || node.children;
+      if (children) {
+        const result = findPathInConfig(children, targetId);
+        if (result) {
+          return [node, ...result];
+        }
+      }
+    }
+    return null;
   }
 
   function injectGanttForRoadmap(pageId, root) {
@@ -508,12 +825,58 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ---------- Loader ----------
   async function loadPage(pageId) {
-    const file = pagesByLang[currentLang]?.[pageId];
-    if (!file) return;
+    const normalizedId = normalizePageId(pageId);
+    const file = pagesByLang[currentLang]?.[normalizedId];
 
-    currentPageId = pageId;
-    setActiveLink(pageId);
-    history.replaceState({ pageId }, '', `#${pageId}`);
+    if (!file) {
+      // Fail-Loud UI for invalid routing
+      console.warn(`[Routing] Page not found: ${pageId} (normalized: ${normalizedId}) in lang: ${currentLang}`);
+
+      const suggestions = Object.keys(pagesByLang[currentLang] || {})
+        .filter(k => k.includes(normalizedId) || normalizedId.includes(k))
+        .slice(0, 5)
+        .map(k => `<li class="font-mono text-xs text-indigo-400 cursor-pointer hover:underline" onclick="loadPage('${k}')">${k}</li>`)
+        .join('');
+
+      contentDiv.innerHTML = `
+        <div class="flex flex-col items-center justify-center min-h-[50vh] text-center p-8 animate-in fade-in zoom-in duration-300">
+          <div class="p-4 rounded-full bg-red-500/10 mb-6">
+            <i data-lucide="file-warning" class="w-12 h-12 text-red-500"></i>
+          </div>
+          <h1 class="text-3xl font-bold text-white mb-2">Page introuvable</h1>
+          <p class="text-slate-400 max-w-md mb-6">
+            L'identifiant <span class="font-mono text-white bg-white/10 px-2 py-0.5 rounded">${pageId}</span> 
+            (normalisé : <code class="text-yellow-400">${normalizedId}</code>) 
+            n'existe pas dans la langue active (<span class="uppercase font-bold text-white">${currentLang}</span>).
+          </p>
+          
+          ${suggestions ? `
+            <div class="bg-slate-900/50 border border-white/10 rounded-xl p-6 max-w-lg w-full">
+              <p class="text-[10px] uppercase font-bold text-slate-500 mb-3 tracking-widest">Suggestions similaires</p>
+              <ul class="space-y-2 text-left">
+                ${suggestions}
+              </ul>
+            </div>
+          ` : ''}
+          
+          <button id="btn-return-home" class="mt-8 flex items-center gap-3 px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-lg font-bold transition-all group border border-white/10 hover:border-indigo-500/50">
+            <i data-lucide="home" class="w-5 h-5 text-slate-400 group-hover:text-indigo-400 transition-colors"></i>
+            Retour à l'accueil
+          </button>
+        </div>
+      `;
+
+      // Event delegation is handled in main listener or we can ensure it is safe here since we just replaced innerHTML.
+      // But user requested event delegation or global handler. 
+      // We will rely on a global click handler added once in the main init.
+
+      if (window.lucide) lucide.createIcons();
+      return;
+    }
+
+    currentPageId = normalizedId;
+    setActiveLink(normalizedId);
+    history.replaceState({ pageId: normalizedId }, '', `#${normalizedId}`);
 
     contentDiv.innerHTML = '<div class="flex items-center justify-center h-64"><div class="w-8 h-8 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div></div>';
 
@@ -521,7 +884,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const response = await fetch(file, { cache: 'no-cache' });
       if (!response.ok) throw new Error(`Page introuvable (${file})`);
       const html = await response.text();
-      contentDiv.innerHTML = html;
+      contentDiv.innerHTML = ensureRootWrapperStrict(html);
 
       if (window.lucide) lucide.createIcons();
 
@@ -536,9 +899,9 @@ document.addEventListener('DOMContentLoaded', () => {
       styleCodeBlocks(contentDiv);
       styleBlockquotes(contentDiv);
       imageFallbacks(contentDiv);
-      injectNextPrev(pageId, contentDiv);
+      injectNextPrev(normalizedId, contentDiv);
       initProgressBarOnce();
-      initLanguageToggle(pageId, contentDiv);
+      initLanguageToggle(normalizedId, contentDiv);
 
       // Diagrams
       try {
@@ -563,6 +926,25 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>`;
     }
   }
+
+  // Global Event Delegation for dynamic elements
+  document.addEventListener('click', (e) => {
+    // 1. Sidebar Links (handled by explicit listeners usually, but let's cover basics if needed)
+    // 2. Fallback Button
+    const fallbackBtn = e.target.closest('#btn-return-home');
+    if (fallbackBtn) {
+      e.preventDefault();
+      loadPage('tech_00_home');
+      return;
+    }
+
+    // 3. Dynamic links inside content
+    const link = e.target.closest('a[data-page]');
+    // Note: sidebar links have explicit listeners in this script, but content links might not?
+    // The previous script had `links.forEach` for sidebar. 
+    // Let's check lines 920+. It targeted `links` which was `document.querySelectorAll('aside nav a')`.
+    // So content links need delegation if they use data-page.
+  });
 
   // Expose loadPage globally for inline onclick handlers
   window.loadPage = loadPage;

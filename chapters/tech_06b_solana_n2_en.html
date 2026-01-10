@@ -1,131 +1,90 @@
 <div class="space-y-14 animate-in fade-in duration-700">
 
-    <header class="relative p-8 rounded-3xl overflow-hidden border border-white/10 bg-slate-900/60">
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-slate-900/0"></div>
-        <div class="relative z-10 space-y-4">
-            <div class="flex items-center gap-4">
-                <span class="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-sky-300">N2</span>
-                <h1 class="text-3xl font-bold text-white tracking-tight">Level 2 — Anchor & Tokenomics Engineering</h1>
+    <section class="space-y-6">
+        <div class="bg-[#1e1e1e] border border-slate-800 rounded-xl p-6 sm:p-8">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="p-2 bg-[#9945FF]/20 rounded-lg">
+                    <i data-lucide="box" class="w-6 h-6 text-[#9945FF]"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-white">LEVEL 2: SMART CONTRACT DEVELOPMENT</h2>
             </div>
-            <p class="text-sm text-slate-400 max-w-3xl">
-                18 weeks to reach engineer stage: advanced Anchor, tokenomics, CPI composability, and offensive security.
+            <p class="text-slate-400 mb-8 leading-relaxed">
+                This level covers the full lifecycle of decentralized application (dApp) development. The approach
+                combines Anchor framework for productivity and Native development study for deep technical
+                understanding.
             </p>
-        </div>
-    </header>
 
-    <section class="glass-card">
-        <div class="flex items-center gap-3 mb-4">
-            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
-                <i data-lucide="grid" class="w-5 h-5"></i>
-            </div>
-            <h2 class="text-xl font-bold text-white">Phases & cadence</h2>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-[13px] text-slate-300">
-            <div class="bg-slate-900/40 border border-white/5 rounded-2xl p-4">
-                <h3 class="text-xs uppercase tracking-[0.3em] text-blue-300 mb-2">W13-W17</h3>
-                <p>Anchor/Native, resilient patterns, TypeScript integration tests.</p>
-            </div>
-            <div class="bg-slate-900/40 border border-white/5 rounded-2xl p-4">
-                <h3 class="text-xs uppercase tracking-[0.3em] text-blue-300 mb-2">W18-W23</h3>
-                <p>Tokenomics, CPI composability, Transfer Hooks, DeFi/DePIN labs.</p>
-            </div>
-            <div class="bg-slate-900/40 border border-white/5 rounded-2xl p-4">
-                <h3 class="text-xs uppercase tracking-[0.3em] text-blue-300 mb-2">W24-W30</h3>
-                <p>Fuzzing, audits, incident response, studio prep.</p>
-            </div>
-        </div>
-    </section>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div
+                    class="bg-black/40 rounded-lg p-5 border border-white/5 hover:border-[#9945FF]/30 transition-colors group">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-lg font-bold text-white group-hover:text-[#9945FF] transition-colors">1. Anchor
+                            Framework</h3>
+                        <span class="text-xs font-mono bg-[#9945FF]/10 text-[#9945FF] px-2 py-1 rounded">Weeks
+                            5-6</span>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-slate-600 mt-0.5"></i>
+                            <span><strong>Anchor Architecture:</strong> Macros, Context, and automatic account
+                                validation.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-slate-600 mt-0.5"></i>
+                            <span><strong>Data Management:</strong> Practical implementation of PDAs and account
+                                relationships.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-slate-600 mt-0.5"></i>
+                            <span><strong>CPI (Cross Program Invocation):</strong> Interaction with other programs
+                                (e.g., SPL Token).</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-slate-600 mt-0.5"></i>
+                            <span><strong>Client Integration:</strong> IDL generation and Frontend connection
+                                (Web3.js).</span>
+                        </li>
+                    </ul>
+                </div>
 
-    <section class="space-y-4">
-        <div class="flex items-center gap-3">
-            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
-                <i data-lucide="layers" class="w-5 h-5"></i>
+                <div
+                    class="bg-black/40 rounded-lg p-5 border border-white/5 hover:border-[#14F195]/30 transition-colors group">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-lg font-bold text-white group-hover:text-[#14F195] transition-colors">2. Native
+                            Development</h3>
+                        <span class="text-xs font-mono bg-[#14F195]/10 text-[#14F195] px-2 py-1 rounded">Weeks
+                            7-8</span>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-slate-600 mt-0.5"></i>
+                            <span><strong>Program Entrypoint:</strong> Low-level instruction processing
+                                (`process_instruction`).</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-slate-600 mt-0.5"></i>
+                            <span><strong>Serialization:</strong> Manual data handling with Borsh.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-slate-600 mt-0.5"></i>
+                            <span><strong>Explicit Security:</strong> Manual verification of signers and account
+                                owners.</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <h2 class="text-xl font-bold text-white">Core modules</h2>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-[13px]">
-            <article class="glass-card p-5 border-l-4 border-blue-400">
-                <h3 class="text-sm uppercase tracking-[0.3em] text-blue-300 mb-2">Anchor patterns & DAO factory</h3>
-                <ul class="list-disc list-inside space-y-1 text-slate-300">
-                    <li>Pattern library: access, state, security.</li>
-                    <li>Native entrypoint + macros (#derive, #[account]).</li>
-                    <li>DAO factory (governance, proposals, multisig treasury).</li>
-                </ul>
-            </article>
-            <article class="glass-card p-5 border-l-4 border-emerald-400">
-                <h3 class="text-sm uppercase tracking-[0.3em] text-emerald-300 mb-2">Tokenomics & composability</h3>
-                <ul class="list-disc list-inside space-y-1 text-slate-300">
-                    <li>Token-2022: Transfer Hooks, dynamic fees, confidentiality.</li>
-                    <li>DeFi labs: advanced AMM, gauges, treasury controls.</li>
-                    <li>invoke_signed, master/slave, robust CPIs.</li>
-                </ul>
-            </article>
-            <article class="glass-card p-5 border-l-4 border-rose-400">
-                <h3 class="text-sm uppercase tracking-[0.3em] text-rose-300 mb-2">Security & production</h3>
-                <ul class="list-disc list-inside space-y-1 text-slate-300">
-                    <li>Guardian checklist (ownership, signer, init).</li>
-                    <li>Fuzzing (Trident), scanners (Soteria), internal bug bounty.</li>
-                    <li>Red/Blue team 72h + incident playbooks.</li>
-                </ul>
-            </article>
-            <article class="glass-card p-5 border-l-4 border-purple-400">
-                <h3 class="text-sm uppercase tracking-[0.3em] text-purple-300 mb-2">Industrialization & standards</h3>
-                <ul class="list-disc list-inside space-y-1 text-slate-300">
-                    <li>Perf dashboard, real-time monitoring.</li>
-                    <li>Protocol simulator, load/chaos stress tests.</li>
-                    <li>Portfolio + documented audits, dynamic credentials.</li>
-                </ul>
-            </article>
-        </div>
-    </section>
 
-    <section class="glass-card">
-        <div class="flex items-center gap-3 mb-4">
-            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
-                <i data-lucide="shield" class="w-5 h-5"></i>
-            </div>
-            <h2 class="text-xl font-bold text-white">Labs & projects</h2>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-[12px] text-slate-300">
-            <div class="bg-slate-900/40 border border-white/5 rounded-2xl p-3">
-                <strong class="block text-xs uppercase tracking-[0.3em] text-slate-500 mb-1">DAO Factory</strong>
-                <p>PDAs, CPIs, governance, treasury, automated proposals.</p>
-            </div>
-            <div class="bg-slate-900/40 border border-white/5 rounded-2xl p-3">
-                <strong class="block text-xs uppercase tracking-[0.3em] text-slate-500 mb-1">DeFi from scratch</strong>
-                <p>Concentrated AMM, vesting & gauges, economic simulation.</p>
-            </div>
-            <div class="bg-slate-900/40 border border-white/5 rounded-2xl p-3">
-                <strong class="block text-xs uppercase tracking-[0.3em] text-slate-500 mb-1">Bug bounty</strong>
-                <p>Rotation builder/hunter, vulnerability scoring.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="glass-card">
-        <div class="flex items-center gap-3 mb-4">
-            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
-                <i data-lucide="bar-chart" class="w-5 h-5"></i>
-            </div>
-            <h2 class="text-xl font-bold text-white">Metrics & learning analytics</h2>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-[13px] text-slate-300">
-            <div>
-                <p class="text-xs uppercase tracking-[0.3em] text-slate-500 mb-2">KPIs</p>
-                <ul class="list-disc list-inside space-y-1">
-                    <li>N2 → N3 retention target: 85%.</li>
-                    <li>Average security score: 90/100.</li>
-                    <li>Critical bugs found: ≥ 3 per person.</li>
-                    <li>First billable audit within one month after N2.</li>
-                </ul>
-            </div>
-            <div>
-                <p class="text-xs uppercase tracking-[0.3em] text-slate-500 mb-2">Learning analytics</p>
-                <ul class="list-disc list-inside space-y-1">
-                    <li>Skill vs difficulty heatmap.</li>
-                    <li>Targeted pairing recommendations.</li>
-                    <li>Early friction detection before failure.</li>
-                </ul>
+            <div
+                class="mt-8 p-5 bg-gradient-to-r from-[#9945FF]/10 to-transparent border border-[#9945FF]/20 rounded-lg">
+                <h4 class="text-white font-bold flex items-center gap-2 mb-2">
+                    <i data-lucide="flag" class="w-5 h-5 text-[#9945FF]"></i>
+                    LEVEL 2 PROJECT: "Full Stack dApp"
+                </h4>
+                <p class="text-sm text-slate-300">
+                    Creation of a complete decentralized application (e.g., Crowdfunding Protocol or simple DAO).
+                    <br><strong>Deliverables:</strong> Optimized Smart Contract (Anchor), unit test suite, and
+                    functional user interface connected to wallets.
+                </p>
             </div>
         </div>
     </section>

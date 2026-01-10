@@ -5,8 +5,10 @@
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tailwindcss -i styles/tailwind.css -o assets/tailwind.css --watch --content index.html,chapters/**/*.html,script.js",
-    "build": "tailwindcss -i styles/tailwind.css -o assets/tailwind.css --minify --content index.html,chapters/**/*.html,script.js",
+    "dev": "tailwindcss -i styles/tailwind.css -o assets/tailwind.css --watch --content index.html,chapters/**/*.html,script.js,formation_web3_tunisie.html,script_tech.js",
+    "build": "tailwindcss -i styles/tailwind.css -o assets/tailwind.css --minify --content index.html,chapters/**/*.html,script.js,formation_web3_tunisie.html,script_tech.js",
+    "normalize:strict": "node scripts/normalize_fragments_strict.js",
+    "qa": "node scripts/qa.js",
     "lint": "npx prettier --check .",
     "format": "npx prettier --write ."
   },

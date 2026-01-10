@@ -1,0 +1,359 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <!-- Header -->
+    <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-cyan-500/20 rounded-full blur-[100px]"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-4 mb-4">
+                <span
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 font-mono">01</span>
+                <div class="h-12 w-px bg-white/10"></div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">Foundations<span
+                        class="block text-lg font-normal text-slate-400 mt-1">Solana Theory (Pre-Anchor)</span></h1>
+            </div>
+            <p class="text-sm text-slate-400 max-w-3xl leading-relaxed">
+                This page establishes the **Solana mental model**. The goal is to understand what really happens inside
+                an instruction:
+                which accounts are passed, with what privileges (signer/writable), what data is read/written, and how a
+                program
+                can derive an address (PDA) and call another program (CPI).
+            </p>
+        </div>
+    </header>
+
+    <!-- Prerequisites & Objectives -->
+    <div class="grid md:grid-cols-3 gap-6">
+        <!-- Prerequisites -->
+        <div class="md:col-span-1 p-6 rounded-xl border border-yellow-500/20 bg-yellow-500/[0.02] h-full">
+            <h3 class="flex items-center gap-2 text-yellow-500 font-bold mb-4">
+                <i data-lucide="triangle-alert" class="w-4 h-4"></i>
+                Prerequisites
+            </h3>
+            <ul class="space-y-3">
+                <li class="flex gap-3 text-xs text-slate-400">
+                    <i data-lucide="check" class="w-4 h-4 text-yellow-500 shrink-0"></i>
+                    <span>Basic concepts: hash, signature, serialization.</span>
+                </li>
+                <li class="flex gap-3 text-xs text-slate-400">
+                    <i data-lucide="check" class="w-4 h-4 text-yellow-500 shrink-0"></i>
+                    <span>Minimal Rust (reading types, Result/Option). No Anchor needed yet.</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Operational Objectives -->
+        <div class="md:col-span-2 p-6 rounded-xl border border-cyan-500/20 bg-cyan-500/[0.02]">
+            <h3 class="flex items-center gap-2 text-cyan-400 font-bold mb-4">
+                <i data-lucide="target" class="w-4 h-4"></i>
+                Operational Objectives
+            </h3>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div class="flex gap-3 text-xs text-slate-300 items-start">
+                    <span class="text-cyan-500 font-bold">1.</span>
+                    Explain the Account Model (owner, data, lamports).
+                </div>
+                <div class="flex gap-3 text-xs text-slate-300 items-start">
+                    <span class="text-cyan-500 font-bold">2.</span>
+                    Read a Tx: instruction, accounts metas, signer/writable.
+                </div>
+                <div class="flex gap-3 text-xs text-slate-300 items-start">
+                    <span class="text-cyan-500 font-bold">3.</span>
+                    Master PDAs (seeds, bump, authority).
+                </div>
+                <div class="flex gap-3 text-xs text-slate-300 items-start">
+                    <span class="text-cyan-500 font-bold">4.</span>
+                    Understand CPIs (invoke vs invoke_signed, security).
+                </div>
+                <div class="flex gap-3 text-xs text-slate-300 items-start sm:col-span-2">
+                    <span class="text-cyan-500 font-bold">5.</span>
+                    SPL Token Mental Model (Mint, Account, Authority).
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 1) Accounts -->
+    <section class="group p-1 rounded-2xl bg-gradient-to-b from-white/10 to-transparent">
+        <div class="bg-[#1e1e1e] rounded-xl p-8 border border-white/5">
+            <div class="flex items-center gap-4 mb-6">
+                <div
+                    class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 font-bold">
+                    01</div>
+                <h2 class="text-xl font-bold text-white">Accounts: Structure & Invariants</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <ul class="space-y-4">
+                    <li class="p-3 bg-white/5 rounded border border-white/10">
+                        <span class="block text-cyan-400 text-xs font-bold uppercase mb-1">Owner</span>
+                        <span class="text-sm text-slate-300">The Program ID that controls the account. Only it can
+                            modify Data or deduct Lamports.</span>
+                    </li>
+                    <li class="p-3 bg-white/5 rounded border border-white/10">
+                        <span class="block text-cyan-400 text-xs font-bold uppercase mb-1">Data</span>
+                        <span class="text-sm text-slate-300">Raw byte array (`Vec<u8>`). The program defines the
+                                structure (Borsh, etc).</span>
+                    </li>
+                    <li class="p-3 bg-white/5 rounded border border-white/10">
+                        <span class="block text-cyan-400 text-xs font-bold uppercase mb-1">Lamports</span>
+                        <span class="text-sm text-slate-300">Account balance. Pays for storage (Rent). If 0, the account
+                            is purged.</span>
+                    </li>
+                    <li class="p-3 bg-white/5 rounded border border-white/10">
+                        <span class="block text-red-400 text-xs font-bold uppercase mb-1">Mutability</span>
+                        <span class="text-sm text-slate-300">Golden Rule: An account passed as Read-Only CANNOT be
+                            modified.</span>
+                    </li>
+                </ul>
+
+                <!-- Visual Representation of an Account -->
+                <div class="relative bg-black/50 p-6 rounded-xl border border-slate-700 font-mono text-xs">
+                    <div class="absolute top-0 right-0 p-2 text-slate-600">AccountInfo Struct</div>
+                    <div class="space-y-2 text-slate-400">
+                        <div class="flex justify-between border-b border-white/10 pb-1">
+                            <span>key:</span> <span class="text-white">Pubkey</span>
+                        </div>
+                        <div class="flex justify-between border-b border-white/10 pb-1">
+                            <span>is_signer:</span> <span class="text-green-400">bool</span>
+                        </div>
+                        <div class="flex justify-between border-b border-white/10 pb-1">
+                            <span>is_writable:</span> <span class="text-red-400">bool</span>
+                        </div>
+                        <div class="flex justify-between border-b border-white/10 pb-1">
+                            <span>lamports:</span> <span class="text-yellow-400">Rc&lt;RefCell&lt;&u64&gt;&gt;</span>
+                        </div>
+                        <div class="flex justify-between border-b border-white/10 pb-1">
+                            <span>data:</span> <span class="text-cyan-400">Rc&lt;RefCell&lt;&[u8]&gt;&gt;</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>owner:</span> <span class="text-white">Pubkey</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">
+                <h4 class="text-sm font-bold text-blue-400 mb-2 flex items-center gap-2"><i data-lucide="pencil"
+                        class="w-4 h-4"></i> Paper Exercise (Crucial)</h4>
+                <p class="text-xs text-slate-300">
+                    You are given an instruction and a list of accounts. For each account, indicate:
+                    <strong class="text-white">signer?</strong> and <strong class="text-white">writable?</strong>
+                    Justify in one sentence. (Ex: "Fee payer = Signer + Writable").
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2) Tx -> Ix -->
+    <section class="group p-1 rounded-2xl bg-gradient-to-b from-white/10 to-transparent">
+        <div class="bg-[#1e1e1e] rounded-xl p-8 border border-white/5">
+            <div class="flex items-center gap-4 mb-6">
+                <div
+                    class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 font-bold">
+                    02</div>
+                <h2 class="text-xl font-bold text-white">Transaction → Instruction</h2>
+            </div>
+
+            <p class="text-sm text-slate-400 mb-6 leading-relaxed">
+                A transaction is an atomic envelope. It contains an array of Instructions.
+                Program security depends entirely on the <strong>manual validation</strong> of the accounts received.
+                Nothing is guaranteed by default.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                <div class="p-4 bg-white/5 rounded border border-white/10">
+                    <i data-lucide="package" class="w-8 h-8 text-cyan-400 mx-auto mb-2"></i>
+                    <div class="text-sm font-bold text-white">Program ID</div>
+                    <div class="text-[10px] text-slate-500">Who executes?</div>
+                </div>
+                <div class="p-4 bg-white/5 rounded border border-white/10">
+                    <i data-lucide="users" class="w-8 h-8 text-cyan-400 mx-auto mb-2"></i>
+                    <div class="text-sm font-bold text-white">Accounts (Metas)</div>
+                    <div class="text-[10px] text-slate-500">Who is involved?</div>
+                </div>
+                <div class="p-4 bg-white/5 rounded border border-white/10">
+                    <i data-lucide="binary" class="w-8 h-8 text-cyan-400 mx-auto mb-2"></i>
+                    <div class="text-sm font-bold text-white">Instruction Data</div>
+                    <div class="text-[10px] text-slate-500">What to do? (Arguments)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3) PDA -->
+    <section class="group p-1 rounded-2xl bg-gradient-to-b from-white/10 to-transparent">
+        <div class="bg-[#1e1e1e] rounded-xl p-8 border border-white/5">
+            <div class="flex items-center gap-4 mb-6">
+                <div
+                    class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 font-bold">
+                    03</div>
+                <h2 class="text-xl font-bold text-white">PDA: Program Derived Address</h2>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="flex-1 space-y-4">
+                    <div class="flex gap-3">
+                        <div class="p-2 bg-purple-500/10 rounded text-purple-400 h-fit"><i data-lucide="key"
+                                class="w-4 h-4"></i></div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Deterministic Address</h4>
+                            <p class="text-xs text-slate-400">No private key. Derived via `hash(seeds, program_id)`.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <div class="p-2 bg-purple-500/10 rounded text-purple-400 h-fit"><i data-lucide="shield-check"
+                                class="w-4 h-4"></i></div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Address as Authority</h4>
+                            <p class="text-xs text-slate-400">The program can "sign" for this address via
+                                `invoke_signed`.
+                            </p>
+                        </div>
+                    </div>
+                    <div
+                        class="mt-4 p-3 bg-slate-800 rounded border border-slate-700 text-xs font-mono text-center text-purple-300">
+                        Seeds + Bump = Off-Curve Address
+                    </div>
+                </div>
+
+                <div class="flex-1 border-l border-white/10 pl-8">
+                    <h4 class="text-sm font-bold text-white mb-4">Exercise: Seed Design</h4>
+                    <p class="text-xs text-slate-400 mb-4">
+                        Propose a stable, collision-free seed convention for:
+                    </p>
+                    <ul class="space-y-2 text-xs text-slate-300 font-mono">
+                        <li class="flex items-center gap-2"><span class="text-purple-500">1.</span> One "Vault" per
+                            user.</li>
+                        <li class="flex items-center gap-2"><span class="text-purple-500">2.</span> One "Vault" per pair
+                            (User, TokenMint).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4) CPI -->
+    <section class="group p-1 rounded-2xl bg-gradient-to-b from-white/10 to-transparent">
+        <div class="bg-[#1e1e1e] rounded-xl p-8 border border-white/5">
+            <div class="flex items-center gap-4 mb-6">
+                <div
+                    class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 font-bold">
+                    04</div>
+                <h2 class="text-xl font-bold text-white">CPI: Cross-Program Invocation</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="p-4 bg-white/5 rounded-xl border border-white/5">
+                    <h3 class="text-white font-bold mb-2">invoke</h3>
+                    <p class="text-xs text-slate-400 mb-2">Standard call. The program delegates its signature
+                        privileges.</p>
+                    <div class="text-[10px] font-mono bg-black/30 p-2 rounded text-slate-500">
+                        Program A --(sign A_user)--> Program B
+                    </div>
+                </div>
+                <div class="p-4 bg-white/5 rounded-xl border border-white/5">
+                    <h3 class="text-white font-bold mb-2">invoke_signed</h3>
+                    <p class="text-xs text-slate-400 mb-2">PDA Magic. Runtime checks seeds and injects PDA signature.
+                    </p>
+                    <div class="text-[10px] font-mono bg-black/30 p-2 rounded text-purple-400">
+                        Program A --(sign PDA)--> Program B
+                    </div>
+                </div>
+            </div>
+            <div
+                class="mt-4 p-3 bg-red-500/10 border border-red-500/20 rounded-lg text-xs text-center text-red-400 font-bold">
+                ⚠️ RISK: Always whitelist the target Program ID + validate passed accounts.
+            </div>
+        </div>
+    </section>
+
+    <!-- 5) SPL Token -->
+    <section class="group p-1 rounded-2xl bg-gradient-to-b from-white/10 to-transparent">
+        <div class="bg-[#1e1e1e] rounded-xl p-8 border border-white/5">
+            <div class="flex items-center gap-4 mb-6">
+                <div
+                    class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 font-bold">
+                    05</div>
+                <h2 class="text-xl font-bold text-white">SPL Token: Mental Model</h2>
+            </div>
+
+            <div class="relative flex flex-col items-center py-6">
+                <!-- Diagramme CSS simple -->
+                <div class="flex gap-12 items-center">
+                    <div class="flex flex-col items-center gap-2">
+                        <div
+                            class="w-16 h-16 rounded-full bg-yellow-500/20 border border-yellow-500 text-yellow-500 flex items-center justify-center font-bold">
+                            MINT</div>
+                        <span class="text-[10px] text-slate-500">Metadata, Supply</span>
+                    </div>
+
+                    <div class="h-px w-16 bg-white/20"></div>
+
+                    <div class="flex flex-col items-center gap-2">
+                        <div
+                            class="w-16 h-16 rounded-xl bg-blue-500/20 border border-blue-500 text-blue-500 flex items-center justify-center font-bold text-center text-[10px]">
+                            Token Account</div>
+                        <span class="text-[10px] text-slate-500">Balance, Owner</span>
+                    </div>
+
+                    <div class="h-px w-16 bg-white/20"></div>
+
+                    <div class="flex flex-col items-center gap-2">
+                        <div
+                            class="w-16 h-16 rounded bg-slate-700/50 border border-slate-500 text-slate-300 flex items-center justify-center font-bold text-[10px]">
+                            Wallet</div>
+                        <span class="text-[10px] text-slate-500">Signer (Authority)</span>
+                    </div>
+                </div>
+                <div class="mt-8 grid grid-cols-2 gap-8 w-full max-w-xl">
+                    <div class="text-center">
+                        <h4 class="text-xs font-bold text-white mb-1">Mint Authority</h4>
+                        <p class="text-[10px] text-slate-400">Who is allowed to print money?</p>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="text-xs font-bold text-white mb-1">ATA (Associated Token Account)</h4>
+                        <p class="text-[10px] text-slate-400">Standard derived address: PDA(Wallet, Mint).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deliverables -->
+    <section class="space-y-6">
+        <div class="flex items-center gap-3 border-b border-white/10 pb-4">
+            <div class="p-2 rounded-lg bg-green-500/10 text-green-500 border border-green-500/20">
+                <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Minimal Deliverable (Proof)</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4">
+            <div class="p-4 bg-slate-800/50 rounded-xl border border-slate-700 flex gap-4 items-center">
+                <i data-lucide="file-text" class="w-8 h-8 text-green-400"></i>
+                <div>
+                    <h4 class="text-sm font-bold text-white">"Mental Model" Sheet</h4>
+                    <p class="text-xs text-slate-400">A one-page summary: Accounts / Ix / PDA / CPI / SPL.</p>
+                </div>
+            </div>
+            <div class="p-4 bg-slate-800/50 rounded-xl border border-slate-700 flex gap-4 items-center">
+                <i data-lucide="edit-3" class="w-8 h-8 text-green-400"></i>
+                <div>
+                    <h4 class="text-sm font-bold text-white">3 Solved Exercises</h4>
+                    <p class="text-xs text-slate-400">Metas signer/writable + Seeds PDA + CPI Threat Model.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Nav -->
+    <div class="flex justify-end pt-8 border-t border-white/10">
+        <button onclick="loadPage('tech_06a_solana_n1')"
+            class="flex items-center gap-3 px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-bold transition-colors shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:shadow-[0_0_30px_rgba(249,115,22,0.5)]">
+            <span>Next: Lv1 — Rust & Tools</span>
+            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+        </button>
+    </div>
+
+</div>

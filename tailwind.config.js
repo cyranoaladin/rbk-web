@@ -2,8 +2,10 @@
 module.exports = {
   content: [
     './index.html',
+    './formation_web3_tunisie.html',
     './chapters/**/*.html',
     './script.js',
+    './script_tech.js',
   ],
   theme: {
     extend: {

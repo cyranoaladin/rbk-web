@@ -1,133 +1,331 @@
 <div class="space-y-14 animate-in fade-in duration-700">
 
-    <header class="relative p-8 rounded-3xl overflow-hidden border border-white/10 bg-slate-900/60">
-        <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-slate-900/0"></div>
-        <div class="relative z-10 space-y-4">
-            <div class="flex items-center gap-4">
-                <span class="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-fuchsia-300">N3</span>
-                <h1 class="text-3xl font-bold text-white tracking-tight">Niveau 3 — Architecte Studio & Validator Ops</h1>
+    <!-- Header -->
+    <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-[#9945FF]/20 rounded-full blur-[100px]"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-4 mb-4">
+                <span
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#9945FF] to-fuchsia-400 font-mono">N3</span>
+                <div class="h-12 w-px bg-white/10"></div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">
+                    DeFi avancée : CPI, Tokens, AMM (capstone)
+                    <span class="block text-lg font-normal text-slate-400 mt-1">Anchor Capstone → (préparation Native &
+                        Security)</span>
+                </h1>
             </div>
-            <p class="text-sm text-slate-400 max-w-3xl">
-                20 semaines pour maîtriser performance, sécurité formelle, interopérabilité et opérations de studio Web3 (protocoles et validateurs).
+
+            <p class="text-sm text-slate-400 max-w-3xl leading-relaxed">
+                N3 vise à construire une compréhension “produit” des primitives DeFi sur Solana : transferts via CPI,
+                états cohérents, contraintes, tests négatifs, et design d’un mini-protocole.
+                L’objectif est de livrer un capstone utilisable, documenté et testable — pas de réciter des buzzwords.
             </p>
+
+            <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div class="p-4 rounded-xl border border-white/10 bg-slate-950/40">
+                    <div class="flex items-center gap-2 text-xs font-bold text-white">
+                        <i data-lucide="timer" class="w-4 h-4 text-[#9945FF]"></i>
+                        Durée indicative
+                    </div>
+                    <p class="text-xs text-slate-400 mt-2">12–20h selon l’aisance Rust/Anchor, 70% pratique + tests.</p>
+                </div>
+
+                <div class="p-4 rounded-xl border border-white/10 bg-slate-950/40">
+                    <div class="flex items-center gap-2 text-xs font-bold text-white">
+                        <i data-lucide="package-check" class="w-4 h-4 text-[#9945FF]"></i>
+                        Livrables
+                    </div>
+                    <p class="text-xs text-slate-400 mt-2">Capstone AMM-like (mini), tests négatifs, README, audit
+                        notes.</p>
+                </div>
+
+                <div class="p-4 rounded-xl border border-white/10 bg-slate-950/40">
+                    <div class="flex items-center gap-2 text-xs font-bold text-white">
+                        <i data-lucide="shield-check" class="w-4 h-4 text-[#9945FF]"></i>
+                        Critère de réussite
+                    </div>
+                    <p class="text-xs text-slate-400 mt-2">CPI maîtrisées + invariants + scénarios d’échec reproduits
+                        par tests.</p>
+                </div>
+            </div>
         </div>
     </header>
 
-    <section class="glass-card">
-        <div class="flex items-center gap-3 mb-4">
-            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
-                <i data-lucide="target" class="w-5 h-5"></i>
-            </div>
-            <h2 class="text-xl font-bold text-white">Phases Alpha / Beta / Gamma</h2>
-        </div>
-        <div class="space-y-3 text-[13px] text-slate-300">
-            <p><strong class="text-sm text-white">Alpha (S29-S38)</strong> — Performance et observabilité : load testing, parallélisme, compute budget.</p>
-            <p><strong class="text-sm text-white">Beta (S39-S44)</strong> — Sécurité formelle, théorie des jeux, red/blue team.</p>
-            <p><strong class="text-sm text-white">Gamma (S45-S48)</strong> — Studio de production : gouvernance, compliance, simulation de lancement.</p>
-        </div>
-    </section>
+    <!-- Section 1 -->
+    <section class="group p-1 rounded-2xl bg-gradient-to-b from-white/10 to-transparent">
+        <div class="rounded-2xl border border-white/10 bg-slate-950/50 p-6 md:p-8 space-y-6">
+            <div class="flex items-center justify-between gap-4 flex-wrap">
+                <div>
+                    <h2 class="text-2xl font-bold text-white">1) CPI & Tokens — la plomberie DeFi</h2>
+                    <p class="text-sm text-slate-400 mt-1">
+                        Comprendre qu’un transfert SPL, une mint, un burn, un freeze… sont des <strong>instructions
+                            CPI</strong>.
+                    </p>
+                </div>
 
-    <section>
-        <div class="flex items-center gap-3 mb-4">
-            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
-                <i data-lucide="columns" class="w-5 h-5"></i>
+                <span
+                    class="text-[10px] uppercase font-bold tracking-widest text-[#9945FF]/90 bg-[#9945FF]/10 px-3 py-1 rounded-full border border-[#9945FF]/20">
+                    Core building block
+                </span>
             </div>
-            <h2 class="text-xl font-bold text-white">Modules approfondis</h2>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-[13px]">
-            <article class="glass-card p-5 border-l-4 border-blue-400">
-                <h3 class="text-sm uppercase tracking-[0.3em] text-blue-300 mb-2">Performance & architecture</h3>
-                <ul class="list-disc list-inside space-y-1 text-slate-300">
-                    <li>Shard-then-aggregate, WAL, vues matérialisées.</li>
-                    <li>Load tests 100k TPS, chaos, recovery benchmarks.</li>
-                    <li>Batching atomique, ALT et compute budget précis.</li>
-                </ul>
-            </article>
-            <article class="glass-card p-5 border-l-4 border-emerald-400">
-                <h3 class="text-sm uppercase tracking-[0.3em] text-emerald-300 mb-2">Sécurité formelle</h3>
-                <ul class="list-disc list-inside space-y-1 text-slate-300">
-                    <li>Invariants CTL/LTL, fairness, proofs de non-déniabilité.</li>
-                    <li>Red/Blue team 72h avec jury.</li>
-                    <li>Audit offensif : hooks, CPI, oracle, RWA.</li>
-                </ul>
-            </article>
-            <article class="glass-card p-5 border-l-4 border-purple-400">
-                <h3 class="text-sm uppercase tracking-[0.3em] text-purple-300 mb-2">Interop & cross-chain</h3>
-                <ul class="list-disc list-inside space-y-1 text-slate-300">
-                    <li>Wormhole, LayerZero, state proofs, architectures hybrides.</li>
-                    <li>Pricing unifié, settlement atomique, compression d’état.</li>
-                </ul>
-            </article>
-            <article class="glass-card p-5 border-l-4 border-amber-400">
-                <h3 class="text-sm uppercase tracking-[0.3em] text-amber-300 mb-2">Gouvernance & RWA</h3>
-                <ul class="list-disc list-inside space-y-1 text-slate-300">
-                    <li>Compliance by design (KYC/AML, geo-lock).</li>
-                    <li>Timelocks, kill switch, reporting.</li>
-                    <li>Tokenisation RWA : identity registry + Transfer Hook.</li>
-                </ul>
-            </article>
-            <article class="glass-card p-5 border-l-4 border-cyan-400">
-                <h3 class="text-sm uppercase tracking-[0.3em] text-cyan-300 mb-2">Launch & ops industrielles</h3>
-                <ul class="list-disc list-inside space-y-1 text-slate-300">
-                    <li>Canary releases, blue-green upgrades, post-mortems.</li>
-                    <li>Protocol launch simulation (pre / day / post).</li>
-                </ul>
-            </article>
-        </div>
-    </section>
 
-    <section class="glass-card">
-        <div class="flex items-center gap-3 mb-4">
-            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
-                <i data-lucide="server" class="w-5 h-5"></i>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div class="p-5 rounded-xl border border-white/10 bg-slate-900/40 space-y-3">
+                    <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                        <i data-lucide="repeat" class="w-4 h-4 text-slate-400"></i>
+                        CPI : modèle mental
+                    </h3>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li>On appelle un autre programme (Token Program, System Program…)</li>
+                        <li>On passe les <strong>accounts requis</strong> explicitement</li>
+                        <li>Les autorités doivent être correctes (signer, PDA signer, delegates)</li>
+                        <li>Les erreurs doivent être reproductibles en tests (negative tests)</li>
+                    </ul>
+                </div>
+
+                <div class="p-5 rounded-xl border border-white/10 bg-slate-900/40 space-y-3">
+                    <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                        <i data-lucide="coins" class="w-4 h-4 text-slate-400"></i>
+                        Tokens : ce qu’on veut réellement maîtriser
+                    </h3>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li>Mint / Token Accounts / Associated Token Accounts (ATA)</li>
+                        <li>Authorities : mint authority, freeze authority, owner</li>
+                        <li>Décimales & unités (u64) + overflow/underflow</li>
+                        <li>Token-2022 : extensions (à venir dans le module tokens)</li>
+                    </ul>
+                </div>
             </div>
-            <h2 class="text-xl font-bold text-white">Validator & infra</h2>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-[13px] text-slate-300">
-            <div class="glass-card !p-4 border border-white/5 bg-slate-900/40">
-                <strong class="text-xs uppercase tracking-[0.3em] text-slate-400">Validator Ops</strong>
-                <ul class="list-disc list-inside space-y-1 mt-2">
-                    <li>Bare-metal, clients Agave/Jito/Firedancer, monitoring TIG.</li>
-                    <li>Recovery playbooks, alerting, drills incidents.</li>
-                </ul>
-            </div>
-            <div class="glass-card !p-4 border border-white/5 bg-slate-900/40">
-                <strong class="text-xs uppercase tracking-[0.3em] text-slate-400">Data & Storage</strong>
-                <ul class="list-disc list-inside space-y-1 mt-2">
-                    <li>Compression d’état, indexeurs SubQuery/Sqd.</li>
-                    <li>RPC hybrides, QoS, multi providers.</li>
-                    <li>Stockage immuable (Arweave/Shadow Drive) pour metadata.</li>
+
+            <div class="p-5 rounded-xl border border-white/10 bg-slate-900/40">
+                <h3 class="text-sm font-bold text-white flex items-center gap-2 mb-3">
+                    <i data-lucide="flask-conical" class="w-4 h-4 text-slate-400"></i>
+                    Tests attendus (minimum)
+                </h3>
+                <ul class="space-y-2 text-xs text-slate-400">
+                    <li>Transfert : happy path</li>
+                    <li>Transfert : mauvais owner / mauvais signer → erreur attendue</li>
+                    <li>Transfert : solde insuffisant → erreur attendue</li>
+                    <li>Constraints : comptes incomplets/incorrects → erreur attendue</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <section class="glass-card">
-        <div class="flex items-center gap-3 mb-4">
-            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
-                <i data-lucide="repeat" class="w-5 h-5"></i>
+    <!-- Section 1 -->
+    <section class="group p-1 rounded-2xl bg-gradient-to-b from-white/10 to-transparent">
+        <div class="rounded-2xl border border-white/10 bg-slate-950/50 p-6 md:p-8 space-y-6">
+            <div class="flex items-center justify-between gap-4 flex-wrap">
+                <div>
+                    <h2 class="text-2xl font-bold text-white">1) CPI & Tokens — la plomberie DeFi</h2>
+                    <p class="text-sm text-slate-400 mt-1">
+                        Comprendre qu’un transfert SPL, une mint, un burn, un freezeetc. sont des <strong>instructions
+                            CPI</strong>.
+                    </p>
+                </div>
+
+                <span
+                    class="text-[10px] uppercase font-bold tracking-widest text-[#9945FF]/90 bg-[#9945FF]/10 px-3 py-1 rounded-full border border-[#9945FF]/20">
+                    Core building block
+                </span>
             </div>
-            <h2 class="text-xl font-bold text-white">CI/CD & launch readiness</h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div class="p-5 rounded-xl border border-white/10 bg-slate-900/40 space-y-3">
+                    <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                        <i data-lucide="repeat" class="w-4 h-4 text-slate-400"></i>
+                        CPI : modèle mental
+                    </h3>
+                    <div class="my-2 p-2 bg-slate-800 rounded border border-slate-700">
+                        <pre class="mermaid text-[10px] bg-transparent">
+flowchart TD
+    User([User]) -->|Sign| ProgA[MyProgram]
+    ProgA -->|invoke_signed(seeds)| TokenProg
+    TokenProg -->|Verify| PDA[(Vault PDA)]
+                        </pre>
+                    </div>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li><strong>invoke</strong>: transmet la signature du Payer.</li>
+                        <li><strong>invoke_signed</strong>: le programme signe pour ses PDAs (seeds + bump).</li>
+                        <li>Erreur classique: <em>Signer privilege escalated</em> (donner des droits à un programme
+                            malveillant).</li>
+                    </ul>
+                </div>
+
+                <div class="p-5 rounded-xl border border-white/10 bg-slate-900/40 space-y-3">
+                    <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                        <i data-lucide="coins" class="w-4 h-4 text-slate-400"></i>
+                        Token-2022 : le futur standard
+                    </h3>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li><strong class="text-indigo-400">Transfer Fees</strong> : Taxe prélevée automatiquement
+                            (Royalties enforcement).</li>
+                        <li><strong class="text-indigo-400">Deep Hooks</strong> : Logique custom par transaction
+                            (Whitelisting dynamique).</li>
+                        <li><strong class="text-indigo-400">Metadata Pointer</strong> : Stockage on-chain léger sans
+                            Metaplex (pour les cas simples).</li>
+                    </ul>
+                    <div class="mt-2 p-2 bg-indigo-900/20 rounded border border-indigo-500/20">
+                        <div class="text-[10px] font-bold text-indigo-300">Activité Flash : Choix d'extension</div>
+                        <p class="text-[10px] text-slate-500">Pour un Stablecoin Euro ? &rarr; <em>Freeze Authority</em>
+                            + <em>Interest Bearing</em>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-5 rounded-xl border border-white/10 bg-slate-900/40">
+                <h3 class="text-sm font-bold text-white flex items-center gap-2 mb-3">
+                    <i data-lucide="flask-conical" class="w-4 h-4 text-slate-400"></i>
+                    Tests attendus (minimum)
+                </h3>
+                <ul class="space-y-2 text-xs text-slate-400">
+                    <li>Transfert : happy path</li>
+                    <li>Transfert : mauvais owner / mauvais signer &rarr; erreur attendue</li>
+                    <li>Transfert : solde insuffisant &rarr; erreur attendue</li>
+                    <li>Constraints : comptes incomplets/incorrects &rarr; erreur attendue</li>
+                </ul>
+            </div>
         </div>
-        <ul class="text-[13px] text-slate-300 list-disc list-inside space-y-2">
-            <li>GitHub Actions : lint, tests, build Anchor, génération de proposal multisig.</li>
-            <li>Builds vérifiables (hash binaire aligné code source).</li>
-            <li>Testing suite perf + sécurité, analytics protocole.</li>
+    </section>
+
+    <span
+        class="text-[10px] uppercase font-bold tracking-widest text-fuchsia-300 bg-fuchsia-500/10 px-3 py-1 rounded-full border border-fuchsia-400/20">
+        Capstone
+    </span>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+    <div class="p-5 rounded-xl border border-white/10 bg-slate-900/40 space-y-3">
+        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+            <i data-lucide="database" class="w-4 h-4 text-slate-400"></i>
+            État (accounts)
+        </h3>
+        <ul class="space-y-2 text-xs text-slate-400">
+            <li>PDA PoolState (seeds/bump)</li>
+            <li>Vault A / Vault B (token accounts contrôlés)</li>
+            <li>Config : fees, authority, paramètres</li>
+            <li>Option : LP mint (si extension)</li>
         </ul>
-    </section>
+    </div>
 
-    <section class="glass-card">
-        <div class="flex items-center gap-3 mb-4">
-            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
-                <i data-lucide="award" class="w-5 h-5"></i>
-            </div>
-            <h2 class="text-xl font-bold text-white">Certification & portfolio</h2>
-        </div>
-        <ul class="text-[13px] text-slate-300 list-disc list-inside space-y-2">
-            <li>Portfolio obligatoire : 3 architectures, 1 audit formel, 1 contribution open source, 1 whitepaper, 1 présentation.</li>
-            <li>Certification par un board mixte (mentors, expert externe, représentant communauté).</li>
-            <li>Badges tiered (Junior, Senior, Principal) avec utilités (mentorat, vote, access gating).</li>
+    <div class="p-5 rounded-xl border border-white/10 bg-slate-900/40 space-y-3">
+        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+            <i data-lucide="scale" class="w-4 h-4 text-slate-400"></i>
+            Invariants (à expliciter)
+        </h3>
+        <ul class="space-y-2 text-xs text-slate-400">
+            <li>Vaults cohérents vs état</li>
+            <li>Les fees ne cassent pas le modèle</li>
+            <li>Swap : pas de résultat “gratuit”</li>
+            <li>Overflow/underflow impossible</li>
         </ul>
-    </section>
+    </div>
+
+    <div class="p-5 rounded-xl border border-white/10 bg-slate-900/40 space-y-3">
+        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+            <i data-lucide="alert-triangle" class="w-4 h-4 text-slate-400"></i>
+            Edge cases (obligatoires)
+        </h3>
+        <ul class="space-y-2 text-xs text-slate-400">
+            <li>Swap avec zéro / dust</li>
+            <li>Slippage (min_out)</li>
+            <li>Comptes ATA manquants</li>
+            <li>Authority incorrecte</li>
+        </ul>
+    </div>
+</div>
+
+<div class="p-5 rounded-xl border border-white/10 bg-slate-900/40">
+    <h3 class="text-sm font-bold text-white mb-3">Plan de capstone (pragmatique)</h3>
+    <ol class="list-decimal pl-5 space-y-2 text-xs text-slate-400">
+        <li>Init pool : créer PoolState PDA + vaults A/B</li>
+        <li>Deposit : dépôt A/B vers vaults (CPI token)</li>
+        <li>Swap : calcul + transfert (CPI token), respecter min_out</li>
+        <li>Withdraw : retrait contrôlé (option : share/LP)</li>
+        <li>Tests : happy + négatifs + invariants</li>
+    </ol>
+</div>
+</div>
+</section>
+
+<!-- Section 3 -->
+<section class="space-y-6">
+    <div class="flex items-center gap-3">
+        <div class="p-2 rounded-lg bg-red-500/10 border border-red-500/20">
+            <i data-lucide="shield-alert" class="w-5 h-5 text-red-400"></i>
+        </div>
+        <h2 class="text-2xl font-bold text-white">3) Pré-sécurité : ce qu’on doit déjà traquer</h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div class="p-6 rounded-2xl border border-white/10 bg-slate-950/40 space-y-3">
+            <div class="text-xs font-bold text-white flex items-center gap-2">
+                <i data-lucide="key-round" class="w-4 h-4 text-slate-400"></i>
+                Authority & ownership
+            </div>
+            <ul class="space-y-2 text-xs text-slate-400">
+                <li>Une action “critique” doit vérifier l’autorité</li>
+                <li>On ne fait pas confiance au client</li>
+                <li>has_one/constraint doivent être cohérents</li>
+            </ul>
+        </div>
+
+        <div class="p-6 rounded-2xl border border-white/10 bg-slate-950/40 space-y-3">
+            <div class="text-xs font-bold text-white flex items-center gap-2">
+                <i data-lucide="infinity" class="w-4 h-4 text-slate-400"></i>
+                Math & overflow
+            </div>
+            <ul class="space-y-2 text-xs text-slate-400">
+                <li>checked_add / checked_sub partout</li>
+                <li>Décimales : conversions explicites</li>
+                <li>Min/Max, slippage, rounding</li>
+            </ul>
+        </div>
+
+        <div class="p-6 rounded-2xl border border-white/10 bg-slate-950/40 space-y-3">
+            <div class="text-xs font-bold text-white flex items-center gap-2">
+                <i data-lucide="bug" class="w-4 h-4 text-slate-400"></i>
+                Tests négatifs
+            </div>
+            <ul class="space-y-2 text-xs text-slate-400">
+                <li>On doit pouvoir reproduire la faille</li>
+                <li>Un test = scénario + expectation</li>
+                <li>Les erreurs doivent être explicites</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="p-6 rounded-2xl border border-red-500/20 bg-red-500/5 space-y-4">
+        <div class="flex items-center gap-3">
+            <div class="p-2 rounded-lg bg-red-500/10 border border-red-500/20">
+                <i data-lucide="file-search" class="w-5 h-5 text-red-400"></i>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold text-white">Passage recommandé</h3>
+                <p class="text-xs text-slate-400">Après N3, on enchaîne sur des Security Labs (Anchor + Native).</p>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap gap-3">
+            <button onclick="loadPage('tech_06b_solana_n2')"
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 bg-slate-950/60 text-xs font-bold text-slate-200 hover:bg-white/5 transition">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                Revenir à N2
+            </button>
+
+            <button onclick="loadPage('tech_06d_security_labs')"
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-red-400/20 bg-red-500/10 text-xs font-bold text-red-200 hover:bg-red-500/15 transition shadow-[0_0_20px_rgba(239,68,68,0.3)] hover:shadow-[0_0_30px_rgba(239,68,68,0.35)]">
+                <i data-lucide="shield" class="w-4 h-4"></i>
+                Aller aux Security Labs
+            </button>
+        </div>
+    </div>
+
+    <div class="p-6 rounded-2xl border border-white/10 bg-slate-950/40">
+        <div class="text-xs uppercase tracking-widest font-bold text-slate-500">Livrable final</div>
+        <div class="text-lg font-bold text-white mt-1">Audit Report V1.0</div>
+        <div class="text-xs text-slate-500 mt-1">Le sésame pour entrer dans l'industrie.</div>
+    </div>
+</section>
 
 </div>

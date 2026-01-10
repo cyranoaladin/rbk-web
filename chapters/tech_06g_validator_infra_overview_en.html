@@ -1,0 +1,225 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <!-- Header -->
+    <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-violet-600/20 rounded-full blur-[100px]"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-4 mb-4">
+                <span
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-indigo-500 font-mono">INFRA</span>
+                <div class="h-12 w-px bg-white/10"></div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">Validator & Ops<span
+                        class="block text-lg font-normal text-slate-400 mt-1">Network Culture & Performance</span></h1>
+            </div>
+            <p class="text-sm text-slate-400 max-w-3xl leading-relaxed">
+                This module is an essential opening. Without being an SRE, a builder must understand what their code
+                runs on.
+                Validator, RPC, Latency, Compute Units: master your execution environment.
+            </p>
+        </div>
+    </header>
+
+    <!-- Objectives -->
+    <div class="grid md:grid-cols-3 gap-6">
+        <div class="md:col-span-1 p-6 rounded-xl border border-violet-500/20 bg-violet-500/[0.02] h-full">
+            <h3 class="flex items-center gap-2 text-violet-400 font-bold mb-4">
+                <i data-lucide="monitor-check" class="w-4 h-4"></i>
+                Culture Objectives
+            </h3>
+            <ul class="space-y-3">
+                <li class="flex gap-3 text-xs text-slate-400">
+                    <i data-lucide="check" class="w-4 h-4 text-violet-500 shrink-0"></i>
+                    <span>Diagnose: Code Bug vs Infra Issue.</span>
+                </li>
+                <li class="flex gap-3 text-xs text-slate-400">
+                    <i data-lucide="check" class="w-4 h-4 text-violet-500 shrink-0"></i>
+                    <span>Optimize: Compute Units & Priority Fees.</span>
+                </li>
+                <li class="flex gap-3 text-xs text-slate-400">
+                    <i data-lucide="check" class="w-4 h-4 text-violet-500 shrink-0"></i>
+                    <span>Vocabulary: Slots, Forks, Epochs.</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="md:col-span-2 p-6 rounded-xl border border-white/5 bg-slate-800/50 h-full">
+            <h3 class="flex items-center gap-2 text-white font-bold mb-4">
+                <i data-lucide="network" class="w-4 h-4 text-indigo-400"></i>
+                The Data "Food Chain"
+            </h3>
+            <div class="flex items-center justify-between gap-4 text-center mt-8">
+
+                <div class="relative group">
+                    <div
+                        class="w-20 h-20 mx-auto rounded-full bg-slate-900 border-2 border-slate-700 flex items-center justify-center mb-2 z-10 relative">
+                        <i data-lucide="server" class="w-8 h-8 text-slate-400"></i>
+                    </div>
+                    <div class="text-white font-bold text-sm">Validator</div>
+                    <div class="text-[10px] text-slate-500">Consensus & Vote</div>
+                    <!-- Connecting Line -->
+                    <div
+                        class="hidden md:block absolute top-10 left-full w-full h-0.5 bg-slate-700 -translate-y-1/2 -z-0">
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <div
+                        class="w-20 h-20 mx-auto rounded-full bg-indigo-900/30 border-2 border-indigo-500 flex items-center justify-center mb-2 z-10 relative shadow-[0_0_15px_rgba(99,102,241,0.3)]">
+                        <i data-lucide="router" class="w-8 h-8 text-indigo-400"></i>
+                    </div>
+                    <div class="text-white font-bold text-sm">RPC Node</div>
+                    <div class="text-[10px] text-slate-500">Your Gateway</div>
+                    <div
+                        class="hidden md:block absolute top-10 left-full w-full h-0.5 bg-slate-700 -translate-y-1/2 -z-0">
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <div
+                        class="w-20 h-20 mx-auto rounded-full bg-slate-900 border-2 border-slate-700 flex items-center justify-center mb-2 z-10 relative">
+                        <i data-lucide="database" class="w-8 h-8 text-slate-400"></i>
+                    </div>
+                    <div class="text-white font-bold text-sm">Indexer</div>
+                    <div class="text-[10px] text-slate-500">History & Query</div>
+                </div>
+
+            </div>
+            <p class="text-center text-xs text-slate-400 mt-8 italic">
+                "The builder speaks to the RPC. The RPC speaks to the Cluster. The Indexer observes it all."
+            </p>
+        </div>
+    </div>
+
+    <!-- 2) Performance & Compute -->
+    <section class="group p-1 rounded-2xl bg-gradient-to-b from-white/10 to-transparent">
+        <div class="bg-[#1e1e1e] rounded-xl p-8 border border-white/5">
+            <div class="flex items-center gap-4 mb-6">
+                <div
+                    class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 font-bold">
+                    02</div>
+                <h2 class="text-xl font-bold text-white">Performance: What the Builder Must Know</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2 text-violet-400 font-bold text-sm">
+                        <i data-lucide="cpu" class="w-4 h-4"></i> Compute Units (CU)
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Every instruction has a "cost". Too many logs, too many CPIs, or bad crypto = <span
+                            class="text-red-400">Transaction Failed</span> (ComputeBudgetExceeded).
+                    </p>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2 text-violet-400 font-bold text-sm">
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i> Priority Fees
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        When the network is congested, paying more (Micro-lamports) lets you cut the line. It's a
+                        blockspace auction.
+                    </p>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2 text-violet-400 font-bold text-sm">
+                        <i data-lucide="file-warning" class="w-4 h-4"></i> Logs Pollution
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        `msg!` is expensive (syscall). In prod, log the essential, not debug info.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Code Warning Visual -->
+            <div class="mt-6 p-4 bg-orange-900/10 border border-orange-500/20 rounded-lg flex gap-4 items-center">
+                <i data-lucide="triangle-alert" class="w-6 h-6 text-orange-500 shrink-0"></i>
+                <div class="text-xs text-slate-300">
+                    <strong class="text-orange-400 block mb-1">Beware of simulated infinite loops</strong>
+                    Iterating over a large number of accounts in a single transaction is an anti-pattern on Solana. The
+                    CU limit will catch you. Prefer an "off-chain indexer + stateless logic" architecture or chunking.
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 3) Ops & Deliverables -->
+    <section class="group p-1 rounded-2xl bg-gradient-to-b from-white/10 to-transparent">
+        <div class="bg-[#1e1e1e] rounded-xl p-8 border border-white/5">
+            <div class="flex items-center gap-4 mb-6">
+                <div
+                    class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 font-bold">
+                    03</div>
+                <h2 class="text-xl font-bold text-white">Ops & Deliverables</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Checklist Ops -->
+                <div>
+                    <h3 class="text-sm font-bold text-white mb-4 flex items-center gap-2">
+                        <i data-lucide="clipboard-list" class="w-4 h-4 text-violet-400"></i>
+                        Ops Best Practices
+                    </h3>
+                    <ul class="space-y-3">
+                        <li class="flex gap-3 text-xs text-slate-400">
+                            <span class="w-1.5 h-1.5 rounded-full bg-violet-500 mt-1.5 flex-shrink-0"></span>
+                            <span><strong>Deployments:</strong> Always check buffer authority before upgrade.</span>
+                        </li>
+                        <li class="flex gap-3 text-xs text-slate-400">
+                            <span class="w-1.5 h-1.5 rounded-full bg-violet-500 mt-1.5 flex-shrink-0"></span>
+                            <span><strong>Rollback:</strong> Have a plan (e.g., revert to previous binary) if state
+                                migration fails.</span>
+                        </li>
+                        <li class="flex gap-3 text-xs text-slate-400">
+                            <span class="w-1.5 h-1.5 rounded-full bg-violet-500 mt-1.5 flex-shrink-0"></span>
+                            <span><strong>Post-Mortem:</strong> If it breaks, write down why. No blame, but
+                                precision.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Exercise Scenario -->
+                <div class="bg-black/30 text-white rounded-lg border border-white/10 p-5">
+                    <h3 class="text-sm font-bold text-white mb-2">Exercise: Outage</h3>
+                    <p class="text-xs text-slate-400 mb-4 italic">
+                        "Your users complain 'the site is down'. Your RPC times out. The validator seems up. What do you
+                        do?"
+                    </p>
+                    <div class="space-y-2">
+                        <div class="bg-white/5 p-2 rounded text-[10px] text-slate-300">1. Switch RPC (Failover).
+                        </div>
+                        <div class="bg-white/5 p-2 rounded text-[10px] text-slate-300">2. Check Solana Beach /
+                            Solscan (Cluster status).</div>
+                        <div class="bg-white/5 p-2 rounded text-[10px] text-slate-300">3. If Cluster is down, wait (and
+                            communicate).</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-8 border-t border-white/5 flex items-center gap-4">
+                <i data-lucide="file-text" class="w-8 h-8 text-indigo-400"></i>
+                <div>
+                    <h4 class="text-sm font-bold text-white">Final Deliverable</h4>
+                    <p class="text-xs text-slate-400">"Infra for Builders" Sheet (1 page). Terms, Common Errors,
+                        Checklist.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer Nav -->
+    <div class="flex justify-between pt-8 border-t border-white/10">
+        <button onclick="loadPage('tech_06f_build_an_amm')"
+            class="flex items-center gap-3 px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-lg font-bold transition-colors">
+            <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            <span>Previous: Build an AMM</span>
+        </button>
+
+        <button onclick="loadPage('tech_solana_hub')"
+            class="flex items-center gap-3 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-bold transition-colors shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_0_30px_rgba(79,70,229,0.5)]">
+            <span>Back to Hub</span>
+            <i data-lucide="layout-grid" class="w-5 h-5"></i>
+        </button>
+    </div>
+
+</div>

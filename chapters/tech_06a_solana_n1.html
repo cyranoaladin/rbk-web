@@ -1,108 +1,270 @@
 <div class="space-y-14 animate-in fade-in duration-700">
 
-    <header class="relative p-8 rounded-3xl overflow-hidden border border-white/10 bg-slate-900/60">
-        <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-slate-900/0"></div>
-        <div class="relative z-10 space-y-4">
-            <div class="flex items-center gap-4">
-                <span class="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-slate-300">N1</span>
-                <h1 class="text-3xl font-bold text-white tracking-tight">Niveau 1 — La Forge (Junior Web3 Builder)</h1>
+    <!-- Header -->
+    <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-orange-500/20 rounded-full blur-[100px]"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-4 mb-4">
+                <span
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-500 font-mono">N1</span>
+                <div class="h-12 w-px bg-white/10"></div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">Rust & Outils<span
+                        class="block text-lg font-normal text-slate-400 mt-1">L'essentiel pour Solana</span></h1>
             </div>
-            <p class="text-sm text-slate-400 max-w-3xl">
-                12 semaines pour installer les réflexes Rust/Solana natif, la rigueur sécurité et la reproductibilité des livrables.
+            <p class="text-sm text-slate-400 max-w-3xl leading-relaxed">
+                Le niveau N1 ne vise pas "Rust expert". Il vise un Rust <strong>pratique</strong> : assez solide pour
+                comprendre Anchor,
+                écrire des types d’état, sérialiser proprement, et déboguer une exécution on-chain.
             </p>
         </div>
     </header>
 
-    <section class="glass-card">
-        <div class="flex items-center gap-3 mb-4">
-            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
-                <i data-lucide="flame" class="w-5 h-5"></i>
-            </div>
-            <h2 class="text-xl font-bold text-white">Vision & posture</h2>
+    <!-- Pré-requis & Objectifs -->
+    <div class="grid md:grid-cols-3 gap-6">
+        <!-- Pré-requis -->
+        <div class="md:col-span-1 p-6 rounded-xl border border-yellow-500/20 bg-yellow-500/[0.02] h-full">
+            <h3 class="flex items-center gap-2 text-yellow-500 font-bold mb-4">
+                <i data-lucide="triangle-alert" class="w-4 h-4"></i>
+                Pré-requis
+            </h3>
+            <ul class="space-y-3">
+                <li class="flex gap-3 text-xs text-slate-400">
+                    <i data-lucide="check" class="w-4 h-4 text-yellow-500 shrink-0"></i>
+                    <span><strong>Foundations :</strong> Accounts, PDA, CPI (Obligatoire).</span>
+                </li>
+                <li class="flex gap-3 text-xs text-slate-400">
+                    <i data-lucide="check" class="w-4 h-4 text-yellow-500 shrink-0"></i>
+                    <span>Base Prog : Fonctions, Types, Conditions.</span>
+                </li>
+            </ul>
         </div>
-        <p class="text-slate-300 leading-relaxed mb-3">
-            Sécurité dès le jour 1, livrables vérifiables, usage d’IA encadré. Chaque bloc se termine par un test ou un mini-audit.
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300">
-            <div class="bg-slate-900/40 border border-white/5 rounded-2xl p-4">
-                <h3 class="text-xs uppercase tracking-[0.25em] text-emerald-300 mb-2">Security snippets</h3>
-                <p>5 minutes par session sur un bug type (unwrap, signer, rent, confusion de comptes).</p>
+
+        <!-- Objectifs Opérationnels -->
+        <div class="md:col-span-2 p-6 rounded-xl border border-orange-500/20 bg-orange-500/[0.02]">
+            <h3 class="flex items-center gap-2 text-orange-400 font-bold mb-4">
+                <i data-lucide="target" class="w-4 h-4"></i>
+                Objectifs Opérationnels
+            </h3>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div class="flex gap-3 text-xs text-slate-300 items-start">
+                    <span class="text-orange-500 font-bold">1.</span>
+                    Écrire du Rust basique correct (Ownership, Result).
+                </div>
+                <div class="flex gap-3 text-xs text-slate-300 items-start">
+                    <span class="text-orange-500 font-bold">2.</span>
+                    Comprendre la sérialisation (Borsh) et les Layouts.
+                </div>
+                <div class="flex gap-3 text-xs text-slate-300 items-start">
+                    <span class="text-orange-500 font-bold">3.</span>
+                    Lire des logs & diagnostiquer (Owner, Signer).
+                </div>
+                <div class="flex gap-3 text-xs text-slate-300 items-start">
+                    <span class="text-orange-500 font-bold">4.</span>
+                    Maitriser la CLI, la simulation et les tests locaux.
+                </div>
             </div>
-            <div class="bg-slate-900/40 border border-white/5 rounded-2xl p-4">
-                <h3 class="text-xs uppercase tracking-[0.25em] text-emerald-300 mb-2">Cercles IA</h3>
-                <ul class="list-disc list-inside space-y-1 text-[12px]">
-                    <li>S1-S4 : IA documentaire uniquement.</li>
-                    <li>S5-S8 : IA en pair debugging, prompts archivés.</li>
-                    <li>S9-S12 : IA en support d’architecture, revue humaine obligatoire.</li>
-                </ul>
+        </div>
+    </div>
+
+    <!-- 1) Rust Core -->
+    <section class="group p-1 rounded-2xl bg-gradient-to-b from-white/10 to-transparent">
+        <div class="bg-[#1e1e1e] rounded-xl p-8 border border-white/5">
+            <div class="flex items-center gap-4 mb-6">
+                <div
+                    class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 font-bold">
+                    01</div>
+                <h2 class="text-xl font-bold text-white">Rust "Core" (Ciblé Solana)</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Concepts List -->
+                <div class="space-y-4">
+                    <div class="p-3 bg-white/5 rounded border border-white/10">
+                        <span class="block text-orange-400 text-xs font-bold uppercase mb-1">Ownership /
+                            Borrowing</span>
+                        <span class="text-sm text-slate-300">Quand cloner ? Quand passer une référence `&` ? Crucial
+                            pour la performance.</span>
+                    </div>
+                    <div class="p-3 bg-white/5 rounded border border-white/10">
+                        <span class="block text-orange-400 text-xs font-bold uppercase mb-1">Option / Result</span>
+                        <span class="text-sm text-slate-300">Pas d'exceptions. Propagation explicite avec `?`. Gestion
+                            propre des erreurs.</span>
+                    </div>
+                    <div class="p-3 bg-white/5 rounded border border-white/10">
+                        <span class="block text-orange-400 text-xs font-bold uppercase mb-1">Struct / Enum</span>
+                        <span class="text-sm text-slate-300">Modéliser les instructions (Enum) et l'état des comptes
+                            (Struct).</span>
+                    </div>
+                </div>
+
+                <!-- Code Kata Header -->
+                <div class="bg-black/50 rounded-xl border border-slate-700 overflow-hidden">
+                    <div class="flex items-center gap-2 px-4 py-2 bg-slate-800/50 border-b border-white/5">
+                        <div class="flex gap-1.5">
+                            <div class="w-2.5 h-2.5 rounded-full bg-red-500/20"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/20"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-green-500/20"></div>
+                        </div>
+                        <span class="text-[10px] font-mono text-slate-500 ml-2">exercice_kata.rs</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-sm font-bold text-white mb-2 flex items-center gap-2"><i data-lucide="code"
+                                class="w-4 h-4 text-orange-400"></i> Instruction Parser</h4>
+                        <p class="text-xs text-slate-400 mb-4 font-mono leading-relaxed">
+                            Écrire un parser :
+                            <br>1. Lire le 1er byte (Variant)
+                            <br>2. Désérialiser le reste (Payload)
+                            <br>3. Retourner <span class="text-red-400">Err(InvalidInstruction)</span> si fail.
+                        </p>
+                        <div class="h-px bg-white/10 w-full mb-4"></div>
+                        <div class="text-[10px] text-slate-500 font-mono">
+                            fn process_instruction(program_id: &Pubkey, accounts: &[AccountInfo], instruction_data:
+                            &[u8]) -> ProgramResult { /* implementation */ }
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- 2) Sérialisation -->
+    <section class="group p-1 rounded-2xl bg-gradient-to-b from-white/10 to-transparent">
+        <div class="bg-[#1e1e1e] rounded-xl p-8 border border-white/5">
+            <div class="flex items-center gap-4 mb-6">
+                <div
+                    class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 font-bold">
+                    02</div>
+                <h2 class="text-xl font-bold text-white">Sérialisation & Layout</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="p-4 bg-white/5 rounded-xl border border-white/5 text-center">
+                    <i data-lucide="box-select" class="w-8 h-8 text-orange-400 mx-auto mb-3"></i>
+                    <h3 class="text-white font-bold mb-1">Borsh</h3>
+                    <p class="text-xs text-slate-400">Canonical. Déterministe. Strict. Le standard Solana.</p>
+                </div>
+                <div class="p-4 bg-white/5 rounded-xl border border-white/5 text-center">
+                    <i data-lucide="git-commit" class="w-8 h-8 text-orange-400 mx-auto mb-3"></i>
+                    <h3 class="text-white font-bold mb-1">Versioning</h3>
+                    <p class="text-xs text-slate-400">Prévoir l'évolution. Ne jamais casser le layout existant.</p>
+                </div>
+                <div class="p-4 bg-white/5 rounded-xl border border-white/5 text-center">
+                    <i data-lucide="hard-drive" class="w-8 h-8 text-orange-400 mx-auto mb-3"></i>
+                    <h3 class="text-white font-bold mb-1">Taille (Space)</h3>
+                    <p class="text-xs text-slate-400">Calcul précis (byte par byte). `realloc` coûte cher en Compute
+                        Units.</p>
+                </div>
+            </div>
+
+            <div class="mt-6 p-4 bg-orange-500/10 border border-orange-500/20 rounded-lg flex items-start gap-3">
+                <i data-lucide="pencil" class="w-5 h-5 text-orange-400 shrink-0 mt-0.5"></i>
+                <div>
+                    <h4 class="text-sm font-bold text-orange-300 mb-1">Exercice : VaultState</h4>
+                    <p class="text-xs text-slate-300">
+                        Définir une struct <code>VaultState</code> (owner, bump, mint, balance).
+                        Calculer sa taille exacte en bytes.
+                        Ajouter un champ <code>version: u8</code> au début.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3) Outils & Debug -->
+    <section class="group p-1 rounded-2xl bg-gradient-to-b from-white/10 to-transparent">
+        <div class="bg-[#1e1e1e] rounded-xl p-8 border border-white/5">
+            <div class="flex items-center gap-4 mb-6">
+                <div
+                    class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 font-bold">
+                    03</div>
+                <h2 class="text-xl font-bold text-white">Debugging & Outillage</h2>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-6">
+                <!-- Tools -->
+                <div class="flex-1 space-y-4">
+                    <h3 class="text-sm font-bold text-slate-300 uppercase tracking-wider mb-2">La Caisse à Outils</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 bg-white/5 p-2 rounded border border-white/5">
+                            <span class="font-mono text-orange-400 text-xs">solana-test-validator</span>
+                            <span class="text-xs text-slate-400">Votre blockchain locale.</span>
+                        </li>
+                        <li class="flex items-center gap-3 bg-white/5 p-2 rounded border border-white/5">
+                            <span class="font-mono text-orange-400 text-xs">solana logs</span>
+                            <span class="text-xs text-slate-400">Le stéthoscope. Voir les `msg!`.</span>
+                        </li>
+                        <li class="flex items-center gap-3 bg-white/5 p-2 rounded border border-white/5">
+                            <span class="font-mono text-orange-400 text-xs">Simulate Transaction</span>
+                            <span class="text-xs text-slate-400">Tester sans payer.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Diagnostics Flow -->
+                <div class="flex-1 border-l border-white/10 pl-6 space-y-4">
+                    <h3 class="text-sm font-bold text-slate-300 uppercase tracking-wider mb-2">Diagnostique</h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2 text-xs text-slate-400">
+                            <i data-lucide="x-circle" class="w-4 h-4 text-red-500"></i>
+                            <span><strong>Error 0x0 ?</strong> Souvent un Panic! ou un Unwrap sur None.</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs text-slate-400">
+                            <i data-lucide="alert-triangle" class="w-4 h-4 text-yellow-500"></i>
+                            <span><strong>Account Not Writable ?</strong> Vous avez oublié `is_signer` ou `is_writable`
+                                dans les metas.</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs text-slate-400">
+                            <i data-lucide="search" class="w-4 h-4 text-blue-500"></i>
+                            <span><strong>Seeds Mismatch ?</strong> Le PDA dérivé ne correspond pas à l'adresse
+                                passée.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Livrables -->
     <section class="space-y-6">
-        <div class="flex items-center gap-3">
-            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
-                <i data-lucide="building-2" class="w-5 h-5"></i>
+        <div class="flex items-center gap-3 border-b border-white/10 pb-4">
+            <div class="p-2 rounded-lg bg-green-500/10 text-green-500 border border-green-500/20">
+                <i data-lucide="check-circle-2" class="w-5 h-5"></i>
             </div>
-            <h2 class="text-xl font-bold text-white">Modules fondamentaux</h2>
+            <h2 class="text-xl font-bold text-white">Livrables (Preuves)</h2>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-[13px]">
-            <article class="glass-card p-5 border-l-4 border-emerald-400">
-                <h3 class="text-sm uppercase tracking-[0.3em] text-emerald-300 mb-2">S1-S3 — Rust & Système</h3>
-                <ul class="list-disc list-inside space-y-1 text-slate-300">
-                    <li>Ownership/borrowing, heap/stack, lifetimes.</li>
-                    <li>Exos CLI (« ls », « grep ») et clippy clean.</li>
-                    <li>Perf & observabilité (bpftrace, profiling).</li>
-                </ul>
-            </article>
-            <article class="glass-card p-5 border-l-4 border-amber-400">
-                <h3 class="text-sm uppercase tracking-[0.3em] text-amber-300 mb-2">S4-S6 — Crypto & primitives</h3>
-                <ul class="list-disc list-inside space-y-1 text-slate-300">
-                    <li>Signatures Ed25519, SHA-256, Merkle.</li>
-                    <li>Wallet CLI (seed BIP-39, sign/verify offline).</li>
-                    <li>Mini CTF crypto (replay, mauvaises clés, collisions).</li>
-                </ul>
-            </article>
-            <article class="glass-card p-5 border-l-4 border-sky-400">
-                <h3 class="text-sm uppercase tracking-[0.3em] text-sky-300 mb-2">S7-S9 — Solana natif</h3>
-                <ul class="list-disc list-inside space-y-1 text-slate-300">
-                    <li>process_instruction, Borsh manuel, PDAs & bump.</li>
-                    <li>Bug patterns : CPI reentrancy, confusion de comptes.</li>
-                    <li>Capstone : compteur décentralisé Devnet sans Anchor.</li>
-                </ul>
-            </article>
-            <article class="glass-card p-5 border-l-4 border-purple-400">
-                <h3 class="text-sm uppercase tracking-[0.3em] text-purple-300 mb-2">S10-S12 — Intégration & CI</h3>
-                <ul class="list-disc list-inside space-y-1 text-slate-300">
-                    <li>Web3.js 2.0, Wallet Adapters, gestion des statuts tx.</li>
-                    <li>CI GitHub Actions (build, tests, déploiement Devnet vérifiable).</li>
-                    <li>Full-stack dApp : UX robuste, feedback d’état.</li>
-                </ul>
-            </article>
+
+        <div class="grid md:grid-cols-2 gap-4">
+            <div class="p-4 bg-slate-800/50 rounded-xl border border-slate-700 flex gap-4 items-center">
+                <i data-lucide="code" class="w-8 h-8 text-green-400"></i>
+                <div>
+                    <h4 class="text-sm font-bold text-white">Mini-Projet Rust</h4>
+                    <p class="text-xs text-slate-400">Une instruction parser + état sérialisé (hors Anchor) + Tests
+                        Unitaires.</p>
+                </div>
+            </div>
+            <div class="p-4 bg-slate-800/50 rounded-xl border border-slate-700 flex gap-4 items-center">
+                <i data-lucide="list-checks" class="w-8 h-8 text-green-400"></i>
+                <div>
+                    <h4 class="text-sm font-bold text-white">Review Note</h4>
+                    <p class="text-xs text-slate-400">"Debugging Checklist" : 10 erreurs fréquentes + correctifs.</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="glass-card">
-        <div class="flex items-center gap-3 mb-4">
-            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
-                <i data-lucide="shield-check" class="w-5 h-5"></i>
-            </div>
-            <h2 class="text-xl font-bold text-white">Sécurité & validation</h2>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-[12px] text-slate-300">
-            <div class="bg-slate-900/40 border border-white/5 rounded-2xl p-3">
-                <strong class="block text-xs uppercase tracking-[0.3em] text-slate-400 mb-1">Block Checks</strong>
-                <p>Seuils progressifs : 70% (S3), 75% (S6), 80% (S9), 85% (S12) + challenges bonus.</p>
-            </div>
-            <div class="bg-slate-900/40 border border-white/5 rounded-2xl p-3">
-                <strong class="block text-xs uppercase tracking-[0.3em] text-slate-400 mb-1">Checklist Guardian</strong>
-                <p>Unwrap, signer/owner, rent exempt, compute budget, collisions PDA vérifiés avant merge.</p>
-            </div>
-            <div class="bg-slate-900/40 border border-white/5 rounded-2xl p-3">
-                <strong class="block text-xs uppercase tracking-[0.3em] text-slate-400 mb-1">Badges</strong>
-                <p>rust_fundamentals, cryptography, native_solana, security_mindset (hashés, traçables).</p>
-            </div>
-        </div>
-    </section>
+    <!-- Footer Nav -->
+    <div class="flex justify-between pt-8 border-t border-white/10">
+        <button onclick="loadPage('tech_06_foundations')"
+            class="flex items-center gap-3 px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-lg font-bold transition-colors">
+            <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            <span>Précédent : Foundations</span>
+        </button>
+
+        <button onclick="loadPage('tech_06b_solana_n2')"
+            class="flex items-center gap-3 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-bold transition-colors shadow-[0_0_20px_rgba(147,51,234,0.3)] hover:shadow-[0_0_30px_rgba(147,51,234,0.5)]">
+            <span>Suivant : N2 — Anchor Mastery</span>
+            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+        </button>
+    </div>
 
 </div>
