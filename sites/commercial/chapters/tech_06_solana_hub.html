@@ -96,11 +96,11 @@
                     <div
                         class="w-14 h-14 rounded-full bg-red-900/20 border border-red-500/30 flex items-center justify-center text-red-500 font-bold z-10 relative group-hover:scale-110 transition-transform">
                         N3</div>
-                    <div class="font-bold text-red-400">Anchor → Native</div>
+                    <div class="font-bold text-red-400">Anchor → Native Capstone</div>
                 </div>
                 <div class="flex-1 flex justify-between items-center">
                     <div>
-                        <h3 class="text-sm font-bold text-slate-200 mb-1">Capstone & Validation</h3>
+                        <h3 class="text-sm font-bold text-slate-200 mb-1">Validation & Native</h3>
                         <p class="text-xs text-slate-500">Capstone Anchor complexe, puis reproduction en natif
                             (validation manuelle & invoke_signed).</p>
                     </div>
@@ -110,66 +110,83 @@
             </div>
 
             <!-- Item 5: Security Labs -->
-            <div
-                class="relative flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors">
+            <div class="relative flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors cursor-pointer group"
+                onclick="loadPage('tech_06d_security_labs')">
                 <div class="flex items-center gap-4 md:w-64 shrink-0">
                     <div
                         class="w-14 h-14 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 font-bold z-10 relative">
                         05</div>
                     <div class="font-bold text-white">Security Labs</div>
                 </div>
-                <div class="flex-1">
-                    <h3 class="text-sm font-bold text-slate-300 mb-1">Vulnerability Hunting</h3>
-                    <p class="text-xs text-slate-500">Trouver, expliquer et corriger des vulnérabilités (Anchor +
-                        Native) avec preuves par tests.</p>
+                <div class="flex-1 flex justify-between items-center">
+                    <div>
+                        <h3 class="text-sm font-bold text-slate-300 mb-1">Vulnerability Hunting</h3>
+                        <p class="text-xs text-slate-500">Trouver, expliquer et corriger des vulnérabilités (Anchor +
+                            Native) avec preuves par tests.</p>
+                    </div>
+                    <i data-lucide="chevron-right"
+                        class="w-5 h-5 text-slate-500/50 group-hover:translate-x-1 transition-transform"></i>
                 </div>
             </div>
 
             <!-- Item 6: Tokens -->
-            <div
-                class="relative flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors">
+            <div class="relative flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors cursor-pointer group"
+                onclick="loadPage('tech_06e1_tokens_and_cpi_n1')">
                 <div class="flex items-center gap-4 md:w-64 shrink-0">
                     <div
                         class="w-14 h-14 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 font-bold z-10 relative">
                         06</div>
                     <div class="font-bold text-white">Tokens & CPI</div>
                 </div>
-                <div class="flex-1">
-                    <h3 class="text-sm font-bold text-slate-300 mb-1">Standards Avancés</h3>
-                    <p class="text-xs text-slate-500">SPL Token, Token-2022 Extensions (à bon escient), et CPIs propres.
-                    </p>
+                <div class="flex-1 flex justify-between items-center">
+                    <div>
+                        <h3 class="text-sm font-bold text-slate-300 mb-1">Standards Avancés</h3>
+                        <p class="text-xs text-slate-500">SPL Token, Token-2022 Extensions (à bon escient), et CPIs
+                            propres.</p>
+                    </div>
+                    <i data-lucide="chevron-right"
+                        class="w-5 h-5 text-slate-500/50 group-hover:translate-x-1 transition-transform"></i>
                 </div>
             </div>
 
             <!-- Item 7: AMM -->
-            <div
-                class="relative flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors">
+            <div class="relative flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors cursor-pointer group"
+                onclick="loadPage('tech_06f1_build_an_amm_n1')">
                 <div class="flex items-center gap-4 md:w-64 shrink-0">
                     <div
                         class="w-14 h-14 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 font-bold z-10 relative">
                         07</div>
                     <div class="font-bold text-white">Build an AMM</div>
                 </div>
-                <div class="flex-1">
-                    <h3 class="text-sm font-bold text-slate-300 mb-1">Protocol Engineering</h3>
-                    <p class="text-xs text-slate-500">AMM minimal → features avancées (fees, LP, slippage, compute
-                        budget en option).</p>
+                <div class="flex-1 flex justify-between items-center">
+                    <div>
+                        <h3 class="text-sm font-bold text-slate-300 mb-1">Protocol Engineering</h3>
+                        <p class="text-xs text-slate-500">AMM minimal → features avancées (fees, LP, slippage, compute
+                            budget en option).</p>
+                    </div>
+                    <i data-lucide="chevron-right"
+                        class="w-5 h-5 text-slate-500/50 group-hover:translate-x-1 transition-transform"></i>
                 </div>
             </div>
 
             <!-- Item 8: Validator -->
-            <div
-                class="relative flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors opacity-75">
+            <div class="relative flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors cursor-pointer group"
+                onclick="loadPage('tech_06g_validator_infra_overview')">
                 <div class="flex items-center gap-4 md:w-64 shrink-0">
                     <div
                         class="w-14 h-14 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-500 font-bold z-10 relative">
                         08</div>
                     <div class="font-bold text-slate-400">Validator/Infra</div>
                 </div>
-                <div class="flex-1">
-                    <h3 class="text-sm font-bold text-slate-400 mb-1">Ouverture Infrastructure</h3>
-                    <p class="text-xs text-slate-500">Culture réseau, exécution, RPC, performance et bonnes pratiques.
-                    </p>
+                <div class="flex-1 flex justify-between items-center">
+                    <div>
+                        <h3 class="text-sm font-bold text-slate-400 mb-1">Ouverture Infrastructure</h3>
+                        <p class="text-xs text-slate-500">Culture réseau, exécution, RPC, performance et bonnes
+                            pratiques.
+                        </p>
+                    </div>
+                    <i data-lucide="chevron-right"
+                        class="w-5 h-5 text-slate-500/50 group-hover:translate-x-1 transition-transform"></i>
                 </div>
             </div>
 
@@ -280,7 +297,8 @@
                     TRONC COMMUN (Focus)
                 </h3>
                 <p class="text-xs text-slate-400 mb-4">Ce qui est <strong>actionnable</strong> et
-                    <strong>évaluable</strong>.</p>
+                    <strong>évaluable</strong>.
+                </p>
                 <ul class="space-y-2">
                     <li class="flex gap-2 text-xs text-slate-300">
                         <span class="text-green-500">•</span> Accounts / Transactions (Theory)

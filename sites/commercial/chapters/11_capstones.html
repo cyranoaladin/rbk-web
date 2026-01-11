@@ -243,6 +243,161 @@
     <section>
         <div class="flex items-center gap-3 mb-6">
             <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="calculator" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Grille de Notation Standardisée (/100)</h2>
+        </div>
+
+        <div class="glass-card !p-0 overflow-hidden border-white/10 mb-8">
+            <div class="px-6 py-4 bg-slate-900/50 border-b border-white/5">
+                <p class="text-[11px] text-slate-400">
+                    Barème strict appliqué lors des revues hebdomadaires et des Gates (Passage de niveau).
+                    Source : Annexe B.4 Syllabus Technique.
+                </p>
+            </div>
+            <table class="w-full text-left text-[11px]">
+                <thead class="bg-white/5 text-slate-300 uppercase font-bold">
+                    <tr>
+                        <th class="p-4 w-1/4">Critère</th>
+                        <th class="p-4 w-16 text-center">Score</th>
+                        <th class="p-4">Niveaux de Performance &amp; Attendus</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-slate-300">
+                    <!-- 1. Fonctionnel -->
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 font-bold text-white">1. Fonctionnel (Produit)</td>
+                        <td class="p-4 text-center font-mono text-[#14F195]">25 pts</td>
+                        <td class="p-4">
+                            <ul class="space-y-1 list-disc list-inside text-slate-400">
+                                <li><strong>0–10</strong> : Feature incomplète ou cassée.</li>
+                                <li><strong>11–20</strong> : Conforme mais fragile (pas de cas limites).</li>
+                                <li><strong>21–25</strong> : <span class="text-[#14F195]">Solid</span> (Cas limites
+                                    gérés + Démo fluide).</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <!-- 2. Qualité Code -->
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 font-bold text-white">2. Qualité Code & Tests</td>
+                        <td class="p-4 text-center font-mono text-blue-400">25 pts</td>
+                        <td class="p-4">
+                            <ul class="space-y-1 list-disc list-inside text-slate-400">
+                                <li><strong>0–10</strong> : Pas de tests ou code illisible. Pas de CI.</li>
+                                <li><strong>11–20</strong> : Tests présents, CI verte mais couverture faible.</li>
+                                <li><strong>21–25</strong> : <span class="text-blue-400">Robust</span> (TU/TI solides +
+                                    Refactoring propre).</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <!-- 3. Sécurité -->
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 font-bold text-white">3. Sécurité (Threat Model)</td>
+                        <td class="p-4 text-center font-mono text-rose-400">20 pts</td>
+                        <td class="p-4">
+                            <ul class="space-y-1 list-disc list-inside text-slate-400">
+                                <li><strong>0–8</strong> : <span class="text-rose-400">KO</span> (Aucun Threat Model ou
+                                    mitigations absentes).</li>
+                                <li><strong>9–15</strong> : TM présent mais incomplet. Risques résiduels flous.</li>
+                                <li><strong>16–20</strong> : <span class="text-rose-400">Secured</span> (TM complet +
+                                    Preuves mitigations).</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <!-- 4. Ops -->
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 font-bold text-white">4. Ops & Observabilité</td>
+                        <td class="p-4 text-center font-mono text-amber-400">15 pts</td>
+                        <td class="p-4">
+                            <ul class="space-y-1 list-disc list-inside text-slate-400">
+                                <li><strong>0–5</strong> : Logs insuffisants, pas de Runbook.</li>
+                                <li><strong>6–11</strong> : Logs présents, Runbook incomplet.</li>
+                                <li><strong>12–15</strong> : <span class="text-amber-400">Observable</span> (Logs
+                                    structurés + Incident Playbook).</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <!-- 5. Documentation -->
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 font-bold text-white">5. Documentation</td>
+                        <td class="p-4 text-center font-mono text-slate-400">10 pts</td>
+                        <td class="p-4">
+                            <ul class="space-y-1 list-disc list-inside text-slate-400">
+                                <li><strong>0–3</strong> : Instructions floues ou absentes.</li>
+                                <li><strong>8–10</strong> : <span class="text-slate-300">Reproducible</span> (Repro en 1
+                                    commande).</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <!-- 6. Discipline -->
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 font-bold text-white">6. Discipline (Preuves)</td>
+                        <td class="p-4 text-center font-mono text-purple-400">5 pts</td>
+                        <td class="p-4">
+                            <ul class="space-y-1 list-disc list-inside text-slate-400">
+                                <li><strong>0–2</strong> : PROOFS absent ou PR non traçables.</li>
+                                <li><strong>5</strong> : <span class="text-purple-400">Professional</span> (ADR +
+                                    Changelog + Tags).</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <!-- Seuils de Décision -->
+            <div class="p-5 rounded-xl bg-white/5 border border-white/10">
+                <h3 class="text-white font-bold text-sm uppercase mb-3 flex items-center gap-2">
+                    <i data-lucide="traffic-cone" class="w-4 h-4 text-amber-500"></i>
+                    Seuils de Décision (Gates)
+                </h3>
+                <ul class="space-y-3 text-[11px]">
+                    <li
+                        class="flex justify-between items-center p-2 bg-[#14F195]/10 border border-[#14F195]/20 rounded">
+                        <span class="text-[#14F195] font-bold">GO (Validé)</span>
+                        <span class="text-slate-300">Score ≥ 80/100 + Aucun KO</span>
+                    </li>
+                    <li
+                        class="flex justify-between items-center p-2 bg-amber-500/10 border border-amber-500/20 rounded">
+                        <span class="text-amber-400 font-bold">WARN (Conditionnel)</span>
+                        <span class="text-slate-300">70–79 ou 1 Faiblesse</span>
+                    </li>
+                    <li class="flex justify-between items-center p-2 bg-rose-500/10 border border-rose-500/20 rounded">
+                        <span class="text-rose-400 font-bold">NO-GO (Echec)</span>
+                        <span class="text-slate-300">&lt; 70 ou Critère KO</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Critères KO -->
+            <div class="p-5 rounded-xl bg-white/5 border border-white/10">
+                <h3 class="text-white font-bold text-sm uppercase mb-3 flex items-center gap-2">
+                    <i data-lucide="siren" class="w-4 h-4 text-rose-500"></i>
+                    Critères KO (Échec Immédiat)
+                </h3>
+                <p class="text-[10px] text-slate-400 mb-2">Un score insuffisant ici entraîne un NO-GO automatique :</p>
+                <ul class="space-y-2 text-[11px] text-slate-300">
+                    <li class="flex items-center gap-2">
+                        <i data-lucide="shield-alert" class="w-3 h-3 text-rose-400"></i>
+                        <span><strong>Sécurité :</strong> Score &lt; 8/20</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i data-lucide="repeat" class="w-3 h-3 text-rose-400"></i>
+                        <span><strong>Reproductibilité :</strong> Score &lt; 4/10</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i data-lucide="bug" class="w-3 h-3 text-rose-400"></i>
+                        <span><strong>Tests/CI :</strong> Score &lt; 10/25</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
                 <i data-lucide="package-check" class="w-5 h-5"></i>
             </div>
             <h2 class="text-xl font-bold text-white">Délivrables : Le "Package"</h2>

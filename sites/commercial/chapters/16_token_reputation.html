@@ -45,9 +45,9 @@
                     <div class="w-full overflow-x-auto flex justify-center">
                         <pre class="mermaid text-sm leading-relaxed">
 flowchart LR
-  LMS[(LMS: Résultats)] --> RULES[Moteur de Règles]
-  RULES -->|Validation| MULTISIG((Émetteur Multisig))
-  MULTISIG -->|Mint| SBT[SBT On-Chain]
+  LMS[("LMS: Résultats")] --> RULES["Moteur de Règles"]
+  RULES -->|Validation| MULTISIG(("Émetteur Multisig"))
+  MULTISIG -->|Mint| SBT["SBT On-Chain"]
   style LMS fill:#111,stroke:#64748b,stroke-width:2px,color:#fff,font-size:14px
   style RULES fill:#2e1a47,stroke:#9945FF,color:#fff,stroke-width:2px,font-size:14px
   style MULTISIG fill:#063,stroke:#14F195,color:#fff,stroke-width:2px,font-size:14px

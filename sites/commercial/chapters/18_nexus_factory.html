@@ -104,6 +104,84 @@
     <section>
         <div class="flex items-center gap-3 mb-6">
             <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="table-2" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Matrice RACI Macro (Partenariat)</h2>
+        </div>
+
+        <div class="glass-card !p-0 overflow-hidden border-white/10 overflow-x-auto">
+            <table class="w-full text-left text-[11px] min-w-[600px]">
+                <thead class="bg-white/5 text-slate-300 font-bold uppercase">
+                    <tr>
+                        <th class="p-4">Activité Clé</th>
+                        <th class="p-4 w-32 text-center text-indigo-400">RBK (Opérateur)</th>
+                        <th class="p-4 w-32 text-center text-emerald-400">Nexus (Maître d'œuvre)</th>
+                        <th class="p-4 w-32 text-center text-purple-400">MFAI (Fournisseur)</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-slate-300">
+                    <tr class="hover:bg-white/5 transition-colors">
+                        <td class="p-4 font-medium text-white">Marketing & Acquisition</td>
+                        <td class="p-4 text-center font-mono">AR</td>
+                        <td class="p-4 text-center font-mono text-slate-500">C</td>
+                        <td class="p-4 text-center font-mono text-slate-500">I</td>
+                    </tr>
+                    <tr class="hover:bg-white/5 transition-colors">
+                        <td class="p-4 font-medium text-white">Contrats Apprenants & ISA</td>
+                        <td class="p-4 text-center font-mono">AR</td>
+                        <td class="p-4 text-center font-mono text-slate-500">I</td>
+                        <td class="p-4 text-center font-mono text-slate-500">I</td>
+                    </tr>
+                    <tr class="hover:bg-white/5 transition-colors">
+                        <td class="p-4 font-medium text-white">Conception Syllabus & Standards</td>
+                        <td class="p-4 text-center font-mono text-slate-500">C</td>
+                        <td class="p-4 text-center font-mono">AR</td>
+                        <td class="p-4 text-center font-mono text-slate-500">C</td>
+                    </tr>
+                    <tr class="hover:bg-white/5 transition-colors">
+                        <td class="p-4 font-medium text-white">Recrutement & Paiement Mentors</td>
+                        <td class="p-4 text-center font-mono text-slate-500">I</td>
+                        <td class="p-4 text-center font-mono">AR</td>
+                        <td class="p-4 text-center font-mono text-slate-500">I</td>
+                    </tr>
+                    <tr class="hover:bg-white/5 transition-colors">
+                        <td class="p-4 font-medium text-white">Animation Cours & Block Checks</td>
+                        <td class="p-4 text-center font-mono text-slate-500">I</td>
+                        <td class="p-4 text-center font-mono">AR</td>
+                        <td class="p-4 text-center font-mono text-slate-500">I</td>
+                    </tr>
+                    <tr class="hover:bg-white/5 transition-colors">
+                        <td class="p-4 font-medium text-white">Qualité Pédagogique & Audits</td>
+                        <td class="p-4 text-center font-mono">A</td>
+                        <td class="p-4 text-center font-mono">R</td>
+                        <td class="p-4 text-center font-mono text-slate-500">I</td>
+                    </tr>
+                    <tr class="hover:bg-white/5 transition-colors">
+                        <td class="p-4 font-medium text-white">Plateforme LMS & Support</td>
+                        <td class="p-4 text-center font-mono text-slate-500">I</td>
+                        <td class="p-4 text-center font-mono">A</td>
+                        <td class="p-4 text-center font-mono">R</td>
+                    </tr>
+                    <tr class="hover:bg-white/5 transition-colors">
+                        <td class="p-4 font-medium text-white">Gestion Données & Conformité DPA</td>
+                        <td class="p-4 text-center font-mono">AR</td>
+                        <td class="p-4 text-center font-mono">R</td>
+                        <td class="p-4 text-center font-mono text-slate-500">C</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="p-3 bg-black/20 text-[10px] text-slate-500 border-t border-white/5 flex gap-4 justify-end">
+                <span><strong>R</strong>: Responsible</span>
+                <span><strong>A</strong>: Accountable</span>
+                <span><strong>C</strong>: Consulted</span>
+                <span><strong>I</strong>: Informed</span>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
                 <i data-lucide="workflow" class="w-5 h-5"></i>
             </div>
             <h2 class="text-xl font-bold text-white">Venture Engine – Flow Opérationnel</h2>
@@ -147,6 +225,67 @@ flowchart TB
             Diagramme aligné sur les processus décrits dans le Livre Blanc v5 — sections Executive Summary, Méthodologie
             Cyborg 2.0 et Addendum juridique.
         </p>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="shield-alert" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Clauses de Sécurité & Addendum Juridique</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Sécurité & Réversibilité -->
+            <div
+                class="p-5 rounded-xl bg-white/5 border border-white/10 hover:border-rose-500/30 transition-colors group">
+                <h3 class="text-rose-400 font-bold text-sm uppercase mb-4 flex items-center gap-2">
+                    <i data-lucide="siren" class="w-4 h-4"></i>
+                    Clauses de Réversibilité (Go/No-Go)
+                </h3>
+                <ul class="space-y-3">
+                    <li class="bg-black/20 p-3 rounded-lg border border-white/5 group-hover:border-rose-500/20">
+                        <span class="block text-[11px] text-rose-300 font-bold mb-1">Incident Critique</span>
+                        <p class="text-[10px] text-slate-400 leading-relaxed">
+                            En cas de manquement conformité ou fuite données : <strong>Suspension immédiate
+                                (45j)</strong> + Transfert des accès clés (LMS, Data).
+                        </p>
+                    </li>
+                    <li class="bg-black/20 p-3 rounded-lg border border-white/5 group-hover:border-rose-500/20">
+                        <span class="block text-[11px] text-amber-300 font-bold mb-1">Qualité & Performance</span>
+                        <p class="text-[10px] text-slate-400 leading-relaxed">
+                            Si NPS < 60 ou Fill Rate < 95% : <strong>Pénalité financière (Malus)</strong> automatique et
+                                Plan de rattrapage obligatoire sous 5 jours.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Propriété Intellectuelle & Finance -->
+            <div
+                class="p-5 rounded-xl bg-white/5 border border-white/10 hover:border-blue-500/30 transition-colors group">
+                <h3 class="text-blue-400 font-bold text-sm uppercase mb-4 flex items-center gap-2">
+                    <i data-lucide="copyright" class="w-4 h-4"></i>
+                    IP & Transparence Financière
+                </h3>
+                <ul class="space-y-3">
+                    <li class="bg-black/20 p-3 rounded-lg border border-white/5 group-hover:border-blue-500/20">
+                        <span class="block text-[11px] text-blue-300 font-bold mb-1">Propriété Pédagogique (IP)</span>
+                        <p class="text-[10px] text-slate-400 leading-relaxed">
+                            Contenus co-propriété RBK–Nexus. Licence perpétuelle pour RBK. Code étudiant sous licence
+                            OSS compatible.
+                        </p>
+                    </li>
+                    <li class="bg-black/20 p-3 rounded-lg border border-white/5 group-hover:border-blue-500/20">
+                        <span class="block text-[11px] text-emerald-300 font-bold mb-1">Clause "Gross-Up" & Audit</span>
+                        <p class="text-[10px] text-slate-400 leading-relaxed">
+                            RBK supporte les taxes à la source (Net garanti). Droit d'audit annuel réciproque sur les
+                            coûts mentors et le CA Booked.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </section>
 
     <section>

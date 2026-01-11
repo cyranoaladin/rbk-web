@@ -4,12 +4,14 @@
     <div class="absolute -top-24 -right-24 w-64 h-64 bg-indigo-500/20 rounded-full blur-[100px]"></div>
     <div class="relative z-10">
       <div class="flex items-center gap-4 mb-4">
-        <span class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-blue-600 font-mono">09</span>
+        <span
+          class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-blue-600 font-mono">09</span>
         <div class="h-12 w-px bg-white/10"></div>
-        <h1 class="text-3xl font-bold text-white tracking-tight">09a. Track B : Ingénieur EVM</h1>
+        <h1 class="text-3xl font-bold text-white tracking-tight">09b. Track B : Ingénieur EVM</h1>
       </div>
       <p class="text-sm text-slate-400 max-w-2xl">
-        Aligné sur le référentiel formation : W01–W16, niveaux N1→N3, avec focus Foundry, sécurité, composabilité et capstone final.
+        Aligné sur le référentiel formation : W13–W28, niveaux N2, avec focus Foundry, sécurité, composabilité et
+        capstone final.
       </p>
     </div>
   </header>
@@ -24,28 +26,22 @@
 
     <div class="glass-card bg-black/40 p-6 overflow-x-auto mb-8">
       <div class="flex items-center gap-3 min-w-[760px] text-center">
-        <div class="w-36 p-3 rounded-lg bg-[#14F195]/15 border border-[#14F195]/30">
-          <span class="text-[#14F195] font-black text-lg block">Hardening</span>
-          <span class="text-[10px] text-slate-400">N1 • W01–W04</span>
-          <p class="text-[9px] text-slate-500 mt-1">Fundamentals, sécurité by design.</p>
+        <div class="w-36 p-3 rounded-lg bg-blue-500/15 border border-blue-500/30">
+          <span class="text-blue-400 font-black text-lg block">Basics</span>
+          <span class="text-[10px] text-slate-400">N2 • W13–W15</span>
+          <p class="text-[9px] text-slate-500 mt-1">Foundry, EVM internals</p>
         </div>
         <i data-lucide="arrow-right" class="text-slate-600"></i>
         <div class="w-40 p-3 rounded-lg bg-indigo-500/15 border border-indigo-500/30">
-          <span class="text-indigo-300 font-black text-lg block">Building</span>
-          <span class="text-[10px] text-slate-400">N2 • W05–W10</span>
-          <p class="text-[9px] text-slate-500 mt-1">Foundry, standards ERC, dApp.</p>
+          <span class="text-indigo-300 font-black text-lg block">Engineering</span>
+          <span class="text-[10px] text-slate-400">N2 • W16–W24</span>
+          <p class="text-[9px] text-slate-500 mt-1">Standards, CI, dApp</p>
         </div>
         <i data-lucide="arrow-right" class="text-slate-600"></i>
         <div class="w-40 p-3 rounded-lg bg-amber-500/15 border border-amber-500/30">
-          <span class="text-amber-400 font-black text-lg block">Security & Audit</span>
-          <span class="text-[10px] text-slate-400">N3 • W11–W14</span>
-          <p class="text-[9px] text-slate-500 mt-1">Audit, fuzzing, observabilité.</p>
-        </div>
-        <i data-lucide="arrow-right" class="text-slate-600"></i>
-        <div class="w-36 p-3 rounded-lg bg-[#9945FF]/15 border border-[#9945FF]/30">
-          <span class="text-[#9945FF] font-black text-lg block">Capstone</span>
-          <span class="text-[10px] text-slate-400">N3 • W15–W16</span>
-          <p class="text-[9px] text-slate-500 mt-1">Produit final & audit v1.0</p>
+          <span class="text-amber-400 font-black text-lg block">Scaling & Audit</span>
+          <span class="text-[10px] text-slate-400">N2 • W25–W28</span>
+          <p class="text-[9px] text-slate-500 mt-1">L2, Security, Audit Report</p>
         </div>
       </div>
     </div>
@@ -54,125 +50,48 @@
       <table class="w-full text-left text-[11px]">
         <thead class="bg-indigo-500/10 text-indigo-300 uppercase font-black">
           <tr>
-            <th class="p-4 w-20">Semaine</th>
-            <th class="p-4 w-20">Niveau</th>
-            <th class="p-4 w-1/3">Focus</th>
-            <th class="p-4 w-1/3">Livrable</th>
-            <th class="p-4">Validation</th>
+            <th class="p-4 w-1/4">Module</th>
+            <th class="p-4 w-16">Sem</th>
+            <th class="p-4 w-1/3">Objectif</th>
+            <th class="p-4">Livrable</th>
           </tr>
         </thead>
-        <tbody class="divide-y divide-white/5 text-slate-300">
-          <tr>
-            <td class="p-4 font-bold text-[#14F195]">W01</td>
-            <td class="p-4 font-semibold">N1</td>
-            <td class="p-4">OS, CLI, Git, bases Solidity</td>
-            <td class="p-4">CLI + mini vault</td>
-            <td class="p-4">Tests verts</td>
+        <tbody class="divide-y divide-indigo-500/10 text-slate-300">
+          <tr class="hover:bg-indigo-500/5">
+            <td class="p-4 font-bold text-white">1. Basics</td>
+            <td class="p-4 text-center">13-15</td>
+            <td class="p-4">EVM internals, slots, calldata</td>
+            <td class="p-4">Vault natif</td>
           </tr>
-          <tr>
-            <td class="p-4 font-bold text-[#14F195]">W02</td>
-            <td class="p-4 font-semibold">N1</td>
-            <td class="p-4">Storage, calldata, gas basics</td>
-            <td class="p-4">Vault sécurisé</td>
-            <td class="p-4">Checklist sécurité</td>
-          </tr>
-          <tr>
-            <td class="p-4 font-bold text-[#14F195]">W03</td>
-            <td class="p-4 font-semibold">N1</td>
-            <td class="p-4">Tests, fuzzing Foundry</td>
-            <td class="p-4">Suite de tests</td>
-            <td class="p-4">Coverage satisfaisant</td>
-          </tr>
-          <tr>
-            <td class="p-4 font-bold text-[#14F195]">W04</td>
-            <td class="p-4 font-semibold">N1</td>
-            <td class="p-4">Security mindset (reentrancy, auth)</td>
-            <td class="p-4">Audit mini</td>
-            <td class="p-4">Findings documentées</td>
-          </tr>
-          <tr>
-            <td class="p-4 font-bold text-indigo-300">W05</td>
-            <td class="p-4 font-semibold">N2</td>
-            <td class="p-4">Standards ERC20/721/1155</td>
-            <td class="p-4">Token system</td>
-            <td class="p-4">Tests + docs</td>
-          </tr>
-          <tr>
-            <td class="p-4 font-bold text-indigo-300">W06</td>
-            <td class="p-4 font-semibold">N2</td>
-            <td class="p-4">Foundry toolchain, CI</td>
+          <tr class="hover:bg-indigo-500/5">
+            <td class="p-4 font-bold text-white">2. Pro Env</td>
+            <td class="p-4 text-center">16-18</td>
+            <td class="p-4">Foundry mastery + CI</td>
             <td class="p-4">Pipeline CI</td>
-            <td class="p-4">CI verte</td>
           </tr>
-          <tr>
-            <td class="p-4 font-bold text-indigo-300">W07</td>
-            <td class="p-4 font-semibold">N2</td>
-            <td class="p-4">dApp intégration (Viem/Wagmi)</td>
-            <td class="p-4">Full stack dApp</td>
-            <td class="p-4">Tests E2E</td>
+          <tr class="hover:bg-indigo-500/5">
+            <td class="p-4 font-bold text-white">3. Standards</td>
+            <td class="p-4 text-center">19-21</td>
+            <td class="p-4">ERC20/721</td>
+            <td class="p-4">Token system</td>
           </tr>
-          <tr>
-            <td class="p-4 font-bold text-indigo-300">W08</td>
-            <td class="p-4 font-semibold">N2</td>
-            <td class="p-4">Security patterns (checks-effects-interactions)</td>
-            <td class="p-4">Secure vault v2</td>
-            <td class="p-4">Slither clean</td>
+          <tr class="hover:bg-indigo-500/5">
+            <td class="p-4 font-bold text-white">4. dApp</td>
+            <td class="p-4 text-center">22-24</td>
+            <td class="p-4">Intégration Web3</td>
+            <td class="p-4">Full-stack dApp</td>
           </tr>
-          <tr>
-            <td class="p-4 font-bold text-indigo-300">W09</td>
-            <td class="p-4 font-semibold">N2</td>
-            <td class="p-4">Gas optimisation</td>
-            <td class="p-4">Report gas</td>
-            <td class="p-4">Budget respecté</td>
+          <tr class="hover:bg-indigo-500/5">
+            <td class="p-4 font-bold text-white">5. Scaling</td>
+            <td class="p-4 text-center">25-26</td>
+            <td class="p-4">L2 & upgrades</td>
+            <td class="p-4">UUPS proxy</td>
           </tr>
-          <tr>
-            <td class="p-4 font-bold text-indigo-300">W10</td>
-            <td class="p-4 font-semibold">N2</td>
-            <td class="p-4">Upgrades, proxies (UUPS)</td>
-            <td class="p-4">Upgrade demo</td>
-            <td class="p-4">Tests migrations</td>
-          </tr>
-          <tr>
-            <td class="p-4 font-bold text-amber-400">W11</td>
-            <td class="p-4 font-semibold">N3</td>
-            <td class="p-4">Audit offensif, fuzz</td>
-            <td class="p-4">Findings pack</td>
-            <td class="p-4">Revue mentor</td>
-          </tr>
-          <tr>
-            <td class="p-4 font-bold text-amber-400">W12</td>
-            <td class="p-4 font-semibold">N3</td>
-            <td class="p-4">Observabilité</td>
-            <td class="p-4">Dashboard + alertes</td>
-            <td class="p-4">Alertes en place</td>
-          </tr>
-          <tr>
-            <td class="p-4 font-bold text-amber-400">W13</td>
-            <td class="p-4 font-semibold">N3</td>
-            <td class="p-4">Advanced security (RBAC, pausing)</td>
-            <td class="p-4">Security checklist</td>
-            <td class="p-4">Validation QA</td>
-          </tr>
-          <tr>
-            <td class="p-4 font-bold text-amber-400">W14</td>
-            <td class="p-4 font-semibold">N3</td>
-            <td class="p-4">Audit complet & PRR</td>
-            <td class="p-4">Audit v0.9</td>
-            <td class="p-4">QA interne</td>
-          </tr>
-          <tr>
-            <td class="p-4 font-bold text-[#9945FF]">W15</td>
-            <td class="p-4 font-semibold">N3</td>
-            <td class="p-4">Capstone build & hardening</td>
-            <td class="p-4">Release candidate</td>
-            <td class="p-4">Tests + perf + sécurité</td>
-          </tr>
-          <tr>
-            <td class="p-4 font-bold text-[#9945FF]">W16</td>
-            <td class="p-4 font-semibold">N3</td>
-            <td class="p-4">Soutenance & handover</td>
-            <td class="p-4">Démo + runbook + audit v1.0</td>
-            <td class="p-4">Jury final</td>
+          <tr class="hover:bg-indigo-500/5">
+            <td class="p-4 font-bold text-white">6. Hardening</td>
+            <td class="p-4 text-center">27-28</td>
+            <td class="p-4">Sécurité</td>
+            <td class="p-4">Audit report</td>
           </tr>
         </tbody>
       </table>
