@@ -1,0 +1,26 @@
+{
+    "cleanUrls": true,
+    "trailingSlash": true,
+    "rewrites": [
+        {
+            "source": "/tech",
+            "destination": "/sites/tech/formation_web3_tunisie.html"
+        },
+        {
+            "source": "/tech/",
+            "destination": "/sites/tech/formation_web3_tunisie.html"
+        },
+        {
+            "source": "/tech/:path*",
+            "destination": "/sites/tech/:path*"
+        },
+        {
+            "source": "/",
+            "destination": "/sites/commercial/index.html"
+        },
+        {
+            "source": "/:path*",
+            "destination": "/sites/commercial/:path*"
+        }
+    ]
+}
