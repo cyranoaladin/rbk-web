@@ -1,0 +1,155 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <section class="max-w-5xl mx-auto space-y-6">
+        <div class="flex items-start justify-between gap-6 flex-col md:flex-row">
+            <div class="space-y-3">
+                <div
+                    class="inline-flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold text-slate-500">
+                    <span class="px-2 py-1 rounded-full bg-white/5 border border-white/10">Build an AMM</span>
+                    <span
+                        class="px-2 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300">N1</span>
+                </div>
+
+                <h1 class="text-4xl font-black text-white tracking-tight">
+                    Pool + LP invariants (vaults, deposits, withdrawals)
+                </h1>
+
+                <p class="text-slate-400">
+                    In N1 you create the pool state, the vaults, and the LP mint. The goal is to enforce
+                    <strong>ownership invariants</strong> and <strong>account identity</strong> so that no user can
+                    spoof the pool.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-10">
+        <div class="flex items-center gap-3">
+            <div class="p-2 rounded-lg bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                <i data-lucide="layers" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white">Pool state (minimum)</h2>
+        </div>
+
+        <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-4">
+            <p class="text-sm text-slate-300">
+                The pool must define immutable identity: which two mints are traded, which vaults hold reserves,
+                and which LP mint represents liquidity shares.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                    <div class="font-bold text-white text-sm mb-2">Mints</div>
+                    <ul class="text-sm text-slate-300 space-y-2">
+                        <li><strong>mint_a</strong> and <strong>mint_b</strong> are fixed after init.</li>
+                        <li>Decimals are known and used consistently in math.</li>
+                    </ul>
+                </div>
+
+                <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                    <div class="font-bold text-white text-sm mb-2">Vaults</div>
+                    <ul class="text-sm text-slate-300 space-y-2">
+                        <li><strong>vault_a</strong> holds mint_a only.</li>
+                        <li><strong>vault_b</strong> holds mint_b only.</li>
+                        <li>Vault owner is the pool PDA (not a user key).</li>
+                    </ul>
+                </div>
+
+                <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                    <div class="font-bold text-white text-sm mb-2">LP Mint</div>
+                    <ul class="text-sm text-slate-300 space-y-2">
+                        <li><strong>lp_mint</strong> is fixed after init.</li>
+                        <li>Mint authority is controlled by the program/PDA.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-10">
+        <div class="flex items-center gap-3">
+            <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
+                <i data-lucide="shield-check" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white">Non-negotiable invariants (N1)</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-3">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Identity invariants</div>
+                <ul class="text-sm text-slate-300 space-y-2">
+                    <li>vault_a.mint == mint_a, vault_b.mint == mint_b.</li>
+                    <li>vault_a.owner and vault_b.owner are the pool PDA.</li>
+                    <li>lp_mint is the unique LP mint for this pool (no replacement).</li>
+                </ul>
+            </div>
+
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-3">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Accounting invariants</div>
+                <ul class="text-sm text-slate-300 space-y-2">
+                    <li>Deposit increases reserves and mints LP according to defined formula.</li>
+                    <li>Withdraw burns LP and decreases reserves consistently.</li>
+                    <li>No negative balances, no silent overflow/underflow.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30">
+            <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-3">LP minting (minimum policy)
+            </div>
+            <ul class="text-sm text-slate-300 space-y-2">
+                <li>First deposit defines initial liquidity; document your policy explicitly.</li>
+                <li>Subsequent deposits mint LP proportional to contribution (consistent rounding policy).</li>
+                <li>Reject deposits that would mint zero LP (unless explicitly supported and tested).</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-10">
+        <div class="flex items-center gap-3">
+            <div class="p-2 rounded-lg bg-amber-500/10 text-amber-300 border border-amber-500/20">
+                <i data-lucide="flask-conical" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white">Tests (minimum)</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-3">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Negative tests</div>
+                <ul class="text-sm text-slate-300 space-y-2">
+                    <li>Vault spoof: user passes a token account they own as vault.</li>
+                    <li>Mint mismatch: vault_a uses mint_b (must be rejected).</li>
+                    <li>LP mint spoof: user passes a different lp_mint (must be rejected).</li>
+                </ul>
+            </div>
+
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-3">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Regression tests</div>
+                <ul class="text-sm text-slate-300 space-y-2">
+                    <li>Init + deposit + withdraw cycles preserve invariants.</li>
+                    <li>Boundary deposits: very small, very large, rounding edges.</li>
+                    <li>Idempotence where expected (init fails on second attempt for same PDA).</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-10">
+        <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-4">
+            <div class="flex items-center gap-3">
+                <i data-lucide="badge-check" class="w-6 h-6 text-emerald-400"></i>
+                <h3 class="text-xl font-bold text-white">Definition of Done (N1)</h3>
+            </div>
+
+            <ul class="text-sm text-slate-300 space-y-2">
+                <li>Pool init produces deterministic PDAs (pool, vaults) and fixed mints.</li>
+                <li>Deposit and withdraw enforce vault ownership and mint identity invariants.</li>
+                <li>At least 3 negative tests + 3 regression tests exist and are stable.</li>
+                <li>QA is green; routing works in English and French.</li>
+            </ul>
+
+        </div>
+    </section>
+
+</div>

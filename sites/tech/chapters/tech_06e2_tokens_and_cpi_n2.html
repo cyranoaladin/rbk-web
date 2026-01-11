@@ -1,0 +1,151 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <section class="max-w-5xl mx-auto space-y-6">
+        <div class="space-y-3">
+            <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Tokens & CPI — N2</div>
+            <h1 class="text-4xl font-black text-white tracking-tight">Token-2022 + CPI safe (hardening)</h1>
+            <p class="text-lg text-slate-400">
+                N2 consolide la sécurité “runtime” : <strong>program-id verification</strong>, <strong>CPI
+                    whitelisting</strong>,
+                gestion stricte de <code>remaining_accounts</code>, et contrôle des <strong>PDA signers</strong>.
+                Le but est d’éliminer les classes d’erreurs “dangereuses par défaut”.
+            </p>
+        </div>
+
+        <div class="p-6 rounded-2xl border border-rose-500/20 bg-rose-500/10">
+            <div class="flex items-start gap-3">
+                <i data-lucide="shield-alert" class="w-5 h-5 text-rose-300 mt-0.5"></i>
+                <p class="text-sm text-slate-200">
+                    <strong>Important :</strong> ce chapitre décrit des <em>patterns défensifs</em>.
+                    Vous devez être capable de prouver par tests que votre code <strong>refuse</strong> un CPI vers un
+                    program id inattendu
+                    et qu’il <strong>contraint</strong> les comptes critiques.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-12">
+        <h2 class="text-2xl font-bold text-white">1) Token-2022 : ce que ça change (niveau design)</h2>
+
+        <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-3">
+            <p class="text-sm text-slate-300">
+                Token-2022 introduit des <strong>extensions</strong> qui enrichissent le comportement des tokens (par
+                exemple :
+                metadata, transfer fees, hooks, restrictions).
+                Cela augmente la surface d’audit : on doit vérifier <em>quel</em> programme token est utilisé et
+                quelles hypothèses restent valides.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-5 rounded-2xl border border-white/10 bg-white/5">
+                    <div class="font-bold text-white mb-1">Risque : hypothèses fausses</div>
+                    <div class="text-sm text-slate-300">
+                        Un code écrit “comme si” SPL Token classique était toujours vrai peut échouer si des extensions
+                        modifient
+                        la sémantique (fees, hooks, restrictions).
+                    </div>
+                </div>
+
+                <div class="p-5 rounded-2xl border border-white/10 bg-white/5">
+                    <div class="font-bold text-white mb-1">Règle : expliciter le choix</div>
+                    <div class="text-sm text-slate-300">
+                        Décider : Token Program classique, Token-2022, ou compat multi-program.
+                        Ensuite : <strong>whitelist</strong> program id et tester les chemins.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-12">
+        <h2 class="text-2xl font-bold text-white">2) CPI safe : patterns défensifs</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-2">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Program ID verification
+                </div>
+                <p class="text-sm text-slate-300">
+                    Ne jamais invoquer un programme “fourni par l’utilisateur” sans contrôle.
+                    En audit, on exige : <strong>program id attendu</strong> (Token/Token-2022/ATA/System).
+                </p>
+                <pre><code>// Exemple (conceptuel) : vérifier un program id attendu
+require_keys_eq!(token_program.key(), spl_token::id(), CustomError::InvalidTokenProgram);</code></pre>
+            </div>
+
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-2">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">remaining_accounts minimal
+                </div>
+                <p class="text-sm text-slate-300">
+                    Les comptes additionnels augmentent la surface d’attaque et d’erreur.
+                    Stratégie : <strong>n’accepter que ce qui est nécessaire</strong> et valider (taille, ordre, owner,
+                    mint).
+                </p>
+                <pre><code>// Principe : valider strictement le set attendu (taille/ordre)
+require!(ctx.remaining_accounts.len() == EXPECTED, CustomError::UnexpectedRemainingAccounts);</code></pre>
+            </div>
+        </div>
+
+        <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-3">
+            <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">PDA signers (CPI)</div>
+            <p class="text-sm text-slate-300">
+                Si votre programme signe via PDA, les seeds + bump doivent être <strong>contraints</strong>.
+                Le “vault PDA” ne doit pas être librement substituable.
+            </p>
+            <pre><code>// Exemple (conceptuel) : signer CPI avec seeds (PDA)
+let seeds: &[&[u8]] = &[b"vault", mint.key().as_ref(), &[vault_bump]];
+// invoke_signed(program_id, accounts, &[seeds]);</code></pre>
+            <div class="text-xs text-slate-400">
+                Remarque : l’implémentation exacte dépend de votre design Anchor/Native. Le point est l’invariant : “ce
+                vault est le nôtre”.
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-12">
+        <h2 class="text-2xl font-bold text-white">3) Mini-Labs (N2) — format “preuve”</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-5 rounded-2xl border border-white/10 bg-white/5 space-y-2">
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] px-2 py-1 rounded-full bg-slate-800 text-slate-400 font-bold">E4</span>
+                    <div class="font-bold text-white">CPI program-id mismatch</div>
+                </div>
+                <div class="text-sm text-slate-300">
+                    <strong>Symptôme :</strong> le programme CPI n’est pas celui attendu.
+                </div>
+                <div class="text-xs text-slate-400">
+                    <strong>Preuve :</strong> test négatif + patch : whitelist program ids + test vert.
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl border border-white/10 bg-white/5 space-y-2">
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] px-2 py-1 rounded-full bg-slate-800 text-slate-400 font-bold">E5</span>
+                    <div class="font-bold text-white">Unchecked remaining accounts</div>
+                </div>
+                <div class="text-sm text-slate-300">
+                    <strong>Symptôme :</strong> des comptes additionnels non validés modifient le comportement.
+                </div>
+                <div class="text-xs text-slate-400">
+                    <strong>Preuve :</strong> test négatif + patch : set strict (taille/ordre/owner) + test vert.
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl border border-white/10 bg-white/5 space-y-2">
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] px-2 py-1 rounded-full bg-slate-800 text-slate-400 font-bold">E6</span>
+                    <div class="font-bold text-white">PDA signer mismatch</div>
+                </div>
+                <div class="text-sm text-slate-300">
+                    <strong>Symptôme :</strong> un compte “vault” non dérivé correctement est accepté.
+                </div>
+                <div class="text-xs text-slate-400">
+                    <strong>Preuve :</strong> test négatif + patch : seeds constraints + test vert.
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</div>

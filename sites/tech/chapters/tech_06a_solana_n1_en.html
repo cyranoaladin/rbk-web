@@ -1,0 +1,165 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <section class="space-y-12">
+        <div class="bg-[#1e1e1e] border border-slate-800 rounded-2xl p-8">
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="flex-1">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span
+                            class="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs font-bold uppercase">Month
+                            1</span>
+                        <h1 class="text-3xl font-bold text-white">RUST & MENTAL MODEL</h1>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed mb-6">
+                        Solana is not EVM. Here, memory management is not abstract.
+                        Before coding smart contracts, you must understand how the machine works.
+                        This module is a "Bootcamp within a Bootcamp" to master the <strong>Borrow Checker</strong> and
+                        the <strong>Account-Centric</strong> architecture.
+                    </p>
+                    <div class="flex gap-4 text-xs font-mono text-slate-500">
+                        <span class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4"></i> 160
+                            Hours</span>
+                        <span class="flex items-center gap-2"><i data-lucide="code" class="w-4 h-4"></i> Pure
+                            Rust</span>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-1/3 bg-black/50 rounded-xl border border-white/10 p-4 font-mono text-[10px]">
+                    <div class="text-center text-slate-500 mb-2 border-b border-white/5 pb-2">MEMORY MODEL</div>
+                    <div class="flex justify-between gap-2 h-32">
+                        <div class="flex-1 flex flex-col gap-1">
+                            <span class="text-center text-orange-400 font-bold">STACK</span>
+                            <div
+                                class="flex-1 bg-orange-500/10 border border-orange-500/30 rounded flex items-center justify-center text-orange-300">
+                                Fixed Size</div>
+                            <div
+                                class="flex-1 bg-orange-500/10 border border-orange-500/30 rounded flex items-center justify-center text-orange-300">
+                                Fast Access</div>
+                            <div
+                                class="flex-1 bg-orange-500/10 border border-orange-500/30 rounded flex items-center justify-center text-orange-300">
+                                LIFO</div>
+                        </div>
+                        <div class="w-px bg-white/10"></div>
+                        <div class="flex-1 flex flex-col gap-1">
+                            <span class="text-center text-blue-400 font-bold">HEAP</span>
+                            <div class="h-full bg-blue-500/10 border border-blue-500/30 rounded p-2 relative">
+                                <span class="text-blue-300 block">Dynamic Size</span>
+                                <span class="text-blue-300/50 block mt-2 text-[8px]">Smart Pointers -></span>
+                                <span class="text-blue-300/50 block mt-1 text-[8px]">Box&lt;T&gt;</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+
+            <div
+                class="group p-6 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-colors">
+                <h3 class="text-xl font-bold text-white mb-1 flex items-center gap-3">
+                    <span class="text-orange-500 font-mono text-sm opacity-50">W01</span>
+                    Thinking in Rust
+                </h3>
+                <p class="text-xs text-slate-500 uppercase tracking-widest mb-4">Algorithms & Types</p>
+                <ul class="space-y-3 mb-6">
+                    <li class="flex gap-3 text-sm text-slate-300">
+                        <i data-lucide="check" class="w-4 h-4 text-orange-500 mt-1 shrink-0"></i>
+                        <span><strong>Immutability by Default:</strong> Why Rust refuses `let x = 5; x = 6;`.</span>
+                    </li>
+                    <li class="flex gap-3 text-sm text-slate-300">
+                        <i data-lucide="check" class="w-4 h-4 text-orange-500 mt-1 shrink-0"></i>
+                        <span><strong>Type System:</strong> Structs, Enums, and powerful Pattern Matching
+                            (`match`).</span>
+                    </li>
+                    <li class="flex gap-3 text-sm text-slate-300">
+                        <i data-lucide="check" class="w-4 h-4 text-orange-500 mt-1 shrink-0"></i>
+                        <span><strong>Option & Result:</strong> Error handling without `null` or exceptions.</span>
+                    </li>
+                </ul>
+                <div class="p-3 bg-orange-500/10 border-l-2 border-orange-500 text-xs text-slate-300 italic">
+                    "90% of Solana bugs come from poor understanding of Rust types."
+                </div>
+            </div>
+
+            <div
+                class="group p-6 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-colors">
+                <h3 class="text-xl font-bold text-white mb-1 flex items-center gap-3">
+                    <span class="text-orange-500 font-mono text-sm opacity-50">W02</span>
+                    Conquering Memory
+                </h3>
+                <p class="text-xs text-slate-500 uppercase tracking-widest mb-4">Ownership & Borrowing</p>
+                <ul class="space-y-3 mb-6">
+                    <li class="flex gap-3 text-sm text-slate-300">
+                        <i data-lucide="check" class="w-4 h-4 text-orange-500 mt-1 shrink-0"></i>
+                        <span><strong>The Borrow Checker:</strong> Rules of unique ownership and multiple
+                            borrowing.</span>
+                    </li>
+                    <li class="flex gap-3 text-sm text-slate-300">
+                        <i data-lucide="check" class="w-4 h-4 text-orange-500 mt-1 shrink-0"></i>
+                        <span><strong>Lifetimes:</strong> `'a` annotations to guarantee reference validity.</span>
+                    </li>
+                    <li class="flex gap-3 text-sm text-slate-300">
+                        <i data-lucide="check" class="w-4 h-4 text-orange-500 mt-1 shrink-0"></i>
+                        <span><strong>Traits & Generics:</strong> Static polymorphism (Zero-cost abstraction).</span>
+                    </li>
+                </ul>
+                <div class="p-3 bg-orange-500/10 border-l-2 border-orange-500 text-xs text-slate-300 italic">
+                    "If it compiles, it works. The Rust compiler is your first mentor."
+                </div>
+            </div>
+
+            <div
+                class="group p-6 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-colors">
+                <h3 class="text-xl font-bold text-white mb-1 flex items-center gap-3">
+                    <span class="text-blue-500 font-mono text-sm opacity-50">W03</span>
+                    Solana Theory
+                </h3>
+                <p class="text-xs text-slate-500 uppercase tracking-widest mb-4">Architecture & Cryptography</p>
+                <ul class="space-y-3 mb-6">
+                    <li class="flex gap-3 text-sm text-slate-300">
+                        <i data-lucide="check" class="w-4 h-4 text-blue-500 mt-1 shrink-0"></i>
+                        <span><strong>Account Model:</strong> Everything is an account (Data, Executable,
+                            System).</span>
+                    </li>
+                    <li class="flex gap-3 text-sm text-slate-300">
+                        <i data-lucide="check" class="w-4 h-4 text-blue-500 mt-1 shrink-0"></i>
+                        <span><strong>PDAs (Program Derived Addresses):</strong> Deterministic derivation off the
+                            Ed25519 curve.</span>
+                    </li>
+                    <li class="flex gap-3 text-sm text-slate-300">
+                        <i data-lucide="check" class="w-4 h-4 text-blue-500 mt-1 shrink-0"></i>
+                        <span><strong>Runtime:</strong> Sealevel, Pipelining, and transaction parallelization.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div
+                class="group p-6 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-colors">
+                <h3 class="text-xl font-bold text-white mb-1 flex items-center gap-3">
+                    <span class="text-blue-500 font-mono text-sm opacity-50">W04</span>
+                    Capstone N1
+                </h3>
+                <p class="text-xs text-slate-500 uppercase tracking-widest mb-4">Project: Rust CLI Explorer</p>
+                <div class="space-y-4">
+                    <p class="text-sm text-slate-400">
+                        Development of a Command Line Interface (CLI) tool in Rust to query the blockchain without using
+                        JS libraries.
+                    </p>
+                    <div class="bg-black/50 p-3 rounded border border-white/10 font-mono text-xs text-green-400">
+                        $ cargo run -- --account 8XhHa…\n > Parsing account data…\n
+                        > Owner: Token Program<br>
+                        > Balance: 145.20 SOL
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="px-2 py-1 bg-white/5 rounded text-[10px] text-slate-300">Borsh
+                            Deserialization</span>
+                        <span class="px-2 py-1 bg-white/5 rounded text-[10px] text-slate-300">JSON RPC</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</div>

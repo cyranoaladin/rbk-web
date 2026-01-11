@@ -1,0 +1,350 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+    <section>
+        <div class="flex items-center justify-between mb-8">
+            <div>
+                <h2 class="text-3xl font-bold text-white tracking-tight">Technical Roadmap</h2>
+                <p class="text-slate-400 text-sm mt-1">Engineering Track • 48 Weeks • Audit Grade</p>
+            </div>
+            <div
+                class="px-4 py-2 bg-indigo-500/10 border border-indigo-500/20 rounded-full text-indigo-400 text-xs font-mono uppercase tracking-wider hidden md:block">
+                Version 2.0
+            </div>
+        </div>
+
+        <div class="overflow-x-auto rounded-xl border border-white/10 shadow-2xl bg-slate-900/50 mb-12">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr
+                        class="bg-white/5 border-b border-white/10 text-[10px] uppercase tracking-widest text-slate-400 font-bold">
+                        <th class="p-4 w-20 text-center">WK</th>
+                        <th class="p-4 w-32">Phase</th>
+                        <th class="p-4">Theme & Concepts</th>
+                        <th class="p-4 hidden md:table-cell">Technical Content</th>
+                        <th class="p-4 w-48">Deliverable</th>
+                        <th class="p-4 w-32 text-right">Access</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5">
+
+                    <!-- PHASE 1: GENESIS (W01-W12) -->
+                    <tr class="group hover:bg-white/5 transition-colors">
+                        <td class="p-4 text-center font-mono text-slate-500 text-xs group-hover:text-white">01-04</td>
+                        <td class="p-4">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-bold ring-1 ring-white/10">
+                                <div class="w-1.5 h-1.5 rounded-full bg-slate-400"></div> GENESIS
+                            </span>
+                        </td>
+                        <td class="p-4">
+                            <div class="text-sm font-bold text-white mb-1">Genesis Alpha</div>
+                            <div class="text-xs text-slate-500">Setup, Rust Basics, Mental Model.</div>
+                        </td>
+                        <td class="p-4 hidden md:table-cell">
+                            <ul class="text-xs text-slate-400 space-y-1 list-disc pl-4 marker:text-slate-600">
+                                <li>Environment Setup</li>
+                                <li>Rust Algos & CLI</li>
+                                <li>Solana Account Model</li>
+                            </ul>
+                        </td>
+                        <td class="p-4">
+                            <div class="text-xs text-slate-300 font-mono mb-1">CLI Explorer</div>
+                            <div
+                                class="inline-block px-2 py-0.5 bg-green-500/10 text-green-400 text-[10px] font-bold rounded">
+                                Pass/Fail</div>
+                        </td>
+                        <td class="p-4 text-right">
+                            <button onclick="loadPage('tech_06_foundations')"
+                                class="px-3 py-1.5 bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-400 text-xs font-bold rounded-lg border border-indigo-500/20 transition-all w-full flex justify-center items-center gap-2">
+                                Lecture <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="group hover:bg-white/5 transition-colors">
+                        <td class="p-4 text-center font-mono text-slate-500 text-xs group-hover:text-white">05-08</td>
+                        <td class="p-4">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-bold ring-1 ring-white/10">
+                                <div class="w-1.5 h-1.5 rounded-full bg-slate-400"></div> GENESIS
+                            </span>
+                        </td>
+                        <td class="p-4">
+                            <div class="text-sm font-bold text-white mb-1">Genesis Beta</div>
+                            <div class="text-xs text-slate-500">Advanced Rust, Memory, Tooling.</div>
+                        </td>
+                        <td class="p-4 hidden md:table-cell">
+                            <ul class="text-xs text-slate-400 space-y-1 list-disc pl-4 marker:text-slate-600">
+                                <li>Memory Safety & Lifetimes</li>
+                                <li>RPC Deep Dive</li>
+                                <li>Serialization (Borsh)</li>
+                            </ul>
+                        </td>
+                        <td class="p-4">
+                            <div class="text-xs text-slate-300 font-mono mb-1">Allocator Bench</div>
+                        </td>
+                        <td class="p-4 text-right">
+                            <button onclick="loadPage('tech_06a_solana_n1')"
+                                class="px-3 py-1.5 bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-400 text-xs font-bold rounded-lg border border-indigo-500/20 transition-all w-full flex justify-center items-center gap-2">
+                                N1 Laws <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="group hover:bg-white/5 transition-colors">
+                        <td class="p-4 text-center font-mono text-slate-500 text-xs group-hover:text-white">09-12</td>
+                        <td class="p-4">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-bold ring-1 ring-white/10">
+                                <div class="w-1.5 h-1.5 rounded-full bg-slate-400"></div> GENESIS
+                            </span>
+                        </td>
+                        <td class="p-4">
+                            <div class="text-sm font-bold text-white mb-1">Hardening</div>
+                            <div class="text-xs text-slate-500">N1 Closure & Validation.</div>
+                        </td>
+                        <td class="p-4 hidden md:table-cell">
+                            <ul class="text-xs text-slate-400 space-y-1 list-disc pl-4 marker:text-slate-600">
+                                <li>Concurrency & Async</li>
+                                <li>Observability</li>
+                                <li>Hardening Checkpoint</li>
+                            </ul>
+                        </td>
+                        <td class="p-4">
+                            <div class="text-xs text-slate-300 font-mono mb-1">Rust CLI Explorer</div>
+                            <div
+                                class="inline-block px-2 py-0.5 bg-green-500/10 text-green-400 text-[10px] font-bold rounded">
+                                GATE N2</div>
+                        </td>
+                        <td class="p-4 text-right">
+                            <button onclick="loadPage('tech_06a_solana_n1')"
+                                class="px-3 py-1.5 bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-400 text-xs font-bold rounded-lg border border-indigo-500/20 transition-all w-full flex justify-center items-center gap-2">
+                                Validate <i data-lucide="check-circle" class="w-3 h-3"></i>
+                            </button>
+                        </td>
+                    </tr>
+
+                    <!-- PHASE 2: BUILD (W13-W28) -->
+                    <tr class="group hover:bg-white/5 transition-colors">
+                        <td class="p-4 text-center font-mono text-slate-500 text-xs group-hover:text-white">13-18</td>
+                        <td class="p-4">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-400 text-xs font-bold ring-1 ring-amber-500/20">
+                                <div class="w-1.5 h-1.5 rounded-full bg-amber-500"></div> BUILD
+                            </span>
+                        </td>
+                        <td class="p-4">
+                            <div class="text-sm font-bold text-white mb-1">Anchor Fundamentals</div>
+                            <div class="text-xs text-slate-500">Framework, PDA, IDL.</div>
+                        </td>
+                        <td class="p-4 hidden md:table-cell">
+                            <ul class="text-xs text-slate-400 space-y-1 list-disc pl-4 marker:text-slate-600">
+                                <li>Anchor Framework</li>
+                                <li>PDA Management</li>
+                                <li>Integration Tests (TS)</li>
+                            </ul>
+                        </td>
+                        <td class="p-4">
+                            <div class="text-xs text-slate-300 font-mono mb-1">Voting App</div>
+                        </td>
+                        <td class="p-4 text-right">
+                            <button onclick="loadPage('tech_06b_solana_n2')"
+                                class="px-3 py-1.5 bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-400 text-xs font-bold rounded-lg border border-indigo-500/20 transition-all w-full flex justify-center items-center gap-2">
+                                Anchor <i data-lucide="box" class="w-3 h-3"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="group hover:bg-white/5 transition-colors">
+                        <td class="p-4 text-center font-mono text-slate-500 text-xs group-hover:text-white">19-24</td>
+                        <td class="p-4">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-400 text-xs font-bold ring-1 ring-amber-500/20">
+                                <div class="w-1.5 h-1.5 rounded-full bg-amber-500"></div> BUILD
+                            </span>
+                        </td>
+                        <td class="p-4">
+                            <div class="text-sm font-bold text-white mb-1">DeFi & Tokens</div>
+                            <div class="text-xs text-slate-500">SPL, Token-2022, CPIs.</div>
+                        </td>
+                        <td class="p-4 hidden md:table-cell">
+                            <ul class="text-xs text-slate-400 space-y-1 list-disc pl-4 marker:text-slate-600">
+                                <li>SPL Token Standards</li>
+                                <li>Cross-Program Invocation</li>
+                                <li>Minting Logic</li>
+                            </ul>
+                        </td>
+                        <td class="p-4">
+                            <div class="text-xs text-slate-300 font-mono mb-1">Vault Escrow</div>
+                        </td>
+                        <td class="p-4 text-right">
+                            <button onclick="loadPage('tech_06e1_tokens_and_cpi_n1')"
+                                class="px-3 py-1.5 bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-400 text-xs font-bold rounded-lg border border-indigo-500/20 transition-all w-full flex justify-center items-center gap-2">
+                                Tokens <i data-lucide="coins" class="w-3 h-3"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="group hover:bg-white/5 transition-colors">
+                        <td class="p-4 text-center font-mono text-slate-500 text-xs group-hover:text-white">25-28</td>
+                        <td class="p-4">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-400 text-xs font-bold ring-1 ring-amber-500/20">
+                                <div class="w-1.5 h-1.5 rounded-full bg-amber-500"></div> BUILD
+                            </span>
+                        </td>
+                        <td class="p-4">
+                            <div class="text-sm font-bold text-white mb-1">Protocol Design</div>
+                            <div class="text-xs text-slate-500">AMM Implementation.</div>
+                        </td>
+                        <td class="p-4 hidden md:table-cell">
+                            <ul class="text-xs text-slate-400 space-y-1 list-disc pl-4 marker:text-slate-600">
+                                <li>AMM Math & Logic</li>
+                                <li>Swap Implementation</li>
+                                <li>Liquidity Pools</li>
+                            </ul>
+                        </td>
+                        <td class="p-4">
+                            <div class="text-xs text-slate-300 font-mono mb-1">Swap AMM</div>
+                            <div
+                                class="inline-block px-2 py-0.5 bg-green-500/10 text-green-400 text-[10px] font-bold rounded">
+                                GATE N3</div>
+                        </td>
+                        <td class="p-4 text-right">
+                            <button onclick="loadPage('tech_06f1_build_an_amm_n1')"
+                                class="px-3 py-1.5 bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-400 text-xs font-bold rounded-lg border border-indigo-500/20 transition-all w-full flex justify-center items-center gap-2">
+                                AMM <i data-lucide="layers" class="w-3 h-3"></i>
+                            </button>
+                        </td>
+                    </tr>
+
+                    <!-- PHASE 3: AUDIT (W29-W48) -->
+                    <tr class="group hover:bg-white/5 transition-colors">
+                        <td class="p-4 text-center font-mono text-slate-500 text-xs group-hover:text-white">29-34</td>
+                        <td class="p-4">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-rose-500/10 text-rose-400 text-xs font-bold ring-1 ring-rose-500/20">
+                                <div class="w-1.5 h-1.5 rounded-full bg-rose-500"></div> AUDIT
+                            </span>
+                        </td>
+                        <td class="p-4">
+                            <div class="text-sm font-bold text-white mb-1">Audit Methodology</div>
+                            <div class="text-xs text-slate-500">Vulnerabilities & PoC.</div>
+                        </td>
+                        <td class="p-4 hidden md:table-cell">
+                            <ul class="text-xs text-slate-400 space-y-1 list-disc pl-4 marker:text-slate-600">
+                                <li>Reentrancy & Arithmetic</li>
+                                <li>Access Control</li>
+                                <li>Threat Modeling</li>
+                            </ul>
+                        </td>
+                        <td class="p-4">
+                            <div class="text-xs text-slate-300 font-mono mb-1">Threat Model</div>
+                        </td>
+                        <td class="p-4 text-right">
+                            <button onclick="loadPage('tech_06d_security_labs')"
+                                class="px-3 py-1.5 bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-400 text-xs font-bold rounded-lg border border-indigo-500/20 transition-all w-full flex justify-center items-center gap-2">
+                                Security <i data-lucide="shield-alert" class="w-3 h-3"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="group hover:bg-white/5 transition-colors">
+                        <td class="p-4 text-center font-mono text-slate-500 text-xs group-hover:text-white">35-40</td>
+                        <td class="p-4">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-rose-500/10 text-rose-400 text-xs font-bold ring-1 ring-rose-500/20">
+                                <div class="w-1.5 h-1.5 rounded-full bg-rose-500"></div> AUDIT
+                            </span>
+                        </td>
+                        <td class="p-4">
+                            <div class="text-sm font-bold text-white mb-1">Advanced Security</div>
+                            <div class="text-xs text-slate-500">Fuzzing & Formal Verification.</div>
+                        </td>
+                        <td class="p-4 hidden md:table-cell">
+                            <ul class="text-xs text-slate-400 space-y-1 list-disc pl-4 marker:text-slate-600">
+                                <li>Fuzzing Campaigns</li>
+                                <li>Formal Methods</li>
+                                <li>Audit Report Drafting</li>
+                            </ul>
+                        </td>
+                        <td class="p-4">
+                            <div class="text-xs text-slate-300 font-mono mb-1">Fuzzing Report</div>
+                        </td>
+                        <td class="p-4 text-right">
+                            <button onclick="loadPage('tech_06c_solana_n3')"
+                                class="px-3 py-1.5 bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-400 text-xs font-bold rounded-lg border border-indigo-500/20 transition-all w-full flex justify-center items-center gap-2">
+                                Adv. SEC <i data-lucide="lock" class="w-3 h-3"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="group hover:bg-white/5 transition-colors">
+                        <td class="p-4 text-center font-mono text-slate-500 text-xs group-hover:text-white">41-48</td>
+                        <td class="p-4">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-rose-500/10 text-rose-400 text-xs font-bold ring-1 ring-rose-500/20">
+                                <div class="w-1.5 h-1.5 rounded-full bg-rose-500"></div> AUDIT
+                            </span>
+                        </td>
+                        <td class="p-4">
+                            <div class="text-sm font-bold text-white mb-1">Capstone Final</div>
+                            <div class="text-xs text-slate-500">Mainnet-grade Project.</div>
+                        </td>
+                        <td class="p-4 hidden md:table-cell">
+                            <ul class="text-xs text-slate-400 space-y-1 list-disc pl-4 marker:text-slate-600">
+                                <li>Final Protocol Build</li>
+                                <li>Professional Audit Report</li>
+                                <li>Demo Day</li>
+                            </ul>
+                        </td>
+                        <td class="p-4">
+                            <div class="text-xs text-slate-300 font-mono mb-1">Protocol + Audit</div>
+                            <div
+                                class="inline-block px-2 py-0.5 bg-green-500/10 text-green-400 text-[10px] font-bold rounded">
+                                GRADUATION</div>
+                        </td>
+                        <td class="p-4 text-right">
+                            <button onclick="loadPage('tech_capstones')"
+                                class="px-3 py-1.5 bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-400 text-xs font-bold rounded-lg border border-indigo-500/20 transition-all w-full flex justify-center items-center gap-2">
+                                Capstones <i data-lucide="flag" class="w-3 h-3"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Info supplementaire -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-6 rounded-xl border border-white/5 bg-slate-900/30">
+                <h3 class="text-sm font-bold text-white mb-3 flex items-center gap-2">
+                    <i data-lucide="graduation-cap" class="w-4 h-4 text-indigo-400"></i>
+                    Excellence Standards
+                </h3>
+                <ul class="text-xs text-slate-400 space-y-2">
+                    <li class="flex items-start gap-2">
+                        <i data-lucide="check" class="w-3 h-3 mt-0.5 text-green-500"></i>
+                        <span><strong>CI/CD Validation</strong>: 100% of tests must pass before any review.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i data-lucide="check" class="w-3 h-3 mt-0.5 text-green-500"></i>
+                        <span><strong>Rustfmt & Clippy</strong>: Clean code, formatted and zero warnings.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="p-6 rounded-xl border border-white/5 bg-slate-900/30">
+                <h3 class="text-sm font-bold text-white mb-3 flex items-center gap-2">
+                    <i data-lucide="book-open" class="w-4 h-4 text-indigo-400"></i>
+                    Resources & Stack
+                </h3>
+                <p class="text-xs text-slate-500 mb-4">Check out configuration guides and required skills.</p>
+                <div class="flex gap-3">
+                    <button onclick="loadPage('tech_stack')"
+                        class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold rounded-lg border border-white/10 transition-all">
+                        Stack
+                    </button>
+                    <button onclick="loadPage('tech_competencies')"
+                        class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold rounded-lg border border-white/10 transition-all">
+                        Competencies
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>

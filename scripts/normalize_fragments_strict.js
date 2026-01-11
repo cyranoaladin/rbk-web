@@ -12,7 +12,7 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT = path.resolve(__dirname, "..");
-const CHAPTERS_DIR = path.join(ROOT, "chapters");
+const CHAPTERS_DIR = path.join(ROOT, "sites", "tech", "chapters");
 
 const ROOT_WRAPPER_CLASS = 'space-y-14 animate-in fade-in duration-700';
 const EXACT_OPEN = `<div class="${ROOT_WRAPPER_CLASS}">`;

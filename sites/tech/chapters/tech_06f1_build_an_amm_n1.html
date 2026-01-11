@@ -1,0 +1,158 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <section class="max-w-5xl mx-auto space-y-6">
+        <div class="space-y-3">
+            <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Build an AMM — N1</div>
+            <h1 class="text-4xl font-black text-white tracking-tight">Pool state + LP math (invariants)</h1>
+            <p class="text-lg text-slate-400">
+                N1 définit le <strong>state</strong> du pool et les opérations <strong>add/remove liquidity</strong>.
+                Priorité : invariants, arrondis, conversions, et checks de comptes (vaults, LP mint, authority).
+            </p>
+        </div>
+
+        <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30">
+            <div class="flex items-start gap-3">
+                <i data-lucide="lock" class="w-5 h-5 text-emerald-400 mt-0.5"></i>
+                <div class="text-sm text-slate-300">
+                    <strong>Non-négociables (AMM N1) :</strong>
+                    <ul class="mt-2 space-y-2">
+                        <li>Vault A/B : <strong>mint</strong> et <strong>owner</strong> vérifiés (pas de substitution).
+                        </li>
+                        <li>Calculs : <strong>u128</strong> + <strong>checked_*</strong> + tests limites.</li>
+                        <li>Arrondis : règle documentée et stable (ex. “round down” côté pool).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-12">
+        <h2 class="text-2xl font-bold text-white">1) State du pool (concept)</h2>
+
+        <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-3">
+            <p class="text-sm text-slate-300">
+                Un pool minimal doit au moins fixer : mints A/B, vaults A/B, LP mint, PDA authority, et paramètres de
+                fees.
+                L’invariant clé : “les vaults et la LP mint appartiennent à <em>ce</em> pool”.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-5 rounded-2xl border border-white/10 bg-white/5">
+                    <div class="font-bold text-white mb-1">Comptes critiques</div>
+                    <ul class="text-sm text-slate-300 space-y-2">
+                        <li>Vault A (mint A)</li>
+                        <li>Vault B (mint B)</li>
+                        <li>LP Mint</li>
+                        <li>PDA Authority (seeds + bump)</li>
+                    </ul>
+                </div>
+
+                <div class="p-5 rounded-2xl border border-white/10 bg-white/5">
+                    <div class="font-bold text-white mb-1">Checks attendus</div>
+                    <ul class="text-sm text-slate-300 space-y-2">
+                        <li>Vault mint = mint attendu</li>
+                        <li>Vault owner = PDA authority</li>
+                        <li>LP mint authority = PDA authority</li>
+                        <li>Program id Token vérifié (SPL / Token-2022 selon design)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-12">
+        <h2 class="text-2xl font-bold text-white">2) Add liquidity : shares et arrondis</h2>
+
+        <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-4">
+            <p class="text-sm text-slate-300">
+                Deux cas : <strong>init</strong> (pool vide) et <strong>pool existant</strong>.
+                En audit, ce qui importe : une règle stable d’arrondi et des bornes explicites (min contribution, min LP
+                out).
+            </p>
+
+            <pre><code>// Exemple conceptuel : utiliser u128 pour réduire le risque d'overflow
+let x: u128 = vault_a_amount as u128;
+let y: u128 = vault_b_amount as u128;
+// shares ~ f(x, y, lp_supply) (selon design)
+// Toujours : checked_*, conversions explicites, tests limites.</code></pre>
+
+            <div class="p-4 rounded-xl border border-amber-500/20 bg-amber-500/10">
+                <div class="flex items-start gap-3">
+                    <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-300 mt-0.5"></i>
+                    <p class="text-sm text-slate-200">
+                        <strong>Important :</strong> documenter la règle d’arrondi (“round down” ou “round up”) et
+                        l’appliquer
+                        de manière cohérente dans add/remove. Les tests doivent couvrir les cas limites (petites
+                        valeurs, 1 unité, etc.).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-12">
+        <h2 class="text-2xl font-bold text-white">3) Remove liquidity : proportionalité</h2>
+
+        <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-3">
+            <p class="text-sm text-slate-300">
+                Le retrait doit être proportionnel aux LP burnt, avec un <strong>min_out</strong> (ou min A/B) si vous
+                exposez l’UX.
+                Les invariants à tester : pas de retrait “au-delà”, pas de drift d’arrondi catastrophique.
+            </p>
+
+            <ul class="space-y-2 text-sm text-slate-300">
+                <li>Vérifier que la LP burn provient de l’owner attendu (ou de l’authority attendue).</li>
+                <li>Calculer les sorties en u128, appliquer arrondi, puis transférer via CPI Token.</li>
+                <li>Tester : retrait total, retrait minuscule, retrait avec vaults très déséquilibrés.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-12">
+        <h2 class="text-2xl font-bold text-white">4) Mini-Labs (N1) — format “preuve”</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-5 rounded-2xl border border-white/10 bg-white/5 space-y-2">
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] px-2 py-1 rounded-full bg-slate-800 text-slate-400 font-bold">F1</span>
+                    <div class="font-bold text-white">Overflow / cast unsafe</div>
+                </div>
+                <div class="text-xs text-slate-400">Patch : u128 + checked_* + tests limites (max, near-max).</div>
+            </div>
+
+            <div class="p-5 rounded-2xl border border-white/10 bg-white/5 space-y-2">
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] px-2 py-1 rounded-full bg-slate-800 text-slate-400 font-bold">F2</span>
+                    <div class="font-bold text-white">Rounding edge cases</div>
+                </div>
+                <div class="text-xs text-slate-400">Patch : règle d’arrondi stable + tests (1 unité, petites valeurs).
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl border border-white/10 bg-white/5 space-y-2">
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] px-2 py-1 rounded-full bg-slate-800 text-slate-400 font-bold">F3</span>
+                    <div class="font-bold text-white">Vault mismatch</div>
+                </div>
+                <div class="text-xs text-slate-400">Patch : checks mint/owner/authority stricts + test “rouge” puis
+                    “vert”.</div>
+            </div>
+        </div>
+
+        <div class="mt-6 flex flex-col md:flex-row gap-3">
+            <button
+                class="group flex-1 text-left px-6 py-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                data-page="tech_06f_build_an_amm">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Retour</div>
+                        <div class="text-white font-bold">Hub — Build an AMM</div>
+                    </div>
+                    <i data-lucide="arrow-left" class="w-5 h-5 text-slate-500 group-hover:text-indigo-300"></i>
+                </div>
+            </button>
+
+        </div>
+    </section>
+
+</div>

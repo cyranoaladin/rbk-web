@@ -1,0 +1,168 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <section class="max-w-5xl mx-auto space-y-6">
+        <div class="flex items-start justify-between gap-6 flex-col md:flex-row">
+            <div class="space-y-3">
+                <div
+                    class="inline-flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold text-slate-500">
+                    <span class="px-2 py-1 rounded-full bg-white/5 border border-white/10">Tokens & CPI</span>
+                    <span
+                        class="px-2 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300">N2</span>
+                </div>
+
+                <h1 class="text-4xl font-black text-white tracking-tight">
+                    Token-2022 + CPI safe (program-id verification, remaining accounts, PDA signers)
+                </h1>
+
+                <p class="text-slate-400">
+                    N2 is where most real exploits happen: program-id confusion, sloppy remaining accounts,
+                    and implicit signing. The goal is to make CPI <strong>fail-loud</strong> and
+                    <strong>unforgeable</strong>.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-10">
+        <div class="flex items-center gap-3">
+            <div class="p-2 rounded-lg bg-rose-500/10 text-rose-300 border border-rose-500/20">
+                <i data-lucide="siren" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white">Threat model (what breaks in prod)</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-3">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">CPI Spoof</div>
+                <p class="text-sm text-slate-300">
+                    Attacker supplies an unexpected “token program” account, so your CPI calls the wrong program.
+                    <strong>Fix</strong>: verify exact program ids (Token, Token-2022, Associated Token).
+                </p>
+            </div>
+
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-3">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Remaining accounts abuse
+                </div>
+                <p class="text-sm text-slate-300">
+                    You pass extra accounts for CPI and later assume their meaning without validating their identity.
+                    <strong>Fix</strong>: minimal set, explicit ordering/length checks when order matters.
+                </p>
+            </div>
+
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-3">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Implicit signing</div>
+                <p class="text-sm text-slate-300">
+                    A PDA is “assumed” to sign but seeds/bump are wrong or inconsistent across calls.
+                    <strong>Fix</strong>: derive seeds centrally; use a single source of truth for signer seeds.
+                </p>
+            </div>
+
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-3">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Token-2022 extension
+                    mismatch</div>
+                <p class="text-sm text-slate-300">
+                    You think you run Token-2022 features (transfer hook, confidential transfer, metadata),
+                    but you are actually invoking Token legacy, or vice-versa. <strong>Fix</strong>: explicit choice and
+                    checks.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-10">
+        <div class="flex items-center gap-3">
+            <div class="p-2 rounded-lg bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                <i data-lucide="lock" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white">CPI safety contract</h2>
+        </div>
+
+        <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-4">
+            <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                <div class="font-bold text-white text-sm mb-2">Rule 1 — Verify program ids</div>
+                <ul class="text-sm text-slate-300 space-y-2">
+                    <li>Token (legacy) program id is explicitly enforced when expected.</li>
+                    <li>Token-2022 program id is explicitly enforced when expected.</li>
+                    <li>Associated Token Account program id is enforced when deriving/creating ATAs.</li>
+                </ul>
+            </div>
+
+            <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                <div class="font-bold text-white text-sm mb-2">Rule 2 — Remaining accounts are not “free”</div>
+                <ul class="text-sm text-slate-300 space-y-2">
+                    <li>Minimal number of remaining accounts. If optional, document and validate conditions.</li>
+                    <li>If ordering matters: validate <strong>length</strong> and <strong>expected pubkeys</strong>.
+                    </li>
+                    <li>Never “cast” meaning from position without explicit checks.</li>
+                </ul>
+            </div>
+
+            <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                <div class="font-bold text-white text-sm mb-2">Rule 3 — PDA signer must be deterministic</div>
+                <ul class="text-sm text-slate-300 space-y-2">
+                    <li>Signer seeds are derived once and reused consistently.</li>
+                    <li>No “bump from user input”. Bump is derived internally from canonical PDA derivation.</li>
+                    <li>All CPI calls that require signing must use the same seed material.</li>
+                </ul>
+            </div>
+
+            <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                <div class="font-bold text-white text-sm mb-2">Rule 4 — Make Token-2022 choice visible</div>
+                <p class="text-sm text-slate-300">
+                    Your docs and code must show whether you use Token legacy or Token-2022.
+                    If you use Token-2022, document which extension(s) and the security impact (validation, hooks, extra
+                    accounts).
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-10">
+        <div class="flex items-center gap-3">
+            <div class="p-2 rounded-lg bg-amber-500/10 text-amber-300 border border-amber-500/20">
+                <i data-lucide="flask-conical" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white">Minimum test suite (N2)</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-3">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Negative tests</div>
+                <ul class="text-sm text-slate-300 space-y-2">
+                    <li>CPI spoof: pass a wrong token program account and expect rejection.</li>
+                    <li>Remaining accounts: pass extra accounts and expect rejection when not needed.</li>
+                    <li>PDA signing: mutate seeds/bump and expect signature failure (explicit error).</li>
+                </ul>
+            </div>
+
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-3">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Regression tests</div>
+                <ul class="text-sm text-slate-300 space-y-2">
+                    <li>Happy CPI path for both Token legacy and Token-2022 (if supported).</li>
+                    <li>Idempotence checks: repeated flows do not degrade authority state.</li>
+                    <li>Explicit min/max boundaries for amounts and decimals conversions.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-10">
+        <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-4">
+            <div class="flex items-center gap-3">
+                <i data-lucide="badge-check" class="w-6 h-6 text-emerald-400"></i>
+                <h3 class="text-xl font-bold text-white">Definition of Done (N2)</h3>
+            </div>
+
+            <ul class="text-sm text-slate-300 space-y-2">
+                <li>All CPI targets are program-id verified (no implicit token program).</li>
+                <li>Remaining accounts are minimized and validated (length/order when needed).</li>
+                <li>Signer seeds are deterministic and centralized; no divergence between instructions.</li>
+                <li>Negative tests exist for CPI spoof, remaining accounts abuse, and signer confusion.</li>
+                <li>QA is green; routing is valid in both languages.</li>
+            </ul>
+
+        </div>
+    </section>
+
+</div>

@@ -1,0 +1,130 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+    <section class="space-y-6">
+        <h1 class="text-3xl font-semibold tracking-tight">Anchor (N2) — IDL : rôle, génération, lecture, usage côté
+            client</h1>
+
+        <p class="text-base leading-7">
+            L’IDL (Interface Description Language) est la “carte d’identité” d’un programme Anchor : elle décrit ses
+            instructions,
+            leurs paramètres, les comptes attendus, les types, les événements et les erreurs. Elle sert d’interface
+            stable entre
+            le programme Rust et les clients (TypeScript, autres SDK).
+        </p>
+
+        <div class="rounded-2xl border p-6 space-y-3">
+            <h2 class="text-xl font-semibold">Objectifs</h2>
+            <ul class="list-disc pl-6 space-y-1">
+                <li>Comprendre ce que l’IDL garantit (et ce qu’elle ne garantit pas).</li>
+                <li>Savoir où elle est générée et comment la maintenir cohérente avec le code.</li>
+                <li>Savoir lire une instruction dans l’IDL (accounts, args, types).</li>
+                <li>Comprendre comment le client TypeScript utilise l’IDL pour construire les transactions.</li>
+            </ul>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">1. Où est l’IDL, quand est-elle générée</h2>
+            <p class="text-base leading-7">
+                En workflow standard, l’IDL est produite lors des étapes de build et est déposée dans un dossier de
+                sortie,
+                souvent <b>target/idl</b>. Le point essentiel : <b>IDL et code doivent rester synchronisés</b>. Toute
+                divergence
+                crée des erreurs côté client (mauvais noms d’instructions, types divergents, comptes manquants).
+            </p>
+
+            <div class="rounded-xl border p-4 space-y-2">
+                <p class="text-sm font-semibold">Principe opérationnel</p>
+                <ul class="list-disc pl-6 space-y-1 text-sm leading-6">
+                    <li>Modifier le programme Rust.</li>
+                    <li>Relancer la génération (build / test).</li>
+                    <li>Consommer l’IDL mise à jour côté client.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">2. Comment lire une instruction dans l’IDL</h2>
+            <p class="text-base leading-7">
+                Une entrée d’instruction ressemble conceptuellement à ceci :
+            </p>
+
+            <div class="rounded-xl border p-4 space-y-2">
+                <pre class="text-sm overflow-x-auto"><code>{
+  "name": "initialize",
+  "accounts": [
+    { "name": "state", "isMut": true, "isSigner": false },
+    { "name": "user", "isMut": true, "isSigner": true },
+    { "name": "systemProgram", "isMut": false, "isSigner": false }
+  ],
+  "args": [
+    { "name": "value", "type": "u64" }
+  ]
+}</code></pre>
+            </div>
+
+            <p class="text-base leading-7">
+                Interprétation :
+            </p>
+            <ul class="list-disc pl-6 space-y-2">
+                <li><b>accounts</b> : l’ordre est significatif côté client (construction de l’appel).</li>
+                <li><b>isMut</b> : le programme annonce qu’il va modifier le compte.</li>
+                <li><b>isSigner</b> : la signature est requise (le wallet doit signer).</li>
+                <li><b>args</b> : paramètres sérialisés et envoyés dans l’instruction.</li>
+            </ul>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">3. Ce que l’IDL garantit, et ses limites</h2>
+            <ul class="list-disc pl-6 space-y-2">
+                <li><b>Garanti</b> : interface décrite (noms, types, comptes, ordre, mutabilité, signer).</li>
+                <li><b>Non garanti</b> : logique métier interne (invariants, règles économiques, accès conditionnels).
+                </li>
+                <li><b>Non garanti</b> : contraintes dynamiques (ex : “ce compte doit avoir telle valeur”).</li>
+            </ul>
+            <p class="text-base leading-7">
+                Un audit solide ne se contente pas de l’IDL : il relie l’IDL au code Rust, vérifie les contraintes, les
+                seeds,
+                les vérifications d’autorisation, et l’ensemble des chemins d’erreur.
+            </p>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">4. Usage côté TypeScript : Program + methods</h2>
+            <p class="text-base leading-7">
+                Le client TypeScript charge l’IDL et construit un objet Program. Ensuite, il appelle les instructions
+                via une API
+                “méthode” typée. Conceptuellement :
+            </p>
+
+            <div class="rounded-xl border p-4 space-y-2">
+                <pre class="text-sm overflow-x-auto"><code>// Conceptuel : dépend du setup Anchor/TS
+const program = new Program(idl, programId, provider);
+
+await program.methods
+  .initialize(new BN(42))
+  .accounts({
+    state,
+    user: provider.wallet.publicKey,
+    systemProgram: SystemProgram.programId,
+  })
+  .rpc();</code></pre>
+            </div>
+
+            <p class="text-base leading-7">
+                Remarque : ce confort dépend de l’IDL. Si l’IDL est obsolète, l’appel échoue ou construit un message
+                incohérent.
+                Dans N3, on verra comment stabiliser les tests TypeScript et diagnostiquer rapidement les erreurs.
+            </p>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">5. Check-list “audit-grade” pour N2</h2>
+            <ul class="list-disc pl-6 space-y-2">
+                <li>IDL régénérée et cohérente avec le code (mêmes noms d’instructions et types).</li>
+                <li>Ordre des comptes compris et respecté côté client.</li>
+                <li>Mutabilité et signature justifiées (le minimum nécessaire).</li>
+                <li>Erreurs et événements explicités (utile pour les tests et l’observabilité).</li>
+            </ul>
+        </div>
+
+    </section>
+</div>

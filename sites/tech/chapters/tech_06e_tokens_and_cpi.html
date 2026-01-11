@@ -1,0 +1,238 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <!-- Header / Hub intro -->
+    <section class="max-w-5xl mx-auto space-y-8">
+        <div class="flex items-start justify-between gap-6 flex-col md:flex-row">
+            <div class="space-y-4">
+                <h1
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
+                    Tokens & CPI
+                </h1>
+                <p class="text-xl text-slate-400">
+                    Dans Solana, la “valeur” est portée par des <strong>mints</strong>, des <strong>token
+                        accounts</strong>,
+                    des <strong>ATA</strong> et des <strong>authorities</strong>.
+                    Dans ce module, vous apprenez à construire des flux <em>audit-grade</em> :
+                    <strong>checks</strong>, <strong>constraints</strong>, <strong>invariants</strong> et <strong>CPI
+                        safe</strong>.
+                </p>
+            </div>
+
+            <div class="w-full md:w-[380px] p-4 rounded-2xl border border-white/10 bg-slate-900/40">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-cyan-300 mb-2">Objectif</div>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li class="flex gap-2 items-start">
+                        <i data-lucide="coins" class="w-4 h-4 text-emerald-400 mt-0.5"></i>
+                        <span>Maîtriser les primitives SPL : <strong>Mint</strong>, <strong>Token Account</strong>,
+                            <strong>ATA</strong>.</span>
+                    </li>
+                    <li class="flex gap-2 items-start">
+                        <i data-lucide="shield-check" class="w-4 h-4 text-cyan-400 mt-0.5"></i>
+                        <span>Éviter les erreurs de sécurité : <strong>mint mismatch</strong>, <strong>authority
+                                confusion</strong>, <strong>CPI spoof</strong>.</span>
+                    </li>
+                    <li class="flex gap-2 items-start">
+                        <i data-lucide="git-branch" class="w-4 h-4 text-indigo-400 mt-0.5"></i>
+                        <span>Produire des preuves : <strong>tests négatifs</strong> + <strong>tests de
+                                régression</strong>.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="p-6 bg-slate-900 border-l-4 border-emerald-400 rounded-r-xl">
+            <h3 class="text-sm font-bold text-emerald-300 uppercase tracking-widest mb-2">Règle d’or (audit-grade)</h3>
+            <ol class="space-y-2 text-slate-300 list-decimal list-inside">
+                <li><strong>Identifier</strong> la donnée de confiance (mint, owner, authority, PDA, token program).
+                </li>
+                <li><strong>Contraindre</strong> tout ce qui peut être falsifié (Anchor constraints > checks ad hoc).
+                </li>
+                <li><strong>Refuser</strong> explicitement les cas ambigus (erreurs custom, logs utiles).</li>
+                <li><strong>Prouver</strong> : un test “rouge” avant patch, puis un test “vert” après patch.</li>
+            </ol>
+        </div>
+
+        <!-- CTA -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <button
+                class="group text-left p-6 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                data-page="tech_06e1_tokens_and_cpi_n1">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-1">N1</div>
+                        <div class="text-lg font-black text-white">Token fundamentals</div>
+                        <div class="text-sm text-slate-400 mt-1">ATA • authorities • constraints</div>
+                    </div>
+                    <i data-lucide="arrow-right"
+                        class="w-6 h-6 text-cyan-300 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </button>
+
+            <button
+                class="group text-left p-6 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                data-page="tech_06e2_tokens_and_cpi_n2">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-1">N2</div>
+                        <div class="text-lg font-black text-white">Token-2022 + CPI safe</div>
+                        <div class="text-sm text-slate-400 mt-1">program-id verification • remaining accounts • PDA
+                            signers</div>
+                    </div>
+                    <i data-lucide="arrow-right"
+                        class="w-6 h-6 text-cyan-300 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </button>
+        </div>
+    </section>
+
+    <!-- Mental model -->
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-12">
+        <div class="flex items-center gap-3">
+            <div class="p-2 rounded-lg bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                <i data-lucide="network" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white">Modèle mental (SPL Token)</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-3">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Objets</div>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li><strong>Mint</strong> : définit le token (decimals, supply, mint authority, freeze authority).
+                    </li>
+                    <li><strong>Token Account</strong> : contient un solde pour un mint donné.</li>
+                    <li><strong>ATA</strong> : token account “standard” dérivé (owner + mint).</li>
+                    <li><strong>Authority</strong> : qui est autorisé à agir (owner, delegate, close authority, etc.).
+                    </li>
+                </ul>
+            </div>
+
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-3">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Risque typique</div>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li><strong>Mint mismatch</strong> : on transfère un token A alors qu’on attendait B.</li>
+                    <li><strong>Authority confusion</strong> : le signer de la TX n’est pas la bonne authority.</li>
+                    <li><strong>ATA forgery</strong> : compte “token” non lié à l’owner/mint attendus.</li>
+                    <li><strong>CPI spoof</strong> : appel vers un programme “token” non attendu.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Checklist -->
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-12">
+        <div class="flex items-center gap-3">
+            <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
+                <i data-lucide="list-checks" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white">Checklist “Token-safe” (non négociable)</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-3">Accounts</div>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li>Le <strong>mint</strong> utilisé est celui attendu (et stable sur tout le flow).</li>
+                    <li>L’<strong>owner</strong> du token account est cohérent (ATA / owner exact).</li>
+                    <li>Les vaults (si PDAs) sont <strong>dérivés</strong> (seeds + bump) et pas “passés librement”.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-3">Authorities & CPI</div>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li><strong>Signer ≠ Authority</strong> : valider explicitement quelle clé décide.</li>
+                    <li>En CPI : vérifier le <strong>program id</strong> (Token / Token-2022 / ATA) attendu.</li>
+                    <li><code>remaining_accounts</code> : réduire au strict minimum, vérifier taille/ordre si
+                        nécessaire.</li>
+                </ul>
+            </div>
+
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-3">Math & UX</div>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li>Gérer <strong>decimals</strong> et conversions (éviter les unités ambiguës).</li>
+                    <li>Protéger l’utilisateur : <strong>min_out</strong>, erreurs explicites.</li>
+                    <li>Tester les limites : 0, 1, max, arrondis, valeurs “frontières”.</li>
+                </ul>
+            </div>
+
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-3">Preuves (tests)</div>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li>Un test négatif “rouge” pour chaque cas critique (mint mismatch, authority, CPI spoof).</li>
+                    <li>Un patch minimal et justifié (pas de “rust magic”).</li>
+                    <li>Un test “vert” de régression (et idéalement CI verte).</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Validation -->
+    <section class="max-w-5xl mx-auto mt-8 p-8 bg-slate-900 rounded-2xl border border-slate-800">
+        <div class="flex items-center gap-3 mb-4">
+            <i data-lucide="badge-check" class="w-6 h-6 text-emerald-400"></i>
+            <h3 class="text-xl font-bold text-white">Validation du Module</h3>
+        </div>
+
+        <p class="text-sm text-slate-400 mb-4">
+            Pour valider ce module, vous devez fournir un mini rapport “audit-grade” contenant :
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                <div class="flex items-center gap-2 mb-2">
+                    <i data-lucide="file-text" class="w-4 h-4 text-cyan-300"></i>
+                    <div class="font-bold text-white text-sm">1 rapport</div>
+                </div>
+                <div class="text-xs text-slate-400">Modèle mental + risques + décisions de design.</div>
+            </div>
+
+            <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                <div class="flex items-center gap-2 mb-2">
+                    <i data-lucide="flask-conical" class="w-4 h-4 text-amber-300"></i>
+                    <div class="font-bold text-white text-sm">≥ 6 tests</div>
+                </div>
+                <div class="text-xs text-slate-400">Tests négatifs + tests de régression (CPI, ATA, authorities).</div>
+            </div>
+
+            <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                <div class="flex items-center gap-2 mb-2">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+                    <div class="font-bold text-white text-sm">QA verte</div>
+                </div>
+                <div class="text-xs text-slate-400">Nav + QA + liens internes conformes.</div>
+            </div>
+        </div>
+
+        <div class="mt-6 flex flex-col md:flex-row gap-3">
+            <button
+                class="group flex-1 text-left px-6 py-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                data-page="tech_06e1_tokens_and_cpi_n1">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Démarrer</div>
+                        <div class="text-white font-bold">N1 — Token fundamentals</div>
+                    </div>
+                    <i data-lucide="arrow-right"
+                        class="w-5 h-5 text-cyan-300 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </button>
+
+            <button
+                class="group flex-1 text-left px-6 py-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                data-page="tech_06e2_tokens_and_cpi_n2">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Continuer</div>
+                        <div class="text-white font-bold">N2 — Token-2022 + CPI safe</div>
+                    </div>
+                    <i data-lucide="arrow-right"
+                        class="w-5 h-5 text-cyan-300 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </button>
+        </div>
+    </section>
+
+</div>

@@ -1,58 +1,77 @@
-# Documentation Navigation Map (R4.3)
+# Navigation Map (AUTO-GENERATED)
 
-Generated: 2026-01-10T19:03:06.765Z
+> DO NOT EDIT MANUALLY. Generated from `script_tech.js`.
 
-## 1. Sidebar Sequence (Prev/Next Chain)
-*Only canonical pages included in navigation flow.*
+- Canonical IDs: **29**
+- Aliases: **32**
 
-- **tech_00_home**: Prev=`(Start)` | Next=`tech_intro`
-- **tech_intro**: Prev=`tech_00_home` | Next=`tech_methodology`
-- **tech_methodology**: Prev=`tech_intro` | Next=`tech_pedagogy_guide`
-- **tech_pedagogy_guide**: Prev=`tech_methodology` | Next=`tech_soft_skills`
-- **tech_soft_skills**: Prev=`tech_pedagogy_guide` | Next=`tech_syllabus`
-- **tech_syllabus**: Prev=`tech_soft_skills` | Next=`tech_stack`
-- **tech_stack**: Prev=`tech_syllabus` | Next=`tech_competencies`
-- **tech_competencies**: Prev=`tech_stack` | Next=`tech_solana_hub`
-- **tech_solana_hub**: Prev=`tech_competencies` | Next=`tech_06_foundations`
-- **tech_06_foundations**: Prev=`tech_solana_hub` | Next=`tech_06a_solana_n1`
-- **tech_06a_solana_n1**: Prev=`tech_06_foundations` | Next=`tech_06b_solana_n2`
-- **tech_06b_solana_n2**: Prev=`tech_06a_solana_n1` | Next=`tech_06c_solana_n3`
-- **tech_06c_solana_n3**: Prev=`tech_06b_solana_n2` | Next=`tech_06d_security_labs`
-- **tech_06d_security_labs**: Prev=`tech_06c_solana_n3` | Next=`tech_06e_tokens_and_cpi`
-- **tech_06e_tokens_and_cpi**: Prev=`tech_06d_security_labs` | Next=`tech_06f_build_an_amm`
-- **tech_06f_build_an_amm**: Prev=`tech_06e_tokens_and_cpi` | Next=`tech_06g_validator_infra_overview`
-- **tech_06g_validator_infra_overview**: Prev=`tech_06f_build_an_amm` | Next=`tech_evm_hub`
-- **tech_evm_hub**: Prev=`tech_06g_validator_infra_overview` | Next=`tech_capstones`
-- **tech_capstones**: Prev=`tech_evm_hub` | Next=`tech_mentor_guide`
-- **tech_mentor_guide**: Prev=`tech_capstones` | Next=`(End)`
+## Canonical IDs (pagesByLang.fr)
 
-Total Navigable Pages: 20
+| ID | Target |
+|---|---|
+| `tech_00_home` | `chapters/tech_00_home.html` |
+| `tech_06_foundations` | `chapters/tech_06_foundations.html` |
+| `tech_06a_solana_n1` | `chapters/tech_06a_solana_n1.html` |
+| `tech_06b_solana_n2` | `chapters/tech_06b_solana_n2.html` |
+| `tech_06c_solana_n3` | `chapters/tech_06c_solana_n3.html` |
+| `tech_06d1_security_labs_n1` | `chapters/tech_06d1_security_labs_n1.html` |
+| `tech_06d2_security_labs_n2` | `chapters/tech_06d2_security_labs_n2.html` |
+| `tech_06d_security_labs` | `chapters/tech_06d_security_labs.html` |
+| `tech_06e1_tokens_and_cpi_n1` | `chapters/tech_06e1_tokens_and_cpi_n1.html` |
+| `tech_06e2_tokens_and_cpi_n2` | `chapters/tech_06e2_tokens_and_cpi_n2.html` |
+| `tech_06e_tokens_and_cpi` | `chapters/tech_06e_tokens_and_cpi.html` |
+| `tech_06f1_build_an_amm_n1` | `chapters/tech_06f1_build_an_amm_n1.html` |
+| `tech_06f2_build_an_amm_n2` | `chapters/tech_06f2_build_an_amm_n2.html` |
+| `tech_06f_build_an_amm` | `chapters/tech_06f_build_an_amm.html` |
+| `tech_06g_validator_infra_overview` | `chapters/tech_06g_validator_infra_overview.html` |
+| `tech_06h_anchor_n1` | `chapters/tech_06h_anchor_n1.html` |
+| `tech_06i_anchor_n2` | `chapters/tech_06i_anchor_n2.html` |
+| `tech_06j_anchor_n3` | `chapters/tech_06j_anchor_n3.html` |
+| `tech_capstones` | `chapters/tech_08_capstones.html` |
+| `tech_competencies` | `chapters/tech_09_competencies.html` |
+| `tech_evm_hub` | `chapters/tech_07_evm_hub.html` |
+| `tech_intro` | `chapters/tech_00_intro.html` |
+| `tech_mentor_guide` | `chapters/tech_10_mentor_guide.html` |
+| `tech_methodology` | `chapters/tech_01_methodology.html` |
+| `tech_pedagogy_guide` | `chapters/tech_04_pedagogy_guide.html` |
+| `tech_soft_skills` | `chapters/tech_05_soft_skills.html` |
+| `tech_solana_hub` | `chapters/tech_06_solana_hub.html` |
+| `tech_stack` | `chapters/tech_03_stack.html` |
+| `tech_syllabus` | `chapters/tech_02_syllabus.html` |
 
-## 2. Legacy IDs Detected (Aliased)
-*These IDs are used in code/content but mapped to canonical pages.*
+## Aliases (LOADPAGE_ALIAS)
 
-| Legacy ID | Mapped To (Canonical) | Status |
-|-----------|------------------------|--------|
-
-**Unused Aliases (Defined but not linked):** 00_executive_summary, 00_executive_summary_en, tech_solana_n1, tech_solana_n2, tech_solana_n3, tech_06_solana_hub, tech_06d_security, tech_06e_tokens, tech_06f_amm, tech_06g_validator, tech_intro_en, tech_06_foundations_en, tech_06a_solana_n1_en, tech_06b_solana_n2_en, tech_06c_solana_n3_en, tech_06d_security_labs_en, tech_06e_tokens_and_cpi_en, tech_06f_build_an_amm_en, tech_06g_validator_infra_overview_en, tech_solana_hub_en, tech_evm_hub_en, tech_capstones_en, tech_competencies_en, tech_mentor_guide_en
-
-## 3. True Orphans
-*Canonical pages not reachable via Sidebar.*
-
-✅ **None.** All canonical pages are in the sidebar.
-
-## 4. Backlink / Integrity Check
-
-✅ **Dangling Links:** 0 (All `loadPage` calls point to valid IDs).
-**Potential Dead Ends (No `loadPage` calls):**
-- `tech_intro`
-- `tech_methodology`
-- `tech_syllabus`
-- `tech_stack`
-- `tech_pedagogy_guide`
-- `tech_soft_skills`
-- `tech_06d_security_labs`
-- `tech_evm_hub`
-- `tech_capstones`
-- `tech_competencies`
-- `tech_mentor_guide`
+| Alias | Canonical |
+|---|---|
+| `00_executive_summary` | `tech_00_home` |
+| `00_executive_summary_en` | `tech_00_home` |
+| `tech_06_foundations_en` | `tech_06_foundations` |
+| `tech_06_solana_hub` | `tech_solana_hub` |
+| `tech_06a_solana_n1_en` | `tech_06a_solana_n1` |
+| `tech_06b_solana_n2_en` | `tech_06b_solana_n2` |
+| `tech_06c_solana_n3_en` | `tech_06c_solana_n3` |
+| `tech_06d_security` | `tech_06d_security_labs` |
+| `tech_06d_security_labs_en` | `tech_06d_security_labs` |
+| `tech_06e1_tokens` | `tech_06e1_tokens_and_cpi_n1` |
+| `tech_06e1_tokens_and_cpi_n1_en` | `tech_06e1_tokens_and_cpi_n1` |
+| `tech_06e2_tokens` | `tech_06e2_tokens_and_cpi_n2` |
+| `tech_06e2_tokens_and_cpi_n2_en` | `tech_06e2_tokens_and_cpi_n2` |
+| `tech_06e_tokens` | `tech_06e_tokens_and_cpi` |
+| `tech_06e_tokens_and_cpi_en` | `tech_06e_tokens_and_cpi` |
+| `tech_06f1_amm` | `tech_06f1_build_an_amm_n1` |
+| `tech_06f1_build_an_amm_n1_en` | `tech_06f1_build_an_amm_n1` |
+| `tech_06f2_amm` | `tech_06f2_build_an_amm_n2` |
+| `tech_06f2_build_an_amm_n2_en` | `tech_06f2_build_an_amm_n2` |
+| `tech_06f_amm` | `tech_06f_build_an_amm` |
+| `tech_06f_build_an_amm_en` | `tech_06f_build_an_amm` |
+| `tech_06g_validator` | `tech_06g_validator_infra_overview` |
+| `tech_06g_validator_infra_overview_en` | `tech_06g_validator_infra_overview` |
+| `tech_capstones_en` | `tech_capstones` |
+| `tech_competencies_en` | `tech_competencies` |
+| `tech_evm_hub_en` | `tech_evm_hub` |
+| `tech_intro_en` | `tech_intro` |
+| `tech_mentor_guide_en` | `tech_mentor_guide` |
+| `tech_solana_hub_en` | `tech_solana_hub` |
+| `tech_solana_n1` | `tech_06a_solana_n1` |
+| `tech_solana_n2` | `tech_06b_solana_n2` |
+| `tech_solana_n3` | `tech_06c_solana_n3` |

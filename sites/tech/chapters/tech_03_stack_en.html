@@ -1,0 +1,172 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-cyan-500/20 rounded-full blur-[100px]"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-4 mb-3">
+                <span class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 font-mono">Stack</span>
+                <div class="h-12 w-px bg-white/10"></div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">Technical Stack & Tooling</h1>
+            </div>
+            <p class="text-sm text-slate-400 max-w-3xl">A “copilot-ready” environment for Web3 development: local workstation, AI helpers, CI/CD pipelines and instrumentation.</p>
+        </div>
+    </header>
+
+    <section>
+        <div class="flex items-center gap-3 mb-4">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="terminal" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Developer Stack</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div class="p-6 rounded-xl bg-white/5 border border-white/10 hover:border-cyan-500/50 transition-colors">
+                <h3 class="text-cyan-400 font-bold text-sm uppercase mb-4 flex items-center gap-2">
+                    <i data-lucide="monitor" class="w-4 h-4"></i> Local Env
+                </h3>
+                <ul class="space-y-3 text-[11px] text-slate-300">
+                    <li class="flex justify-between border-b border-white/5 pb-2">
+                        <span>OS</span>
+                        <strong class="text-white">Linux (Ubuntu) / macOS</strong>
+                    </li>
+                    <li class="flex justify-between border-b border-white/5 pb-2">
+                        <span>Terminal</span>
+                        <strong class="text-white">Alacritty + Tmux + Starship</strong>
+                    </li>
+                    <li class="flex justify-between">
+                        <span>IDE</span>
+                        <strong class="text-white">VSCode (Web3 profile)</strong>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="p-6 rounded-xl bg-white/5 border border-white/10 hover:border-blue-500/50 transition-colors">
+                <h3 class="text-blue-400 font-bold text-sm uppercase mb-4 flex items-center gap-2">
+                    <i data-lucide="link" class="w-4 h-4"></i> Chain Stack
+                </h3>
+                <ul class="space-y-3 text-[11px] text-slate-300">
+                    <li class="flex justify-between border-b border-white/5 pb-2">
+                        <span>Solana</span>
+                        <strong class="text-white">Rust 1.75+, Anchor 0.29+</strong>
+                    </li>
+                    <li class="flex justify-between border-b border-white/5 pb-2">
+                        <span>EVM</span>
+                        <strong class="text-white">Foundry (Forge, Cast, Anvil)</strong>
+                    </li>
+                    <li class="flex justify-between">
+                        <span>Indexing</span>
+                        <strong class="text-white">The Graph / Helius</strong>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-4">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="bot" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">AI Tooling Matrix</h2>
+        </div>
+
+        <div class="glass-card !p-0 overflow-hidden border-white/10 mb-8">
+            <div class="overflow-x-auto">
+                <table class="w-full min-w-[600px] text-left text-[10px]">
+                    <thead class="sticky top-0 z-10 bg-purple-900/40 backdrop-blur text-purple-300 uppercase font-bold">
+                        <tr>
+                            <th class="p-4 w-1/4">Usage</th>
+                            <th class="p-4 w-1/4">Approved tool</th>
+                            <th class="p-4">Usage policy</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-300">
+                        <tr class="odd:bg-white/5 even:bg-black/0 hover:bg-white/10 transition-colors">
+                            <td class="p-4 font-bold text-white">Coding Assistant</td>
+                            <td class="p-4 font-mono text-purple-300">GitHub Copilot</td>
+                            <td class="p-4">
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-emerald-500/40 bg-emerald-500/10 text-emerald-300 font-semibold uppercase tracking-wide">Allowed</span>
+                                    <span class="text-[9px] text-slate-400">for boilerplate and tests generation.</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="odd:bg-white/5 even:bg-black/0 hover:bg-white/10 transition-colors">
+                            <td class="p-4 font-bold text-white">Docs Search</td>
+                            <td class="p-4 font-mono text-purple-300">Perplexity / Phind</td>
+                            <td class="p-4">
+                                <div class="flex items-center gap-2">
+                                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-sky-500/40 bg-sky-500/10 text-sky-300 font-semibold uppercase tracking-wide">Recommended</span>
+                                    <span class="text-[9px] text-slate-400">for contextual research.</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="odd:bg-white/5 even:bg-black/0 hover:bg-white/10 transition-colors">
+                            <td class="p-4 font-bold text-white">Review</td>
+                            <td class="p-4 font-mono text-purple-300">CodeRabbit</td>
+                            <td class="p-4">
+                                <div class="flex items-center gap-2">
+                                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-amber-500/40 bg-amber-500/10 text-amber-300 font-semibold uppercase tracking-wide">Pre-analysis</span>
+                                    <span class="text-[9px] text-slate-400">human review still required.</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="odd:bg-white/5 even:bg-black/0 hover:bg-white/10 transition-colors">
+                            <td class="p-4 font-bold text-white">Diagrams</td>
+                            <td class="p-4 font-mono text-purple-300">Mermaid.js</td>
+                            <td class="p-4">
+                                <div class="flex items-center gap-2">
+                                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-indigo-500/40 bg-indigo-500/10 text-indigo-300 font-semibold uppercase tracking-wide">Mandatory</span>
+                                    <span class="text-[9px] text-slate-400">diagrams as code for docs.</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-4">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="git-merge" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Baseline CI/CD Pipeline</h2>
+        </div>
+
+        <div class="p-6 rounded-xl bg-[#0d1117] border border-white/10 relative overflow-hidden">
+            <div class="flex items-center justify-between gap-4 mb-6 relative z-10">
+                <div class="flex flex-col items-center gap-2">
+                    <div class="p-3 bg-blue-500/20 rounded-full border border-blue-500/40 text-blue-400"><i data-lucide="scissors" class="w-4 h-4"></i></div>
+                    <span class="text-[9px] font-bold text-slate-400 uppercase">Lint</span>
+                    <code class="text-[8px] text-slate-500 bg-white/5 px-1 rounded">cargo clippy</code>
+                </div>
+                <div class="h-0.5 flex-1 bg-slate-700"></div>
+                <div class="flex flex-col items-center gap-2">
+                    <div class="p-3 bg-amber-500/20 rounded-full border border-amber-500/40 text-amber-400"><i data-lucide="align-left" class="w-4 h-4"></i></div>
+                    <span class="text-[9px] font-bold text-slate-400 uppercase">Format</span>
+                    <code class="text-[8px] text-slate-500 bg-white/5 px-1 rounded">cargo fmt</code>
+                </div>
+                <div class="h-0.5 flex-1 bg-slate-700"></div>
+                <div class="flex flex-col items-center gap-2">
+                    <div class="p-3 bg-rose-500/20 rounded-full border border-rose-500/40 text-rose-400"><i data-lucide="shield-alert" class="w-4 h-4"></i></div>
+                    <span class="text-[9px] font-bold text-slate-400 uppercase">Audit</span>
+                    <code class="text-[8px] text-slate-500 bg-white/5 px-1 rounded">cargo audit</code>
+                </div>
+                <div class="h-0.5 flex-1 bg-slate-700"></div>
+                <div class="flex flex-col items-center gap-2">
+                    <div class="p-3 bg-emerald-500/20 rounded-full border border-emerald-500/40 text-emerald-400"><i data-lucide="check-circle" class="w-4 h-4"></i></div>
+                    <span class="text-[9px] font-bold text-slate-400 uppercase">Tests</span>
+                    <code class="text-[8px] text-slate-500 bg-white/5 px-1 rounded">cargo test</code>
+                </div>
+            </div>
+
+            <div class="text-[10px] text-slate-500 text-center border-t border-white/10 pt-4">
+                Every project repo includes this workflow in <code>.github/workflows/ci.yml</code>.
+            </div>
+        </div>
+    </section>
+
+</div>

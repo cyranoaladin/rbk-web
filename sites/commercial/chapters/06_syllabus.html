@@ -1,0 +1,170 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-cyan-500/20 rounded-full blur-[100px]"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-4 mb-4">
+                <span
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 font-mono">06</span>
+                <div class="h-12 w-px bg-white/10"></div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">06. Syllabus Technique (Solana)</h1>
+            </div>
+            <p class="text-sm text-slate-400 max-w-2xl">
+                Parcours intensif de 48 semaines, structuré en 3 Niveaux (Audit-Grade). De la maîtrise du
+                Rust à l'Audit de sécurité.
+            </p>
+        </div>
+    </header>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="map" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Structure du Cursus (3 Niveaux)</h2>
+        </div>
+
+        <div class="glass-card bg-black/40 p-6 overflow-x-auto mb-8">
+            <div class="flex items-center gap-3 min-w-[760px] text-center">
+                <div class="w-36 p-3 rounded-lg bg-[#14F195]/15 border border-[#14F195]/30">
+                    <span class="text-[#14F195] font-black text-lg block">Hardening</span>
+                    <span class="text-[10px] text-slate-400">N1 • W01–W12</span>
+                    <p class="text-[9px] text-slate-500 mt-1">Socle Rust + sécurité</p>
+                </div>
+                <i data-lucide="arrow-right" class="text-slate-600"></i>
+                <div class="w-64 p-3 rounded-lg bg-blue-500/15 border border-blue-500/30">
+                    <span class="text-blue-400 font-black text-lg block">Engineering & DeFi</span>
+                    <span class="text-[10px] text-slate-400">N2 • W13–W28</span>
+                    <p class="text-[9px] text-slate-500 mt-1">Anchor, CPI, AMM, Tokenomics</p>
+                </div>
+                <i data-lucide="arrow-right" class="text-slate-600"></i>
+                <div class="w-36 p-3 rounded-lg bg-[#9945FF]/15 border border-[#9945FF]/30">
+                    <span class="text-[#9945FF] font-black text-lg block">Audit & Capstone</span>
+                    <span class="text-[10px] text-slate-400">N3 • W29–W48</span>
+                    <p class="text-[9px] text-slate-500 mt-1">Offensive Security & Report</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-card p-4">
+            <pre class="mermaid text-[11px]">
+            gantt
+              title Syllabus 48 semaines — N1 (Hardening) → N2 (Eng & DeFi) → N3 (Audit)
+              dateFormat  YYYY-MM-DD
+              axisFormat  %m-%Y
+              section Hardening (N1)
+              W01-W12  :active,  g1, 2026-02-01, 84d
+              section Engineering (N2)
+              W13-W28  :         g2, after g1, 112d
+              section Audit & Capstone (N3)
+              W29-W48  :         g4, after g2, 140d
+            </pre>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="list" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Détail des Sprints</h2>
+        </div>
+
+        <div class="overflow-x-auto rounded-xl border border-white/10 shadow-2xl bg-slate-900/50 mb-12">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr
+                        class="bg-white/5 border-b border-white/10 text-[10px] uppercase tracking-widest text-slate-400 font-bold">
+                        <th class="p-4 w-20 text-center">SEM</th>
+                        <th class="p-4 w-32">Phase</th>
+                        <th class="p-4">Thème</th>
+                        <th class="p-4 w-48">Livrable</th>
+                        <th class="p-4 w-32 text-right">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5">
+                    <!-- SPRINT 0 -->
+                    <tr class="group hover:bg-white/5 transition-colors">
+                        <td class="p-4 text-center font-mono text-slate-500 text-xs">01-12</td>
+                        <td class="p-4">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-bold ring-1 ring-white/10">GENESIS</span>
+                        </td>
+                        <td class="p-4">
+                            <div class="text-sm font-bold text-white mb-1">Foundations & Rust</div>
+                            <div class="text-xs text-slate-500">Memory model, CLI, RPC.</div>
+                        </td>
+                        <td class="p-4">
+                            <div class="text-xs text-slate-300 font-mono">Rust CLI Explorer</div>
+                        </td>
+                        <td class="p-4 text-right">
+                            <button onclick="loadPage('tech_06_foundations')"
+                                class="text-indigo-400 hover:text-white text-xs font-bold transition-colors">Explorer <i
+                                    data-lucide="arrow-right" class="inline w-3 h-3"></i></button>
+                        </td>
+                    </tr>
+                    <!-- PHASE 1 -->
+                    <tr class="group hover:bg-white/5 transition-colors">
+                        <td class="p-4 text-center font-mono text-slate-500 text-xs">13-18</td>
+                        <td class="p-4">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-400 text-xs font-bold ring-1 ring-amber-500/20">BUILD</span>
+                        </td>
+                        <td class="p-4">
+                            <div class="text-sm font-bold text-white mb-1">Anchor & Logic</div>
+                            <div class="text-xs text-slate-500">Smart Contracts, PDAs, IDL.</div>
+                        </td>
+                        <td class="p-4">
+                            <div class="text-xs text-slate-300 font-mono">Voting dApp</div>
+                        </td>
+                        <td class="p-4 text-right">
+                            <button onclick="loadPage('tech_06b_solana_n2')"
+                                class="text-indigo-400 hover:text-white text-xs font-bold transition-colors">Voir Anchor
+                                <i data-lucide="box" class="inline w-3 h-3"></i></button>
+                        </td>
+                    </tr>
+                    <!-- PHASE 2 -->
+                    <tr class="group hover:bg-white/5 transition-colors">
+                        <td class="p-4 text-center font-mono text-slate-500 text-xs">19-28</td>
+                        <td class="p-4">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 text-xs font-bold ring-1 ring-purple-500/20">DEFI</span>
+                        </td>
+                        <td class="p-4">
+                            <div class="text-sm font-bold text-white mb-1">DeFi & Composabilité</div>
+                            <div class="text-xs text-slate-500">Tokens, AMM, CPIs.</div>
+                        </td>
+                        <td class="p-4">
+                            <div class="text-xs text-slate-300 font-mono">AMM Implementation</div>
+                        </td>
+                        <td class="p-4 text-right">
+                            <button onclick="loadPage('tech_06f_build_an_amm')"
+                                class="text-indigo-400 hover:text-white text-xs font-bold transition-colors">Voir DeFi
+                                <i data-lucide="layers" class="inline w-3 h-3"></i></button>
+                        </td>
+                    </tr>
+                    <!-- PHASE 3 -->
+                    <tr class="group hover:bg-white/5 transition-colors">
+                        <td class="p-4 text-center font-mono text-slate-500 text-xs">29-48</td>
+                        <td class="p-4">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-rose-500/10 text-rose-400 text-xs font-bold ring-1 ring-rose-500/20">AUDIT</span>
+                        </td>
+                        <td class="p-4">
+                            <div class="text-sm font-bold text-white mb-1">Audit & Sécurité</div>
+                            <div class="text-xs text-slate-500">Exloits, PoC, Reporting.</div>
+                        </td>
+                        <td class="p-4">
+                            <div class="text-xs text-slate-300 font-mono">Audit Report V1</div>
+                        </td>
+                        <td class="p-4 text-right">
+                            <button onclick="loadPage('tech_06d_security_labs')"
+                                class="text-indigo-400 hover:text-white text-xs font-bold transition-colors">Voir Labs
+                                <i data-lucide="shield-alert" class="inline w-3 h-3"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>

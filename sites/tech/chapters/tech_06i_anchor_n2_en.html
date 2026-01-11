@@ -1,0 +1,121 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+    <section class="space-y-6">
+        <h1 class="text-3xl font-semibold tracking-tight">Anchor (N2) — IDL: role, generation, reading, client usage</h1>
+
+        <p class="text-base leading-7">
+            The IDL (Interface Description Language) is the “identity card” of an Anchor program: it describes
+            instructions, parameters, expected accounts, types, events, and errors. It is the stable interface between
+            the Rust program and clients (TypeScript or other SDKs).
+        </p>
+
+        <div class="rounded-2xl border p-6 space-y-3">
+            <h2 class="text-xl font-semibold">Objectives</h2>
+            <ul class="list-disc pl-6 space-y-1">
+                <li>Understand what the IDL guarantees (and what it does not).</li>
+                <li>Know where it is generated and how to keep it consistent with the code.</li>
+                <li>Read an instruction in the IDL (accounts, args, types).</li>
+                <li>See how a TypeScript client uses the IDL to build transactions.</li>
+            </ul>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">1. Where the IDL lives and when it is generated</h2>
+            <p class="text-base leading-7">
+                In the standard workflow, the IDL is produced during build steps and stored in an output folder, often
+                <b>target/idl</b>. Key point: <b>IDL and code must stay in sync</b>. Any divergence creates client-side
+                failures (wrong instruction names, mismatched types, missing accounts).
+            </p>
+
+            <div class="rounded-xl border p-4 space-y-2">
+                <p class="text-sm font-semibold">Operational principle</p>
+                <ul class="list-disc pl-6 space-y-1 text-sm leading-6">
+                    <li>Modify the Rust program.</li>
+                    <li>Regenerate (build / test).</li>
+                    <li>Consume the updated IDL on the client side.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">2. How to read an instruction in the IDL</h2>
+            <p class="text-base leading-7">
+                An instruction entry conceptually looks like this:
+            </p>
+
+            <div class="rounded-xl border p-4 space-y-2">
+                <pre class="text-sm overflow-x-auto"><code>{
+  "name": "initialize",
+  "accounts": [
+    { "name": "state", "isMut": true, "isSigner": false },
+    { "name": "user", "isMut": true, "isSigner": true },
+    { "name": "systemProgram", "isMut": false, "isSigner": false }
+  ],
+  "args": [
+    { "name": "value", "type": "u64" }
+  ]
+}</code></pre>
+            </div>
+
+            <p class="text-base leading-7">
+                Reading guide:
+            </p>
+            <ul class="list-disc pl-6 space-y-2">
+                <li><b>accounts</b>: order matters on the client side when building the call.</li>
+                <li><b>isMut</b>: the program declares it will mutate the account.</li>
+                <li><b>isSigner</b>: signature required (wallet must sign).</li>
+                <li><b>args</b>: serialized parameters passed to the instruction.</li>
+            </ul>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">3. What the IDL guarantees, and its limits</h2>
+            <ul class="list-disc pl-6 space-y-2">
+                <li><b>Guaranteed</b>: described interface (names, types, accounts, order, mutability, signer).</li>
+                <li><b>Not guaranteed</b>: internal business logic (invariants, economic rules, conditional access).</li>
+                <li><b>Not guaranteed</b>: dynamic constraints (e.g., “this account must have such value”).</li>
+            </ul>
+            <p class="text-base leading-7">
+                A solid audit links the IDL to the Rust code, checks constraints, seeds, authorization rules, and every
+                error path.
+            </p>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">4. TypeScript side: Program + methods</h2>
+            <p class="text-base leading-7">
+                The TypeScript client loads the IDL and builds a Program object, then calls instructions via a typed
+                “methods” API. Conceptually:
+            </p>
+
+            <div class="rounded-xl border p-4 space-y-2">
+                <pre class="text-sm overflow-x-auto"><code>// Conceptual: depends on the Anchor/TS setup
+const program = new Program(idl, programId, provider);
+
+await program.methods
+  .initialize(new BN(42))
+  .accounts({
+    state,
+    user: provider.wallet.publicKey,
+    systemProgram: SystemProgram.programId,
+  })
+  .rpc();</code></pre>
+            </div>
+
+            <p class="text-base leading-7">
+                Reminder: this comfort depends on the IDL. If the IDL is stale, the call fails or builds a wrong
+                message. In N3, we stabilize TypeScript tests and diagnose errors quickly.
+            </p>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">5. Audit-grade checklist for N2</h2>
+            <ul class="list-disc pl-6 space-y-2">
+                <li>IDL regenerated and consistent with code (same instruction names and types).</li>
+                <li>Account order understood and respected client side.</li>
+                <li>Mutability and signer justified (minimum necessary).</li>
+                <li>Errors and events made explicit (useful for tests and observability).</li>
+            </ul>
+        </div>
+
+    </section>
+</div>

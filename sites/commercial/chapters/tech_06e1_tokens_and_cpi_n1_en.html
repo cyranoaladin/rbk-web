@@ -1,0 +1,153 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <section class="max-w-5xl mx-auto space-y-6">
+        <div class="flex items-start justify-between gap-6 flex-col md:flex-row">
+            <div class="space-y-3">
+                <div
+                    class="inline-flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold text-slate-500">
+                    <span class="px-2 py-1 rounded-full bg-white/5 border border-white/10">Tokens & CPI</span>
+                    <span
+                        class="px-2 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300">N1</span>
+                </div>
+
+                <h1 class="text-4xl font-black text-white tracking-tight">
+                    Token fundamentals (ATA, authorities, constraints)
+                </h1>
+
+                <p class="text-slate-400">
+                    This level is about writing “boringly correct” token logic. Your main objective is to
+                    <strong>constrain</strong> accounts, <strong>validate</strong> authorities, and
+                    <strong>prove</strong> with
+                    negative tests.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-10">
+        <div class="flex items-center gap-3">
+            <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
+                <i data-lucide="target" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white">Scope (strict)</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-2">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">You must be able to</div>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li>Derive and validate an <strong>ATA</strong> for a given (owner, mint).</li>
+                    <li>Reject a forged token account (wrong mint, wrong owner, wrong token program).</li>
+                    <li>Write an instruction with <strong>Anchor constraints</strong> that force correctness.</li>
+                    <li>Produce tests that fail before the fix and pass after the fix.</li>
+                </ul>
+            </div>
+
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-2">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Out of scope (N1)</div>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li>Token-2022 extensions (covered in N2).</li>
+                    <li>Complex CPI routing and remaining accounts hardening (covered in N2).</li>
+                    <li>AMM pool math (covered in module 06f).</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-10">
+        <div class="flex items-center gap-3">
+            <div class="p-2 rounded-lg bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                <i data-lucide="shield" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white">Audit-grade invariants</h2>
+        </div>
+
+        <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-4">
+            <p class="text-sm text-slate-300">
+                Think in invariants. A safe token flow is one where the critical equalities remain true
+                regardless of user input.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                    <div class="font-bold text-white text-sm mb-2">Account identity</div>
+                    <ul class="text-sm text-slate-300 space-y-2">
+                        <li><strong>token_account.mint</strong> equals the expected <strong>mint</strong>.</li>
+                        <li><strong>token_account.owner</strong> equals the expected <strong>owner</strong> (or PDA
+                            vault).</li>
+                        <li>The token account is governed by the expected <strong>token program</strong> (Token, not a
+                            fake program).</li>
+                    </ul>
+                </div>
+
+                <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                    <div class="font-bold text-white text-sm mb-2">Authority correctness</div>
+                    <ul class="text-sm text-slate-300 space-y-2">
+                        <li><strong>Signer</strong> is required only when it is the real authority.</li>
+                        <li>No implicit authority: if a delegate is accepted, it is <strong>explicitly</strong>
+                            validated.</li>
+                        <li>Close authority is never assumed; it is validated when used.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                <div class="font-bold text-white text-sm mb-2">Preferred pattern: constraints first</div>
+                <p class="text-sm text-slate-300">
+                    In Anchor, prefer deterministic constraints that fail at account validation time.
+                    Ad-hoc runtime checks are acceptable only when constraints are insufficient.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-10">
+        <div class="flex items-center gap-3">
+            <div class="p-2 rounded-lg bg-amber-500/10 text-amber-300 border border-amber-500/20">
+                <i data-lucide="flask-conical" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white">Test plan (minimum)</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-3">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Negative tests (red first)
+                </div>
+                <ul class="text-sm text-slate-300 space-y-2">
+                    <li>Mint mismatch: pass token account for mint A when mint B is expected.</li>
+                    <li>Owner mismatch: pass token account not owned by the expected owner.</li>
+                    <li>ATA forgery: pass a random token account instead of derived ATA.</li>
+                </ul>
+            </div>
+
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-3">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Regression tests (green)
+                </div>
+                <ul class="text-sm text-slate-300 space-y-2">
+                    <li>Happy path with correct ATA and correct authorities.</li>
+                    <li>Boundary amounts (0 rejected, 1 accepted, max accepted if within constraints).</li>
+                    <li>Idempotence where expected (e.g., derive ATA does not duplicate state).</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-10">
+        <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-4">
+            <div class="flex items-center gap-3">
+                <i data-lucide="badge-check" class="w-6 h-6 text-emerald-400"></i>
+                <h3 class="text-xl font-bold text-white">Definition of Done (N1)</h3>
+            </div>
+
+            <ul class="text-sm text-slate-300 space-y-2">
+                <li>No placeholders, no vague statements, and no “trust me” logic.</li>
+                <li>Constraints are used wherever possible; runtime checks are explicit and justified.</li>
+                <li>At least 3 negative tests and 3 regression tests exist and are stable.</li>
+                <li>QA is green and navigation links resolve in both languages.</li>
+            </ul>
+
+        </div>
+    </section>
+
+</div>

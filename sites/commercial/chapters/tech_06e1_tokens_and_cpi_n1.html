@@ -1,0 +1,184 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <section class="max-w-5xl mx-auto space-y-6">
+        <div class="space-y-3">
+            <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Tokens & CPI — N1</div>
+            <h1 class="text-4xl font-black text-white tracking-tight">Token fundamentals (ATA, authorities, constraints)
+            </h1>
+            <p class="text-lg text-slate-400">
+                N1 pose les bases “non négociables” : distinguer <strong>mint</strong>, <strong>token accounts</strong>,
+                <strong>ATA</strong>, et <strong>authorities</strong>. Objectif : écrire des instructions qui
+                <em>refusent</em> les entrées ambiguës et qui sont testables.
+            </p>
+        </div>
+
+        <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30">
+            <div class="flex items-start gap-3">
+                <i data-lucide="lock" class="w-5 h-5 text-emerald-400 mt-0.5"></i>
+                <div class="text-sm text-slate-300">
+                    <strong>Non-négociables (N1) :</strong>
+                    <ul class="mt-2 space-y-2">
+                        <li>Le <strong>mint attendu</strong> est validé à chaque étape.</li>
+                        <li>Les token accounts sont <strong>liés</strong> (owner + mint cohérents).</li>
+                        <li>L’authority “décideur” est explicite (pas d’implicite via le payer).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-12">
+        <h2 class="text-2xl font-bold text-white">1) Rappels essentiels</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-6 rounded-2xl border border-white/10 bg-white/5">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-2">Mint</div>
+                <p class="text-sm text-slate-300">
+                    Un mint définit le token : <strong>decimals</strong>, <strong>supply</strong> et authorities.
+                    La plupart des erreurs critiques sont des <strong>mismatches</strong> : vous croyez manipuler “le
+                    bon mint”
+                    alors que ce n’est pas le cas.
+                </p>
+            </div>
+
+            <div class="p-6 rounded-2xl border border-white/10 bg-white/5">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-2">Token Account / ATA
+                </div>
+                <p class="text-sm text-slate-300">
+                    Un token account porte un solde pour <em>un mint</em>. L’ATA est le token account standard dérivé de
+                    <strong>(owner, mint)</strong>.
+                    En audit, on exige que les comptes “cibles” soient <strong>exactement</strong> ceux attendus (pas
+                    “un compte qui ressemble”).
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-12">
+        <h2 class="text-2xl font-bold text-white">2) Authority : owner, delegate, close authority</h2>
+
+        <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-3">
+            <p class="text-sm text-slate-300">
+                La confusion la plus fréquente est d’assimiler “celui qui signe” à “celui qui décide”.
+                Or, le signer peut être seulement le <strong>payer</strong>, un relayer, ou un acteur auxiliaire.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                    <div class="font-bold text-white text-sm mb-1">Owner</div>
+                    <div class="text-xs text-slate-400">Propriétaire du token account (contrôle principal).</div>
+                </div>
+                <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                    <div class="font-bold text-white text-sm mb-1">Delegate</div>
+                    <div class="text-xs text-slate-400">Délégation limitée (montant / scope). À traiter explicitement.
+                    </div>
+                </div>
+                <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                    <div class="font-bold text-white text-sm mb-1">Close authority</div>
+                    <div class="text-xs text-slate-400">Qui peut fermer le compte (risque de grief si mal géré).</div>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-xl border border-amber-500/20 bg-amber-500/10">
+                <div class="flex items-start gap-3">
+                    <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-300 mt-0.5"></i>
+                    <p class="text-sm text-slate-200">
+                        <strong>Important :</strong> “Signer ≠ Authority” doit apparaître noir sur blanc dans le design.
+                        Votre code doit exprimer <em>qui</em> est autorisé à agir et <em>sur quoi</em>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-12">
+        <h2 class="text-2xl font-bold text-white">3) Patterns Anchor recommandés (checks lisibles)</h2>
+
+        <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-4">
+            <p class="text-sm text-slate-300">
+                Préférer les <strong>constraints</strong> Anchor aux checks “à la main” quand c’est possible :
+                c’est plus auditable, plus court, et testable.
+            </p>
+
+            <pre><code>// Exemple (pédagogique) : contraindre ATA et mint
+// Objectif : empêcher un token account non lié (owner/mint) d'être accepté.
+#[derive(Accounts)]
+pub struct TransferChecked&lt;'info&gt; {
+  pub authority: Signer&lt;'info&gt;,
+
+  #[account(
+    mut,
+    associated_token::mint = mint,
+    associated_token::authority = authority
+  )]
+  pub from_ata: Account&lt;'info, TokenAccount&gt;,
+
+  #[account(
+    mut,
+    associated_token::mint = mint,
+    associated_token::authority = recipient
+  )]
+  pub to_ata: Account&lt;'info, TokenAccount&gt;,
+
+  pub recipient: SystemAccount&lt;'info&gt;,
+  pub mint: Account&lt;'info, Mint&gt;,
+
+  pub token_program: Program&lt;'info, Token&gt;,
+  pub associated_token_program: Program&lt;'info, AssociatedToken&gt;,
+  pub system_program: Program&lt;'info, System&gt;,
+}</code></pre>
+
+            <div class="text-xs text-slate-400">
+                Note : cet exemple illustre la contrainte. En pratique, ajuster selon votre flow (PDA vaults, delegates,
+                etc.).
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-12">
+        <h2 class="text-2xl font-bold text-white">4) Mini-Labs (N1) — format “preuve”</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-5 rounded-2xl border border-white/10 bg-white/5 space-y-2">
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] px-2 py-1 rounded-full bg-slate-800 text-slate-400 font-bold">E1</span>
+                    <div class="font-bold text-white">Wrong ATA / Wrong owner</div>
+                </div>
+                <div class="text-sm text-slate-300">
+                    <strong>Symptôme :</strong> un compte token “valide” mais pas lié à l’owner attendu est accepté.
+                </div>
+                <div class="text-xs text-slate-400">
+                    <strong>Preuve :</strong> test négatif + patch : ATA constraint / owner check + test vert.
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl border border-white/10 bg-white/5 space-y-2">
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] px-2 py-1 rounded-full bg-slate-800 text-slate-400 font-bold">E2</span>
+                    <div class="font-bold text-white">Missing mint check</div>
+                </div>
+                <div class="text-sm text-slate-300">
+                    <strong>Symptôme :</strong> un flow accepte un token account d’un mint inattendu.
+                </div>
+                <div class="text-xs text-slate-400">
+                    <strong>Preuve :</strong> test négatif + patch : assert mint = expected + test vert.
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl border border-white/10 bg-white/5 space-y-2">
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] px-2 py-1 rounded-full bg-slate-800 text-slate-400 font-bold">E3</span>
+                    <div class="font-bold text-white">Signer vs Authority</div>
+                </div>
+                <div class="text-sm text-slate-300">
+                    <strong>Symptôme :</strong> le payer/signer déclenche une action réservée à une authority.
+                </div>
+                <div class="text-xs text-slate-400">
+                    <strong>Preuve :</strong> test négatif + patch : authority explicite (has_one / signer) + test vert.
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</div>

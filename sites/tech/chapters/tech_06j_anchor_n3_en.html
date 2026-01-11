@@ -1,0 +1,141 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+    <section class="space-y-6">
+        <h1 class="text-3xl font-semibold tracking-tight">Anchor (N3) — TypeScript tests: setup, provider, fixtures, pos/neg</h1>
+
+        <p class="text-base leading-7">
+            TypeScript tests verify that the IDL, Rust logic, account handling, and constraints behave as expected. A
+            good suite mixes positive paths (nominal) and negative paths (denied access, wrong seeds, missing signer,
+            non-mutable account).
+        </p>
+
+        <div class="rounded-2xl border p-6 space-y-3">
+            <h2 class="text-xl font-semibold">Objectives</h2>
+            <ul class="list-disc pl-6 space-y-1">
+                <li>Understand the provider (connection, wallet, cluster).</li>
+                <li>Structure fixtures (accounts, PDAs, helpers) for reproducible tests.</li>
+                <li>Write at least one positive and one “audit-grade” negative test.</li>
+                <li>Diagnose classic errors fast (Program ID, accounts, signer, mutability).</li>
+            </ul>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">1. Provider: the core piece</h2>
+            <p class="text-base leading-7">
+                The provider bundles connection (Connection), wallet (payer/signature), and confirmation options. In
+                tests, it often uses the Anchor local validator. Critical point: the <b>Program ID</b> must match the
+                program actually deployed on the test cluster.
+            </p>
+
+            <div class="rounded-xl border p-4 space-y-2">
+                <p class="text-sm font-semibold">Frequent symptom</p>
+                <ul class="list-disc pl-6 space-y-1 text-sm leading-6">
+                    <li>Error “Program failed to complete” or “unknown program”</li>
+                    <li>Typical cause: Program ID mismatch across Anchor.toml, program keypair, and IDL</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">2. Fixtures: make tests deterministic</h2>
+            <p class="text-base leading-7">
+                A fixture is a helper that prepares state: account creation, PDA derivation, airdrop, initialization.
+                Goal: avoid duplication and keep tests readable.
+            </p>
+
+            <div class="rounded-xl border p-4 space-y-2">
+                <p class="text-sm font-semibold">Conceptual helper</p>
+                <pre class="text-sm overflow-x-auto"><code>// Conceptual helper
+async function makeStateAccount(program, user) {
+  // derive an address, create/initialize, return { statePda, bump }
+  return { statePda, bump };
+}</code></pre>
+            </div>
+
+            <p class="text-base leading-7">
+                A good fixture also handles failures: if an account already exists, it should either reuse it cleanly or
+                isolate tests (new PDA per test).
+            </p>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">3. Positive test: nominal path</h2>
+            <p class="text-base leading-7">
+                A positive test checks the instruction works, updates state as expected, and returns without error.
+                Conceptual example:
+            </p>
+
+            <div class="rounded-xl border p-4 space-y-2">
+                <pre class="text-sm overflow-x-auto"><code>it("initialize sets the value", async () =&gt; {
+  const { statePda } = await makeStateAccount(program, provider.wallet.publicKey);
+
+  await program.methods
+    .initialize(new BN(42))
+    .accounts({
+      state: statePda,
+      user: provider.wallet.publicKey,
+      systemProgram: SystemProgram.programId,
+    })
+    .rpc();
+
+  const state = await program.account.state.fetch(statePda);
+  expect(state.value.toNumber()).to.equal(42);
+});</code></pre>
+            </div>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">4. Negative test: expected failure (audit-grade)</h2>
+            <p class="text-base leading-7">
+                A negative test must fail for the right reason. It’s not enough to “catch an error”; we need a stable
+                signal: Anchor error code, message, or reliable pattern.
+            </p>
+
+            <div class="rounded-xl border p-4 space-y-2">
+                <p class="text-sm font-semibold">Example: missing signer</p>
+                <pre class="text-sm overflow-x-auto"><code>it("rejects when signer is missing", async () =&gt; {
+  let failed = false;
+  try {
+    await program.methods
+      .initialize(new BN(1))
+      .accounts({
+        state: statePda,
+        user: someOtherPublicKey, // not the signer wallet
+        systemProgram: SystemProgram.programId,
+      })
+      .rpc();
+  } catch (e) {
+    failed = true;
+    // check a stable pattern: code or message
+    // expect(String(e)).to.contain("Signature verification failed");
+  }
+  expect(failed).to.equal(true);
+});</code></pre>
+            </div>
+
+            <p class="text-base leading-7">
+                Other relevant negative tests:
+            </p>
+            <ul class="list-disc pl-6 space-y-1">
+                <li>Invalid seeds (wrong PDA derivation).</li>
+                <li>Wrong owner (account owned by another program).</li>
+                <li>Non-mutable account when the instruction writes to it.</li>
+                <li>Unauthorized access (missing or broken authorization constraint).</li>
+            </ul>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">5. Audit-grade checklist for N3</h2>
+            <ul class="list-disc pl-6 space-y-2">
+                <li>At least one positive and one truly discriminating negative test.</li>
+                <li>Reusable fixtures, no unnecessary duplication.</li>
+                <li>Fast diagnostics: Program ID, accounts, signer, mutability, seeds.</li>
+                <li>Assertions on on-chain state (fetch) and errors (stable patterns).</li>
+            </ul>
+            <p class="text-base leading-7">
+                With these three chapters you have the base for a well-tooled Anchor program: clear interface (IDL) and
+                robust tests. Next natural step: patterns (PDA, advanced constraints, events) and security rules.
+            </p>
+        </div>
+
+    </section>
+</div>

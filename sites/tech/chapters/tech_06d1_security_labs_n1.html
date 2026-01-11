@@ -1,0 +1,357 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <!-- Top nav -->
+    <section class="max-w-5xl mx-auto space-y-6">
+        <div class="flex items-center justify-between gap-3 flex-col md:flex-row">
+            <div class="flex items-center gap-3">
+                <div class="p-2 rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/20">
+                    <i data-lucide="shield" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Security Labs</div>
+                    <h1 class="text-3xl md:text-4xl font-black text-white">N1 — Labs 1 à 3</h1>
+                </div>
+            </div>
+
+            <div class="flex gap-2 w-full md:w-auto">
+                <button
+                    class="flex-1 md:flex-none px-4 py-2 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors text-sm text-white font-bold"
+                    data-page="tech_06d_security_labs">
+                    <span class="inline-flex items-center gap-2"><i data-lucide="arrow-left"
+                            class="w-4 h-4"></i>Hub</span>
+                </button>
+                <button
+                    class="flex-1 md:flex-none px-4 py-2 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors text-sm text-white font-bold"
+                    data-page="tech_06d2_security_labs_n2">
+                    <span class="inline-flex items-center gap-2">N2<i data-lucide="arrow-right"
+                            class="w-4 h-4"></i></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="p-5 rounded-2xl border border-white/10 bg-slate-900/30 text-sm text-slate-300">
+            <div class="flex items-start gap-3">
+                <i data-lucide="info" class="w-5 h-5 text-indigo-400 mt-0.5"></i>
+                <div>
+                    <strong>Objectif N1 :</strong> sécuriser les fondamentaux <em>account validation</em> (owner, seeds,
+                    authority).
+                    <div class="text-slate-400 mt-1">
+                        Chaque lab = <strong>Buggy</strong> → <strong>Exploit (preuve en test)</strong> →
+                        <strong>Patch</strong> → <strong>Regression</strong>.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LAB 1 -->
+    <section class="max-w-5xl mx-auto border-t border-white/10 pt-12 space-y-6">
+        <div class="flex items-center gap-4">
+            <span
+                class="w-9 h-9 rounded bg-rose-500/20 text-rose-400 font-bold flex items-center justify-center border border-rose-500/30">01</span>
+            <div>
+                <h2 class="text-2xl font-bold text-white">Missing Owner Check</h2>
+                <p class="text-sm text-slate-400">Un compte “cible” (vault/ATA/state) n’est pas lié à l’authority
+                    attendue.</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-4 rounded-2xl border border-white/10 bg-white/5">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-1">Symptôme</div>
+                <div class="text-sm text-slate-300">L’instruction accepte un <code>user_wallet</code> arbitraire.</div>
+            </div>
+            <div class="p-4 rounded-2xl border border-white/10 bg-white/5">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-1">Risque</div>
+                <div class="text-sm text-slate-300">Détournement de flux (paiement vers un compte non autorisé).</div>
+            </div>
+            <div class="p-4 rounded-2xl border border-white/10 bg-white/5">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-1">Correctif</div>
+                <div class="text-sm text-slate-300">Contraintes Anchor (<code>token::authority</code>,
+                    <code>has_one</code>, ATA).</div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Buggy -->
+            <div class="p-5 rounded-2xl border border-rose-500/20 bg-[#0b1221]">
+                <div class="text-xs font-bold text-rose-400 uppercase mb-2">🔴 Buggy (extrait)</div>
+                <pre class="text-[11px] text-slate-300 overflow-x-auto font-mono leading-relaxed">
+pub fn withdraw(ctx: Context&lt;Withdraw&gt;, amount: u64) -&gt; Result&lt;()&gt; {
+    // ⚠️ L'instruction reçoit user_wallet en paramètre sans le lier à authority.
+    token::transfer(ctx.accounts.into_transfer_ctx(), amount)?;
+    Ok(())
+}
+
+#[derive(Accounts)]
+pub struct Withdraw&lt;'info&gt; {
+    #[account(mut)]
+    pub vault: Account&lt;'info, TokenAccount&gt;,
+
+    #[account(mut)]
+    pub user_wallet: Account&lt;'info, TokenAccount&gt;, // ⚠️ No check
+
+    pub authority: Signer&lt;'info&gt;,
+    pub token_program: Program&lt;'info, Token&gt;,
+}
+        </pre>
+            </div>
+
+            <!-- Analysis -->
+            <div class="space-y-4">
+                <div class="p-5 rounded-2xl border border-white/10 bg-slate-900/30">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="search" class="w-4 h-4 text-indigo-400"></i>
+                        <h3 class="font-bold text-white">Pourquoi c’est une vulnérabilité ?</h3>
+                    </div>
+                    <p class="text-sm text-slate-300">
+                        L’API accepte un compte destination non prouvé.
+                        En audit, tout compte passé en paramètre doit être <strong>contraint</strong> : owner, seeds,
+                        relation avec l’authority,
+                        ou dérivation standard (ATA).
+                    </p>
+                </div>
+
+                <div class="p-5 rounded-2xl border border-emerald-500/20 bg-slate-900/30">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="wrench" class="w-4 h-4 text-emerald-400"></i>
+                        <h3 class="font-bold text-white">Patch (Anchor constraints)</h3>
+                    </div>
+                    <pre class="text-[11px] text-emerald-300 overflow-x-auto font-mono leading-relaxed">
+#[derive(Accounts)]
+pub struct Withdraw&lt;'info&gt; {
+    #[account(
+        mut,
+        token::authority = authority
+    )]
+    pub vault: Account&lt;'info, TokenAccount&gt;,
+
+    #[account(
+        mut,
+        token::authority = authority // ✅ destination liée au même authority (ou ATA attendu)
+    )]
+    pub user_wallet: Account&lt;'info, TokenAccount&gt;,
+
+    pub authority: Signer&lt;'info&gt;,
+    pub token_program: Program&lt;'info, Token&gt;,
+}
+          </pre>
+                    <p class="text-xs text-slate-400 mt-2">
+                        Variante recommandée : dériver/forcer une ATA attendue (<code>associated_token::authority</code>
+                        + <code>mint</code>).
+                    </p>
+                </div>
+
+                <div class="p-5 rounded-2xl border border-white/10 bg-slate-900/30">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="test-tube" class="w-4 h-4 text-amber-400"></i>
+                        <h3 class="font-bold text-white">Preuve en test (squelette)</h3>
+                    </div>
+                    <pre class="text-[11px] text-slate-200 overflow-x-auto font-mono leading-relaxed">
+// Objectif: prouver que l'appel échoue si user_wallet n'appartient pas à authority.
+// (Test de lab local, pas d'usage hors environnement pédagogique)
+
+it("rejects withdraw to a wallet not owned by authority", async () =&gt; {
+  // Arrange: authority A, destination B (mauvaise)
+  // Act + Assert: expect instruction to fail (constraint violation)
+});
+          </pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-5 rounded-2xl border border-white/10 bg-white/5">
+            <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-2">Checklist de sortie (Lab
+                01)</div>
+            <ul class="space-y-2 text-sm text-slate-300">
+                <li>Le compte destination est <strong>lié</strong> à l’authority (ATA ou constraints).</li>
+                <li>Le test “mauvaise destination” est <strong>rouge</strong> avant patch et <strong>vert</strong>
+                    après.</li>
+                <li>Le patch est minimal, lisible, et documenté (raison + invariant).</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- LAB 2 -->
+    <section class="max-w-5xl mx-auto border-t border-white/10 pt-12 space-y-6">
+        <div class="flex items-center gap-4">
+            <span
+                class="w-9 h-9 rounded bg-rose-500/20 text-rose-400 font-bold flex items-center justify-center border border-rose-500/30">02</span>
+            <div>
+                <h2 class="text-2xl font-bold text-white">PDA Derivation / Seeds Spoof</h2>
+                <p class="text-sm text-slate-400">Un compte censé être un PDA est accepté sans vérification stricte de
+                    ses seeds.</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-5 rounded-2xl border border-rose-500/20 bg-[#0b1221]">
+                <div class="text-xs font-bold text-rose-400 uppercase mb-2">🔴 Buggy (anti-pattern)</div>
+                <pre class="text-[11px] text-slate-300 overflow-x-auto font-mono leading-relaxed">
+#[derive(Accounts)]
+pub struct UpdateConfig&lt;'info&gt; {
+    // ⚠️ Compte "config" passé sans seeds/bump -> substitution possible en lab.
+    #[account(mut)]
+    pub config: AccountInfo&lt;'info&gt;,
+
+    pub authority: Signer&lt;'info&gt;,
+}
+        </pre>
+                <p class="text-xs text-slate-400 mt-2">
+                    Indice : l’utilisation de <code>AccountInfo</code> “raw” + absence de seeds est un signal rouge.
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                <div class="p-5 rounded-2xl border border-white/10 bg-slate-900/30">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-400"></i>
+                        <h3 class="font-bold text-white">Vecteur d’attaque (en lab)</h3>
+                    </div>
+                    <p class="text-sm text-slate-300">
+                        Si le programme attend un état global (Config/State) mais ne contraint pas l’adresse attendue
+                        (PDA),
+                        un état alternatif peut être fourni et influencer la logique (paramètres, fees, owners…).
+                    </p>
+                </div>
+
+                <div class="p-5 rounded-2xl border border-emerald-500/20 bg-slate-900/30">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="wrench" class="w-4 h-4 text-emerald-400"></i>
+                        <h3 class="font-bold text-white">Patch recommandé</h3>
+                    </div>
+                    <pre class="text-[11px] text-emerald-300 overflow-x-auto font-mono leading-relaxed">
+#[derive(Accounts)]
+pub struct UpdateConfig&lt;'info&gt; {
+    #[account(
+        mut,
+        seeds = [b"config", authority.key().as_ref()],
+        bump
+    )]
+    pub config: Account&lt;'info, Config&gt;,
+
+    pub authority: Signer&lt;'info&gt;,
+}
+          </pre>
+                    <p class="text-xs text-slate-400 mt-2">
+                        Si les seeds sont “dynamiques”, documenter précisément l’invariant et tester les cas invalides.
+                    </p>
+                </div>
+
+                <div class="p-5 rounded-2xl border border-white/10 bg-slate-900/30">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="test-tube" class="w-4 h-4 text-amber-400"></i>
+                        <h3 class="font-bold text-white">Test (squelette)</h3>
+                    </div>
+                    <pre class="text-[11px] text-slate-200 overflow-x-auto font-mono leading-relaxed">
+it("rejects a config account that is not the expected PDA", async () =&gt; {
+  // Arrange: create a random account with same layout (lab-only)
+  // Act: call update_config with fake account
+  // Assert: should fail (seeds constraint)
+});
+          </pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-5 rounded-2xl border border-white/10 bg-white/5">
+            <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-2">Checklist de sortie (Lab
+                02)</div>
+            <ul class="space-y-2 text-sm text-slate-300">
+                <li>Le compte d’état est typé (<code>Account&lt;T&gt;</code>) ou contraint (seeds/bump).</li>
+                <li>Les seeds sont <strong>stables</strong> et auditées ; les seeds dynamiques sont testées.</li>
+                <li>Test “fake PDA” : rouge avant patch, vert après.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- LAB 3 -->
+    <section class="max-w-5xl mx-auto border-t border-white/10 pt-12 space-y-6">
+        <div class="flex items-center gap-4">
+            <span
+                class="w-9 h-9 rounded bg-rose-500/20 text-rose-400 font-bold flex items-center justify-center border border-rose-500/30">03</span>
+            <div>
+                <h2 class="text-2xl font-bold text-white">Signer vs Authority</h2>
+                <p class="text-sm text-slate-400">Le payer/signer de la transaction est confondu avec l’authority
+                    métier.</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-5 rounded-2xl border border-rose-500/20 bg-[#0b1221]">
+                <div class="text-xs font-bold text-rose-400 uppercase mb-2">🔴 Buggy (logique)</div>
+                <pre class="text-[11px] text-slate-300 overflow-x-auto font-mono leading-relaxed">
+pub fn admin_set_fee(ctx: Context&lt;AdminSetFee&gt;, fee_bps: u16) -&gt; Result&lt;()&gt; {
+    // ⚠️ On suppose que "signer" = admin
+    ctx.accounts.config.fee_bps = fee_bps;
+    Ok(())
+}
+
+#[derive(Accounts)]
+pub struct AdminSetFee&lt;'info&gt; {
+    #[account(mut)]
+    pub config: Account&lt;'info, Config&gt;,
+    pub signer: Signer&lt;'info&gt;, // ⚠️ pas forcément admin
+}
+        </pre>
+            </div>
+
+            <div class="space-y-4">
+                <div class="p-5 rounded-2xl border border-white/10 bg-slate-900/30">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="key-round" class="w-4 h-4 text-indigo-400"></i>
+                        <h3 class="font-bold text-white">Invariants à poser</h3>
+                    </div>
+                    <p class="text-sm text-slate-300">
+                        Un rôle “admin” est une propriété <strong>persistée</strong> (dans <code>Config</code>) et doit
+                        être vérifié :
+                        <code>config.admin == signer.key()</code> ou <code>has_one = admin</code>.
+                    </p>
+                </div>
+
+                <div class="p-5 rounded-2xl border border-emerald-500/20 bg-slate-900/30">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="wrench" class="w-4 h-4 text-emerald-400"></i>
+                        <h3 class="font-bold text-white">Patch (has_one / address constraint)</h3>
+                    </div>
+                    <pre class="text-[11px] text-emerald-300 overflow-x-auto font-mono leading-relaxed">
+#[derive(Accounts)]
+pub struct AdminSetFee&lt;'info&gt; {
+    #[account(mut, has_one = admin)]
+    pub config: Account&lt;'info, Config&gt;,
+    pub admin: Signer&lt;'info&gt;,
+}
+          </pre>
+                    <p class="text-xs text-slate-400 mt-2">
+                        Alternative : <code>#[account(address = config.admin)]</code> si vous stockez la clé.
+                    </p>
+                </div>
+
+                <div class="p-5 rounded-2xl border border-white/10 bg-slate-900/30">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="test-tube" class="w-4 h-4 text-amber-400"></i>
+                        <h3 class="font-bold text-white">Test (squelette)</h3>
+                    </div>
+                    <pre class="text-[11px] text-slate-200 overflow-x-auto font-mono leading-relaxed">
+it("rejects admin action from a non-admin signer", async () =&gt; {
+  // Arrange: config.admin = A, signer = B
+  // Act: admin_set_fee with signer B
+  // Assert: should fail (has_one / address constraint)
+});
+          </pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-5 rounded-2xl border border-white/10 bg-white/5">
+            <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-2">Checklist de sortie (Lab
+                03)</div>
+            <ul class="space-y-2 text-sm text-slate-300">
+                <li>L’authority métier est <strong>définie</strong> (champ admin/role/state) et vérifiée.</li>
+                <li>Le test “non-admin” est rouge avant patch et vert après.</li>
+                <li>Le correctif ne dépend pas du “payer” de la transaction.</li>
+            </ul>
+        </div>
+    </section>
+
+</div>

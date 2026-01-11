@@ -5,10 +5,16 @@
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tailwindcss -i styles/tailwind.css -o assets/tailwind.css --watch --content index.html,chapters/**/*.html,script.js,formation_web3_tunisie.html,script_tech.js",
-    "build": "tailwindcss -i styles/tailwind.css -o assets/tailwind.css --minify --content index.html,chapters/**/*.html,script.js,formation_web3_tunisie.html,script_tech.js",
+    "dev": "tailwindcss -i styles/tailwind.css -o sites/tech/assets/tailwind.css --watch --content sites/tech/formation_web3_tunisie.html,sites/tech/chapters/**/*.html,sites/tech/script_tech.js",
+    "build": "npm run build:commercial && npm run build:tech",
+    "build:commercial": "tailwindcss -i styles/tailwind.css -o sites/commercial/assets/tailwind.css --minify --content sites/commercial/index.html,sites/commercial/chapters/**/*.html,sites/commercial/script.js",
+    "build:tech": "tailwindcss -i styles/tailwind.css -o sites/tech/assets/tailwind.css --minify --content sites/tech/formation_web3_tunisie.html,sites/tech/chapters/**/*.html,sites/tech/script_tech.js",
+    "serve": "python3 -m http.server 8000 --directory sites",
+    "start": "npm run build && npm run serve",
     "normalize:strict": "node scripts/normalize_fragments_strict.js",
     "qa": "node scripts/qa.js",
+    "nav:gen": "node ./scripts/generate_nav_map.mjs",
+    "nav:check": "node ./scripts/generate_nav_map.mjs --check",
     "lint": "npx prettier --check .",
     "format": "npx prettier --write ."
   },

@@ -1,0 +1,185 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+  <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
+    <div class="absolute -top-24 -right-24 w-64 h-64 bg-cyan-500/20 rounded-full blur-[100px]"></div>
+    <div class="relative z-10">
+      <div class="flex items-center gap-4 mb-4">
+        <span class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 font-mono">Annexe A</span>
+        <div class="h-12 w-px bg-white/10"></div>
+        <h1 class="text-3xl font-bold text-white tracking-tight">Syllabus Référentiel W01–W16</h1>
+      </div>
+      <p class="text-sm text-slate-400 max-w-2xl">
+        Grille unique et cohérente avec la version formation : Hardening (W01–W04), Building (W05–W10), Security & Audit (W11–W14), Capstone (W15–W16).
+      </p>
+    </div>
+  </header>
+
+  <section>
+    <div class="flex items-center gap-3 mb-6">
+      <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+        <i data-lucide="map" class="w-5 h-5"></i>
+      </div>
+      <h2 class="text-xl font-bold text-white">Phases vs Niveaux</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-10">
+      <div class="p-4 rounded-xl bg-[#14F195]/10 border border-[#14F195]/30">
+        <p class="text-xs uppercase text-[#14F195] font-bold mb-1">W01–W04</p>
+        <p class="text-white font-bold">Hardening (N1)</p>
+        <p class="text-[11px] text-slate-300 mt-2">Rust, OS, crypto, sécurité by default.</p>
+      </div>
+      <div class="p-4 rounded-xl bg-blue-500/10 border border-blue-500/30">
+        <p class="text-xs uppercase text-blue-400 font-bold mb-1">W05–W10</p>
+        <p class="text-white font-bold">Building (N2)</p>
+        <p class="text-[11px] text-slate-300 mt-2">DApps, Anchor/EVM, product thinking.</p>
+      </div>
+      <div class="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30">
+        <p class="text-xs uppercase text-amber-400 font-bold mb-1">W11–W14</p>
+        <p class="text-white font-bold">Security & Audit (N3)</p>
+        <p class="text-[11px] text-slate-300 mt-2">Threat modeling, audit report, QA stricte.</p>
+      </div>
+      <div class="p-4 rounded-xl bg-[#9945FF]/10 border border-[#9945FF]/30">
+        <p class="text-xs uppercase text-[#9945FF] font-bold mb-1">W15–W16</p>
+        <p class="text-white font-bold">Capstone (N3)</p>
+        <p class="text-[11px] text-slate-300 mt-2">Produit final, soutenance, handover.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="flex items-center gap-3 mb-6">
+      <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+        <i data-lucide="table" class="w-5 h-5"></i>
+      </div>
+      <h2 class="text-xl font-bold text-white">Plan détaillé W01–W16</h2>
+    </div>
+
+    <div class="glass-card !p-0 overflow-hidden border-white/10 mb-10">
+      <table class="w-full text-left text-[11px]">
+        <thead class="bg-white/5 text-slate-200 uppercase font-black">
+          <tr>
+            <th class="p-4 w-20">Semaine</th>
+            <th class="p-4 w-20">Niveau</th>
+            <th class="p-4 w-1/3">Focus</th>
+            <th class="p-4 w-1/3">Livrable</th>
+            <th class="p-4">Validation</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-white/5 text-slate-300">
+          <tr>
+            <td class="p-4 font-bold text-[#14F195]">W01</td>
+            <td class="p-4 font-semibold">N1</td>
+            <td class="p-4">OS/Rust foundations, CLI, Git internals</td>
+            <td class="p-4">CLI utilitaire + tests</td>
+            <td class="p-4">QA mentor (tests verts)</td>
+          </tr>
+          <tr>
+            <td class="p-4 font-bold text-[#14F195]">W02</td>
+            <td class="p-4 font-semibold">N1</td>
+            <td class="p-4">Mémoire & sécurité</td>
+            <td class="p-4">Allocateur / bench</td>
+            <td class="p-4">Bench reproductible</td>
+          </tr>
+          <tr>
+            <td class="p-4 font-bold text-[#14F195]">W03</td>
+            <td class="p-4 font-semibold">N1</td>
+            <td class="p-4">Concurrence, async, observabilité</td>
+            <td class="p-4">Serveur HTTP multithread</td>
+            <td class="p-4">Profilage + logs</td>
+          </tr>
+          <tr>
+            <td class="p-4 font-bold text-[#14F195]">W04</td>
+            <td class="p-4 font-semibold">N1</td>
+            <td class="p-4">Crypto (Ed25519), sécurité by design</td>
+            <td class="p-4">Wallet CLI + tests</td>
+            <td class="p-4">Block check Hardening</td>
+          </tr>
+          <tr>
+            <td class="p-4 font-bold text-blue-400">W05</td>
+            <td class="p-4 font-semibold">N2</td>
+            <td class="p-4">Onboarding Solana/EVM, RPC, accounts</td>
+            <td class="p-4">Explorer minimal</td>
+            <td class="p-4">Resilience réseau</td>
+          </tr>
+          <tr>
+            <td class="p-4 font-bold text-blue-400">W06</td>
+            <td class="p-4 font-semibold">N2</td>
+            <td class="p-4">API/Anchor init, constraints</td>
+            <td class="p-4">IDL + client</td>
+            <td class="p-4">Tests d’intégration</td>
+          </tr>
+          <tr>
+            <td class="p-4 font-bold text-blue-400">W07</td>
+            <td class="p-4 font-semibold">N2</td>
+            <td class="p-4">CPI, composabilité</td>
+            <td class="p-4">CPI secure sample</td>
+            <td class="p-4">Checklist Guardian</td>
+          </tr>
+          <tr>
+            <td class="p-4 font-bold text-blue-400">W08</td>
+            <td class="p-4 font-semibold">N2</td>
+            <td class="p-4">Tokens & Token-2022</td>
+            <td class="p-4">Hook/fees demo</td>
+            <td class="p-4">Tests + docs</td>
+          </tr>
+          <tr>
+            <td class="p-4 font-bold text-blue-400">W09</td>
+            <td class="p-4 font-semibold">N2</td>
+            <td class="p-4">AMM / DeFi building block</td>
+            <td class="p-4">AMM v1</td>
+            <td class="p-4">Perf & sécurité basiques</td>
+          </tr>
+          <tr>
+            <td class="p-4 font-bold text-blue-400">W10</td>
+            <td class="p-4 font-semibold">N2</td>
+            <td class="p-4">Tests négatifs, quality gates</td>
+            <td class="p-4">Suite CI</td>
+            <td class="p-4">CI verte</td>
+          </tr>
+          <tr>
+            <td class="p-4 font-bold text-amber-400">W11</td>
+            <td class="p-4 font-semibold">N3</td>
+            <td class="p-4">Threat modeling</td>
+            <td class="p-4">Threat model v1</td>
+            <td class="p-4">Revue mentor, zéro critique</td>
+          </tr>
+          <tr>
+            <td class="p-4 font-bold text-amber-400">W12</td>
+            <td class="p-4 font-semibold">N3</td>
+            <td class="p-4">Audit offensif + fuzz</td>
+            <td class="p-4">Findings pack</td>
+            <td class="p-4">Reproductibilité</td>
+          </tr>
+          <tr>
+            <td class="p-4 font-bold text-amber-400">W13</td>
+            <td class="p-4 font-semibold">N3</td>
+            <td class="p-4">Observabilité avancée</td>
+            <td class="p-4">Dashboard + alertes</td>
+            <td class="p-4">Alertes en place</td>
+          </tr>
+          <tr>
+            <td class="p-4 font-bold text-amber-400">W14</td>
+            <td class="p-4 font-semibold">N3</td>
+            <td class="p-4">Audit complet & PRR</td>
+            <td class="p-4">Audit v0.9</td>
+            <td class="p-4">QA interne</td>
+          </tr>
+          <tr>
+            <td class="p-4 font-bold text-[#9945FF]">W15</td>
+            <td class="p-4 font-semibold">N3</td>
+            <td class="p-4">Capstone build & hardening</td>
+            <td class="p-4">Release candidate</td>
+            <td class="p-4">Tests + perf + sécurité</td>
+          </tr>
+          <tr>
+            <td class="p-4 font-bold text-[#9945FF]">W16</td>
+            <td class="p-4 font-semibold">N3</td>
+            <td class="p-4">Soutenance & handover</td>
+            <td class="p-4">Démo + runbook + audit v1.0</td>
+            <td class="p-4">Jury final</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</div>

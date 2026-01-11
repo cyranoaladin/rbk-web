@@ -1,0 +1,145 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+  <section class="space-y-10">
+    <div class="p-6 rounded-2xl border border-white/10 bg-white/5 space-y-3">
+      <h2 class="text-2xl font-black text-white">Lecture du parcours : Phases vs Niveaux</h2>
+      <p class="text-sm text-slate-300">Ingénierie = 48 semaines : W01–W48. Phases = Hardening (W01–W12), Building
+        (W13–W28), Security & Audit (W29–W48). Niveaux = N1 (W01–W12), N2 (W13–W28), N3 (W29–W48). Il n’existe aucune
+        semaine au-delà de W48 dans ce parcours.</p>
+    </div>
+
+    <div class="text-center">
+      <h1 class="text-4xl font-black text-white mb-4">PARCOURS D'INGÉNIERIE : PLAN CANONIQUE</h1>
+      <p class="text-slate-400 max-w-3xl mx-auto text-lg leading-relaxed">
+        Un récit unique, sans doublons : Sprint 0 optionnel, Piscine P01→P04 (4 semaines), puis un parcours
+        d’ingénierie W01→W48 découpé en Hardening, Building, Security & Audit + Capstone.
+      </p>
+      <div class="mt-6 grid gap-3 md:grid-cols-3">
+        <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+          <p class="text-xs text-slate-400 uppercase font-bold mb-1">Sprint 0</p>
+          <p class="text-white font-semibold">Optionnel • 1 semaine</p>
+        </div>
+        <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+          <p class="text-xs text-slate-400 uppercase font-bold mb-1">Phase 0 — Piscine</p>
+          <p class="text-white font-semibold">P01 → P04 • 4 semaines</p>
+        </div>
+        <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+          <p class="text-xs text-slate-400 uppercase font-bold mb-1">Parcours d’ingénierie</p>
+          <p class="text-white font-semibold">W01 → W48 • 48 semaines</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid gap-4 md:grid-cols-3">
+      <div class="p-4 rounded-xl border border-indigo-500/20 bg-indigo-500/5">
+        <p class="text-xs uppercase font-bold text-indigo-300 mb-1">Phase 1 — Hardening</p>
+        <p class="text-white font-semibold">W01 → W12 (12 semaines)</p>
+      </div>
+      <div class="p-4 rounded-xl border border-emerald-500/20 bg-emerald-500/5">
+        <p class="text-xs uppercase font-bold text-emerald-300 mb-1">Phase 2 — Building</p>
+        <p class="text-white font-semibold">W13 → W28 (16 semaines)</p>
+      </div>
+      <div class="p-4 rounded-xl border border-amber-500/20 bg-amber-500/5">
+        <p class="text-xs uppercase font-bold text-amber-300 mb-1">Phase 3 — Security & Audit + Capstone</p>
+        <p class="text-white font-semibold">W29 → W48 (20 semaines)</p>
+      </div>
+    </div>
+
+    <div class="p-6 rounded-2xl border border-white/10 bg-white/5">
+      <h2 class="text-xl font-bold text-white mb-3">Niveaux (pédagogiques, pas des durées)</h2>
+      <ul class="space-y-2 text-slate-300 text-sm">
+        <li><span class="font-mono text-emerald-300">N1</span> · Fondamentaux (Foundations, Solana N1, Security Labs N1)
+        </li>
+        <li><span class="font-mono text-amber-300">N2</span> · Intermédiaire (Solana N2, Token/CPI N2, Security Labs N2)
+        </li>
+        <li><span class="font-mono text-rose-300">N3</span> · Avancé/Capstone (Solana N3, hardening final, audit report,
+          demo)</li>
+      </ul>
+    </div>
+
+    <div class="glass-card !p-0 overflow-hidden border-white/10">
+      <table class="w-full text-left text-[11px]">
+        <thead class="bg-slate-900/80 text-slate-300 uppercase font-black">
+          <tr>
+            <th class="p-3 w-20">Semaine</th>
+            <th class="p-3 w-24">Niveau</th>
+            <th class="p-3 w-1/3">Focus</th>
+            <th class="p-3 w-1/3">Livrable</th>
+            <th class="p-3">Pages associées</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-white/5 text-slate-300">
+          <!-- PHASE 1: GENESIS (W01-W12) - N1 -->
+          <tr>
+            <td class="font-mono text-emerald-400 font-bold">W01-04</td>
+            <td><span class="text-white font-bold">Genesis Alpha</span> : Setup, Rust Basics, Mental Model</td>
+            <td>Environnement, Premiers algos Rust, CLI Explorer</td>
+            <td><span class="badge badge-n1">N1</span></td>
+            <td><a href="#" data-page="tech_06_foundations">Foundations</a></td>
+          </tr>
+          <tr>
+            <td class="font-mono text-emerald-400 font-bold">W05-08</td>
+            <td><span class="text-white font-bold">Genesis Beta</span> : Advanced Rust & Tooling</td>
+            <td>Memory Safety, Traits, RPC Deep Dive</td>
+            <td><span class="badge badge-n1">N1</span></td>
+            <td><a href="#" data-page="tech_06a_solana_n1">Solana N1</a></td>
+          </tr>
+          <tr>
+            <td class="font-mono text-emerald-400 font-bold">W09-12</td>
+            <td><span class="text-white font-bold">Hardening</span> : Clôture N1</td>
+            <td><strong>Rust CLI Explorer</strong> (Livrable d'entrée N2)</td>
+            <td><span class="badge badge-n1">N1</span></td>
+            <td><a href="#" data-page="tech_06a_solana_n1">Solana N1</a></td>
+          </tr>
+
+          <!-- PHASE 2: BUILD (W13-W28) - N2 -->
+          <tr>
+            <td class="font-mono text-amber-400 font-bold">W13-18</td>
+            <td><span class="text-white font-bold">Anchor Fundamentals</span> : Framework, PDA, IDL</td>
+            <td>Programme Counter, Voting App, Tests TS</td>
+            <td><span class="badge badge-n2">N2</span></td>
+            <td><a href="#" data-page="tech_06b_solana_n2">Anchor N2</a></td>
+          </tr>
+          <tr>
+            <td class="font-mono text-amber-400 font-bold">W19-24</td>
+            <td><span class="text-white font-bold">DeFi & Tokens</span> : SPL, Token-2022, CPIs</td>
+            <td>Vault Escrow, Staking contract, Mint logic</td>
+            <td><span class="badge badge-n2">N2</span></td>
+            <td><a href="#" data-page="tech_06e1_tokens_and_cpi_n1">Tokens / CPI</a></td>
+          </tr>
+          <tr>
+            <td class="font-mono text-amber-400 font-bold">W25-28</td>
+            <td><span class="text-white font-bold">Protocol Design</span> : AMM Implementation</td>
+            <td><strong>Swap AMM</strong> (Livrable d'entrée N3)</td>
+            <td><span class="badge badge-n2">N2</span></td>
+            <td><a href="#" data-page="tech_06f1_build_an_amm_n1">Build an AMM</a></td>
+          </tr>
+
+          <!-- PHASE 3: AUDIT (W29-W48) - N3 -->
+          <tr>
+            <td class="font-mono text-rose-400 font-bold">W29-34</td>
+            <td><span class="text-white font-bold">Audit Methodology</span> : Vulnerabilities & PoC</td>
+            <td>Reentrancy, Arithmetic generic, Access Control</td>
+            <td><span class="badge badge-n3">N3</span></td>
+            <td><a href="#" data-page="tech_06d_security_labs">Security Hub</a></td>
+          </tr>
+          <tr>
+            <td class="font-mono text-rose-400 font-bold">W35-40</td>
+            <td><span class="text-white font-bold">Advanced Security</span> : Fuzzing & Formal</td>
+            <td>Tests de propriétés, Fuzzing campaign, Rapport N3</td>
+            <td><span class="badge badge-n3">N3</span></td>
+            <td><a href="#" data-page="tech_06c_solana_n3">Security Labs</a></td>
+          </tr>
+          <tr>
+            <td class="font-mono text-rose-400 font-bold">W41-48</td>
+            <td><span class="text-white font-bold">Capstone Final</span> : Mainnet-grade Project</td>
+            <td><strong>Protocol Final</strong> + <strong>Audit Report Professionnel</strong></td>
+            <td><span class="badge badge-n3">N3</span></td>
+            <td><a href="#" data-page="tech_08_capstones">Capstones</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</div>

@@ -1,0 +1,198 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+    <!-- Top nav -->
+    <section class="max-w-5xl mx-auto space-y-6">
+        <div class="flex items-center justify-between gap-3 flex-col md:flex-row">
+            <div class="flex items-center gap-3">
+                <div class="p-2 rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/20">
+                    <i data-lucide="shield-lightning" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Security Labs</div>
+                    <h1 class="text-3xl md:text-4xl font-black text-white">N3 — Labs 7 & 8 (Advanced)</h1>
+                </div>
+            </div>
+
+            <div class="flex gap-2 w-full md:w-auto">
+                <button
+                    class="flex-1 md:flex-none px-4 py-2 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors text-sm text-white font-bold"
+                    data-page="tech_06d2_security_labs_n2">
+                    <span class="inline-flex items-center gap-2"><i data-lucide="arrow-left"
+                            class="w-4 h-4"></i>N2</span>
+                </button>
+                <button
+                    class="flex-1 md:flex-none px-4 py-2 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors text-sm text-white font-bold"
+                    data-page="tech_06d_security_labs">
+                    <span class="inline-flex items-center gap-2">Hub<i data-lucide="home" class="w-4 h-4"></i></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="p-5 rounded-2xl border border-white/10 bg-slate-900/30 text-sm text-slate-300">
+            <div class="flex items-start gap-3">
+                <i data-lucide="info" class="w-5 h-5 text-indigo-400 mt-0.5"></i>
+                <div>
+                    <strong>Objectif N3 :</strong> Architecture défensive contre les attaques complexes (Composite &
+                    MEV).
+                    <div class="text-slate-400 mt-1">
+                        Ces vecteurs nécessitent de comprendre le runtime Solana en profondeur (Parallélisme,
+                        Atomicité).
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LAB 7 -->
+    <section class="max-w-5xl mx-auto border-t border-white/10 pt-12 space-y-6">
+        <div class="flex items-center gap-4">
+            <span
+                class="w-9 h-9 rounded bg-rose-500/20 text-rose-400 font-bold flex items-center justify-center border border-rose-500/30">07</span>
+            <div>
+                <h2 class="text-2xl font-bold text-white">Re-entrancy (CPI Callback)</h2>
+                <p class="text-sm text-slate-400">Moins fréquent que sur EVM, mais mortel via les Transfer Hooks ou
+                    Self-CPI.</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-5 rounded-2xl border border-rose-500/20 bg-[#0b1221]">
+                <div class="text-xs font-bold text-rose-400 uppercase mb-2">🔴 Buggy (State Synchro)</div>
+                <pre class="text-[11px] text-slate-300 overflow-x-auto font-mono leading-relaxed">
+pub fn withdraw_all(ctx: Context&lt;Withdraw&gt;) -> Result&lt;()&gt; {
+    let balance = ctx.accounts.vault.amount;
+    
+    // 1. Interaction externe (CPI)
+    token::transfer(ctx.accounts.into_transfer_context(), balance)?;
+    
+    // 2. Mise à jour de l'état interne (Post-Interaction)
+    // ⚠️ Si le token a un Transfer Hook qui rappelle ce programme,
+    // l'état utilisateur n'est pas encore jour.
+    ctx.accounts.user_state.balance = 0; 
+    
+    Ok(())
+}
+        </pre>
+            </div>
+
+            <div class="space-y-4">
+                <div class="p-5 rounded-2xl border border-white/10 bg-slate-900/30">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-400"></i>
+                        <h3 class="font-bold text-white">Vecteur d'attaque</h3>
+                    </div>
+                    <p class="text-sm text-slate-300">
+                        Si le token transféré (Token-2022) possède un <strong>Transfer Hook</strong> qui rappelle
+                        `withdraw_all`,
+                        la balance utilisateur est toujours positive lors du 2ème appel. L'attaquant peut vider le
+                        vault.
+                    </p>
+                </div>
+
+                <div class="p-5 rounded-2xl border border-emerald-500/20 bg-slate-900/30">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="wrench" class="w-4 h-4 text-emerald-400"></i>
+                        <h3 class="font-bold text-white">Patch (Checks-Effects-Interactions)</h3>
+                    </div>
+                    <div class="text-xs text-slate-400 mb-2">Toujours mettre à jour l'état AVANT l'appel externe.</div>
+                    <pre class="text-[11px] text-emerald-300 overflow-x-auto font-mono leading-relaxed">
+pub fn withdraw_all(ctx: Context&lt;Withdraw&gt;) -> Result&lt;()&gt; {
+    let balance = ctx.accounts.user_state.balance; // Check
+    
+    ctx.accounts.user_state.balance = 0; // Effect (Update State)
+    
+    token::transfer(ctx.accounts.into_transfer_context(), balance)?; // Interaction
+    
+    Ok(())
+}
+          </pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LAB 8 -->
+    <section class="max-w-5xl mx-auto border-t border-white/10 pt-12 space-y-6">
+        <div class="flex items-center gap-4">
+            <span
+                class="w-9 h-9 rounded bg-rose-500/20 text-rose-400 font-bold flex items-center justify-center border border-rose-500/30">08</span>
+            <div>
+                <h2 class="text-2xl font-bold text-white">Initialization Front-Running</h2>
+                <p class="text-sm text-slate-400">Prendre le contrôle d'un protocole en volant son initialisation.</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-5 rounded-2xl border border-rose-500/20 bg-[#0b1221]">
+                <div class="text-xs font-bold text-rose-400 uppercase mb-2">🔴 Buggy (Unprotected Init)</div>
+                <pre class="text-[11px] text-slate-300 overflow-x-auto font-mono leading-relaxed">
+#[derive(Accounts)]
+pub struct Initialize&lt;'info&gt; {
+    #[account(init, payer = signer, space = 8 + 8, seeds = [b"global"], bump)]
+    pub state: Account&lt;'info, GlobalState&gt;,
+    
+    #[account(mut)]
+    pub signer: Signer&lt;'info&gt;,
+    
+    pub system_program: Program&lt;'info, System&gt;,
+}
+
+pub fn initialize(ctx: Context&lt;Initialize&gt;) -> Result&lt;()&gt; {
+    // ⚠️ N'importe qui peut appeler cette instruction en premier.
+    // L'attaquant devient le "signer" et peut s'arroger les droits admin.
+    ctx.accounts.state.admin = ctx.accounts.signer.key();
+    Ok(())
+}
+        </pre>
+            </div>
+
+            <div class="space-y-4">
+                <div class="p-5 rounded-2xl border border-white/10 bg-slate-900/30">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="zap" class="w-4 h-4 text-amber-400"></i>
+                        <h3 class="font-bold text-white">Scénario MEV</h3>
+                    </div>
+                    <p class="text-sm text-slate-300">
+                        Un bot détecte votre tx de déploiement + init dans la mempool.
+                        Il insère sa propre tx `initialize` juste avant la vôtre.
+                        Il devient l'admin légitime du protocole.
+                    </p>
+                </div>
+
+                <div class="p-5 rounded-2xl border border-emerald-500/20 bg-slate-900/30">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="lock" class="w-4 h-4 text-emerald-400"></i>
+                        <h3 class="font-bold text-white">Patch (Constraint Hardcodée)</h3>
+                    </div>
+                    <pre class="text-[11px] text-emerald-300 overflow-x-auto font-mono leading-relaxed">
+#[derive(Accounts)]
+pub struct Initialize&lt;'info&gt; {
+    #[account(...)]
+    pub state: Account&lt;'info, GlobalState&gt;,
+    
+    #[account(mut, address = ADMIN_PUBKEY)] // ✅ Whitelist
+    pub signer: Signer&lt;'info&gt;,
+    
+    pub system_program: Program&lt;'info, System&gt;,
+}
+// OU vérifier ctx.accounts.signer.key() dans le corps de la fonction.
+          </pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer nav -->
+    <section class="max-w-5xl mx-auto pt-8 border-t border-white/10">
+        <div class="flex justify-between items-center bg-slate-900/50 p-6 rounded-2xl border border-white/5">
+            <div>
+                <h4 class="text-white font-bold mb-1">Module Terminé</h4>
+                <p class="text-xs text-slate-400">Vous avez couvert les surfaces d'attaque critiques.</p>
+            </div>
+            <button
+                class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold shadow-lg shadow-indigo-500/20"
+                data-page="tech_syllabus">
+                Retour au Syllabus
+            </button>
+        </div>
+    </section>
+</div>

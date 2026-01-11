@@ -12,8 +12,9 @@
 const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
 
-const CHAPTERS_DIR = path.join(__dirname, '..', 'chapters');
+const CHAPTERS_DIR = path.join(__dirname, '..', 'sites', 'tech', 'chapters');
 const ROOT_WRAPPER_EXACT = '<div class="space-y-14 animate-in fade-in duration-700">';
 
 console.log('\x1b[36m%s\x1b[0m', '🚀 Starting QA Gate...');
@@ -136,7 +137,7 @@ runStep('Checking for Placeholders (...)', () => {
 
 // 8. QA Check: Link Integrity (REGEX ALIGNED: spaces allowed, quotes mandatory)
 runStep('Scanning for Unknown Page IDs', () => {
-    const scriptContent = fs.readFileSync(path.join(__dirname, '../script_tech.js'), 'utf8');
+  const scriptContent = fs.readFileSync(path.join(__dirname, '../sites/tech/script_tech.js'), 'utf8');
 
     const canonicalIds = new Set();
     const aliasIds = new Set();
@@ -196,13 +197,59 @@ runStep('Scanning for Unknown Page IDs', () => {
     }
 });
 
-// 9. Artifact Check: nav_map.md
-runStep('Verifying Documentation Map', () => {
-    const p1 = path.join(__dirname, '..', 'nav_map.md');
-    const p2 = path.join(__dirname, '..', 'docs', 'nav_map.md');
-    if (!fs.existsSync(p1) && !fs.existsSync(p2)) {
-        throw new Error('nav_map.md is missing (expected at repo root or docs/nav_map.md)!');
+// Helper: Diff strict check
+function diffMustBeEmpty(cmd, humanError) {
+    try {
+        // diff exit 0 => identical => SUCCESS
+        execSync(cmd, { encoding: 'utf8', maxBuffer: 10 * 1024 * 1024 });
+        return;
+    } catch (e) {
+        // diff exit 1 => files differ => FAIL with evidence (stdout is the diff)
+        if (typeof e.status === 'number' && e.status === 1) {
+            const out = (e.stdout ? e.stdout.toString('utf8') : '').trim();
+            if (out.length > 0) console.error('\n' + out);
+            throw new Error(humanError);
+        }
+        // Any other exit code => technical failure
+        throw new Error(`Diff check failed (technical error): ${e.message || e}`);
     }
+}
+
+// 9. Artifact Check: nav_map.md (Strict Diff)
+runStep('Verifying Documentation Map (Auto-Gen Strict Diff)', () => {
+    const packageRoot = path.join(__dirname, '..');
+
+    const target = path.join(packageRoot, 'docs', 'nav_map.md');
+    // Ensure docs dir exists or generator might fail if not recursive (though generator handles it)
+    if (!fs.existsSync(target)) {
+        // Just warning here? No, strict lock means file MUST exist and match.
+        // We will try running generator to temp first.
+    }
+
+    // Generate into tmp file (CWD-independent)
+    const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'rbk-navmap-'));
+    const tmpOut = path.join(tmpDir, 'nav_map.md');
+
+    const generator = path.join(packageRoot, 'scripts', 'generate_nav_map.mjs');
+    if (!fs.existsSync(generator)) {
+        throw new Error(`nav_map generator missing: ${generator}`);
+    }
+
+    // Run generator using node (assuming mjs support or node version > 14)
+    // Hardening: LC_ALL=C for deterministic node execution (if locale sensitive)
+    execSync(`LC_ALL=C node "${generator}" --out "${tmpOut}"`, { stdio: 'inherit' });
+
+    // Strict diff (deterministic locale)
+    // If target doesn't exist, diff will definitely fail (exit 2 or similar usually, or "No such file")
+    // Let's rely on diff message or helper
+    if (!fs.existsSync(target)) {
+        throw new Error('docs/nav_map.md missing! Run: npm run nav:gen (rbk-web) and commit.');
+    }
+
+    diffMustBeEmpty(
+        `LC_ALL=C diff -u "${target}" "${tmpOut}"`,
+        'docs/nav_map.md is OUT OF DATE. Run: npm run nav:gen (rbk-web) and commit the result. See diff above.'
+    );
 });
 
 console.log('\x1b[32m%s\x1b[0m', '\n✨ QA GATE PASSED. READY FOR DELIVERY.');

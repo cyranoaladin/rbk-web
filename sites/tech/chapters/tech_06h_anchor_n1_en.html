@@ -1,0 +1,108 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+    <section class="space-y-6">
+        <h1 class="text-3xl font-semibold tracking-tight">Anchor (N1) — Intro and program layout</h1>
+
+        <p class="text-base leading-7">
+            Anchor standardizes how to write Solana programs: account typing, constraint validation, serialization,
+            IDL generation, and test tooling. The goal is not “magic”, but fewer repetitive mistakes and more auditable
+            programs.
+        </p>
+
+        <div class="rounded-2xl border p-6 space-y-3">
+            <h2 class="text-xl font-semibold">What you can do after this chapter</h2>
+            <ul class="list-disc pl-6 space-y-1">
+                <li>Explain Anchor’s role in a Solana project.</li>
+                <li>Identify an Anchor workspace layout and key files.</li>
+                <li>Write a simple instruction and read the “accounts → logic → state” flow.</li>
+                <li>Understand the bridge “Rust code ↔ IDL ↔ TypeScript client”.</li>
+            </ul>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">1. Why Anchor</h2>
+            <ul class="list-disc pl-6 space-y-2">
+                <li><b>Accounts</b>: typed declaration of the accounts expected by an instruction.</li>
+                <li><b>Constraints</b>: declarative checks (owner, seeds, mutability, signer, rent, etc.).</li>
+                <li><b>Serialization</b>: consistent conventions (Borsh) and instruction discriminators.</li>
+                <li><b>IDL</b>: generated interface describing instructions, accounts, events, errors.</li>
+                <li><b>Tests</b>: standard TypeScript environment, provider, wallets, local validator.</li>
+            </ul>
+            <p class="text-base leading-7">
+                Big picture: you write the Rust program, Anchor generates an IDL, and the TypeScript client consumes
+                the IDL to call instructions safely.
+            </p>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">2. Anchor workspace structure</h2>
+            <p class="text-base leading-7">
+                An Anchor workspace usually has several folders. Names may vary by version, but the idea is stable:
+            </p>
+
+            <ul class="list-disc pl-6 space-y-1">
+                <li><b>programs/</b>: Rust code for programs (one folder per program).</li>
+                <li><b>tests/</b>: TypeScript tests (executed via Anchor tooling).</li>
+                <li><b>migrations/</b>: deployment scripts (depending on setup).</li>
+                <li><b>Anchor.toml</b>: configuration (cluster, program IDs, provider, scripts).</li>
+                <li><b>target/idl/</b>: IDL output folder.</li>
+            </ul>
+
+            <div class="rounded-xl border p-4 space-y-2">
+                <p class="text-sm font-semibold">Key file: Anchor.toml</p>
+                <p class="text-sm leading-6">
+                    It sets the provider (wallet), cluster (localnet, devnet, etc.), and Program IDs. A wrong Program ID
+                    is a classic source of failing tests. We tackle it explicitly in N3.
+                </p>
+            </div>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">3. The Anchor model: Accounts + Instruction</h2>
+            <p class="text-base leading-7">
+                In Anchor, an instruction is a Rust function with annotations; its accounts are described in a matching
+                struct. Constraints reject invalid calls early.
+            </p>
+
+            <div class="rounded-xl border p-4 space-y-2">
+                <p class="text-sm font-semibold">Mini example (conceptual)</p>
+                <pre class="text-sm overflow-x-auto"><code>#[derive(Accounts)]
+pub struct Initialize&lt;'info&gt; {
+  #[account(init, payer = user, space = 8 + 8)]
+  pub state: Account&lt;'info, State&gt;,
+  #[account(mut)]
+  pub user: Signer&lt;'info&gt;,
+  pub system_program: Program&lt;'info, System&gt;,
+}
+
+pub fn initialize(ctx: Context&lt;Initialize&gt;, value: u64) -&gt; Result&lt;()&gt; {
+  ctx.accounts.state.value = value;
+  Ok(())
+}</code></pre>
+            </div>
+
+            <p class="text-base leading-7">
+                Key ideas:
+            </p>
+            <ul class="list-disc pl-6 space-y-1">
+                <li><b>init</b>: create an account with space and payer.</li>
+                <li><b>Signer</b>: signature required.</li>
+                <li><b>Program&lt;System&gt;</b>: system program required for account creation.</li>
+                <li><b>8 + …</b>: Anchor overhead (discriminator) plus serialized fields.</li>
+            </ul>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">4. Audit-grade checklist for N1</h2>
+            <ul class="list-disc pl-6 space-y-2">
+                <li>Instruction accounts are <b>explicitly listed</b>.</li>
+                <li>Any account modified is marked <b>mut</b> (otherwise rejected).</li>
+                <li>Account creations use <b>payer</b> and <b>space</b> properly.</li>
+                <li>Constraints (owner, seeds, signer) sit <b>close to the declaration</b>.</li>
+            </ul>
+            <p class="text-base leading-7">
+                In N2, we focus on the IDL: how it is generated, what it describes, and how a client consumes it.
+            </p>
+        </div>
+
+    </section>
+</div>

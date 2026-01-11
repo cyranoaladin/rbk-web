@@ -1,0 +1,170 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-emerald-500/20 rounded-full blur-[100px]"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-4 mb-4">
+                <span
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-500 font-mono">Capstones</span>
+                <div class="h-12 w-px bg-white/10"></div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">Signature projects (Mainnet-Ready)</h1>
+            </div>
+            <p class="text-sm text-slate-400 max-w-2xl">
+                Studio standards: auditable products, security first, reproducible deliverables.
+            </p>
+        </div>
+    </header>
+
+    <section class="space-y-12">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <h2 class="text-3xl font-black text-white mb-4">CAPSTONE PROJECTS</h2>
+            <p class="text-slate-400">
+                Competency validation is not multiple choice, but Proof of Work.
+                Each level concludes with a tangible and auditable deliverable.
+            </p>
+        </div>
+
+        <div class="space-y-8">
+            <div class="relative group">
+                <div
+                    class="absolute -inset-1 bg-gradient-to-r from-orange-500 to-amber-500 rounded-2xl opacity-20 group-hover:opacity-40 blur transition duration-500">
+                </div>
+                <div class="relative bg-[#0a0a0a] border border-white/10 rounded-xl p-6 md:p-8">
+                    <div class="flex flex-col md:flex-row justify-between gap-6">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span
+                                    class="px-3 py-1 bg-orange-500/10 text-orange-400 text-xs font-bold uppercase tracking-wider rounded-full">Level
+                                    1</span>
+                                <h3 class="text-2xl font-bold text-white">The Rust CLI Explorer</h3>
+                            </div>
+                            <p class="text-slate-400 mb-6">
+                                Development of a pure Rust command-line tool (CLI), framework-free.
+                                The tool must connect to the Solana RPC, manually parse binary data from specific
+                                accounts, and display a structured state.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span
+                                    class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[10px] text-slate-300">Rust
+                                    Ownership</span>
+                                <span
+                                    class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[10px] text-slate-300">Borsh
+                                    Deserialization</span>
+                                <span
+                                    class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[10px] text-slate-300">RPC
+                                    Integration</span>
+                            </div>
+                        </div>
+                        <div
+                            class="w-full md:w-64 bg-black/50 rounded-lg border border-white/10 p-4 font-mono text-[10px] text-slate-400">
+                            <div class="flex items-center gap-2 border-b border-white/10 pb-2 mb-2 text-orange-400">
+                                <i data-lucide="terminal" class="w-3 h-3"></i> Expected deliverables
+                            </div>
+                            <ul class="space-y-2 list-disc list-inside">
+                                <li>Rust source code (Crates.io standard)</li>
+                                <li>Error Handling (Result/Option)</li>
+                                <li>Zero `unwrap()` in production</li>
+                                <li>Technical documentation (Cargo doc)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative group">
+                <div
+                    class="absolute -inset-1 bg-gradient-to-r from-[#9945FF] to-fuchsia-500 rounded-2xl opacity-20 group-hover:opacity-40 blur transition duration-500">
+                </div>
+                <div class="relative bg-[#0a0a0a] border border-white/10 rounded-xl p-6 md:p-8">
+                    <div class="flex flex-col md:flex-row justify-between gap-6">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span
+                                    class="px-3 py-1 bg-[#9945FF]/10 text-[#9945FF] text-xs font-bold uppercase tracking-wider rounded-full">Level
+                                    2</span>
+                                <h3 class="text-2xl font-bold text-white">Full Stack DeFi dApp</h3>
+                            </div>
+                            <p class="text-slate-400 mb-6">
+                                Design and deployment of a complete decentralized protocol (e.g., Crowdfunding with
+                                Escrow, or Voting DAO).
+                                The project must include the Smart Contract (Anchor), unit tests, and a connected React
+                                user interface.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span
+                                    class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[10px] text-slate-300">Anchor
+                                    Framework</span>
+                                <span
+                                    class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[10px] text-slate-300">CPI
+                                    (Composability)</span>
+                                <span
+                                    class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[10px] text-slate-300">PDA
+                                    Management</span>
+                            </div>
+                        </div>
+                        <div
+                            class="w-full md:w-64 bg-black/50 rounded-lg border border-white/10 p-4 font-mono text-[10px] text-slate-400">
+                            <div class="flex items-center gap-2 border-b border-white/10 pb-2 mb-2 text-[#9945FF]">
+                                <i data-lucide="box" class="w-3 h-3"></i> Expected deliverables
+                            </div>
+                            <ul class="space-y-2 list-disc list-inside">
+                                <li>Deployed Program (Devnet)</li>
+                                <li>TS Tests (> 80% coverage)</li>
+                                <li>Functional Frontend (Wallet Adapter)</li>
+                                <li>Public IDL</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative group">
+                <div
+                    class="absolute -inset-1 bg-gradient-to-r from-red-500 to-rose-600 rounded-2xl opacity-20 group-hover:opacity-40 blur transition duration-500">
+                </div>
+                <div class="relative bg-[#0a0a0a] border border-white/10 rounded-xl p-6 md:p-8">
+                    <div class="flex flex-col md:flex-row justify-between gap-6">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span
+                                    class="px-3 py-1 bg-red-500/10 text-red-500 text-xs font-bold uppercase tracking-wider rounded-full">Level
+                                    3</span>
+                                <h3 class="text-2xl font-bold text-white">Technical Audit Report</h3>
+                            </div>
+                            <p class="text-slate-400 mb-6">
+                                Simulation of a "Red Teaming" mission. The student must analyze an existing (or
+                                provided) protocol, identify potential attack vectors, and produce a professional
+                                report.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span
+                                    class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[10px] text-slate-300">Exploit
+                                    Writing</span>
+                                <span
+                                    class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[10px] text-slate-300">Vulnerability
+                                    Assessment</span>
+                                <span
+                                    class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[10px] text-slate-300">Gas
+                                    Optimization</span>
+                            </div>
+                        </div>
+                        <div
+                            class="w-full md:w-64 bg-black/50 rounded-lg border border-white/10 p-4 font-mono text-[10px] text-slate-400">
+                            <div class="flex items-center gap-2 border-b border-white/10 pb-2 mb-2 text-red-500">
+                                <i data-lucide="file-check" class="w-3 h-3"></i> Expected deliverables
+                            </div>
+                            <ul class="space-y-2 list-disc list-inside">
+                                <li>Industry Standard PDF Report</li>
+                                <li>Classification (High/Med/Low)</li>
+                                <li>PoC (Proof of Concept) of exploits</li>
+                                <li>Fix Recommendations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</div>
