@@ -4,11 +4,11 @@
     "rewrites": [
         {
             "source": "/tech",
-            "destination": "/sites/tech/formation_web3_tunisie.html"
+            "destination": "/sites/tech/index.html"
         },
         {
             "source": "/tech/",
-            "destination": "/sites/tech/formation_web3_tunisie.html"
+            "destination": "/sites/tech/index.html"
         },
         {
             "source": "/tech/:path*",
