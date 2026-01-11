@@ -14,37 +14,38 @@
             </div>
             <h1 class="mt-4 text-3xl font-black tracking-tight text-white">
                 N2 — Anchor : Theory → Counter → Patterns → Mini-capstone → Checklist
-            </h2>
-            <p class="mt-3 max-w-3xl text-slate-300">
-                Cette étape est la charnière du parcours Solana : on consolide la théorie utile
-                (accounts/PDAs/transactions),
-                puis on construit un premier programme Anchor (Counter), on apprend des patterns réutilisables,
-                on termine par un mini-capstone et une checklist de qualité (tests, sécurité, livraison).
-            </p>
+                </h2>
+                <p class="mt-3 max-w-3xl text-slate-300">
+                    Cette étape est la charnière du parcours Solana : on consolide la théorie utile
+                    (accounts/PDAs/transactions),
+                    puis on construit un premier programme Anchor (Counter), on apprend des patterns réutilisables,
+                    on termine par un mini-capstone et une checklist de qualité (tests, sécurité, livraison).
+                </p>
 
-            <div class="mt-6 grid gap-4 md:grid-cols-3">
-                <div class="rounded-xl border border-white/10 bg-slate-950/40 p-4">
-                    <p class="text-xs text-slate-400 font-mono uppercase tracking-widest">Objectif</p>
-                    <p class="mt-2 text-sm text-slate-200">
-                        Être autonome sur un programme Anchor simple : conception des comptes, PDA, contraintes, tests
-                        et déploiement local/devnet.
-                    </p>
+                <div class="mt-6 grid gap-4 md:grid-cols-3">
+                    <div class="rounded-xl border border-white/10 bg-slate-950/40 p-4">
+                        <p class="text-xs text-slate-400 font-mono uppercase tracking-widest">Objectif</p>
+                        <p class="mt-2 text-sm text-slate-200">
+                            Être autonome sur un programme Anchor simple : conception des comptes, PDA, contraintes,
+                            tests
+                            et déploiement local/devnet.
+                        </p>
+                    </div>
+                    <div class="rounded-xl border border-white/10 bg-slate-950/40 p-4">
+                        <p class="text-xs text-slate-400 font-mono uppercase tracking-widest">Pré-requis</p>
+                        <p class="mt-2 text-sm text-slate-200">
+                            Rust N1 (basique), CLI Solana, environnement dev, lecture du chapitre <em>Foundations</em>.
+                        </p>
+                    </div>
+                    <div class="rounded-xl border border-white/10 bg-slate-950/40 p-4">
+                        <p class="text-xs text-slate-400 font-mono uppercase tracking-widest">Livrables</p>
+                        <ul class="mt-2 space-y-1 text-sm text-slate-200 list-disc list-inside">
+                            <li>Programme Counter + tests</li>
+                            <li>Patterns appliqués (PDA, contraintes, erreurs)</li>
+                            <li>Mini-capstone + README</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="rounded-xl border border-white/10 bg-slate-950/40 p-4">
-                    <p class="text-xs text-slate-400 font-mono uppercase tracking-widest">Pré-requis</p>
-                    <p class="mt-2 text-sm text-slate-200">
-                        Rust N1 (basique), CLI Solana, environnement dev, lecture du chapitre <em>Foundations</em>.
-                    </p>
-                </div>
-                <div class="rounded-xl border border-white/10 bg-slate-950/40 p-4">
-                    <p class="text-xs text-slate-400 font-mono uppercase tracking-widest">Livrables</p>
-                    <ul class="mt-2 space-y-1 text-sm text-slate-200 list-disc list-inside">
-                        <li>Programme Counter + tests</li>
-                        <li>Patterns appliqués (PDA, contraintes, erreurs)</li>
-                        <li>Mini-capstone + README</li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -329,5 +330,20 @@ pub struct Initialize<'info> {
             </div>
         </div>
     </section>
+
+    <!-- Navigation Footer (Standardized) -->
+    <div class="flex justify-between pt-8 border-t border-white/10">
+        <button data-page="tech_06a_solana_n1"
+            class="flex items-center gap-3 px-6 py-3 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-colors text-slate-400 hover:text-white">
+            <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            <span>PRÉCÉDENT</span>
+        </button>
+
+        <button data-page="tech_06e1_tokens_and_cpi_n1"
+            class="flex items-center gap-3 px-6 py-3 bg-[#9945FF] hover:bg-[#8035e0] text-white rounded-lg font-bold transition-colors shadow-[0_0_20px_rgba(153,69,255,0.3)] hover:shadow-[0_0_30px_rgba(153,69,255,0.5)]">
+            <span>SUIVANT</span>
+            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+        </button>
+    </div>
 
 </div>

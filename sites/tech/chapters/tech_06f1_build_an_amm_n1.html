@@ -139,19 +139,19 @@ let y: u128 = vault_b_amount as u128;
             </div>
         </div>
 
-        <div class="mt-6 flex flex-col md:flex-row gap-3">
-            <button
-                class="group flex-1 text-left px-6 py-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
-                data-page="tech_06f_build_an_amm">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Retour</div>
-                        <div class="text-white font-bold">Hub — Build an AMM</div>
-                    </div>
-                    <i data-lucide="arrow-left" class="w-5 h-5 text-slate-500 group-hover:text-indigo-300"></i>
-                </div>
+        <!-- Navigation Footer (Standardized) -->
+        <div class="flex justify-between pt-8 border-t border-white/10 mt-12">
+            <button data-page="tech_06e2_tokens_and_cpi_n2"
+                class="flex items-center gap-3 px-6 py-3 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-colors text-slate-400 hover:text-white">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                <span>PRÉCÉDENT</span>
             </button>
 
+            <button data-page="tech_06f2_build_an_amm_n2"
+                class="flex items-center gap-3 px-6 py-3 bg-[#9945FF] hover:bg-[#8035e0] text-white rounded-lg font-bold transition-colors shadow-[0_0_20px_rgba(153,69,255,0.3)] hover:shadow-[0_0_30px_rgba(153,69,255,0.5)]">
+                <span>SUIVANT</span>
+                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </button>
         </div>
     </section>
 

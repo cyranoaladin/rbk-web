@@ -1,0 +1,55 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <!-- Header -->
+    <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-[#9945FF]/20 rounded-full blur-[100px]"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-4 mb-4">
+                <span
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#9945FF] to-fuchsia-400 font-mono">A</span>
+                <div class="h-12 w-px bg-white/10"></div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">
+                    Solana Track (Rust)
+                    <span class="block text-lg font-normal text-slate-400 mt-1">From fundamentals to capstone</span>
+                </h1>
+            </div>
+
+            <p class="text-sm text-slate-400 max-w-3xl leading-relaxed">
+                This hub provides a clear progression for the Solana track: foundations first, then Anchor and security
+                patterns,
+                then DeFi capstones and advanced tooling.
+            </p>
+
+            <div class="mt-6 flex flex-wrap gap-3">
+                <button data-page="tech_06a_solana_n1"
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 bg-slate-950/60 text-xs font-bold text-slate-200 hover:bg-white/5 transition">
+                    <i data-lucide="layers" class="w-4 h-4"></i>
+                    Go to Lv1 (Fundamentals)
+                </button>
+
+                <button data-page="tech_06b_solana_n2"
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 bg-slate-950/60 text-xs font-bold text-slate-200 hover:bg-white/5 transition">
+                    <i data-lucide="box" class="w-4 h-4"></i>
+                    Go to Lv2 (Anchor & Security)
+                </button>
+
+                <button data-page="tech_06c_solana_n3"
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 bg-slate-950/60 text-xs font-bold text-slate-200 hover:bg-white/5 transition">
+                    <i data-lucide="trophy" class="w-4 h-4"></i>
+                    Go to Lv3 (Advanced DeFi)
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="p-6 rounded-2xl border border-white/10 bg-slate-950/40 space-y-4">
+        <h2 class="text-2xl font-bold text-white">Recommended sequence</h2>
+        <ol class="list-decimal pl-5 space-y-2 text-sm text-slate-300">
+            <li><strong>Foundations</strong> — accounts, PDAs, transactions, CPI mental model</li>
+            <li><strong>Lv1</strong> — Rust basics + tooling</li>
+            <li><strong>Lv2</strong> — Anchor counter → patterns → mini-capstone</li>
+            <li><strong>Lv3</strong> — DeFi capstone → prep for native & security labs</li>
+        </ol>
+    </section>
+
+</div>

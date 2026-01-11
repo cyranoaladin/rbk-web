@@ -13,20 +13,7 @@
                 </div>
             </div>
 
-            <div class="flex gap-2 w-full md:w-auto">
-                <button
-                    class="flex-1 md:flex-none px-4 py-2 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors text-sm text-white font-bold"
-                    data-page="tech_06d_security_labs">
-                    <span class="inline-flex items-center gap-2"><i data-lucide="arrow-left"
-                            class="w-4 h-4"></i>Hub</span>
-                </button>
-                <button
-                    class="flex-1 md:flex-none px-4 py-2 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors text-sm text-white font-bold"
-                    data-page="tech_06d2_security_labs_n2">
-                    <span class="inline-flex items-center gap-2">N2<i data-lucide="arrow-right"
-                            class="w-4 h-4"></i></span>
-                </button>
-            </div>
+
         </div>
 
         <div class="p-5 rounded-2xl border border-white/10 bg-slate-900/30 text-sm text-slate-300">
@@ -68,7 +55,8 @@
             <div class="p-4 rounded-2xl border border-white/10 bg-white/5">
                 <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-1">Correctif</div>
                 <div class="text-sm text-slate-300">Contraintes Anchor (<code>token::authority</code>,
-                    <code>has_one</code>, ATA).</div>
+                    <code>has_one</code>, ATA).
+                </div>
             </div>
         </div>
 
@@ -353,5 +341,20 @@ it("rejects admin action from a non-admin signer", async () =&gt; {
             </ul>
         </div>
     </section>
+
+    <!-- Navigation Footer (Standardized) -->
+    <div class="flex justify-between pt-8 border-t border-white/10">
+        <button data-page="tech_06d_security_labs"
+            class="flex items-center gap-3 px-6 py-3 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-colors text-slate-400 hover:text-white">
+            <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            <span>PRÉCÉDENT</span>
+        </button>
+
+        <button data-page="tech_06d2_security_labs_n2"
+            class="flex items-center gap-3 px-6 py-3 bg-[#9945FF] hover:bg-[#8035e0] text-white rounded-lg font-bold transition-colors shadow-[0_0_20px_rgba(153,69,255,0.3)] hover:shadow-[0_0_30px_rgba(153,69,255,0.5)]">
+            <span>SUIVANT</span>
+            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+        </button>
+    </div>
 
 </div>

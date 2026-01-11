@@ -1,0 +1,153 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+    <section class="space-y-6">
+        <h1 class="text-3xl font-semibold tracking-tight">Anchor (N3) — Tests TypeScript : setup, provider, fixtures,
+            tests pos/négatifs</h1>
+
+        <p class="text-base leading-7">
+            Les tests TypeScript sont la couche qui vérifie que l’IDL, la logique Rust, la gestion des comptes et les
+            contraintes
+            se comportent comme attendu. Un bon batch de tests comprend des cas positifs (chemin nominal) et des cas
+            négatifs
+            (accès refusé, seeds invalides, comptes non mutables, absence de signature).
+        </p>
+
+        <div class="rounded-2xl border p-6 space-y-3">
+            <h2 class="text-xl font-semibold">Objectifs</h2>
+            <ul class="list-disc pl-6 space-y-1">
+                <li>Comprendre le rôle du provider (connexion, wallet, cluster).</li>
+                <li>Structurer des fixtures (comptes, PDAs, helpers) pour des tests reproductibles.</li>
+                <li>Écrire au moins un test positif et un test négatif “audit-grade”.</li>
+                <li>Diagnostiquer rapidement une erreur classique (Program ID, comptes, signer, mut).</li>
+            </ul>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">1. Provider : la pièce maîtresse</h2>
+            <p class="text-base leading-7">
+                Le provider regroupe : connexion (Connection), wallet (payer/signature), et options de confirmation. En
+                tests, il est
+                souvent initialisé depuis l’environnement Anchor (local validator). Un point critique : le <b>Program
+                    ID</b> doit
+                correspondre au programme réellement déployé sur le cluster de test.
+            </p>
+
+            <div class="rounded-xl border p-4 space-y-2">
+                <p class="text-sm font-semibold">Symptôme fréquent</p>
+                <ul class="list-disc pl-6 space-y-1 text-sm leading-6">
+                    <li>Erreur “Program failed to complete” ou “unknown program”</li>
+                    <li>Cause typique : Program ID incohérent entre Anchor.toml, keypair du programme et IDL</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">2. Fixtures : rendre les tests déterministes</h2>
+            <p class="text-base leading-7">
+                Une fixture est une fonction utilitaire qui prépare l’état : création de comptes, dérivation de PDA,
+                airdrop,
+                initialisation. L’objectif est d’éviter la duplication et de rendre la lecture des tests claire.
+            </p>
+
+            <div class="rounded-xl border p-4 space-y-2">
+                <p class="text-sm font-semibold">Exemple conceptuel</p>
+                <pre class="text-sm overflow-x-auto"><code>// Conceptuel : helpers
+async function makeStateAccount(program, user) {
+  // dériver une adresse, créer/initialiser, retourner { statePda, bump }
+  return { statePda, bump };
+}</code></pre>
+            </div>
+
+            <p class="text-base leading-7">
+                Une bonne fixture doit aussi gérer les échecs : si un compte existe déjà, elle doit soit le réutiliser
+                proprement,
+                soit isoler les tests (nouveau PDA par test).
+            </p>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">3. Test positif : chemin nominal</h2>
+            <p class="text-base leading-7">
+                Un test positif vérifie que l’instruction fonctionne, modifie l’état attendu, et retourne sans erreur.
+                Exemple
+                conceptuel :
+            </p>
+
+            <div class="rounded-xl border p-4 space-y-2">
+                <pre class="text-sm overflow-x-auto"><code>it("initialize sets the value", async () =&gt; {
+  const { statePda } = await makeStateAccount(program, provider.wallet.publicKey);
+
+  await program.methods
+    .initialize(new BN(42))
+    .accounts({
+      state: statePda,
+      user: provider.wallet.publicKey,
+      systemProgram: SystemProgram.programId,
+    })
+    .rpc();
+
+  const state = await program.account.state.fetch(statePda);
+  expect(state.value.toNumber()).to.equal(42);
+});</code></pre>
+            </div>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">4. Test négatif : échec attendu (audit-grade)</h2>
+            <p class="text-base leading-7">
+                Un test négatif doit échouer pour la bonne raison. Il ne suffit pas de “catch une erreur”. Il faut
+                vérifier un
+                signal exploitable : code d’erreur Anchor, message, ou motif stable.
+            </p>
+
+            <div class="rounded-xl border p-4 space-y-2">
+                <p class="text-sm font-semibold">Exemple conceptuel : absence de signature</p>
+                <pre class="text-sm overflow-x-auto"><code>it("rejects when signer is missing", async () =&gt; {
+  let failed = false;
+  try {
+    await program.methods
+      .initialize(new BN(1))
+      .accounts({
+        state: statePda,
+        user: someOtherPublicKey, // pas le wallet signer
+        systemProgram: SystemProgram.programId,
+      })
+      .rpc();
+  } catch (e) {
+    failed = true;
+    // vérifier un motif stable : code ou message
+    // expect(String(e)).to.contain("Signature verification failed");
+  }
+  expect(failed).to.equal(true);
+});</code></pre>
+            </div>
+
+            <p class="text-base leading-7">
+                Autres tests négatifs pertinents :
+            </p>
+            <ul class="list-disc pl-6 space-y-1">
+                <li>Seeds invalides (PDA mal dérivée).</li>
+                <li>Owner incorrect (compte appartenant à un autre programme).</li>
+                <li>Compte non mutable alors que l’instruction écrit dedans.</li>
+                <li>Accès non autorisé (contrainte d’autorisation manquante ou violée).</li>
+            </ul>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">5. Check-list “audit-grade” pour N3</h2>
+            <ul class="list-disc pl-6 space-y-2">
+                <li>Au moins un test positif et un test négatif réellement discriminants.</li>
+                <li>Fixtures réutilisables, pas de duplication inutile.</li>
+                <li>Diagnostics rapides : Program ID, comptes, signer, mut, seeds.</li>
+                <li>Assertions sur l’état on-chain (fetch) et sur les erreurs (motifs stables).</li>
+            </ul>
+            <p class="text-base leading-7">
+                Avec ces trois chapitres, tu as la base pour écrire un programme Anchor “outillé” : interface claire
+                (IDL) et tests
+                robustes. Le pas suivant naturel est d’introduire des patterns (PDA, constraints avancées, events) et
+                des règles de
+                sécurité.
+            </p>
+        </div>
+
+    </section>
+</div>

@@ -1,0 +1,184 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <section class="space-y-10">
+        <div class="p-6 rounded-2xl border border-white/10 bg-white/5 space-y-3">
+            <h2 class="text-2xl font-black text-white">How to read the program: Phases vs Levels</h2>
+            <p class="text-sm text-slate-300">Engineering = 16 weeks: W01–W16. Phases = Hardening (W01–W04), Building (W05–W10), Security & Audit (W11–W14), Capstone (W15–W16). Levels = N1 (W01–W04), N2 (W05–W10), N3 (W11–W16). There is no week beyond W16 in this program.</p>
+        </div>
+
+        <div class="text-center">
+            <h1 class="text-4xl font-black text-white mb-4">ENGINEERING TRACK: CANONICAL PLAN</h1>
+            <p class="text-slate-400 max-w-3xl mx-auto text-lg leading-relaxed">
+                One single storyline: optional Sprint 0, Pool P01→P04 (4 weeks), then the engineering track W01→W16
+                split into Hardening, Building, Security & Audit + Capstone.
+            </p>
+            <div class="mt-6 grid gap-3 md:grid-cols-3">
+                <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                    <p class="text-xs text-slate-400 uppercase font-bold mb-1">Sprint 0</p>
+                    <p class="text-white font-semibold">Optional • 1 week</p>
+                </div>
+                <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                    <p class="text-xs text-slate-400 uppercase font-bold mb-1">Phase 0 — Pool</p>
+                    <p class="text-white font-semibold">P01 → P04 • 4 weeks</p>
+                </div>
+                <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                    <p class="text-xs text-slate-400 uppercase font-bold mb-1">Engineering track</p>
+                    <p class="text-white font-semibold">W01 → W16 • 16 weeks</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-3">
+            <div class="p-4 rounded-xl border border-indigo-500/20 bg-indigo-500/5">
+                <p class="text-xs uppercase font-bold text-indigo-300 mb-1">Phase 1 — Hardening</p>
+                <p class="text-white font-semibold">W01 → W04 (4 weeks)</p>
+            </div>
+            <div class="p-4 rounded-xl border border-emerald-500/20 bg-emerald-500/5">
+                <p class="text-xs uppercase font-bold text-emerald-300 mb-1">Phase 2 — Building</p>
+                <p class="text-white font-semibold">W05 → W10 (6 weeks)</p>
+            </div>
+            <div class="p-4 rounded-xl border border-amber-500/20 bg-amber-500/5">
+                <p class="text-xs uppercase font-bold text-amber-300 mb-1">Phase 3 — Security & Audit + Capstone</p>
+                <p class="text-white font-semibold">W11 → W16 (6 weeks)</p>
+            </div>
+        </div>
+
+        <div class="p-6 rounded-2xl border border-white/10 bg-white/5">
+            <h2 class="text-xl font-bold text-white mb-3">Levels (pedagogical, not durations)</h2>
+            <ul class="space-y-2 text-slate-300 text-sm">
+                <li><span class="font-mono text-emerald-300">N1</span> · Fundamentals (Foundations, Solana N1, Security Labs N1)</li>
+                <li><span class="font-mono text-amber-300">N2</span> · Intermediate (Solana N2, Token/CPI N2, Security Labs N2)</li>
+                <li><span class="font-mono text-rose-300">N3</span> · Advanced/Capstone (Solana N3, final hardening, audit report, demo)</li>
+            </ul>
+        </div>
+
+        <div class="glass-card !p-0 overflow-hidden border-white/10">
+            <table class="w-full text-left text-[11px]">
+                <thead class="bg-slate-900/80 text-slate-300 uppercase font-black">
+                    <tr>
+                        <th class="p-3 w-20">Week</th>
+                        <th class="p-3 w-24">Level</th>
+                        <th class="p-3 w-1/3">Focus</th>
+                        <th class="p-3 w-1/3">Deliverable</th>
+                        <th class="p-3">Linked pages</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-slate-300">
+<tr>
+  <td class="font-mono">W01</td>
+  <td>Setup, Linux/Git, Solana mental model (accounts/tx/CPI) — operational basics</td>
+  <td>Environment ready + mini-katas (CLI, borsh, signatures)</td>
+  <td><span class="badge badge-n1">N1</span></td>
+  <td><a href="#" data-page="tech_06_foundations">Foundations</a></td>
+</tr>
+<tr>
+  <td class="font-mono">W02</td>
+  <td>Solana‑oriented Rust: ownership, memory, serialization, error handling</td>
+  <td>Rust module + on-chain binary parser (no framework)</td>
+  <td><span class="badge badge-n1">N1</span></td>
+  <td><a href="#" data-page="tech_06a_solana_n1">Solana N1</a></td>
+</tr>
+<tr>
+  <td class="font-mono">W03</td>
+  <td>Tooling &amp; workflow: RPC, logs, explorers, debugging, best practices</td>
+  <td>RPC investigation notebook + observability notes</td>
+  <td><span class="badge badge-n1">N1</span></td>
+  <td><a href="#" data-page="tech_06_solana_hub">Solana Hub</a></td>
+</tr>
+<tr>
+  <td class="font-mono">W04</td>
+  <td>Hardening checkpoint: quality, readability, packaging, review</td>
+  <td><strong>Rust CLI Explorer</strong> (validation deliverable)</td>
+  <td><span class="badge badge-n1">N1</span></td>
+  <td><a href="#" data-page="tech_06a_solana_n1">Solana N1</a></td>
+</tr>
+<tr>
+  <td class="font-mono">W05</td>
+  <td>Anchor fundamentals: accounts, instructions, integration tests</td>
+  <td><em>Counter</em> program + tests + short doc</td>
+  <td><span class="badge badge-n2">N2</span></td>
+  <td><a href="#" data-page="tech_06b_solana_n2">Solana N2</a></td>
+</tr>
+<tr>
+  <td class="font-mono">W06</td>
+  <td>Anchor patterns: PDAs, constraints, errors, events, upgrade path</td>
+  <td>PDA program + checklists (invariants/constraints)</td>
+  <td><span class="badge badge-n2">N2</span></td>
+  <td><a href="#" data-page="tech_06b_solana_n2">Solana N2</a></td>
+</tr>
+<tr>
+  <td class="font-mono">W07</td>
+  <td>Tokens: mint, ATAs, permissions, formats — value primitives</td>
+  <td>Mint + ATA flow + verification script</td>
+  <td><span class="badge badge-n2">N2</span></td>
+  <td><a href="#" data-page="tech_06e1_tokens_and_cpi_n1">Tokens &amp; CPI N1</a></td>
+</tr>
+<tr>
+  <td class="font-mono">W08</td>
+  <td>CPI &amp; Token-2022: extensions, constraints, dApp integrations</td>
+  <td>CPI mini-lab + “risks &amp; guardrails” note</td>
+  <td><span class="badge badge-n2">N2</span></td>
+  <td><a href="#" data-page="tech_06e2_tokens_and_cpi_n2">Tokens &amp; CPI N2</a></td>
+</tr>
+<tr>
+  <td class="font-mono">W09</td>
+  <td>AMM: invariants, state layout, math, unit tests</td>
+  <td>AMM skeleton + invariant tests</td>
+  <td><span class="badge badge-n2">N2</span></td>
+  <td><a href="#" data-page="tech_06f1_build_an_amm_n1">Build an AMM N1</a></td>
+</tr>
+<tr>
+  <td class="font-mono">W10</td>
+  <td>AMM: swaps, fees, slippage, hardening &amp; edge cases</td>
+  <td>Swap + fees + hardening checklist</td>
+  <td><span class="badge badge-n2">N2</span></td>
+  <td><a href="#" data-page="tech_06f2_build_an_amm_n2">Build an AMM N2</a></td>
+</tr>
+<tr>
+  <td class="font-mono">W11</td>
+  <td>Security &amp; audit: threat modeling, checklists, structured review</td>
+  <td>Threat model + audit plan</td>
+  <td><span class="badge badge-n3">N3</span></td>
+  <td><a href="#" data-page="tech_06d_security_labs">Security Labs</a></td>
+</tr>
+<tr>
+  <td class="font-mono">W12</td>
+  <td>Security Labs N1: common Solana/Anchor vulnerabilities</td>
+  <td>N1 exploit writeups + patches</td>
+  <td><span class="badge badge-n3">N3</span></td>
+  <td><a href="#" data-page="tech_06d1_security_labs_n1">Security Labs N1</a></td>
+</tr>
+<tr>
+  <td class="font-mono">W13</td>
+  <td>Security Labs N2: fuzzing, invariants, negative testing</td>
+  <td>N2 fuzz/invariants report</td>
+  <td><span class="badge badge-n3">N3</span></td>
+  <td><a href="#" data-page="tech_06d2_security_labs_n2">Security Labs N2</a></td>
+</tr>
+<tr>
+  <td class="font-mono">W14</td>
+  <td>Infra &amp; incident response: validator basics, monitoring, runbooks</td>
+  <td>Runbook + minimal dashboard + simulated post‑mortem</td>
+  <td><span class="badge badge-n3">N3</span></td>
+  <td><a href="#" data-page="tech_06g_validator_infra_overview">Validator &amp; Infra</a></td>
+</tr>
+<tr>
+  <td class="font-mono">W15</td>
+  <td>Capstone: Anchor→Native migration or major refactor + audit draft</td>
+  <td>Migration spike + audit draft (structure + findings)</td>
+  <td><span class="badge badge-n3">N3</span></td>
+  <td><a href="#" data-page="tech_06c_solana_n3">Solana N3</a></td>
+</tr>
+<tr>
+  <td class="font-mono">W16</td>
+  <td>Finalization: demo, audit report, “job‑ready” packaging</td>
+  <td><strong>Demo Day</strong> + <strong>Audit Report v1.0</strong></td>
+  <td><span class="badge badge-n3">N3</span></td>
+  <td><a href="#" data-page="tech_capstones">Capstones</a></td>
+</tr>
+</tbody>
+            </table>
+        </div>
+    </section>
+
+</div>

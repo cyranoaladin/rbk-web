@@ -295,36 +295,26 @@ flowchart TD
         </div>
     </div>
 
-    <div class="p-6 rounded-2xl border border-red-500/20 bg-red-500/5 space-y-4">
-        <div class="flex items-center gap-3">
-            <div class="p-2 rounded-lg bg-red-500/10 border border-red-500/20">
-                <i data-lucide="file-search" class="w-5 h-5 text-red-400"></i>
-            </div>
-            <div>
-                <h3 class="text-lg font-bold text-white">Passage recommandé</h3>
-                <p class="text-xs text-slate-400">Après N3, on enchaîne sur des Security Labs (Anchor + Native).</p>
-            </div>
-        </div>
 
-        <div class="flex flex-wrap gap-3">
-            <button data-page="tech_06b_solana_n2"
-                class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 bg-slate-950/60 text-xs font-bold text-slate-200 hover:bg-white/5 transition">
-                <i data-lucide="arrow-left" class="w-4 h-4"></i>
-                Revenir à N2
-            </button>
-
-            <button data-page="tech_06d_security_labs"
-                class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-red-400/20 bg-red-500/10 text-xs font-bold text-red-200 hover:bg-red-500/15 transition shadow-[0_0_20px_rgba(239,68,68,0.3)] hover:shadow-[0_0_30px_rgba(239,68,68,0.35)]">
-                <i data-lucide="shield" class="w-4 h-4"></i>
-                Aller aux Security Labs
-            </button>
-        </div>
-    </div>
 
     <div class="p-6 rounded-2xl border border-white/10 bg-slate-950/40">
         <div class="text-xs uppercase tracking-widest font-bold text-slate-500">Livrable final</div>
         <div class="text-lg font-bold text-white mt-1">Audit Report V1.0</div>
         <div class="text-xs text-slate-500 mt-1">Le sésame pour entrer dans l'industrie.</div>
+    </div>
+    <!-- Navigation Footer (Standardized) -->
+    <div class="flex justify-between pt-8 border-t border-white/10">
+        <button data-page="tech_06f2_build_an_amm_n2"
+            class="flex items-center gap-3 px-6 py-3 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-colors text-slate-400 hover:text-white">
+            <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            <span>PRÉCÉDENT</span>
+        </button>
+
+        <button data-page="tech_06d_security_labs"
+            class="flex items-center gap-3 px-6 py-3 bg-[#9945FF] hover:bg-[#8035e0] text-white rounded-lg font-bold transition-colors shadow-[0_0_20px_rgba(153,69,255,0.3)] hover:shadow-[0_0_30px_rgba(153,69,255,0.5)]">
+            <span>SUIVANT</span>
+            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+        </button>
     </div>
 </section>
 

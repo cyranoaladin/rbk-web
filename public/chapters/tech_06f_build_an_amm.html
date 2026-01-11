@@ -1,0 +1,173 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <section class="max-w-5xl mx-auto space-y-8">
+        <div class="flex items-start justify-between gap-6 flex-col md:flex-row">
+            <div class="space-y-4">
+                <h1
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">
+                    Build an AMM
+                </h1>
+                <p class="text-xl text-slate-400">
+                    Vous construisez un <strong>AMM constant-product</strong> minimal (pool + LP + swaps) pour apprendre
+                    les
+                    invariants, la gestion des arrondis et les patterns CPI Token.
+                    Le but est <strong>pédagogique</strong> : écrire quelque chose d’auditable, testable, et robuste.
+                </p>
+            </div>
+
+            <div class="w-full md:w-[380px] p-4 rounded-2xl border border-white/10 bg-slate-900/40">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-indigo-300 mb-2">Objectif</div>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li class="flex gap-2 items-start">
+                        <i data-lucide="activity" class="w-4 h-4 text-purple-300 mt-0.5"></i>
+                        <span>Comprendre <strong>x·y = k</strong>, slippage, fees, LP shares.</span>
+                    </li>
+                    <li class="flex gap-2 items-start">
+                        <i data-lucide="calculator" class="w-4 h-4 text-emerald-300 mt-0.5"></i>
+                        <span>Faire des maths sûres : <strong>u128</strong>, arrondis,
+                            <strong>checked_*</strong>.</span>
+                    </li>
+                    <li class="flex gap-2 items-start">
+                        <i data-lucide="shield-check" class="w-4 h-4 text-indigo-300 mt-0.5"></i>
+                        <span>Hardening : vault checks, program id checks, invariants testés.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="p-6 bg-slate-900 border-l-4 border-purple-400 rounded-r-xl">
+            <h3 class="text-sm font-bold text-purple-300 uppercase tracking-widest mb-2">Invariant central</h3>
+            <p class="text-sm text-slate-300">
+                Dans un AMM constant-product, la relation <strong>x·y ≈ k</strong> (avec fees et arrondis) doit rester
+                cohérente.
+                La validation “audit-grade” consiste à formaliser les invariants et à les rendre falsifiables par tests.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <button
+                class="group text-left p-6 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                data-page="tech_06f1_build_an_amm_n1">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-1">N1</div>
+                        <div class="text-lg font-black text-white">Pool + LP invariants</div>
+                        <div class="text-sm text-slate-400 mt-1">state • add/remove liquidity • rounding rules</div>
+                    </div>
+                    <i data-lucide="arrow-right"
+                        class="w-6 h-6 text-indigo-300 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </button>
+
+            <button
+                class="group text-left p-6 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                data-page="tech_06f2_build_an_amm_n2">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-1">N2</div>
+                        <div class="text-lg font-black text-white">Swaps + fees + hardening</div>
+                        <div class="text-sm text-slate-400 mt-1">min_out • CPI safe • invariants tests</div>
+                    </div>
+                    <i data-lucide="arrow-right"
+                        class="w-6 h-6 text-indigo-300 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </button>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-12">
+        <div class="flex items-center gap-3">
+            <div class="p-2 rounded-lg bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
+                <i data-lucide="list-checks" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white">Checklist AMM (audit-grade)</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-3">Vaults & accounts</div>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li>Vault A/B : owner + mint vérifiés (pas de substitution possible).</li>
+                    <li>PDA authority : seeds + bump contraints, signer CPI contrôlé.</li>
+                    <li>LP mint : supply cohérente, authority contrôlée, mint attendu.</li>
+                </ul>
+            </div>
+
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-3">Math & invariants</div>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li>Calculs en <strong>u128</strong>, puis cast explicite (et tests limites).</li>
+                    <li>Arrondis définis : “round down” pour protéger le pool, “min_out” pour protéger l’utilisateur.
+                    </li>
+                    <li>Invariants testés : conservation, bornes, monotonicité, pas de “création” de valeur.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto mt-8 p-8 bg-slate-900 rounded-2xl border border-slate-800">
+        <div class="flex items-center gap-3 mb-4">
+            <i data-lucide="badge-check" class="w-6 h-6 text-emerald-400"></i>
+            <h3 class="text-xl font-bold text-white">Validation du Module</h3>
+        </div>
+
+        <p class="text-sm text-slate-400 mb-4">
+            Pour valider l’AMM, vous fournissez : add/remove, swaps, tests d’arrondis, et un bloc “invariants”.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                <div class="flex items-center gap-2 mb-2">
+                    <i data-lucide="droplet" class="w-4 h-4 text-indigo-300"></i>
+                    <div class="font-bold text-white text-sm">Liquidity</div>
+                </div>
+                <div class="text-xs text-slate-400">Add/remove avec checks et rounding documenté.</div>
+            </div>
+
+            <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                <div class="flex items-center gap-2 mb-2">
+                    <i data-lucide="repeat" class="w-4 h-4 text-purple-300"></i>
+                    <div class="font-bold text-white text-sm">Swaps</div>
+                </div>
+                <div class="text-xs text-slate-400">min_out, fees, invariants vérifiés et testés.</div>
+            </div>
+
+            <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                <div class="flex items-center gap-2 mb-2">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+                    <div class="font-bold text-white text-sm">All green</div>
+                </div>
+                <div class="text-xs text-slate-400">QA + nav + tests verts.</div>
+            </div>
+        </div>
+
+        <div class="mt-6 flex flex-col md:flex-row gap-3">
+            <button
+                class="group flex-1 text-left px-6 py-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                data-page="tech_06f1_build_an_amm_n1">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Démarrer</div>
+                        <div class="text-white font-bold">N1 — Pool + LP invariants</div>
+                    </div>
+                    <i data-lucide="arrow-right"
+                        class="w-5 h-5 text-indigo-300 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </button>
+
+            <button
+                class="group flex-1 text-left px-6 py-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                data-page="tech_06f2_build_an_amm_n2">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Continuer</div>
+                        <div class="text-white font-bold">N2 — Swaps + hardening</div>
+                    </div>
+                    <i data-lucide="arrow-right"
+                        class="w-5 h-5 text-indigo-300 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </button>
+        </div>
+    </section>
+
+</div>

@@ -1,0 +1,136 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <section class="max-w-5xl mx-auto space-y-6">
+        <div class="space-y-3">
+            <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Build an AMM — N2</div>
+            <h1 class="text-4xl font-black text-white tracking-tight">Swaps + fees + hardening (CPI safe)</h1>
+            <p class="text-lg text-slate-400">
+                N2 implémente les swaps avec <strong>min_out</strong>, fees et protections d’arrondis.
+                On y ajoute les “garde-fous” qui transforment un proto en module auditable :
+                checks de program id, contraintes des comptes et invariants testés.
+            </p>
+        </div>
+
+        <div class="p-6 rounded-2xl border border-rose-500/20 bg-rose-500/10">
+            <div class="flex items-start gap-3">
+                <i data-lucide="shield-alert" class="w-5 h-5 text-rose-300 mt-0.5"></i>
+                <p class="text-sm text-slate-200">
+                    <strong>Important :</strong> ce chapitre reste <em>défensif</em>.
+                    On décrit les protections et les tests, pas des procédures d’abus.
+                    L’objectif est de construire un AMM minimal <strong>testable</strong> et <strong>durci</strong>.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-12">
+        <h2 class="text-2xl font-bold text-white">1) Swap constant-product : principes</h2>
+
+        <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-3">
+            <ul class="space-y-2 text-sm text-slate-300">
+                <li><strong>Entrée</strong> : l’utilisateur apporte Δx (après fee si applicable).</li>
+                <li><strong>Sortie</strong> : le pool rend Δy calculé avec une règle stable + arrondis.</li>
+                <li><strong>Protection</strong> : l’utilisateur fixe un <strong>min_out</strong> (slippage guard).</li>
+                <li><strong>Invariant</strong> : le comportement doit être cohérent et testable (arrondis inclus).</li>
+            </ul>
+
+            <pre><code>// Exemple conceptuel : calcul en u128 (arrondi documenté)
+let x: u128 = reserve_x as u128;
+let y: u128 = reserve_y as u128;
+let dx: u128 = amount_in_after_fee as u128;
+
+// Sortie théorique (concept) : dy = y - (k / (x + dx))
+// Attention : division entière => arrondi. Documenter et tester.</code></pre>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-12">
+        <h2 class="text-2xl font-bold text-white">2) CPI Token : garde-fous</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-2">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Program id check</div>
+                <p class="text-sm text-slate-300">
+                    Le programme Token doit être celui attendu (SPL Token ou Token-2022 selon votre design).
+                    Refuser tout id non whiteliste.
+                </p>
+                <pre><code>// Concept : verify token program id
+// require_keys_eq!(token_program.key(), expected_token_program_id, CustomError::InvalidTokenProgram);</code></pre>
+            </div>
+
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-2">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Vault checks</div>
+                <p class="text-sm text-slate-300">
+                    Le swap doit utiliser les vaults du pool (mint/owner/authority). Interdire toute substitution.
+                </p>
+                <pre><code>// Concept : validate vault ownership + mint coherence
+// require_keys_eq!(vault_a.mint, mint_a.key(), CustomError::MintMismatch);
+// require_keys_eq!(vault_a.owner, pool_authority.key(), CustomError::VaultOwnerMismatch);</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-12">
+        <h2 class="text-2xl font-bold text-white">3) Invariants & tests</h2>
+
+        <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-3">
+            <p class="text-sm text-slate-300">
+                Un AMM “audit-grade” n’est pas validé par “ça marche”.
+                Il est validé par des invariants falsifiables (tests négatifs) et une batterie de tests limites.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                    <div class="font-bold text-white text-sm mb-1">min_out</div>
+                    <div class="text-xs text-slate-400">Test : le swap échoue si min_out n’est pas atteint.</div>
+                </div>
+                <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                    <div class="font-bold text-white text-sm mb-1">Rounding</div>
+                    <div class="text-xs text-slate-400">Test : petites valeurs, 1 unité, arrondis cohérents.</div>
+                </div>
+                <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                    <div class="font-bold text-white text-sm mb-1">Conservation</div>
+                    <div class="text-xs text-slate-400">Test : pas de création “anormale” de valeur via math.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-12">
+        <h2 class="text-2xl font-bold text-white">4) Mini-Labs (N2) — format “preuve”</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-5 rounded-2xl border border-white/10 bg-white/5 space-y-2">
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] px-2 py-1 rounded-full bg-slate-800 text-slate-400 font-bold">F4</span>
+                    <div class="font-bold text-white">Fee / rounding consistency</div>
+                </div>
+                <div class="text-xs text-slate-400">
+                    Patch : appliquer fee dans le bon ordre + règle d’arrondi stable + tests limites.
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl border border-white/10 bg-white/5 space-y-2">
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] px-2 py-1 rounded-full bg-slate-800 text-slate-400 font-bold">F5</span>
+                    <div class="font-bold text-white">CPI program-id mismatch</div>
+                </div>
+                <div class="text-xs text-slate-400">
+                    Patch : whitelist program ids + test “rouge” puis “vert”.
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl border border-white/10 bg-white/5 space-y-2">
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] px-2 py-1 rounded-full bg-slate-800 text-slate-400 font-bold">F6</span>
+                    <div class="font-bold text-white">Wrong vault / mint passed</div>
+                </div>
+                <div class="text-xs text-slate-400">
+                    Patch : constraints strictes (mint/owner/authority) + test de régression.
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</div>

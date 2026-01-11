@@ -1,0 +1,117 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+    <section class="space-y-6">
+        <h1 class="text-3xl font-semibold tracking-tight">Anchor (N1) — Introduction et structure d’un programme</h1>
+
+        <p class="text-base leading-7">
+            Anchor est un framework qui standardise la manière d’écrire des programmes Solana : gestion des comptes,
+            sérialisation,
+            validation des contraintes, génération d’IDL, et outillage de tests. L’objectif n’est pas “d’ajouter de la
+            magie”, mais
+            de réduire les erreurs répétitives et de rendre un programme plus auditable.
+        </p>
+
+        <div class="rounded-2xl border p-6 space-y-3">
+            <h2 class="text-xl font-semibold">Ce que tu sauras faire après ce chapitre</h2>
+            <ul class="list-disc pl-6 space-y-1">
+                <li>Expliquer le rôle d’Anchor dans un projet Solana.</li>
+                <li>Identifier la structure d’un workspace Anchor et ses fichiers clés.</li>
+                <li>Écrire une instruction simple et comprendre le flux “comptes → logique → état”.</li>
+                <li>Comprendre le lien “code Rust ↔ IDL ↔ client TypeScript”.</li>
+            </ul>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">1. Pourquoi Anchor</h2>
+            <ul class="list-disc pl-6 space-y-2">
+                <li><b>Comptes</b> : déclaration typée des comptes attendus par une instruction.</li>
+                <li><b>Contraintes</b> : vérifications déclaratives (owner, seeds, mutabilité, signer, rent, etc.).</li>
+                <li><b>Sérialisation</b> : conventions cohérentes (Borsh) et discriminants d’instructions.</li>
+                <li><b>IDL</b> : interface générée qui décrit instructions, comptes, événements, erreurs.</li>
+                <li><b>Tests</b> : environnement TypeScript standard, provider, wallets, simulateur local.</li>
+            </ul>
+            <p class="text-base leading-7">
+                Vue d’ensemble : tu écris le programme en Rust, Anchor génère une IDL, et le client TypeScript peut
+                consommer
+                cette IDL pour appeler les instructions de manière sûre.
+            </p>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">2. Structure d’un workspace Anchor</h2>
+            <p class="text-base leading-7">
+                Un workspace Anchor contient généralement plusieurs dossiers. Les noms exacts peuvent varier selon la
+                version,
+                mais l’idée est stable :
+            </p>
+
+            <ul class="list-disc pl-6 space-y-1">
+                <li><b>programs/</b> : code Rust des programmes (un dossier par programme).</li>
+                <li><b>tests/</b> : tests TypeScript (exécution via l’outil Anchor).</li>
+                <li><b>migrations/</b> : scripts de déploiement (selon les setups).</li>
+                <li><b>Anchor.toml</b> : configuration (cluster, program IDs, provider, scripts).</li>
+                <li><b>target/idl/</b> : sortie de génération des IDL.</li>
+            </ul>
+
+            <div class="rounded-xl border p-4 space-y-2">
+                <p class="text-sm font-semibold">Fichier clé : Anchor.toml</p>
+                <p class="text-sm leading-6">
+                    Il fixe le provider (wallet), le cluster (localnet, devnet, etc.), et les Program IDs. En pratique,
+                    un
+                    “mauvais Program ID” est une source classique de bugs de tests. On le traitera explicitement en N3.
+                </p>
+            </div>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">3. Le modèle Anchor : Accounts + Instruction</h2>
+            <p class="text-base leading-7">
+                Avec Anchor, une instruction est typiquement une fonction Rust annotée, et ses comptes sont décrits dans
+                une
+                structure associée. Les contraintes servent à rejeter tôt les appels invalides.
+            </p>
+
+            <div class="rounded-xl border p-4 space-y-2">
+                <p class="text-sm font-semibold">Mini-exemple (conceptuel)</p>
+                <pre class="text-sm overflow-x-auto"><code>#[derive(Accounts)]
+pub struct Initialize&lt;'info&gt; {
+  #[account(init, payer = user, space = 8 + 8)]
+  pub state: Account&lt;'info, State&gt;,
+  #[account(mut)]
+  pub user: Signer&lt;'info&gt;,
+  pub system_program: Program&lt;'info, System&gt;,
+}
+
+pub fn initialize(ctx: Context&lt;Initialize&gt;, value: u64) -&gt; Result&lt;()&gt; {
+  ctx.accounts.state.value = value;
+  Ok(())
+}</code></pre>
+            </div>
+
+            <p class="text-base leading-7">
+                Idées à retenir :
+            </p>
+            <ul class="list-disc pl-6 space-y-1">
+                <li><b>init</b> : création d’un compte, avec espace et payer.</li>
+                <li><b>Signer</b> : la signature est exigée.</li>
+                <li><b>Program&lt;System&gt;</b> : le programme système est requis pour créer des comptes.</li>
+                <li><b>8 + …</b> : l’overhead Anchor (discriminator) plus les champs sérialisés.</li>
+            </ul>
+        </div>
+
+        <div class="rounded-2xl border p-6 space-y-4">
+            <h2 class="text-xl font-semibold">4. Check-list “audit-grade” pour N1</h2>
+            <ul class="list-disc pl-6 space-y-2">
+                <li>Les comptes attendus par une instruction sont <b>explicitement listés</b>.</li>
+                <li>Chaque compte modifié est marqué <b>mut</b> (sinon rejet).</li>
+                <li>Les créations de comptes utilisent <b>payer</b> et <b>space</b> correctement.</li>
+                <li>Les contraintes (owner, seeds, signer) sont <b>au plus près</b> de la déclaration.</li>
+            </ul>
+            <p class="text-base leading-7">
+                Dans N2, on se focalise sur l’IDL : comment elle est générée, comment elle décrit l’interface, et
+                comment un
+                client l’exploite.
+            </p>
+        </div>
+
+    </section>
+</div>

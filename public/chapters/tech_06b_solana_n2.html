@@ -1,0 +1,333 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden rounded-2xl border border-white/10 bg-slate-900/45 p-8">
+        <div
+            class="absolute inset-0 opacity-70 bg-[radial-gradient(circle_at_15%_20%,rgba(153,69,255,0.20),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(20,241,149,0.14),transparent_42%)]">
+        </div>
+        <div class="relative">
+            <div
+                class="flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-widest text-slate-400 font-mono">
+                <span class="px-2 py-1 rounded border border-white/10 bg-white/5">Track A · Solana</span>
+                <span class="px-2 py-1 rounded border border-white/10 bg-white/5">N2</span>
+                <span class="px-2 py-1 rounded border border-white/10 bg-white/5">Anchor</span>
+            </div>
+            <h1 class="mt-4 text-3xl font-black tracking-tight text-white">
+                N2 — Anchor : Theory → Counter → Patterns → Mini-capstone → Checklist
+            </h2>
+            <p class="mt-3 max-w-3xl text-slate-300">
+                Cette étape est la charnière du parcours Solana : on consolide la théorie utile
+                (accounts/PDAs/transactions),
+                puis on construit un premier programme Anchor (Counter), on apprend des patterns réutilisables,
+                on termine par un mini-capstone et une checklist de qualité (tests, sécurité, livraison).
+            </p>
+
+            <div class="mt-6 grid gap-4 md:grid-cols-3">
+                <div class="rounded-xl border border-white/10 bg-slate-950/40 p-4">
+                    <p class="text-xs text-slate-400 font-mono uppercase tracking-widest">Objectif</p>
+                    <p class="mt-2 text-sm text-slate-200">
+                        Être autonome sur un programme Anchor simple : conception des comptes, PDA, contraintes, tests
+                        et déploiement local/devnet.
+                    </p>
+                </div>
+                <div class="rounded-xl border border-white/10 bg-slate-950/40 p-4">
+                    <p class="text-xs text-slate-400 font-mono uppercase tracking-widest">Pré-requis</p>
+                    <p class="mt-2 text-sm text-slate-200">
+                        Rust N1 (basique), CLI Solana, environnement dev, lecture du chapitre <em>Foundations</em>.
+                    </p>
+                </div>
+                <div class="rounded-xl border border-white/10 bg-slate-950/40 p-4">
+                    <p class="text-xs text-slate-400 font-mono uppercase tracking-widest">Livrables</p>
+                    <ul class="mt-2 space-y-1 text-sm text-slate-200 list-disc list-inside">
+                        <li>Programme Counter + tests</li>
+                        <li>Patterns appliqués (PDA, contraintes, erreurs)</li>
+                        <li>Mini-capstone + README</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 1) Theory -->
+    <section class="space-y-6">
+        <header class="space-y-2">
+            <h3 class="text-2xl font-extrabold text-white">1) Theory (rappel utile, version “dev”)</h3>
+            <p class="text-slate-300 max-w-4xl">
+                On ne refait pas tout Foundations. Ici, on fixe les points indispensables pour raisonner correctement en
+                Anchor.
+            </p>
+        </header>
+
+        <div class="grid gap-4 md:grid-cols-2">
+            <div class="rounded-2xl border border-white/10 bg-slate-900/45 p-6 space-y-3">
+                <h4 class="text-lg font-bold text-white">Accounts : lecture et écriture</h4>
+                <ul class="text-sm text-slate-300 space-y-1 list-disc list-inside">
+                    <li>Un programme reçoit une liste d’accounts : ordre, mutabilité, signers.</li>
+                    <li>En Anchor, la “validation” se fait via contraintes sur le contexte.</li>
+                    <li>Tu dois savoir : <span class="font-mono">owner</span>, <span class="font-mono">lamports</span>,
+                        <span class="font-mono">data</span>, <span class="font-mono">rent</span>.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="rounded-2xl border border-white/10 bg-slate-900/45 p-6 space-y-3">
+                <h4 class="text-lg font-bold text-white">PDA : l’outil central</h4>
+                <ul class="text-sm text-slate-300 space-y-1 list-disc list-inside">
+                    <li>Seed(s) + bump → adresse dérivée déterministe.</li>
+                    <li>Règle d’or : les seeds doivent être explicables et auditées (pas “au hasard”).</li>
+                    <li>Anchor : <span class="font-mono">seeds = [b"user_stats", user.key().as_ref()]</span>, <span
+                            class="font-mono">bump</span>, et
+                        parfois <span class="font-mono">init_if_needed</span>.</li>
+                </ul>
+            </div>
+
+            <div class="rounded-2xl border border-white/10 bg-slate-900/45 p-6 space-y-3">
+                <h4 class="text-lg font-bold text-white">Transactions, instructions, compute</h4>
+                <ul class="text-sm text-slate-300 space-y-1 list-disc list-inside">
+                    <li>Instruction = programme + comptes + données sérialisées.</li>
+                    <li>Une transaction peut contenir plusieurs instructions (et plusieurs programmes).</li>
+                    <li>Compute budget : penser “coût” dès la conception (boucles, tailles de comptes, CPI).</li>
+                </ul>
+            </div>
+
+            <div class="rounded-2xl border border-white/10 bg-slate-900/45 p-6 space-y-3">
+                <h4 class="text-lg font-bold text-white">CPI (Cross-Program Invocation)</h4>
+                <ul class="text-sm text-slate-300 space-y-1 list-disc list-inside">
+                    <li>Un programme peut appeler un autre programme (Token Program, System Program…).</li>
+                    <li>La sécurité dépend des checks : qui signe ? qui possède le compte ? quelles seeds ?</li>
+                    <li>En Anchor, CPI = “context + program + accounts” (on verra un exemple en patterns).</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2) Counter -->
+    <section class="space-y-6">
+        <header class="space-y-2">
+            <h3 class="text-2xl font-extrabold text-white">2) Counter (le programme Anchor minimal)</h3>
+            <p class="text-slate-300 max-w-4xl">
+                Objectif : construire un programme Anchor simple mais propre, avec un compte PDA, des contraintes
+                claires et des tests.
+            </p>
+        </header>
+
+        <div class="rounded-2xl border border-white/10 bg-slate-900/45 p-6 space-y-4">
+            <h4 class="text-lg font-bold text-white">Étapes</h4>
+            <ol class="list-decimal list-inside text-sm text-slate-300 space-y-1">
+                <li>Créer le projet : <span class="font-mono">anchor init counter</span></li>
+                <li>Définir le compte <span class="font-mono">Counter</span> (valeur, autorité, bump, version).</li>
+                <li>Instruction <span class="font-mono">initialize</span> : crée la PDA + initialise.</li>
+                <li>Instruction <span class="font-mono">increment</span> : vérifie l’autorité + incrémente.</li>
+                <li>Tests : init, increment, cas négatifs (mauvaise autorité).</li>
+            </ol>
+
+            <div class="grid gap-4 md:grid-cols-2">
+                <div class="rounded-xl border border-white/10 bg-slate-950/40 p-4">
+                    <p class="text-xs text-slate-400 font-mono uppercase tracking-widest">Design attendu</p>
+                    <ul class="mt-2 text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>PDA dérivée : seeds explicites (ex. <span class="font-mono">["counter", authority]</span>)
+                        </li>
+                        <li>Contraintes Anchor lisibles (<span class="font-mono">has_one</span>, <span
+                                class="font-mono">seeds</span>, <span class="font-mono">bump</span>)</li>
+                        <li>Version de compte pour migrations futures</li>
+                    </ul>
+                </div>
+                <div class="rounded-xl border border-white/10 bg-slate-950/40 p-4">
+                    <p class="text-xs text-slate-400 font-mono uppercase tracking-widest">Tests attendus</p>
+                    <ul class="mt-2 text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>Happy path : init + N increments</li>
+                        <li>Fail path : mauvais signer, mauvais PDA, mauvais owner</li>
+                        <li>Assertions sur la data du compte (après fetch)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="rounded-xl border border-white/10 bg-slate-950/40 p-4">
+                <p class="text-xs text-slate-400 font-mono uppercase tracking-widest">Snippet (squelette)</p>
+                <pre class="mt-2 overflow-x-auto text-xs text-slate-200 font-mono"><code>// ⚠️ Squelette indicatif. À compléter pendant le TP.
+/*
+#[account]
+pub struct Counter {
+  pub authority: Pubkey,
+  pub value: u64,
+  pub bump: u8,
+  pub version: u8,
+}
+
+#[derive(Accounts)]
+pub struct Initialize<'info> {
+  #[account(mut)]
+  pub authority: Signer<'info>,
+  #[account(
+    init,
+    payer = authority,
+    space = 8 + /* size */,
+    seeds = [b"counter", authority.key().as_ref()],
+    bump
+  )]
+  pub counter: Account<'info, Counter>,
+  pub system_program: Program<'info, System>,
+}
+*/
+</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3) Patterns -->
+    <section class="space-y-6">
+        <header class="space-y-2">
+            <h3 class="text-2xl font-extrabold text-white">3) Patterns (les réflexes Anchor qui évitent 80% des bugs)
+            </h3>
+            <p class="text-slate-300 max-w-4xl">
+                Ici on apprend des patterns concrets, immédiatement applicables au Counter puis au mini-capstone.
+            </p>
+        </header>
+
+        <div class="grid gap-4 md:grid-cols-2">
+            <div class="rounded-2xl border border-white/10 bg-slate-900/45 p-6 space-y-3">
+                <h4 class="text-lg font-bold text-white">Pattern A — contraintes & autorisations</h4>
+                <ul class="text-sm text-slate-300 space-y-1 list-disc list-inside">
+                    <li>Utiliser <span class="font-mono">has_one</span> et des checks explicites d’autorité.</li>
+                    <li>Éviter les “autorités implicites” (ex : signer non vérifié).</li>
+                    <li>Tests négatifs systématiques.</li>
+                </ul>
+            </div>
+
+            <div class="rounded-2xl border border-white/10 bg-slate-900/45 p-6 space-y-3">
+                <h4 class="text-lg font-bold text-white">Pattern B — PDA propre (seeds stables)</h4>
+                <ul class="text-sm text-slate-300 space-y-1 list-disc list-inside">
+                    <li>Seeds stables et documentées (ex : <span class="font-mono">b"vault"</span>, <span
+                            class="font-mono">authority</span>, <span class="font-mono">mint</span>).</li>
+                    <li>Stocker le <span class="font-mono">bump</span> dans le compte.</li>
+                    <li>Ne pas mélanger des seeds “utiles” et des seeds “cosmétiques”.</li>
+                </ul>
+            </div>
+
+            <div class="rounded-2xl border border-white/10 bg-slate-900/45 p-6 space-y-3">
+                <h4 class="text-lg font-bold text-white">Pattern C — erreurs “propres”</h4>
+                <ul class="text-sm text-slate-300 space-y-1 list-disc list-inside">
+                    <li>Définir un <span class="font-mono">enum ErrorCode</span> lisible.</li>
+                    <li>Éviter les <span class="font-mono">require!</span> muets : message clair, test associé.</li>
+                    <li>Documenter les invariants (même simplement) dans le README.</li>
+                </ul>
+            </div>
+
+            <div class="rounded-2xl border border-white/10 bg-slate-900/45 p-6 space-y-3">
+                <h4 class="text-lg font-bold text-white">Pattern D — premier CPI (System/Token)</h4>
+                <ul class="text-sm text-slate-300 space-y-1 list-disc list-inside">
+                    <li>Faire une CPI minimaliste (ex : créer un compte, transférer des lamports).</li>
+                    <li>Comprendre exactement qui signe et pourquoi.</li>
+                    <li>Préparer le terrain pour Token/CPI (chapitre suivant).</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4) Mini-capstone -->
+    <section class="space-y-6">
+        <header class="space-y-2">
+            <h3 class="text-2xl font-extrabold text-white">4) Mini-capstone (petit projet, vrai raisonnement)</h3>
+            <p class="text-slate-300 max-w-4xl">
+                Capstone court (2–4h) : on assemble théorie + patterns sur un cas réaliste mais simple.
+            </p>
+        </header>
+
+        <div class="rounded-2xl border border-white/10 bg-slate-900/45 p-6 space-y-4">
+            <h4 class="text-lg font-bold text-white">Sujet proposé : “Vault” (caisse) à PDA</h4>
+            <p class="text-sm text-slate-300">
+                Un utilisateur crée une “caisse” (PDA) et peut déposer/retirer des lamports. Le programme enforce :
+                (1) seule l’autorité peut retirer ; (2) pas de retrait au-delà du solde ; (3) seeds documentées.
+            </p>
+
+            <div class="grid gap-4 md:grid-cols-3">
+                <div class="rounded-xl border border-white/10 bg-slate-950/40 p-4">
+                    <p class="text-xs text-slate-400 font-mono uppercase tracking-widest">Fonctions</p>
+                    <ul class="mt-2 text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li><span class="font-mono">create_vault</span></li>
+                        <li><span class="font-mono">deposit</span></li>
+                        <li><span class="font-mono">withdraw</span></li>
+                    </ul>
+                </div>
+                <div class="rounded-xl border border-white/10 bg-slate-950/40 p-4">
+                    <p class="text-xs text-slate-400 font-mono uppercase tracking-widest">Contraintes</p>
+                    <ul class="mt-2 text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>PDA = seeds stables</li>
+                        <li>Autorité = signer</li>
+                        <li>Tests négatifs</li>
+                    </ul>
+                </div>
+                <div class="rounded-xl border border-white/10 bg-slate-950/40 p-4">
+                    <p class="text-xs text-slate-400 font-mono uppercase tracking-widest">Bonus</p>
+                    <ul class="mt-2 text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>Events Anchor</li>
+                        <li>Version de compte</li>
+                        <li>README très court</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5) Checklist -->
+    <section class="space-y-6">
+        <header class="space-y-2">
+            <h3 class="text-2xl font-extrabold text-white">5) Checklist (qualité & livraison)</h3>
+            <p class="text-slate-300 max-w-4xl">
+                À la fin de N2, l’objectif n’est pas “d’avoir du code qui marche”, mais d’avoir du code qui tient en
+                revue.
+            </p>
+        </header>
+
+        <div class="grid gap-4 md:grid-cols-2">
+            <div class="rounded-2xl border border-white/10 bg-slate-900/45 p-6 space-y-3">
+                <h4 class="text-lg font-bold text-white">Qualité</h4>
+                <ul class="text-sm text-slate-300 space-y-1 list-disc list-inside">
+                    <li>README : objectifs, accounts, seeds, invariants</li>
+                    <li>Tests : happy + fail paths (au minimum)</li>
+                    <li>Erreurs : codes explicites, pas de “panic”</li>
+                    <li>Lint/format : code homogène</li>
+                </ul>
+            </div>
+
+            <div class="rounded-2xl border border-white/10 bg-slate-900/45 p-6 space-y-3">
+                <h4 class="text-lg font-bold text-white">Sécurité (niveau N2)</h4>
+                <ul class="text-sm text-slate-300 space-y-1 list-disc list-inside">
+                    <li>Contrôles d’autorité explicites</li>
+                    <li>Seeds documentées + bump stocké</li>
+                    <li>Pas de write sur des comptes non possédés</li>
+                    <li>Tests négatifs pour signer/owner/PDA</li>
+                </ul>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Odo Alignment : Anti-buzzwords -->
+    <section class="space-y-6">
+        <div class="p-5 rounded-xl border border-amber-500/20 bg-amber-500/5">
+            <h3 class="text-sm font-bold text-amber-200 flex items-center gap-2 mb-3">
+                <i data-lucide="alert-octagon" class="w-4 h-4"></i>
+                Anti-buzzwords / Scope Control (Ce qu'on ne fait PAS en N2)
+            </h3>
+            <p class="text-xs text-slate-400 mb-4">
+                Pour rester aligné avec la pédagogie Odo, nous refusons explicitement la complexité prématurée.
+            </p>
+            <div class="grid md:grid-cols-2 gap-4">
+                <ul class="space-y-2 text-xs text-slate-400 list-disc list-inside">
+                    <li><span class="text-slate-300 font-bold">Pas de Formal Verification</span> (OtterSec/Soteria) :
+                        c'est pour N4+.</li>
+                    <li><span class="text-slate-300 font-bold">Pas de Cross-Chain</span> (Wormhole/LayerZero) : focus
+                        Solana natif d'abord.</li>
+                </ul>
+                <ul class="space-y-2 text-xs text-slate-400 list-disc list-inside">
+                    <li><span class="text-slate-300 font-bold">Pas d'optimisation prématurée</span> (bit packing
+                        extrême) : la lisibilité prime.</li>
+                    <li><span class="text-slate-300 font-bold">Pas de macros complexes</span> : on écrit le code
+                        boilerplate si ça aide à comprendre.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+</div>

@@ -1,0 +1,332 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <!-- Header / Hub intro -->
+    <section class="max-w-5xl mx-auto space-y-8">
+        <div class="flex items-start justify-between gap-6 flex-col md:flex-row">
+            <div class="space-y-4">
+                <h1 class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-rose-400">
+                    Security Labs
+                </h1>
+                <p class="text-xl text-slate-400">
+                    La sécurité n'est pas une option. Dans ce module, vous allez <strong>auditer, exploiter et
+                        patcher</strong>
+                    des vulnérabilités réelles (Anchor + Native) en produisant des <em>preuves</em> : tests
+                    d'exploitation + tests de régression.
+                </p>
+            </div>
+
+            <div class="w-full md:w-[360px] p-4 rounded-2xl border border-white/10 bg-slate-900/40">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-rose-400 mb-2">Objectif</div>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li class="flex gap-2 items-start">
+                        <i data-lucide="shield-alert" class="w-4 h-4 text-rose-400 mt-0.5"></i>
+                        <span>Développer le <strong>reflexe adversarial</strong> (attacker mindset).</span>
+                    </li>
+                    <li class="flex gap-2 items-start">
+                        <i data-lucide="check-check" class="w-4 h-4 text-emerald-400 mt-0.5"></i>
+                        <span>Produire un patch <strong>audit-grade</strong> (validation, invariants, CPI safe).</span>
+                    </li>
+                    <li class="flex gap-2 items-start">
+                        <i data-lucide="flask-conical" class="w-4 h-4 text-indigo-400 mt-0.5"></i>
+                        <span>Écrire des tests négatifs qui <strong>cassent</strong> avant patch et
+                            <strong>passent</strong> après.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="p-6 bg-slate-900 border-l-4 border-red-500 rounded-r-xl">
+            <h3 class="text-sm font-bold text-red-400 uppercase tracking-widest mb-2">
+                Méthodologie du Lab (obligatoire)
+            </h3>
+            <ol class="space-y-2 text-slate-300 list-decimal list-inside">
+                <li><strong>Identifier</strong> la faille dans le snippet “Buggy”.</li>
+                <li><strong>Modéliser</strong> le vecteur d’attaque (Exploit) et l’objectif de l’attaquant.</li>
+                <li><strong>Patch</strong> minimal + explicable (pas de rust magic, pas de “ça marche”).</li>
+                <li><strong>Preuve</strong> : test d’exploitation (rouge) puis test de régression (vert).</li>
+            </ol>
+        </div>
+
+        <!-- CTA to N1/N2 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <button
+                class="group text-left p-6 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                data-page="tech_06d1_security_labs_n1">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-1">N1</div>
+                        <div class="text-lg font-black text-white">Labs 1–3</div>
+                        <div class="text-sm text-slate-400 mt-1">Owner checks • Seeds/PDA spoof • Signer vs Authority
+                        </div>
+                    </div>
+                    <i data-lucide="arrow-right"
+                        class="w-6 h-6 text-rose-400 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </button>
+
+            <button
+                class="group text-left p-6 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                data-page="tech_06d2_security_labs_n2">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-1">N2</div>
+                        <div class="text-lg font-black text-white">Labs 4–6</div>
+                        <div class="text-sm text-slate-400 mt-1">Unchecked data • Fake CPI program • Overflow & rounding
+                        </div>
+                    </div>
+                    <i data-lucide="arrow-right"
+                        class="w-6 h-6 text-rose-400 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </button>
+        </div>
+    </section>
+
+    <!-- Audit checklist / quick rules -->
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-12">
+        <div class="flex items-center gap-3">
+            <div class="p-2 rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/20">
+                <i data-lucide="list-checks" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white">Checklist “Audit-grade” (à appliquer partout)</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-3">Accounts & ownership
+                </div>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li class="flex gap-2 items-start"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-emerald-400 mt-0.5"></i><span>Vérifier <strong>owner</strong> (program
+                            owner / token program / system) quand c’est pertinent.</span></li>
+                    <li class="flex gap-2 items-start"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-emerald-400 mt-0.5"></i><span>Ne jamais désérialiser un compte dont le
+                            propriétaire est inattendu.</span></li>
+                    <li class="flex gap-2 items-start"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-emerald-400 mt-0.5"></i><span>Éviter les <code>AccountInfo</code> “raw”
+                            sans contraintes si un type Anchor existe.</span></li>
+                </ul>
+            </div>
+
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-3">Authority & permissions
+                </div>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li class="flex gap-2 items-start"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-emerald-400 mt-0.5"></i><span><strong>Signer ≠ Authority</strong>. Le
+                            payer de la TX n’est pas forcément le décideur.</span></li>
+                    <li class="flex gap-2 items-start"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-emerald-400 mt-0.5"></i><span>Pour les PDAs : seeds + bump doivent être
+                            <strong>contraints</strong> (Anchor constraints).</span></li>
+                    <li class="flex gap-2 items-start"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-emerald-400 mt-0.5"></i><span>Valider que les accounts “cibles” (vault,
+                            ATA, config, state) sont <strong>liés</strong> à l’authority attendue.</span></li>
+                </ul>
+            </div>
+
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-3">CPI & program ids</div>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li class="flex gap-2 items-start"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-emerald-400 mt-0.5"></i><span>Ne jamais invoquer “n’importe quel
+                            programme” passé en argument : vérifier <strong>program id</strong>.</span></li>
+                    <li class="flex gap-2 items-start"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-emerald-400 mt-0.5"></i><span>Pour Token : vérifier mint / authority /
+                            ATA / owner selon le flow.</span></li>
+                    <li class="flex gap-2 items-start"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-emerald-400 mt-0.5"></i><span>Limiter les
+                            <code>remaining_accounts</code> à ce qui est strictement nécessaire.</span></li>
+                </ul>
+            </div>
+
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-3">Math & invariants</div>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li class="flex gap-2 items-start"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-emerald-400 mt-0.5"></i><span>En release, l’overflow peut “wrap” :
+                            utiliser <code>checked_*</code> ou invariants + tests.</span></li>
+                    <li class="flex gap-2 items-start"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-emerald-400 mt-0.5"></i><span>Documenter l’invariant : conservation,
+                            borne, monotonicité, supply.</span></li>
+                    <li class="flex gap-2 items-start"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-emerald-400 mt-0.5"></i><span>Tester les “coins-cases” : 0, 1, max,
+                            arrondis, limites.</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lab Index (cards) -->
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-12">
+        <div class="flex items-center gap-3">
+            <div class="p-2 rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/20">
+                <i data-lucide="layout-grid" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white">Index des Labs (1 → 6)</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-5 rounded-2xl border border-white/10 bg-white/5">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span
+                            class="w-8 h-8 rounded bg-rose-500/20 text-rose-400 font-bold flex items-center justify-center border border-rose-500/30">01</span>
+                        <div>
+                            <div class="text-white font-bold">Missing Owner Check</div>
+                            <div class="text-xs text-slate-500">Validation d’ownership / accounts “liés”</div>
+                        </div>
+                    </div>
+                    <span class="text-[10px] px-2 py-1 rounded-full bg-slate-800 text-slate-400 font-bold">N1</span>
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl border border-white/10 bg-white/5">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span
+                            class="w-8 h-8 rounded bg-rose-500/20 text-rose-400 font-bold flex items-center justify-center border border-rose-500/30">02</span>
+                        <div>
+                            <div class="text-white font-bold">PDA Derivation / Seeds Spoof</div>
+                            <div class="text-xs text-slate-500">Fake PDA, seeds dynamiques, contraintes manquantes</div>
+                        </div>
+                    </div>
+                    <span class="text-[10px] px-2 py-1 rounded-full bg-slate-800 text-slate-400 font-bold">N1</span>
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl border border-white/10 bg-white/5">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span
+                            class="w-8 h-8 rounded bg-rose-500/20 text-rose-400 font-bold flex items-center justify-center border border-rose-500/30">03</span>
+                        <div>
+                            <div class="text-white font-bold">Signer vs Authority</div>
+                            <div class="text-xs text-slate-500">Payer de TX ≠ décideur, confusion d’autorité</div>
+                        </div>
+                    </div>
+                    <span class="text-[10px] px-2 py-1 rounded-full bg-slate-800 text-slate-400 font-bold">N1</span>
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl border border-white/10 bg-white/5">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span
+                            class="w-8 h-8 rounded bg-rose-500/20 text-rose-400 font-bold flex items-center justify-center border border-rose-500/30">04</span>
+                        <div>
+                            <div class="text-white font-bold">Arbitrary Data Injection</div>
+                            <div class="text-xs text-slate-500">Désérialisation unsafe, owner check bypass</div>
+                        </div>
+                    </div>
+                    <span class="text-[10px] px-2 py-1 rounded-full bg-slate-800 text-slate-400 font-bold">N2</span>
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl border border-white/10 bg-white/5">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span
+                            class="w-8 h-8 rounded bg-rose-500/20 text-rose-400 font-bold flex items-center justify-center border border-rose-500/30">05</span>
+                        <div>
+                            <div class="text-white font-bold">Fake CPI Program</div>
+                            <div class="text-xs text-slate-500">Program-id spoof, CPI vers faux token program</div>
+                        </div>
+                    </div>
+                    <span class="text-[10px] px-2 py-1 rounded-full bg-slate-800 text-slate-400 font-bold">N2</span>
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl border border-white/10 bg-white/5">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span
+                            class="w-8 h-8 rounded bg-rose-500/20 text-rose-400 font-bold flex items-center justify-center border border-rose-500/30">06</span>
+                        <div>
+                            <div class="text-white font-bold">Integer Overflow & Rounding</div>
+                            <div class="text-xs text-slate-500">Wrap-around, arrondis, “money printing”</div>
+                        </div>
+                    </div>
+                    <span class="text-[10px] px-2 py-1 rounded-full bg-slate-800 text-slate-400 font-bold">N2</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-5 rounded-2xl border border-white/10 bg-slate-900/30">
+            <div class="flex items-start gap-3">
+                <i data-lucide="info" class="w-5 h-5 text-indigo-400 mt-0.5"></i>
+                <div class="text-sm text-slate-300">
+                    <strong>Règle de validation :</strong> un lab n’est “fait” que si vous avez <em>(1) un test
+                        d’exploitation qui échoue</em>,
+                    puis <em>(2) un patch</em>, puis <em>(3) le test de régression qui passe</em>.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Validation Block (kept in hub) -->
+    <section class="max-w-5xl mx-auto mt-8 p-8 bg-slate-900 rounded-2xl border border-slate-800">
+        <div class="flex items-center gap-3 mb-4">
+            <i data-lucide="badge-check" class="w-6 h-6 text-emerald-400"></i>
+            <h3 class="text-xl font-bold text-white">Validation du Module</h3>
+        </div>
+
+        <p class="text-sm text-slate-400 mb-4">
+            Pour valider ce module, vous devez fournir un rapport d'audit sur le repo <code>vulnerable-defi</code>
+            (ou équivalent), contenant :
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                <div class="flex items-center gap-2 mb-2">
+                    <i data-lucide="bug" class="w-4 h-4 text-rose-400"></i>
+                    <div class="font-bold text-white text-sm">6 exploits</div>
+                </div>
+                <div class="text-xs text-slate-400">Tests “rouges” reproduisant la vulnérabilité.</div>
+            </div>
+
+            <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                <div class="flex items-center gap-2 mb-2">
+                    <i data-lucide="wrench" class="w-4 h-4 text-amber-400"></i>
+                    <div class="font-bold text-white text-sm">6 patches</div>
+                </div>
+                <div class="text-xs text-slate-400">Correctifs minimaux, documentés, justifiés.</div>
+            </div>
+
+            <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                <div class="flex items-center gap-2 mb-2">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+                    <div class="font-bold text-white text-sm">All green</div>
+                </div>
+                <div class="text-xs text-slate-400">Tests de régression + CI/QA passants.</div>
+            </div>
+        </div>
+
+        <div class="mt-6 flex flex-col md:flex-row gap-3">
+            <button
+                class="group flex-1 text-left px-6 py-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                data-page="tech_06d1_security_labs_n1">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Démarrer</div>
+                        <div class="text-white font-bold">N1 — Labs 1–3</div>
+                    </div>
+                    <i data-lucide="arrow-right"
+                        class="w-5 h-5 text-rose-400 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </button>
+
+            <button
+                class="group flex-1 text-left px-6 py-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                data-page="tech_06d2_security_labs_n2">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Continuer</div>
+                        <div class="text-white font-bold">N2 — Labs 4–6</div>
+                    </div>
+                    <i data-lucide="arrow-right"
+                        class="w-5 h-5 text-rose-400 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </button>
+        </div>
+    </section>
+
+</div>

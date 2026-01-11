@@ -1,0 +1,161 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <section class="max-w-5xl mx-auto space-y-8">
+        <div class="flex items-start justify-between gap-6 flex-col md:flex-row">
+            <div class="space-y-4">
+                <h1
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-indigo-400">
+                    Build an AMM
+                </h1>
+
+                <p class="text-xl text-slate-400">
+                    You will build a minimal constant-product AMM (<strong>x · y = k</strong>) with audit-grade
+                    protections:
+                    strict vault ownership, deterministic PDAs, explicit fees, and <strong>min_out</strong> slippage
+                    guards.
+                </p>
+            </div>
+
+            <div class="w-full md:w-[380px] p-4 rounded-2xl border border-white/10 bg-slate-900/40">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-cyan-300 mb-2">Outcome</div>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li class="flex gap-2 items-start">
+                        <i data-lucide="waves" class="w-4 h-4 text-emerald-400 mt-0.5"></i>
+                        <span>Understand pool state, vaults, LP mint, and invariant enforcement.</span>
+                    </li>
+                    <li class="flex gap-2 items-start">
+                        <i data-lucide="shield-check" class="w-4 h-4 text-cyan-400 mt-0.5"></i>
+                        <span>Prevent classic AMM failures: vault spoof, decimals mismatch, fee leakage, slippage
+                            abuse.</span>
+                    </li>
+                    <li class="flex gap-2 items-start">
+                        <i data-lucide="flask-conical" class="w-4 h-4 text-amber-300 mt-0.5"></i>
+                        <span>Ship proofs: negative tests for swaps, deposits, withdrawals, and CPI boundaries.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="p-6 bg-slate-900 border-l-4 border-indigo-400 rounded-r-xl">
+            <h3 class="text-sm font-bold text-indigo-300 uppercase tracking-widest mb-2">Invariant-first mindset</h3>
+            <ul class="space-y-2 text-slate-300 text-sm">
+                <li><strong>State invariants</strong>: vault mints/owners are fixed; LP mint is fixed; fees are
+                    consistent.</li>
+                <li><strong>Math invariants</strong>: constant-product is maintained up to rounding; no negative
+                    balances.</li>
+                <li><strong>User invariants</strong>: user can bound outcomes via <code>min_out</code> and explicit
+                    errors.</li>
+            </ul>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <button
+                class="group text-left p-6 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                data-page="tech_06f1_build_an_amm_n1">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-1">N1</div>
+                        <div class="text-lg font-black text-white">Pool + LP invariants</div>
+                        <div class="text-sm text-slate-400 mt-1">vaults • deposits • withdrawals</div>
+                    </div>
+                    <i data-lucide="arrow-right"
+                        class="w-6 h-6 text-cyan-300 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </button>
+
+            <button
+                class="group text-left p-6 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                data-page="tech_06f2_build_an_amm_n2">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-1">N2</div>
+                        <div class="text-lg font-black text-white">Swaps + fees + hardening</div>
+                        <div class="text-sm text-slate-400 mt-1">min_out • fee accounting • tests</div>
+                    </div>
+                    <i data-lucide="arrow-right"
+                        class="w-6 h-6 text-cyan-300 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </button>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-12">
+        <div class="flex items-center gap-3">
+            <div class="p-2 rounded-lg bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                <i data-lucide="calculator" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white">Minimal constant-product model</h2>
+        </div>
+
+        <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-4">
+            <p class="text-sm text-slate-300">
+                Let <code>x</code> be vault A reserve and <code>y</code> be vault B reserve. A swap enforces
+                <strong>x · y = k</strong> up to rounding, after applying fees.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                    <div class="font-bold text-white text-sm mb-2">Non-negotiables</div>
+                    <ul class="text-sm text-slate-300 space-y-2">
+                        <li>Vaults are owned by the program (PDA), not by users.</li>
+                        <li>Vault mints never change after initialization.</li>
+                        <li>LP mint supply and user LP balances are consistent with deposits/withdrawals.</li>
+                        <li>Swap output must respect <code>min_out</code> (slippage guard).</li>
+                    </ul>
+                </div>
+
+                <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                    <div class="font-bold text-white text-sm mb-2">Typical failures</div>
+                    <ul class="text-sm text-slate-300 space-y-2">
+                        <li>Decimals mismatch leading to wrong pricing.</li>
+                        <li>Vault spoof (attacker passes their own token account as “vault”).</li>
+                        <li>Fee leakage due to inconsistent rounding or missing checks.</li>
+                        <li>Missing min_out leading to user value loss on volatile price movement.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto mt-8 p-8 bg-slate-900 rounded-2xl border border-slate-800">
+        <div class="flex items-center gap-3 mb-4">
+            <i data-lucide="badge-check" class="w-6 h-6 text-emerald-400"></i>
+            <h3 class="text-xl font-bold text-white">Module validation</h3>
+        </div>
+
+        <ul class="text-sm text-slate-300 space-y-2">
+            <li>Pool init, deposit, withdraw, swap implemented with explicit invariants.</li>
+            <li>Negative tests exist for vault spoof, mint mismatch, min_out violations, and fee edge cases.</li>
+            <li>QA is green; navigation and bilingual routing are correct.</li>
+        </ul>
+
+        <div class="mt-6 flex flex-col md:flex-row gap-3">
+            <button
+                class="group flex-1 text-left px-6 py-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                data-page="tech_06f1_build_an_amm_n1">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Start</div>
+                        <div class="text-white font-bold">N1 — Pool + LP invariants</div>
+                    </div>
+                    <i data-lucide="arrow-right"
+                        class="w-5 h-5 text-cyan-300 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </button>
+
+            <button
+                class="group flex-1 text-left px-6 py-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                data-page="tech_06f2_build_an_amm_n2">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Continue</div>
+                        <div class="text-white font-bold">N2 — Swaps + fees + hardening</div>
+                    </div>
+                    <i data-lucide="arrow-right"
+                        class="w-5 h-5 text-cyan-300 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </button>
+        </div>
+    </section>
+
+</div>

@@ -1,0 +1,160 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <section class="max-w-5xl mx-auto space-y-6">
+        <div class="flex items-start justify-between gap-6 flex-col md:flex-row">
+            <div class="space-y-3">
+                <div
+                    class="inline-flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold text-slate-500">
+                    <span class="px-2 py-1 rounded-full bg-white/5 border border-white/10">Build an AMM</span>
+                    <span
+                        class="px-2 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300">N2</span>
+                </div>
+
+                <h1 class="text-4xl font-black text-white tracking-tight">
+                    Swaps + fees + hardening (min_out, accounting, negative tests)
+                </h1>
+
+                <p class="text-slate-400">
+                    N2 is where users lose money if you are sloppy. You must enforce
+                    <strong>min_out</strong>, apply fees consistently, protect against vault spoof and CPI mistakes,
+                    and prove correctness under rounding pressure.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-10">
+        <div class="flex items-center gap-3">
+            <div class="p-2 rounded-lg bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
+                <i data-lucide="repeat" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white">Swap contract (strict)</h2>
+        </div>
+
+        <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-4">
+            <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                <div class="font-bold text-white text-sm mb-2">Input → Output rules</div>
+                <ul class="text-sm text-slate-300 space-y-2">
+                    <li>User provides <strong>amount_in</strong> and <strong>min_out</strong>.</li>
+                    <li>Pool computes output after fees and rounding policy.</li>
+                    <li>Reject if computed <strong>amount_out &lt; min_out</strong>.</li>
+                    <li>Vault mints and owners are validated before any transfer.</li>
+                </ul>
+            </div>
+
+            <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                <div class="font-bold text-white text-sm mb-2">Fee rule</div>
+                <p class="text-sm text-slate-300">
+                    Fees must be applied once, consistently, and documented:
+                    <strong>fee_amount = floor(amount_in · fee_bps / 10_000)</strong>.
+                    Any alternative must be explicit and tested on rounding boundaries.
+                </p>
+            </div>
+
+            <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                <div class="font-bold text-white text-sm mb-2">Invariant rule</div>
+                <p class="text-sm text-slate-300">
+                    After swap, reserves must remain valid and non-negative, and the pool must maintain
+                    constant-product behavior up to rounding. If your model deviates, document the reason.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-10">
+        <div class="flex items-center gap-3">
+            <div class="p-2 rounded-lg bg-rose-500/10 text-rose-300 border border-rose-500/20">
+                <i data-lucide="alert-triangle" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white">Hardening checklist (N2)</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-3">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Account integrity</div>
+                <ul class="text-sm text-slate-300 space-y-2">
+                    <li>Reject any vault with wrong mint or wrong owner.</li>
+                    <li>Reject if user token accounts have wrong mint.</li>
+                    <li>Verify token program id (legacy vs 2022) when doing CPI.</li>
+                </ul>
+            </div>
+
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-3">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">User protection</div>
+                <ul class="text-sm text-slate-300 space-y-2">
+                    <li>Enforce <code>min_out</code> and explicit slippage error.</li>
+                    <li>Reject amount_in == 0 and any action that yields zero output when not intended.</li>
+                    <li>Explicitly document rounding policy and test its boundary cases.</li>
+                </ul>
+            </div>
+
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-3">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Fee accounting</div>
+                <ul class="text-sm text-slate-300 space-y-2">
+                    <li>Fee is applied once; stored or distributed deterministically.</li>
+                    <li>Rounding does not leak value across repeated swaps.</li>
+                    <li>Edge cases (small trades) are explicitly handled and tested.</li>
+                </ul>
+            </div>
+
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-3">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Proofs</div>
+                <ul class="text-sm text-slate-300 space-y-2">
+                    <li>Negative tests for min_out violation, vault spoof, mint mismatch, and CPI spoof.</li>
+                    <li>Regression tests for repeated swaps and rounding stability.</li>
+                    <li>QA is green and nav is correct in both languages.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-10">
+        <div class="flex items-center gap-3">
+            <div class="p-2 rounded-lg bg-amber-500/10 text-amber-300 border border-amber-500/20">
+                <i data-lucide="flask-conical" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white">Minimum test suite (N2)</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-3">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Negative tests</div>
+                <ul class="text-sm text-slate-300 space-y-2">
+                    <li>min_out: set min_out above computed output and expect rejection.</li>
+                    <li>Vault spoof: replace vault with attacker account and expect rejection.</li>
+                    <li>Mint mismatch: swap path uses wrong mint in user account and expect rejection.</li>
+                    <li>Fee edge: tiny amount_in where fee rounding is sensitive (must be deterministic).</li>
+                </ul>
+            </div>
+
+            <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-3">
+                <div class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Regression tests</div>
+                <ul class="text-sm text-slate-300 space-y-2">
+                    <li>Repeated swaps do not break accounting invariants.</li>
+                    <li>Rounding stability on boundary values (near-zero, near-max, high decimals).</li>
+                    <li>Fee policy remains consistent across swap directions.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto space-y-6 border-t border-white/10 pt-10">
+        <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/30 space-y-4">
+            <div class="flex items-center gap-3">
+                <i data-lucide="badge-check" class="w-6 h-6 text-emerald-400"></i>
+                <h3 class="text-xl font-bold text-white">Definition of Done (N2)</h3>
+            </div>
+
+            <ul class="text-sm text-slate-300 space-y-2">
+                <li>Swap enforces min_out and fails-loud on invalid routes.</li>
+                <li>Fee policy is explicit, consistent, and tested on rounding edges.</li>
+                <li>Vault spoof and mint mismatch are blocked by constraints and verified checks.</li>
+                <li>Negative tests + regression tests exist and are stable.</li>
+                <li>QA is green; bilingual routing is locked.</li>
+            </ul>
+
+        </div>
+    </section>
+
+</div>
