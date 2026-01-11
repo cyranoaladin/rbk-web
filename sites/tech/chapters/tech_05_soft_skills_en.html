@@ -4,12 +4,14 @@
         <div class="absolute -top-24 -right-24 w-64 h-64 bg-pink-500/20 rounded-full blur-[100px]"></div>
         <div class="relative z-10">
             <div class="flex items-center gap-4 mb-4">
-                <span class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-rose-600 font-mono">Soft</span>
+                <span
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-rose-600 font-mono">Soft</span>
                 <div class="h-12 w-px bg-white/10"></div>
                 <h1 class="text-3xl font-bold text-white tracking-tight">Soft Skills & Pro Mindset</h1>
             </div>
             <p class="text-sm text-slate-400 max-w-2xl">
-                Foundation W01→W04 (N1) then continuum W05→W16. Focus: technical communication, team rituals, professional posture, incidents and audit report, no ghost weeks.
+                Foundation W01→W04 (N1) then continuum W05→W16. Focus: technical communication, team rituals,
+                professional posture, incidents and audit report, no ghost weeks.
             </p>
         </div>
     </header>
@@ -19,7 +21,7 @@
             <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
                 <i data-lucide="calendar-range" class="w-5 h-5"></i>
             </div>
-            <h2 class="text-xl font-bold text-white">Timeline (W01 → W16)</h2>
+            <h2 class="text-xl font-bold text-white">Timeline (W01 → W48)</h2>
         </div>
 
         <div class="glass-card !p-0 overflow-hidden border-white/10 mb-8">
@@ -33,101 +35,96 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-blue-500/10 text-slate-300">
-                    <tr class="hover:bg-blue-500/5">
-                        <td class="p-4 font-bold text-white">Week W01 (N1)</td>
-                        <td class="p-4">Technical communication</td>
-                        <td class="p-4">Daily + weekly async</td>
-                        <td class="p-4">README + ADR + cleaned issues</td>
+                    <!-- FOUNDATIONS (W01-W12) -->
+                    <tr class="bg-blue-500/5">
+                        <td class="p-4 font-bold text-white" colspan="4">PHASE 1 : FOUNDATIONS (W01 → W12)</td>
                     </tr>
                     <tr class="hover:bg-blue-500/5">
-                        <td class="p-4 font-bold text-white">Week W02 (N1)</td>
-                        <td class="p-4">Scoping</td>
-                        <td class="p-4">Scoping workshop</td>
-                        <td class="p-4">1-page SOW + estimate</td>
+                        <td class="p-4 font-bold text-slate-400">W01-W04</td>
+                        <td class="p-4">Communication & Hygiene</td>
+                        <td class="p-4">Daily + Weekly Async</td>
+                        <td class="p-4">Clean README, Conventional Commits</td>
                     </tr>
                     <tr class="hover:bg-blue-500/5">
-                        <td class="p-4 font-bold text-white">Week W03 (N1)</td>
-                        <td class="p-4">Process & rituals</td>
-                        <td class="p-4">Retro + board</td>
-                        <td class="p-4">Kanban board + retro minutes</td>
+                        <td class="p-4 font-bold text-slate-400">W05-W08</td>
+                        <td class="p-4">Feedback & Collaboration</td>
+                        <td class="p-4">Code Review (Pair)</td>
+                        <td class="p-4">5 constructive PR reviews</td>
                     </tr>
                     <tr class="hover:bg-blue-500/5">
-                        <td class="p-4 font-bold text-white">Week W04 (N1)</td>
-                        <td class="p-4">Leadership & pitch</td>
-                        <td class="p-4">Internal pitch</td>
-                        <td class="p-4">5-min pitch + internal demo</td>
+                        <td class="p-4 font-bold text-slate-400">W09-W12</td>
+                        <td class="p-4">Scoping & Rigor</td>
+                        <td class="p-4">Sprint Planning</td>
+                        <td class="p-4">Prioritized Backlog, User Stories</td>
+                    </tr>
+
+                    <!-- SOLANA N1 (W13-W24) -->
+                    <tr class="bg-blue-500/5">
+                        <td class="p-4 font-bold text-white" colspan="4">PHASE 2 : SOLANA N1 (W13 → W24)</td>
                     </tr>
                     <tr class="hover:bg-blue-500/5">
-                        <td class="p-4 font-bold text-white">Week W05 (N2)</td>
-                        <td class="p-4">Serious code review</td>
-                        <td class="p-4">Weekly PR review</td>
-                        <td class="p-4">PR reviewed with checklist</td>
+                        <td class="p-4 font-bold text-slate-400">W13-W16</td>
+                        <td class="p-4">Technical Design</td>
+                        <td class="p-4">RFC Review</td>
+                        <td class="p-4">1st Tech RFC (Simple Architecture)</td>
                     </tr>
                     <tr class="hover:bg-blue-500/5">
-                        <td class="p-4 font-bold text-white">Week W06 (N2)</td>
-                        <td class="p-4">Actionable feedback</td>
-                        <td class="p-4">Guided pair review</td>
-                        <td class="p-4">Feedback log + fixes</td>
+                        <td class="p-4 font-bold text-slate-400">W17-W20</td>
+                        <td class="p-4">Quality & Standards</td>
+                        <td class="p-4">Automated Tech Debt</td>
+                        <td class="p-4">CI/CD Pipeline, Linter config</td>
                     </tr>
                     <tr class="hover:bg-blue-500/5">
-                        <td class="p-4 font-bold text-white">Week W07 (N2)</td>
-                        <td class="p-4">Light RFC</td>
-                        <td class="p-4">RFC review</td>
-                        <td class="p-4">Mini RFC (1–2 pages)</td>
+                        <td class="p-4 font-bold text-slate-400">W21-W24</td>
+                        <td class="p-4">Documentation</td>
+                        <td class="p-4">Doc-as-Code</td>
+                        <td class="p-4">Complete API Reference, Mermaid Diagrams</td>
+                    </tr>
+
+                    <!-- SOLANA N2 (W25-W40) -->
+                    <tr class="bg-blue-500/5">
+                        <td class="p-4 font-bold text-white" colspan="4">PHASE 3 : SOLANA N2 (W25 → W40)</td>
                     </tr>
                     <tr class="hover:bg-blue-500/5">
-                        <td class="p-4 font-bold text-white">Week W08 (N2)</td>
-                        <td class="p-4">Estimation & debt</td>
-                        <td class="p-4">Weekly debt check</td>
-                        <td class="p-4">Debt backlog + plan</td>
+                        <td class="p-4 font-bold text-slate-400">W25-W28</td>
+                        <td class="p-4">Advanced Architecture</td>
+                        <td class="p-4">System Design Interview</td>
+                        <td class="p-4">Architecture Document (C4 Model)</td>
                     </tr>
                     <tr class="hover:bg-blue-500/5">
-                        <td class="p-4 font-bold text-white">Week W09 (N2)</td>
-                        <td class="p-4">Project runbook</td>
-                        <td class="p-4">Runbook review</td>
-                        <td class="p-4">Operational runbook</td>
+                        <td class="p-4 font-bold text-slate-400">W29-W32</td>
+                        <td class="p-4">Technical Leadership</td>
+                        <td class="p-4">Lead Dev Rotation</td>
+                        <td class="p-4">Mentoring log, Internal Tech Talk</td>
                     </tr>
                     <tr class="hover:bg-blue-500/5">
-                        <td class="p-4 font-bold text-white">Week W10 (N2)</td>
-                        <td class="p-4">Risk communication</td>
-                        <td class="p-4">Risk meeting</td>
-                        <td class="p-4">Risk log + actions</td>
+                        <td class="p-4 font-bold text-slate-400">W33-W36</td>
+                        <td class="p-4">Crisis Management</td>
+                        <td class="p-4">War Room Simulation</td>
+                        <td class="p-4">Formatted Incident Post-Mortem</td>
                     </tr>
                     <tr class="hover:bg-blue-500/5">
-                        <td class="p-4 font-bold text-white">Week W11 (N3)</td>
-                        <td class="p-4">Adversarial posture</td>
-                        <td class="p-4">Table-top defense/attack</td>
-                        <td class="p-4">Threat model notes</td>
+                        <td class="p-4 font-bold text-slate-400">W37-W40</td>
+                        <td class="p-4">Audit & Security</td>
+                        <td class="p-4">Threat Modeling Workshop</td>
+                        <td class="p-4">Complete Threat Model Report</td>
+                    </tr>
+
+                    <!-- SOLANA N3 (W41-W48) -->
+                    <tr class="bg-blue-500/5">
+                        <td class="p-4 font-bold text-white" colspan="4">PHASE 4 : SOLANA N3 (W41 → W48)</td>
                     </tr>
                     <tr class="hover:bg-blue-500/5">
-                        <td class="p-4 font-bold text-white">Week W12 (N3)</td>
-                        <td class="p-4">Writing findings</td>
-                        <td class="p-4">Peer review findings</td>
-                        <td class="p-4">3 formatted findings</td>
+                        <td class="p-4 font-bold text-slate-400">W41-W44</td>
+                        <td class="p-4">Advanced Audit</td>
+                        <td class="p-4">Audit Defense</td>
+                        <td class="p-4">Pro Audit Report (Findings)</td>
                     </tr>
                     <tr class="hover:bg-blue-500/5">
-                        <td class="p-4 font-bold text-white">Week W13 (N3)</td>
-                        <td class="p-4">Incident post-mortem</td>
-                        <td class="p-4">Incident review</td>
-                        <td class="p-4">Written post-mortem</td>
-                    </tr>
-                    <tr class="hover:bg-blue-500/5">
-                        <td class="p-4 font-bold text-white">Week W14 (N3)</td>
-                        <td class="p-4">Responsible communication</td>
-                        <td class="p-4">Stakeholder briefing</td>
-                        <td class="p-4">Disclosure note</td>
-                    </tr>
-                    <tr class="hover:bg-blue-500/5">
-                        <td class="p-4 font-bold text-white">Week W15 (N3)</td>
-                        <td class="p-4">Capstone prep</td>
-                        <td class="p-4">Dry run</td>
-                        <td class="p-4">Deck + demo script</td>
-                    </tr>
-                    <tr class="hover:bg-blue-500/5">
-                        <td class="p-4 font-bold text-white">Week W16 (N3)</td>
-                        <td class="p-4">Final defense</td>
-                        <td class="p-4">Final rehearsal</td>
-                        <td class="p-4">Clean demo + audit report v1.0 + handover</td>
+                        <td class="p-4 font-bold text-slate-400">W45-W48</td>
+                        <td class="p-4">Career & Closure</td>
+                        <td class="p-4">Mock Interview / Pitch</td>
+                        <td class="p-4">Final Portfolio, Capstone Pitch Deck</td>
                     </tr>
                 </tbody>
             </table>
