@@ -10,104 +10,151 @@
                 <h1 class="text-3xl font-bold text-white tracking-tight">08. Track A : Ingénieur Solana</h1>
             </div>
             <p class="text-sm text-slate-400 max-w-2xl">
-                Le parcours de référence. 48 semaines pour maîtriser Rust, Anchor, la DeFi et l'Audit de sécurité.
+                Le parcours de référence. 16 semaines pour maîtriser Rust, Anchor, la DeFi et l'Audit de sécurité.
                 Aligné sur les standards de l'industrie (Audit-Grade).
             </p>
         </div>
     </header>
 
-    <section>
-        <div class="flex items-center gap-3 mb-6">
-            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
-                <i data-lucide="map" class="w-5 h-5"></i>
+    <section class="space-y-8">
+        <div class="flex items-center gap-3 border-b border-white/10 pb-4">
+            <div class="p-2 rounded-lg bg-[#9945FF]/10 text-[#9945FF] border border-[#9945FF]/20">
+                <i data-lucide="route" class="w-5 h-5"></i>
             </div>
-            <h2 class="text-xl font-bold text-white">3 Niveaux de Progression</h2>
+            <h2 class="text-xl font-bold text-white">Progression Officielle (8 Modules)</h2>
         </div>
 
-        <div class="glass-card bg-black/40 p-6 overflow-x-auto mb-8">
-            <div class="flex items-center gap-3 min-w-[760px] text-center">
-                <div class="w-36 p-3 rounded-lg bg-[#14F195]/15 border border-[#14F195]/30">
-                    <span class="text-[#14F195] font-black text-lg block">Hardening</span>
-                    <span class="text-[10px] text-slate-400">N1 • W01–W12</span>
-                    <p class="text-[9px] text-slate-500 mt-1">Rust, OS, crypto, sécurité by default.</p>
+        <div class="relative space-y-4">
+            <!-- Connecting Line -->
+            <div class="absolute left-[27px] top-6 bottom-6 w-px bg-white/10 md:block hidden"></div>
+
+            <!-- Item 1: Foundations -->
+            <div
+                class="relative flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors">
+                <div class="flex items-center gap-4 md:w-64 shrink-0">
+                    <div
+                        class="w-14 h-14 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 font-bold z-10 relative">
+                        01</div>
+                    <div class="font-bold text-white">Foundations</div>
                 </div>
-                <i data-lucide="arrow-right" class="text-slate-600"></i>
-                <div class="w-64 p-3 rounded-lg bg-blue-500/15 border border-blue-500/30">
-                    <span class="text-blue-400 font-black text-lg block">Engineering & DeFi</span>
-                    <span class="text-[10px] text-slate-400">N2 • W13–W28</span>
-                    <p class="text-[9px] text-slate-500 mt-1">DApps, Anchor, CPI, AMM, Tokenomics.</p>
-                </div>
-                <i data-lucide="arrow-right" class="text-slate-600"></i>
-                <div class="w-36 p-3 rounded-lg bg-[#9945FF]/15 border border-[#9945FF]/30">
-                    <span class="text-[#9945FF] font-black text-lg block">Audit & Capstone</span>
-                    <span class="text-[10px] text-slate-400">N3 • W29–W48</span>
-                    <p class="text-[9px] text-slate-500 mt-1">Produit final + audit v1.0</p>
+                <div class="flex-1">
+                    <h3 class="text-sm font-bold text-slate-300 mb-1">Théorie Solana & Mental Model</h3>
+                    <p class="text-xs text-slate-500">Accounts, transactions, PDA, CPI, SPL token mental model.</p>
                 </div>
             </div>
-        </div>
 
-        <div class="glass-card !p-0 overflow-hidden border-white/10">
-            <table class="w-full text-left text-[11px]">
-                <thead class="bg-[#9945FF]/10 text-[#9945FF] uppercase font-black">
-                    <tr>
-                        <th class="p-4 w-20">Semaine</th>
-                        <th class="p-4 w-20">Niveau</th>
-                        <th class="p-4 w-1/3">Focus</th>
-                        <th class="p-4 w-1/3">Livrable</th>
-                        <th class="p-4">Validation</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-[#9945FF]/10 text-slate-300">
-                    <tr>
-                        <td class="p-4 font-bold text-[#14F195]">HARDENING</td>
-                        <td class="p-4 font-mono text-slate-500">W01–W12</td>
-                        <td class="p-4">Rust bas-niveau, Borrow Checker, Gestion mémoire manuelle.</td>
-                        <td class="p-4"><span
-                                class="bg-slate-800 px-2 py-1 rounded border border-white/10 font-mono">rust_cli_explorer</span>
-                        </td>
-                        <td class="p-4">
-                            <button onclick="loadPage('tech_06_foundations')"
-                                class="hover:text-[#9945FF] transition-colors font-bold">Voir détails</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="p-4 font-bold text-blue-400">ENGINEERING</td>
-                        <td class="p-4 font-mono text-slate-500">W13–W18</td>
-                        <td class="p-4">Anchor Framework, PDAs, CPIs, Client TypeScript.</td>
-                        <td class="p-4"><span
-                                class="bg-slate-800 px-2 py-1 rounded border border-white/10 font-mono">voting_dapp</span>
-                        </td>
-                        <td class="p-4">
-                            <button onclick="loadPage('tech_06b_solana_n2')"
-                                class="hover:text-[#9945FF] transition-colors font-bold">Voir détails</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="p-4 font-bold text-amber-400">ENGINEERING II</td>
-                        <td class="p-4 font-mono text-slate-500">W19–W28</td>
-                        <td class="p-4">AMM, Liquidity Pools, Token-2022, Transfer Hooks.</td>
-                        <td class="p-4"><span
-                                class="bg-slate-800 px-2 py-1 rounded border border-white/10 font-mono">cp_amm_swap</span>
-                        </td>
-                        <td class="p-4">
-                            <button onclick="loadPage('tech_06f_build_an_amm')"
-                                class="hover:text-[#9945FF] transition-colors font-bold">Voir détails</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="p-4 font-bold text-[#9945FF]">AUDIT</td>
-                        <td class="p-4 font-mono text-slate-500">W29–W48</td>
-                        <td class="p-4">Vecteurs d'attaque, Pen-testing, Rédaction de rapport.</td>
-                        <td class="p-4"><span
-                                class="bg-slate-800 px-2 py-1 rounded border border-white/10 font-mono">security_audit.pdf</span>
-                        </td>
-                        <td class="p-4">
-                            <button onclick="loadPage('tech_06d_security_labs')"
-                                class="hover:text-[#9945FF] transition-colors font-bold">Voir détails</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <!-- Item 2: N1 -->
+            <div class="relative flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-orange-500/20 bg-orange-500/[0.02] hover:bg-orange-500/[0.05] transition-colors cursor-pointer group"
+                onclick="loadPage('tech_06a_solana_n1')">
+                <div class="flex items-center gap-4 md:w-64 shrink-0">
+                    <div
+                        class="w-14 h-14 rounded-full bg-orange-900/20 border border-orange-500/30 flex items-center justify-center text-orange-500 font-bold z-10 relative group-hover:scale-110 transition-transform">
+                        N1</div>
+                    <div class="font-bold text-orange-400">Rust System + Tools</div>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-sm font-bold text-slate-200 mb-1">Bas niveau & Outillage</h3>
+                    <p class="text-xs text-slate-500">Rust basique ciblé Solana, sérialisation, logs, lecture
+                        d’exécution.</p>
+                </div>
+            </div>
+
+            <!-- Item 3: N2 -->
+            <div class="relative flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-[#9945FF]/20 bg-[#9945FF]/[0.02] hover:bg-[#9945FF]/[0.05] transition-colors cursor-pointer group"
+                onclick="loadPage('tech_06b_solana_n2')">
+                <div class="flex items-center gap-4 md:w-64 shrink-0">
+                    <div
+                        class="w-14 h-14 rounded-full bg-purple-900/20 border border-purple-500/30 flex items-center justify-center text-purple-500 font-bold z-10 relative group-hover:scale-110 transition-transform">
+                        N2</div>
+                    <div class="font-bold text-purple-400">Anchor Framework</div>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-sm font-bold text-slate-200 mb-1">Counter → Patterns</h3>
+                    <p class="text-xs text-slate-500">Premier programme complet, contraintes, PDA, CPI de base, tests
+                        TypeScript.</p>
+                </div>
+            </div>
+
+            <!-- Item 4: N3 -->
+            <div class="relative flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-red-500/20 bg-red-500/[0.02] hover:bg-red-500/[0.05] transition-colors cursor-pointer group"
+                onclick="loadPage('tech_06c_solana_n3')">
+                <div class="flex items-center gap-4 md:w-64 shrink-0">
+                    <div
+                        class="w-14 h-14 rounded-full bg-red-900/20 border border-red-500/30 flex items-center justify-center text-red-500 font-bold z-10 relative group-hover:scale-110 transition-transform">
+                        N3</div>
+                    <div class="font-bold text-red-400">Anchor → Native Capstone</div>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-sm font-bold text-slate-200 mb-1">Validation & Native</h3>
+                    <p class="text-xs text-slate-500">Capstone Anchor complexe, puis reproduction en natif (validation
+                        manuelle & invoke_signed).</p>
+                </div>
+            </div>
+
+            <!-- Item 5: Security Labs -->
+            <div class="relative flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors cursor-pointer group"
+                onclick="loadPage('tech_06d_security_labs')">
+                <div class="flex items-center gap-4 md:w-64 shrink-0">
+                    <div
+                        class="w-14 h-14 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 font-bold z-10 relative">
+                        05</div>
+                    <div class="font-bold text-white">Security Labs</div>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-sm font-bold text-slate-300 mb-1">Vulnerability Hunting</h3>
+                    <p class="text-xs text-slate-500">Trouver, expliquer et corriger des vulnérabilités (Anchor +
+                        Native) avec preuves par tests.</p>
+                </div>
+            </div>
+
+            <!-- Item 6: Tokens -->
+            <div class="relative flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors cursor-pointer group"
+                onclick="loadPage('tech_06e1_tokens_and_cpi_n1')">
+                <div class="flex items-center gap-4 md:w-64 shrink-0">
+                    <div
+                        class="w-14 h-14 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 font-bold z-10 relative">
+                        06</div>
+                    <div class="font-bold text-white">Tokens & CPI</div>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-sm font-bold text-slate-300 mb-1">Standards Avancés</h3>
+                    <p class="text-xs text-slate-500">SPL Token, Token-2022 Extensions (à bon escient), et CPIs propres.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 7: AMM -->
+            <div class="relative flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors cursor-pointer group"
+                onclick="loadPage('tech_06f1_build_an_amm_n1')">
+                <div class="flex items-center gap-4 md:w-64 shrink-0">
+                    <div
+                        class="w-14 h-14 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 font-bold z-10 relative">
+                        07</div>
+                    <div class="font-bold text-white">Build an AMM</div>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-sm font-bold text-slate-300 mb-1">Protocol Engineering</h3>
+                    <p class="text-xs text-slate-500">AMM minimal → features avancées (fees, LP, slippage, compute
+                        budget en option).</p>
+                </div>
+            </div>
+
+            <!-- Item 8: Validator -->
+            <div class="relative flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors cursor-pointer group"
+                onclick="loadPage('tech_06g_validator_infra_overview')">
+                <div class="flex items-center gap-4 md:w-64 shrink-0">
+                    <div
+                        class="w-14 h-14 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-500 font-bold z-10 relative">
+                        08</div>
+                    <div class="font-bold text-slate-400">Validator/Infra</div>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-sm font-bold text-slate-400 mb-1">Ouverture Infrastructure</h3>
+                    <p class="text-xs text-slate-500">Culture réseau, exécution, RPC, performance et bonnes pratiques.
+                    </p>
+                </div>
+            </div>
+
         </div>
     </section>
 
