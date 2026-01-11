@@ -140,7 +140,7 @@
                         <pre class="mermaid text-[10px] bg-transparent">
 flowchart TD
     User([User]) -->|Sign| ProgA[MyProgram]
-    ProgA -->|invoke_signed(seeds)| TokenProg
+    ProgA -->|"invoke_signed(seeds)"| TokenProg
     TokenProg -->|Verify| PDA[(Vault PDA)]
                         </pre>
                     </div>
