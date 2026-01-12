@@ -732,10 +732,12 @@ document.addEventListener('DOMContentLoaded', () => {
   window.loadPage = loadPage;
 
   function renderAnalyseCharts(container) {
+    if (!window._rbkCharts) window._rbkCharts = [];
+
     // Chart 1: Solana Talents vs Traction
     const ctx1 = container.querySelector('#chartSolanaTraction');
     if (ctx1) {
-      activeCharts.push(new Chart(ctx1, {
+      window._rbkCharts.push(new Chart(ctx1, {
         type: 'line',
         data: {
           labels: ['2021', '2022', '2023', '2024'],
@@ -774,7 +776,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Chart 2: Job Market Index
     const ctx2 = container.querySelector('#chartJobIndex');
     if (ctx2) {
-      activeCharts.push(new Chart(ctx2, {
+      window._rbkCharts.push(new Chart(ctx2, {
         type: 'bar',
         data: {
           labels: ['2021 (Bull)', '2022 (Bear)', '2023 (Build)', '2024 (Growth)'],
