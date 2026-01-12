@@ -35,77 +35,96 @@
             <div class="absolute left-[27px] top-6 bottom-6 w-px bg-white/10 md:block hidden"></div>
 
             <!-- Item 1: Foundations -->
-            <div
-                class="relative flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors">
+            <div class="relative flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors cursor-pointer group"
+                onclick="loadPage('tech_06_foundations')">
                 <div class="flex items-center gap-4 md:w-64 shrink-0">
                     <div
-                        class="w-14 h-14 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 font-bold z-10 relative">
+                        class="w-14 h-14 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-500 font-bold z-10 relative">
                         01</div>
                     <div class="font-bold text-white">Foundations</div>
                 </div>
-                <div class="flex-1">
-                    <h3 class="text-sm font-bold text-slate-300 mb-1">Théorie Solana & Mental Model</h3>
-                    <p class="text-xs text-slate-500">Accounts, transactions, PDA, CPI, SPL token mental model.</p>
+                <div class="flex-1 flex justify-between items-center">
+                    <div>
+                        <h3 class="text-sm font-bold text-slate-300 mb-1">Théorie Solana & Mental Model</h3>
+                        <p class="text-xs text-slate-500">Accounts, transactions, PDA, CPI, SPL token mental model.</p>
+                    </div>
+                    <i data-lucide="chevron-right"
+                        class="w-5 h-5 text-slate-500/50 group-hover:translate-x-1 transition-transform"></i>
                 </div>
             </div>
 
-            <!-- Item 2: N1 (Link) -->
-            <div class="relative flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-orange-500/20 bg-orange-500/[0.02] hover:bg-orange-500/[0.05] transition-colors cursor-pointer group"
+            <!-- Item 2: Rust System (N1) -->
+            <div class="relative flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-indigo-500/20 bg-indigo-500/[0.02] hover:bg-indigo-500/[0.05] transition-colors cursor-pointer group"
                 onclick="loadPage('tech_06a_solana_n1')">
+                <div class="absolute -left-[1px] top-1/2 -translate-y-1/2 w-1 h-12 bg-indigo-500 rounded-r-full"></div>
                 <div class="flex items-center gap-4 md:w-64 shrink-0">
                     <div
-                        class="w-14 h-14 rounded-full bg-orange-900/20 border border-orange-500/30 flex items-center justify-center text-orange-500 font-bold z-10 relative group-hover:scale-110 transition-transform">
-                        N1</div>
-                    <div class="font-bold text-orange-400">Rust System + Tools</div>
+                        class="w-14 h-14 rounded-full bg-slate-900 border border-indigo-500 flex items-center justify-center text-indigo-400 font-bold z-10 relative shadow-[0_0_15px_rgba(99,102,241,0.3)]">
+                        02</div>
+                    <div>
+                        <div class="font-bold text-white">Rust System + Tools</div>
+                        <span
+                            class="inline-block mt-1 px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-300 text-[10px] font-bold border border-indigo-500/30">N1</span>
+                    </div>
                 </div>
                 <div class="flex-1 flex justify-between items-center">
                     <div>
-                        <h3 class="text-sm font-bold text-slate-200 mb-1">Bas niveau & Outillage</h3>
-                        <p class="text-xs text-slate-500">Rust basique ciblé Solana, sérialisation, logs, lecture
+                        <h3 class="text-sm font-bold text-indigo-200 mb-1">Bas niveau & Outillage</h3>
+                        <p class="text-xs text-slate-400">Rust basique ciblé Solana, sérialisation, logs, lecture
                             d’exécution.</p>
                     </div>
                     <i data-lucide="chevron-right"
-                        class="w-5 h-5 text-orange-500/50 group-hover:translate-x-1 transition-transform"></i>
+                        class="w-5 h-5 text-indigo-400/50 group-hover:translate-x-1 transition-transform"></i>
                 </div>
             </div>
 
-            <!-- Item 3: N2 (Link) -->
-            <div class="relative flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-[#9945FF]/20 bg-[#9945FF]/[0.02] hover:bg-[#9945FF]/[0.05] transition-colors cursor-pointer group"
+            <!-- Item 3: Anchor Framework (N2) -->
+            <div class="relative flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-emerald-500/20 bg-emerald-500/[0.02] hover:bg-emerald-500/[0.05] transition-colors cursor-pointer group"
                 onclick="loadPage('tech_06b_solana_n2')">
+                <div class="absolute -left-[1px] top-1/2 -translate-y-1/2 w-1 h-12 bg-emerald-500 rounded-r-full"></div>
                 <div class="flex items-center gap-4 md:w-64 shrink-0">
                     <div
-                        class="w-14 h-14 rounded-full bg-purple-900/20 border border-purple-500/30 flex items-center justify-center text-purple-500 font-bold z-10 relative group-hover:scale-110 transition-transform">
-                        N2</div>
-                    <div class="font-bold text-purple-400">Anchor Framework</div>
+                        class="w-14 h-14 rounded-full bg-slate-900 border border-emerald-500 flex items-center justify-center text-emerald-400 font-bold z-10 relative shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+                        03</div>
+                    <div>
+                        <div class="font-bold text-white">Anchor Framework</div>
+                        <span
+                            class="inline-block mt-1 px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-bold border border-emerald-500/30">N2</span>
+                    </div>
                 </div>
                 <div class="flex-1 flex justify-between items-center">
                     <div>
-                        <h3 class="text-sm font-bold text-slate-200 mb-1">Counter → Patterns</h3>
-                        <p class="text-xs text-slate-500">Premier programme complet, contraintes, PDA, CPI de base,
+                        <h3 class="text-sm font-bold text-emerald-200 mb-1">Counter → Patterns</h3>
+                        <p class="text-xs text-slate-400">Premier programme complet, contraintes, PDA, CPI de base,
                             tests TypeScript.</p>
                     </div>
                     <i data-lucide="chevron-right"
-                        class="w-5 h-5 text-purple-500/50 group-hover:translate-x-1 transition-transform"></i>
+                        class="w-5 h-5 text-emerald-400/50 group-hover:translate-x-1 transition-transform"></i>
                 </div>
             </div>
 
-            <!-- Item 4: N3 (Link) -->
-            <div class="relative flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-red-500/20 bg-red-500/[0.02] hover:bg-red-500/[0.05] transition-colors cursor-pointer group"
+            <!-- Item 4: Native Capstone (N3) -->
+            <div class="relative flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-rose-500/20 bg-rose-500/[0.02] hover:bg-rose-500/[0.05] transition-colors cursor-pointer group"
                 onclick="loadPage('tech_06c_solana_n3')">
+                <div class="absolute -left-[1px] top-1/2 -translate-y-1/2 w-1 h-12 bg-rose-500 rounded-r-full"></div>
                 <div class="flex items-center gap-4 md:w-64 shrink-0">
                     <div
-                        class="w-14 h-14 rounded-full bg-red-900/20 border border-red-500/30 flex items-center justify-center text-red-500 font-bold z-10 relative group-hover:scale-110 transition-transform">
-                        N3</div>
-                    <div class="font-bold text-red-400">Anchor → Native Capstone</div>
+                        class="w-14 h-14 rounded-full bg-slate-900 border border-rose-500 flex items-center justify-center text-rose-400 font-bold z-10 relative shadow-[0_0_15px_rgba(244,63,94,0.3)]">
+                        04</div>
+                    <div>
+                        <div class="font-bold text-white">Anchor → Native</div>
+                        <span
+                            class="inline-block mt-1 px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300 text-[10px] font-bold border border-rose-500/30">N3</span>
+                    </div>
                 </div>
                 <div class="flex-1 flex justify-between items-center">
                     <div>
-                        <h3 class="text-sm font-bold text-slate-200 mb-1">Validation & Native</h3>
-                        <p class="text-xs text-slate-500">Capstone Anchor complexe, puis reproduction en natif
+                        <h3 class="text-sm font-bold text-rose-200 mb-1">Validation & Native</h3>
+                        <p class="text-xs text-slate-400">Capstone Anchor complexe, puis reproduction en natif
                             (validation manuelle & invoke_signed).</p>
                     </div>
                     <i data-lucide="chevron-right"
-                        class="w-5 h-5 text-red-500/50 group-hover:translate-x-1 transition-transform"></i>
+                        class="w-5 h-5 text-rose-400/50 group-hover:translate-x-1 transition-transform"></i>
                 </div>
             </div>
 
@@ -129,7 +148,7 @@
                 </div>
             </div>
 
-            <!-- Item 6: Tokens -->
+            <!-- Item 6: Tokens & CPI -->
             <div class="relative flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors cursor-pointer group"
                 onclick="loadPage('tech_06e1_tokens_and_cpi_n1')">
                 <div class="flex items-center gap-4 md:w-64 shrink-0">
@@ -174,7 +193,7 @@
                 onclick="loadPage('tech_06g_validator_infra_overview')">
                 <div class="flex items-center gap-4 md:w-64 shrink-0">
                     <div
-                        class="w-14 h-14 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-500 font-bold z-10 relative">
+                        class="w-14 h-14 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 font-bold z-10 relative">
                         08</div>
                     <div class="font-bold text-slate-400">Validator/Infra</div>
                 </div>
@@ -182,8 +201,7 @@
                     <div>
                         <h3 class="text-sm font-bold text-slate-400 mb-1">Ouverture Infrastructure</h3>
                         <p class="text-xs text-slate-500">Culture réseau, exécution, RPC, performance et bonnes
-                            pratiques.
-                        </p>
+                            pratiques.</p>
                     </div>
                     <i data-lucide="chevron-right"
                         class="w-5 h-5 text-slate-500/50 group-hover:translate-x-1 transition-transform"></i>
