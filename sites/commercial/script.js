@@ -711,6 +711,7 @@ document.addEventListener('DOMContentLoaded', () => {
         await ensureChartJS();
         cleanupCharts();
         if (pageId === '02_contexte') renderContextCharts(contentDiv);
+        if (pageId === '04_analyse') renderAnalyseCharts(contentDiv);
         if (pageId === '12_business_plan') {
           renderBusinessCharts(contentDiv);
           injectNexusSimulator('nexus-simulator-area');
@@ -729,6 +730,80 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Expose loadPage globally for inline onclick handlers
   window.loadPage = loadPage;
+
+  function renderAnalyseCharts(container) {
+    // Chart 1: Solana Talents vs Traction
+    const ctx1 = container.querySelector('#chartSolanaTraction');
+    if (ctx1) {
+      activeCharts.push(new Chart(ctx1, {
+        type: 'line',
+        data: {
+          labels: ['2021', '2022', '2023', '2024'],
+          datasets: [
+            {
+              label: 'Développeurs Actifs (Monthly)',
+              data: [200, 2400, 2800, 3500],
+              borderColor: '#9945FF',
+              backgroundColor: 'rgba(153, 69, 255, 0.1)',
+              yAxisID: 'y'
+            },
+            {
+              label: 'TVL ($B)',
+              data: [1, 2, 4, 8],
+              borderColor: '#14F195',
+              backgroundColor: 'rgba(20, 241, 149, 0.1)',
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { labels: { color: '#94a3b8' } }
+          },
+          scales: {
+            x: { ticks: { color: '#64748b' }, grid: { color: '#1e293b' } },
+            y: { type: 'linear', display: true, position: 'left', ticks: { color: '#9945FF' } },
+            y1: { type: 'linear', display: true, position: 'right', ticks: { color: '#14F195' }, grid: { drawOnChartArea: false } }
+          }
+        }
+      }));
+    }
+
+    // Chart 2: Job Market Index
+    const ctx2 = container.querySelector('#chartJobIndex');
+    if (ctx2) {
+      activeCharts.push(new Chart(ctx2, {
+        type: 'bar',
+        data: {
+          labels: ['2021 (Bull)', '2022 (Bear)', '2023 (Build)', '2024 (Growth)'],
+          datasets: [{
+            label: 'Offres Emploi Web3 (Index 100)',
+            data: [100, 85, 140, 420],
+            backgroundColor: [
+              'rgba(148, 163, 184, 0.5)',
+              'rgba(255, 255, 255, 0.2)', // Bear
+              'rgba(20, 241, 149, 0.6)',
+              'rgba(153, 69, 255, 0.8)'
+            ],
+            borderColor: 'transparent',
+            borderRadius: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            x: { ticks: { color: '#94a3b8' }, grid: { display: false } },
+            y: { ticks: { color: '#64748b' }, grid: { color: '#1e293b' } }
+          }
+        }
+      }));
+    }
+  }
 
   function injectNexusSimulator(targetId) {
     const container = document.getElementById(targetId);
