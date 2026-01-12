@@ -650,82 +650,90 @@ document.addEventListener('DOMContentLoaded', () => {
         img.replaceWith(ph);
       }, { once: true });
     });
-  }
 
+    // ---------- Loader ----------
+    async function loadPage(pageId) {
+      // --- Legacy Redirects (V5 Migration) ---
+      const legacyRedirects = {
+        "04_methodologie": "06_methodologie",
+        "05_structure": "07_structure"
+      };
+      if (legacyRedirects[pageId]) {
+        console.log(`[Redirect] ${pageId} -> ${legacyRedirects[pageId]}`);
+        return loadPage(legacyRedirects[pageId]);
+      }
 
-  // ---------- Loader ----------
-  async function loadPage(pageId) {
-    const file = pagesByLang[currentLang]?.[pageId];
-    if (!file) {
-      console.warn(`[LoadPage] ID ${pageId} introuvable pour la langue ${currentLang}`);
-      // Fallback safety (if tech page requested in FR but only EN exists or vice versa? Unlikely with full map)
-      return;
-    }
+      const file = pagesByLang[currentLang]?.[pageId];
+      if (!file) {
+        console.warn(`[LoadPage] ID ${pageId} introuvable pour la langue ${currentLang}`);
+        // Fallback safety (if tech page requested in FR but only EN exists or vice versa? Unlikely with full map)
+        return;
+      }
 
-    setActiveLink(pageId);
-    history.replaceState({ pageId }, '', `#${pageId}`);
+      setActiveLink(pageId);
+      history.replaceState({ pageId }, '', `#${pageId}`);
 
-    contentDiv.innerHTML = '<div class="flex items-center justify-center h-64"><div class="w-8 h-8 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div></div>';
+      contentDiv.innerHTML = '<div class="flex items-center justify-center h-64"><div class="w-8 h-8 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div></div>';
 
-    try {
-      const response = await fetch(file, { cache: 'no-cache' });
-      if (!response.ok) throw new Error(`Page introuvable (${file})`);
-      const html = await response.text();
-      contentDiv.innerHTML = html;
-
-      if (window.lucide) lucide.createIcons();
-
-      // Design system + data tables + badges + numeric alignment
-      applyDesignSystem(contentDiv);
-      styleTables(contentDiv);
-      alignNumericCells(contentDiv);
-      enhanceStatusBadges(contentDiv);
-
-      // Premium polish
-      applyHeroIfExecSummary(pageId, contentDiv);
-      styleCodeBlocks(contentDiv);
-      styleBlockquotes(contentDiv);
-      imageFallbacks(contentDiv);
-      injectNextPrev(pageId, contentDiv);
-      initProgressBarOnce();
-
-      // Diagrams
       try {
-        if (pageId === '15_roadmap' || pageId === '20_roadmap_lancement') injectGanttForRoadmap(pageId, contentDiv);
-        // Mermaid désactivé pour les sections finance/business afin d’éviter le flash de code/erreurs
-        if (pageId === 'annexe_n_stack') injectTechStackContext(pageId, contentDiv);
-        if (pageId === '06_syllabus') injectSyllabusGantt(pageId, contentDiv);
-        await ensureMermaid();
-        runMermaidSafely();
+        const response = await fetch(file, { cache: 'no-cache' });
+        if (!response.ok) throw new Error(`Page introuvable (${file})`);
+        const html = await response.text();
+        contentDiv.innerHTML = html;
 
-        // Chart.js charts
-        await ensureChartJS();
-        cleanupCharts();
-        if (pageId === '02_contexte') renderContextCharts(contentDiv);
-        if (pageId === '12_business_plan') {
-          renderBusinessCharts(contentDiv);
-          injectNexusSimulator('nexus-simulator-area');
-        }
-      } catch { }
+        if (window.lucide) lucide.createIcons();
 
-      window.scrollTo(0, 0);
-    } catch (error) {
-      contentDiv.innerHTML = `<div class="p-8 text-rose-400 bg-rose-900/10 rounded-xl border border-rose-500/20">
+        // Design system + data tables + badges + numeric alignment
+        applyDesignSystem(contentDiv);
+        styleTables(contentDiv);
+        alignNumericCells(contentDiv);
+        enhanceStatusBadges(contentDiv);
+
+        // Premium polish
+        applyHeroIfExecSummary(pageId, contentDiv);
+        styleCodeBlocks(contentDiv);
+        styleBlockquotes(contentDiv);
+        imageFallbacks(contentDiv);
+        injectNextPrev(pageId, contentDiv);
+        initProgressBarOnce();
+
+        // Diagrams
+        try {
+          if (pageId === '15_roadmap' || pageId === '20_roadmap_lancement') injectGanttForRoadmap(pageId, contentDiv);
+          // Mermaid désactivé pour les sections finance/business afin d’éviter le flash de code/erreurs
+          if (pageId === 'annexe_n_stack') injectTechStackContext(pageId, contentDiv);
+          if (pageId === '06_syllabus') injectSyllabusGantt(pageId, contentDiv);
+          await ensureMermaid();
+          runMermaidSafely();
+
+          // Chart.js charts
+          await ensureChartJS();
+          cleanupCharts();
+          if (pageId === '02_contexte') renderContextCharts(contentDiv);
+          if (pageId === '12_business_plan') {
+            renderBusinessCharts(contentDiv);
+            injectNexusSimulator('nexus-simulator-area');
+          }
+        } catch { }
+
+        window.scrollTo(0, 0);
+      } catch (error) {
+        contentDiv.innerHTML = `<div class="p-8 text-rose-400 bg-rose-900/10 rounded-xl border border-rose-500/20">
         <h3 class="font-bold mb-2">Erreur de chargement</h3>
         <p>${error.message}</p>
         <p class="text-xs mt-4 text-slate-500">Vérifiez que le fichier existe bien dans le dossier chapters/.</p>
       </div>`;
+      }
     }
-  }
 
-  // Expose loadPage globally for inline onclick handlers
-  window.loadPage = loadPage;
+    // Expose loadPage globally for inline onclick handlers
+    window.loadPage = loadPage;
 
-  function injectNexusSimulator(targetId) {
-    const container = document.getElementById(targetId);
-    if (!container) return;
+    function injectNexusSimulator(targetId) {
+      const container = document.getElementById(targetId);
+      if (!container) return;
 
-    const html = `
+      const html = `
     <div class="glass-card p-6 mt-0 border border-emerald-500/30">
         <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
             <i data-lucide="landmark" class="text-emerald-400"></i>
@@ -778,61 +786,61 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
     `;
 
-    container.innerHTML += html;
-    if (window.lucide) lucide.createIcons();
+      container.innerHTML += html;
+      if (window.lucide) lucide.createIcons();
 
-    // Logic
-    const inputs = ['sim-ca', 'sim-costs'];
-    inputs.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.addEventListener('input', updateSim);
-    });
+      // Logic
+      const inputs = ['sim-ca', 'sim-costs'];
+      inputs.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener('input', updateSim);
+      });
 
-    function updateSim() {
-      const ca = parseInt(document.getElementById('sim-ca').value);
-      const costs = parseInt(document.getElementById('sim-costs').value);
+      function updateSim() {
+        const ca = parseInt(document.getElementById('sim-ca').value);
+        const costs = parseInt(document.getElementById('sim-costs').value);
 
-      // Dans ce nouveau modèle, Nexus coute ce qu'il coute (input), pas de marge complexe calculée ici
-      // On simplifie pour montrer la soustraction CASH - FACTURE
-      const nexusBill = costs;
-      let rbkNet = ca - nexusBill;
+        // Dans ce nouveau modèle, Nexus coute ce qu'il coute (input), pas de marge complexe calculée ici
+        // On simplifie pour montrer la soustraction CASH - FACTURE
+        const nexusBill = costs;
+        let rbkNet = ca - nexusBill;
 
-      // Mise à jour DOM
-      document.getElementById('val-ca').innerText = ca.toLocaleString() + ' TND';
-      document.getElementById('val-costs').innerText = costs.toLocaleString() + ' TND';
-      document.getElementById('res-nexus').innerText = nexusBill.toLocaleString(undefined, { maximumFractionDigits: 0 }) + ' TND';
+        // Mise à jour DOM
+        document.getElementById('val-ca').innerText = ca.toLocaleString() + ' TND';
+        document.getElementById('val-costs').innerText = costs.toLocaleString() + ' TND';
+        document.getElementById('res-nexus').innerText = nexusBill.toLocaleString(undefined, { maximumFractionDigits: 0 }) + ' TND';
 
-      const rbkEl = document.getElementById('res-rbk');
-      rbkEl.innerText = rbkNet.toLocaleString(undefined, { maximumFractionDigits: 0 }) + ' TND';
+        const rbkEl = document.getElementById('res-rbk');
+        rbkEl.innerText = rbkNet.toLocaleString(undefined, { maximumFractionDigits: 0 }) + ' TND';
 
-      // Alerte si RBK est en déficit
-      if (rbkNet < 0) {
-        rbkEl.classList.remove('text-emerald-400');
-        rbkEl.classList.add('text-rose-500');
-        rbkEl.innerText += " (Déficit)";
-      } else {
-        rbkEl.classList.remove('text-rose-500');
-        rbkEl.classList.add('text-emerald-400');
+        // Alerte si RBK est en déficit
+        if (rbkNet < 0) {
+          rbkEl.classList.remove('text-emerald-400');
+          rbkEl.classList.add('text-rose-500');
+          rbkEl.innerText += " (Déficit)";
+        } else {
+          rbkEl.classList.remove('text-rose-500');
+          rbkEl.classList.add('text-emerald-400');
+        }
+
+        // Update Bar
+        const total = Math.max(ca, nexusBill); // Base 100 on the largest to fit bar
+        const pctNexus = Math.min((nexusBill / total) * 100, 100);
+        const pctRbk = rbkNet > 0 ? (rbkNet / total) * 100 : 0;
+
+        document.getElementById('bar-nexus').style.width = pctNexus + '%';
+        document.getElementById('bar-rbk').style.width = pctRbk + '%';
       }
-
-      // Update Bar
-      const total = Math.max(ca, nexusBill); // Base 100 on the largest to fit bar
-      const pctNexus = Math.min((nexusBill / total) * 100, 100);
-      const pctRbk = rbkNet > 0 ? (rbkNet / total) * 100 : 0;
-
-      document.getElementById('bar-nexus').style.width = pctNexus + '%';
-      document.getElementById('bar-rbk').style.width = pctRbk + '%';
     }
-  }
 
-  links.forEach((link) => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      loadPage(link.dataset.page);
+    links.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        loadPage(link.dataset.page);
+      });
     });
-  });
 
-  // Charge la page d'accueil par défaut si pas de hash
-  const initialPage = window.location.hash.substring(1) || '00_home';
-  loadPage(initialPage);
-});
+    // Charge la page d'accueil par défaut si pas de hash
+    const initialPage = window.location.hash.substring(1) || '00_home';
+    loadPage(initialPage);
+  });
