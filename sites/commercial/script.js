@@ -510,7 +510,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   function injectSyllabusGantt(pageId, root) {
-    if (pageId !== '06_syllabus') return;
+    if (pageId !== '08_syllabus') return;
     const pre = document.createElement('pre');
     pre.className = 'mermaid text-[11px]';
     pre.textContent = `gantt\n  title Macro Parcours — Genesis → Build → Audit → Launch\n  dateFormat  YYYY-MM-DD\n  axisFormat  %d %b\n  section Trajectoire\n  Sprint 0 (Cadrage)    :s0, 2026-01-01, 30d\n  Genesis (12 semaines) :p1, after s0, 84d\n  Build (16 semaines)   :p2, after p1, 112d\n  Audit (20 semaines)   :p3, after p2, 140d\n  Launch                :milestone, ln, after p3, 1d`;
@@ -703,7 +703,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (pageId === '15_roadmap' || pageId === '20_roadmap_lancement') injectGanttForRoadmap(pageId, contentDiv);
         // Mermaid désactivé pour les sections finance/business afin d’éviter le flash de code/erreurs
         if (pageId === 'annexe_n_stack') injectTechStackContext(pageId, contentDiv);
-        if (pageId === '06_syllabus') injectSyllabusGantt(pageId, contentDiv);
+        if (pageId === '08_syllabus') injectSyllabusGantt(pageId, contentDiv);
         await ensureMermaid();
         runMermaidSafely();
 
