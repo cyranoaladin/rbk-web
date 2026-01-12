@@ -1,16 +1,16 @@
 <div class="space-y-14 animate-in fade-in duration-700">
 
     <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
-        <div class="absolute -top-24 -right-24 w-64 h-64 bg-cyan-500/20 rounded-full blur-[100px]"></div>
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-violet-600/20 rounded-full blur-[100px]"></div>
         <div class="relative z-10">
             <div class="flex items-center gap-4 mb-4">
                 <span
-                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 font-mono">N</span>
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-500 font-mono">N</span>
                 <div class="h-12 w-px bg-white/10"></div>
                 <h1 class="text-3xl font-bold text-white tracking-tight">Outillage & Stack Technique</h1>
             </div>
             <p class="text-sm text-slate-400 max-w-2xl">
-                Environnement "Cyborg-Ready". Toolchain locale, Outils IA et Pipeline CI/CD.
+                Cyborg-Ready Environment — Toolchain Mandataire, Matrice d'Usage IA et Pipeline CI/CD Standardisé.
             </p>
         </div>
     </header>
@@ -18,53 +18,74 @@
     <section>
         <div class="flex items-center gap-3 mb-6">
             <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
-                <i data-lucide="terminal" class="w-5 h-5"></i>
+                <i data-lucide="terminal-square" class="w-5 h-5"></i>
             </div>
-            <h2 class="text-xl font-bold text-white">Stack de Développement (N.1)</h2>
+            <h2 class="text-xl font-bold text-white">N.1 Stack de Développement</h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-
-            <div class="p-6 rounded-xl bg-white/5 border border-white/10 hover:border-cyan-500/50 transition-colors">
-                <h4 class="text-cyan-400 font-bold text-sm uppercase mb-4 flex items-center gap-2">
-                    <i data-lucide="monitor" class="w-4 h-4"></i> Local Env
-                </h4>
-                <ul class="space-y-3 text-[11px] text-slate-300">
-                    <li class="flex justify-between border-b border-white/5 pb-2">
-                        <span>OS</span>
-                        <strong class="text-white">Linux (Ubuntu) / macOS</strong>
+            <div class="p-5 rounded-xl bg-white/5 border border-white/10">
+                <h3 class="text-white font-bold text-sm mb-4 border-b border-white/5 pb-2">1. Environnement Local
+                    (L'établi)</h3>
+                <ul class="space-y-3 text-[10px] text-slate-300">
+                    <li class="flex items-start gap-2">
+                        <i data-lucide="monitor" class="w-4 h-4 text-violet-400 mt-0.5"></i>
+                        <div>
+                            <strong class="text-white">Système d'Exploitation :</strong>
+                            <br>Linux (Ubuntu/Pop!_OS) ou macOS. <span class="text-slate-500">Windows via WSL2
+                                uniquement.</span>
+                        </div>
                     </li>
-                    <li class="flex justify-between border-b border-white/5 pb-2">
-                        <span>Terminal</span>
-                        <strong class="text-white">Alacritty + Tmux + Starship</strong>
+                    <li class="flex items-start gap-2">
+                        <i data-lucide="terminal" class="w-4 h-4 text-violet-400 mt-0.5"></i>
+                        <div>
+                            <strong class="text-white">Terminal :</strong>
+                            <br>Alacritty + Tmux + Starship.
+                        </div>
                     </li>
-                    <li class="flex justify-between">
-                        <span>IDE</span>
-                        <strong class="text-white">VSCode (Profile RBK)</strong>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="p-6 rounded-xl bg-white/5 border border-white/10 hover:border-blue-500/50 transition-colors">
-                <h4 class="text-blue-400 font-bold text-sm uppercase mb-4 flex items-center gap-2">
-                    <i data-lucide="link" class="w-4 h-4"></i> Chain Stack
-                </h4>
-                <ul class="space-y-3 text-[11px] text-slate-300">
-                    <li class="flex justify-between border-b border-white/5 pb-2">
-                        <span>Solana</span>
-                        <strong class="text-white">Rust 1.75+, Anchor 0.29+</strong>
-                    </li>
-                    <li class="flex justify-between border-b border-white/5 pb-2">
-                        <span>EVM</span>
-                        <strong class="text-white">Foundry (Forge, Cast, Anvil)</strong>
-                    </li>
-                    <li class="flex justify-between">
-                        <span>Indexing</span>
-                        <strong class="text-white">The Graph / Helius</strong>
+                    <li class="flex items-start gap-2">
+                        <i data-lucide="code" class="w-4 h-4 text-violet-400 mt-0.5"></i>
+                        <div>
+                            <strong class="text-white">IDE :</strong>
+                            <br>VSCode (Profile RBK : Rust, Solidity, GitLens, Copilot).
+                        </div>
                     </li>
                 </ul>
             </div>
 
+            <div class="p-5 rounded-xl bg-white/5 border border-white/10">
+                <h3 class="text-white font-bold text-sm mb-4 border-b border-white/5 pb-2">2. Chain Stack (Le Moteur)
+                </h3>
+                <ul class="space-y-3 text-[10px] text-slate-300">
+                    <li class="flex items-start gap-2">
+                        <div
+                            class="w-4 h-4 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 font-bold mt-0.5">
+                            S</div>
+                        <div>
+                            <strong class="text-white">Solana :</strong>
+                            <br>Rust 1.75+, Anchor 0.29+, Solana CLI 1.18+.
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <div
+                            class="w-4 h-4 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold mt-0.5">
+                            E</div>
+                        <div>
+                            <strong class="text-white">EVM (Ethereum) :</strong>
+                            <br>Foundry (Forge, Cast, Anvil).
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <div
+                            class="w-4 h-4 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 font-bold mt-0.5">
+                            I</div>
+                        <div>
+                            <strong class="text-white">Indexing :</strong>
+                            <br>The Graph (EVM), Helius/Shyft (Solana).
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </section>
 
@@ -73,179 +94,87 @@
             <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
                 <i data-lucide="bot" class="w-5 h-5"></i>
             </div>
-            <h2 class="text-xl font-bold text-white">Matrice Outils IA (N.2)</h2>
+            <h2 class="text-xl font-bold text-white">N.2 Politique & Matrice Outils IA</h2>
         </div>
 
-        <div class="glass-card !p-0 overflow-hidden border-white/10 mb-8">
-            <div class="overflow-x-auto">
-                <table class="w-full min-w-[600px] text-left text-[10px]">
-                    <thead class="sticky top-0 z-10 bg-purple-900/40 backdrop-blur text-purple-300 uppercase font-bold">
-                        <tr>
-                            <th class="p-4 w-1/4">Usage</th>
-                            <th class="p-4 w-1/4">Outil Validé</th>
-                            <th class="p-4">Politique d'Usage</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-slate-300">
-                        <tr class="odd:bg-white/5 even:bg-black/0 hover:bg-white/10 transition-colors">
-                            <td class="p-4 font-bold text-white">Coding Assistant</td>
-                            <td class="p-4 font-mono text-purple-300">GitHub Copilot</td>
-                            <td class="p-4">
-                                <div class="flex flex-wrap items-center gap-2">
-                                    <span
-                                        class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-emerald-500/40 bg-emerald-500/10 text-emerald-300 font-semibold uppercase tracking-wide">Autorisé</span>
-                                    <span class="text-[9px] text-slate-400">pour boilerplate/tests.</span>
-                                    <span
-                                        class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-rose-500/40 bg-rose-500/10 text-rose-300 font-semibold uppercase tracking-wide">Interdit</span>
-                                    <span class="text-[9px] text-slate-400">pour algo critique.</span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="odd:bg-white/5 even:bg-black/0 hover:bg-white/10 transition-colors">
-                            <td class="p-4 font-bold text-white">Docs Search</td>
-                            <td class="p-4 font-mono text-purple-300">Perplexity / Phind</td>
-                            <td class="p-4">
-                                <div class="flex items-center gap-2">
-                                    <span
-                                        class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-sky-500/40 bg-sky-500/10 text-sky-300 font-semibold uppercase tracking-wide">Recommandé</span>
-                                    <span class="text-[9px] text-slate-400">pour la recherche contextuelle.</span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="odd:bg-white/5 even:bg-black/0 hover:bg-white/10 transition-colors">
-                            <td class="p-4 font-bold text-white">Review</td>
-                            <td class="p-4 font-mono text-purple-300">CodeRabbit</td>
-                            <td class="p-4">
-                                <div class="flex items-center gap-2">
-                                    <span
-                                        class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-amber-500/40 bg-amber-500/10 text-amber-300 font-semibold uppercase tracking-wide">Pré-Analyse</span>
-                                    <span class="text-[9px] text-slate-400">des PRs avant review humaine.</span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="odd:bg-white/5 even:bg-black/0 hover:bg-white/10 transition-colors">
-                            <td class="p-4 font-bold text-white">Diagrams</td>
-                            <td class="p-4 font-mono text-purple-300">Mermaid.js</td>
-                            <td class="p-4">
-                                <div class="flex items-center gap-2">
-                                    <span
-                                        class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-indigo-500/40 bg-indigo-500/10 text-indigo-300 font-semibold uppercase tracking-wide">Obligatoire</span>
-                                    <span class="text-[9px] text-slate-400">"Diagrams as Code" systématique.</span>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+        <div class="glass-card !p-0 overflow-hidden border-white/10 mb-8 overflow-x-auto">
+            <table class="w-full text-left text-[10px] whitespace-nowrap">
+                <thead class="bg-white/5 text-slate-500 uppercase font-black divide-x divide-white/5">
+                    <tr>
+                        <th class="p-4 w-32">Usage</th>
+                        <th class="p-4 w-48">Outil Validé</th>
+                        <th class="p-4">Politique d'Usage Strict</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-slate-300">
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 font-bold text-violet-400">Coding Assistant</td>
+                        <td class="p-4 font-bold text-white">GitHub Copilot</td>
+                        <td class="p-4">
+                            <span class="text-emerald-400 font-bold">Autorisé</span> pour boilerplate/tests.
+                            <span class="text-red-400 font-bold ml-2">Interdit</span> pour logique algo critique.
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 font-bold text-violet-400">Docs Search</td>
+                        <td class="p-4 font-bold text-white">Perplexity / Phind</td>
+                        <td class="p-4 text-slate-400">Recommandé pour la recherche contextuelle et debugging.</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 font-bold text-violet-400">Code Review</td>
+                        <td class="p-4 font-bold text-white">CodeRabbit</td>
+                        <td class="p-4 text-slate-400">Pré-analyse automatique des PRs avant review humaine obligatoire.
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 font-bold text-violet-400">Diagrams</td>
+                        <td class="p-4 font-bold text-white">Mermaid.js</td>
+                        <td class="p-4 text-slate-400">"Diagrams as Code" <strong
+                                class="text-white">obligatoire</strong> pour toute documentation.</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </section>
 
     <section>
         <div class="flex items-center gap-3 mb-6">
             <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
-                <i data-lucide="git-merge" class="w-5 h-5"></i>
+                <i data-lucide="git-pull-request" class="w-5 h-5"></i>
             </div>
-            <h2 class="text-xl font-bold text-white">Infrastructure CI/CD (N.3)</h2>
+            <h2 class="text-xl font-bold text-white">N.3 Infrastructure CI/CD (Github Actions)</h2>
         </div>
 
-        <div class="p-6 rounded-xl bg-[#0d1117] border border-white/10 relative overflow-hidden">
-            <div class="flex items-center justify-between gap-4 mb-6 relative z-10">
-                <div class="flex flex-col items-center gap-2">
-                    <div class="p-3 bg-blue-500/20 rounded-full border border-blue-500/40 text-blue-400"><i
-                            data-lucide="scissors" class="w-4 h-4"></i></div>
-                    <span class="text-[9px] font-bold text-slate-400 uppercase">Lint</span>
-                    <code class="text-[8px] text-slate-500 bg-white/5 px-1 rounded">cargo clippy</code>
+        <div class="p-1 rounded-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 max-w-2xl">
+            <div class="bg-slate-950 rounded-lg p-5">
+                <p class="text-[10px] text-slate-400 mb-4">
+                    Tout repo étudiant doit inclure un workflow standardisé <code
+                        class="text-violet-400">.github/workflows/ci.yml</code> :
+                </p>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div
+                        class="p-3 bg-violet-500/10 border border-violet-500/20 rounded-lg flex items-center justify-between">
+                        <span class="text-white text-xs font-bold font-mono">cargo audit</span>
+                        <i data-lucide="shield-alert" class="w-4 h-4 text-violet-500"></i>
+                    </div>
+                    <div
+                        class="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-lg flex items-center justify-between">
+                        <span class="text-white text-xs font-bold font-mono">cargo test</span>
+                        <i data-lucide="test-tube-2" class="w-4 h-4 text-emerald-500"></i>
+                    </div>
+                    <div
+                        class="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg flex items-center justify-between">
+                        <span class="text-white text-xs font-bold font-mono">cargo fmt</span>
+                        <i data-lucide="align-left" class="w-4 h-4 text-blue-500"></i>
+                    </div>
+                    <div
+                        class="p-3 bg-orange-500/10 border border-orange-500/20 rounded-lg flex items-center justify-between">
+                        <span class="text-white text-xs font-bold font-mono">cargo clippy</span>
+                        <i data-lucide="check-check" class="w-4 h-4 text-orange-500"></i>
+                    </div>
                 </div>
-                <div class="h-0.5 flex-1 bg-slate-700"></div>
-                <div class="flex flex-col items-center gap-2">
-                    <div class="p-3 bg-amber-500/20 rounded-full border border-amber-500/40 text-amber-400"><i
-                            data-lucide="align-left" class="w-4 h-4"></i></div>
-                    <span class="text-[9px] font-bold text-slate-400 uppercase">Format</span>
-                    <code class="text-[8px] text-slate-500 bg-white/5 px-1 rounded">cargo fmt</code>
-                </div>
-                <div class="h-0.5 flex-1 bg-slate-700"></div>
-                <div class="flex flex-col items-center gap-2">
-                    <div class="p-3 bg-rose-500/20 rounded-full border border-rose-500/40 text-rose-400"><i
-                            data-lucide="shield-alert" class="w-4 h-4"></i></div>
-                    <span class="text-[9px] font-bold text-slate-400 uppercase">Audit</span>
-                    <code class="text-[8px] text-slate-500 bg-white/5 px-1 rounded">cargo audit</code>
-                </div>
-                <div class="h-0.5 flex-1 bg-slate-700"></div>
-                <div class="flex flex-col items-center gap-2">
-                    <div class="p-3 bg-emerald-500/20 rounded-full border border-emerald-500/40 text-emerald-400"><i
-                            data-lucide="check-circle" class="w-4 h-4"></i></div>
-                    <span class="text-[9px] font-bold text-slate-400 uppercase">Test</span>
-                    <code class="text-[8px] text-slate-500 bg-white/5 px-1 rounded">cargo test</code>
-                </div>
             </div>
-
-            <div class="text-[10px] text-slate-500 text-center border-t border-white/10 pt-4">
-                Tout repo étudiant doit inclure ce workflow dans <code>.github/workflows/ci.yml</code>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="flex items-center gap-3 mb-6">
-            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
-                <i data-lucide="workflow" class="w-5 h-5"></i>
-            </div>
-            <h2 class="text-xl font-bold text-white">Workflow SPA Loader (N.4)</h2>
-        </div>
-
-        <div class="glass-card p-6 rounded-2xl bg-black/30 border border-white/10 space-y-4">
-            <p class="text-[11px] text-slate-400 leading-relaxed">
-                La fonction <span class="text-white font-semibold">loadChapter</span> orchestre le fetch des chapitres,
-                leur rendu dans le
-                conteneur principal et les initialisations optionnelles (graphiques, simulateur) selon la section
-                consultée.
-            </p>
-            <pre class="mermaid text-[11px] leading-relaxed max-w-3xl mx-auto">flowchart TD
-            A[Choix chapitre navigation] --> B[Appel loadChapter]
-            B --> C{Chapitre référencé ?}
-            C -- Non --> D[Log erreur console]
-            C -- Oui --> E[Met à jour boutons]
-            E --> F[fetch fichier chapitre]
-            F --> G{Réponse HTTP ok ?}
-            G -- Non --> H[Carte erreur affichée]
-            G -- Oui --> I[HTML injecté]
-            I --> J[Icônes Lucide rafraîchies]
-            J --> K{Chapitre = fact ?}
-            K -- Oui --> L[selectModel isa + toggleCurrency original]
-            J --> M{Chapitre = contexte ?}
-            M -- Oui --> N[initContextCharts]
-            J --> O{Chapitre = business plan ?}
-            O -- Oui --> P[initBusinessCharts]
-            J --> Q[Scroll vers haut]
-                </pre>
-        </div>
-    </section>
-
-    <section>
-        <div class="flex items-center gap-3 mb-6">
-            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
-                <i data-lucide="coins" class="w-5 h-5"></i>
-            </div>
-            <h2 class="text-xl font-bold text-white">Gestion des Devises Simulateur (N.5)</h2>
-        </div>
-
-        <div class="glass-card p-6 rounded-2xl bg-black/30 border border-white/10 space-y-4">
-            <p class="text-[11px] text-slate-400 leading-relaxed">
-                Le toggle devises garantit la cohérence d'affichage des tarifs en réappliquant les données <span
-                    class="text-white font-semibold">data-*</span>
-                et en rafraîchissant le modèle actif pour refléter la devise retenue.
-            </p>
-            <pre class="mermaid text-[11px] leading-relaxed max-w-3xl mx-auto">flowchart TD
-            A[Choix devise] --> B[Executer toggleCurrency]
-            B --> C[Mise a jour mode actif]
-            C --> D[Reset des boutons]
-            D --> E[Activer le bouton cible]
-            E --> F[Recalcul des montants]
-            F --> G[Carte active detectee ?]
-            G -- Non --> H[Fin du flux]
-            G -- Oui --> I[Lancer selectModel]
-            I --> J[Actualiser le panneau]
-            </pre>
         </div>
     </section>
 

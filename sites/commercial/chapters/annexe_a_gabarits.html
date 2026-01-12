@@ -1,16 +1,16 @@
 <div class="space-y-14 animate-in fade-in duration-700">
 
     <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
-        <div class="absolute -top-24 -right-24 w-64 h-64 bg-slate-500/20 rounded-full blur-[100px]"></div>
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-slate-600/20 rounded-full blur-[100px]"></div>
         <div class="relative z-10">
             <div class="flex items-center gap-4 mb-4">
                 <span
-                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-400 to-white font-mono">A</span>
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-400 to-gray-500 font-mono">A</span>
                 <div class="h-12 w-px bg-white/10"></div>
-                <h1 class="text-3xl font-bold text-white tracking-tight">Gabarits Stratégiques</h1>
+                <h1 class="text-3xl font-bold text-white tracking-tight">Annexe A. Gabarits Opérationnels</h1>
             </div>
             <p class="text-sm text-slate-400 max-w-2xl">
-                Matrices de décision validées. SWOT, MoSCoW, RACI et Templates Opérationnels.
+                Matrices Stratégiques Validées — SWOT, MoSCoW, RACI et Modèles de Production.
             </p>
         </div>
     </header>
@@ -18,56 +18,58 @@
     <section>
         <div class="flex items-center gap-3 mb-6">
             <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
-                <i data-lucide="compass" class="w-5 h-5"></i>
+                <i data-lucide="crosshair" class="w-5 h-5"></i>
             </div>
-            <h2 class="text-xl font-bold text-white">Matrice SWOT (A.1)</h2>
+            <h2 class="text-xl font-bold text-white">A.1 Matrice SWOT (Analyse Stratégique)</h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="p-5 rounded-xl bg-emerald-900/10 border border-emerald-500/30">
-                <h4 class="text-emerald-400 font-bold text-sm uppercase mb-3 flex items-center gap-2">
-                    <i data-lucide="zap" class="w-4 h-4"></i> Forces (Strengths)
-                </h4>
-                <ul class="text-[10px] text-slate-300 list-disc list-inside space-y-1">
-                    <li>Positionnement Premium "Senior-by-Design".</li>
-                    <li>Dual Track EVM/Solana (Employabilité x2).</li>
-                    <li>Méthode Studio (PRs, CI, Drills).</li>
-                    <li>Portfolio vérifiable (On-Chain Resume).</li>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <!-- Strengths -->
+            <div class="p-5 rounded-xl bg-emerald-500/5 border border-emerald-500/10">
+                <h3 class="text-emerald-400 font-bold text-sm mb-3 uppercase flex items-center gap-2">
+                    <i data-lucide="shield" class="w-4 h-4"></i> Forces (Strengths)
+                </h3>
+                <ul class="space-y-2 text-[10px] text-slate-300 list-disc list-inside marker:text-emerald-500">
+                    <li>Positionnement "Senior-by-Design".</li>
+                    <li>DualTrack EVM/Solana (Double crédibilité).</li>
+                    <li>Méthodologie Studio (PR reviews, CI, Incident Drills).</li>
+                    <li>Portfolio vérifiable (Repos, Capstones).</li>
                 </ul>
             </div>
-
-            <div class="p-5 rounded-xl bg-rose-900/10 border border-rose-500/30">
-                <h4 class="text-rose-400 font-bold text-sm uppercase mb-3 flex items-center gap-2">
+            <!-- Weaknesses -->
+            <div class="p-5 rounded-xl bg-orange-500/5 border border-orange-500/10">
+                <h3 class="text-orange-400 font-bold text-sm mb-3 uppercase flex items-center gap-2">
                     <i data-lucide="alert-circle" class="w-4 h-4"></i> Faiblesses (Weaknesses)
-                </h4>
-                <ul class="text-[10px] text-slate-300 list-disc list-inside space-y-1">
-                    <li>Risque de sur-ambition (Contenu dense).</li>
+                </h3>
+                <ul class="space-y-2 text-[10px] text-slate-300 list-disc list-inside marker:text-orange-500">
+                    <li>Risque de sur-ambition (Dilution contenu).</li>
                     <li>Dépendance experts rares (Rust/Audit).</li>
-                    <li>Exigence élevée (Volume inscrits).</li>
+                    <li>Exigence élevée pouvant réduire le volume.</li>
+                    <li>Besoin de cohérence chiffrée stricte.</li>
                 </ul>
             </div>
-
-            <div class="p-5 rounded-xl bg-blue-900/10 border border-blue-500/30">
-                <h4 class="text-blue-400 font-bold text-sm uppercase mb-3 flex items-center gap-2">
-                    <i data-lucide="trending-up" class="w-4 h-4"></i> Opportunités (Opportunities)
-                </h4>
-                <ul class="text-[10px] text-slate-300 list-disc list-inside space-y-1">
-                    <li>Marché Remote Web3 (Salaires $).</li>
-                    <li>Demande Audit/Secu (Post-IA).</li>
-                    <li>Hub Régional (Afrique Nord).</li>
-                    <li>Monétisation B2B.</li>
+            <!-- Opportunities -->
+            <div class="p-5 rounded-xl bg-blue-500/5 border border-blue-500/10">
+                <h3 class="text-blue-400 font-bold text-sm mb-3 uppercase flex items-center gap-2">
+                    <i data-lucide="zap" class="w-4 h-4"></i> Opportunités (Opportunities)
+                </h3>
+                <ul class="space-y-2 text-[10px] text-slate-300 list-disc list-inside marker:text-blue-500">
+                    <li>Marché Remote Web3 (Salaire Global).</li>
+                    <li>Demande Sécurité / Audit (Post-AI).</li>
+                    <li>Partenariats Protocols & Hub Régional.</li>
+                    <li>Monétisation B2B / Incubation.</li>
                 </ul>
             </div>
-
-            <div class="p-5 rounded-xl bg-amber-900/10 border border-amber-500/30">
-                <h4 class="text-amber-400 font-bold text-sm uppercase mb-3 flex items-center gap-2">
-                    <i data-lucide="shield-alert" class="w-4 h-4"></i> Menaces (Threats)
-                </h4>
-                <ul class="text-[10px] text-slate-300 list-disc list-inside space-y-1">
-                    <li>Volatilité Cycles Web3.</li>
-                    <li>Risque Réputationnel ("Crypto").</li>
-                    <li>Concurrence Bootcamps internationaux.</li>
-                    <li>Incertitude Réglementaire locale.</li>
+            <!-- Threats -->
+            <div class="p-5 rounded-xl bg-red-500/5 border border-red-500/10">
+                <h3 class="text-red-400 font-bold text-sm mb-3 uppercase flex items-center gap-2">
+                    <i data-lucide="skull" class="w-4 h-4"></i> Menaces (Threats)
+                </h3>
+                <ul class="space-y-2 text-[10px] text-slate-300 list-disc list-inside marker:text-red-500">
+                    <li>Volatilité Marché & Narratives.</li>
+                    <li>Risque Réputationnel (Confusion "Crypto Bros").</li>
+                    <li>Risques Sécurité (Bad practice exposure).</li>
+                    <li>Réglementation Locale Incertaine.</li>
                 </ul>
             </div>
         </div>
@@ -76,43 +78,46 @@
     <section>
         <div class="flex items-center gap-3 mb-6">
             <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
-                <i data-lucide="list-checks" class="w-5 h-5"></i>
+                <i data-lucide="list-filter" class="w-5 h-5"></i>
             </div>
-            <h2 class="text-xl font-bold text-white">Priorisation MoSCoW (A.2)</h2>
+            <h2 class="text-xl font-bold text-white">A.2 Priorisation MoSCoW</h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div class="p-4 rounded-xl bg-[#14F195]/10 border border-[#14F195]/30">
-                <h4 class="text-[#14F195] font-black text-xs uppercase mb-2">Must Have</h4>
-                <ul class="text-[9px] text-slate-300 space-y-1">
-                    <li>Dual Track.</li>
-                    <li>Méthode Studio.</li>
-                    <li>3 Capstones.</li>
-                    <li>Conformité Légale.</li>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+            <div class="p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
+                <h3 class="text-emerald-400 font-black text-xs uppercase mb-3 text-center">MUST HAVE</h3>
+                <ul class="space-y-2 text-[9px] text-slate-300">
+                    <li>• DualTrack (EVM/Solana).</li>
+                    <li>• Zéro Réduction Contenu.</li>
+                    <li>• Méthode Studio Obligatoire.</li>
+                    <li>• Factsheet Unique.</li>
+                    <li>• Conformité/Éthique.</li>
                 </ul>
             </div>
-            <div class="p-4 rounded-xl bg-blue-500/10 border border-blue-500/30">
-                <h4 class="text-blue-400 font-black text-xs uppercase mb-2">Should Have</h4>
-                <ul class="text-[9px] text-slate-300 space-y-1">
-                    <li>Badges SBT.</li>
-                    <li>Réseau Mentors.</li>
-                    <li>Outillage Auto.</li>
+            <div class="p-4 rounded-lg bg-blue-500/10 border border-blue-500/20">
+                <h3 class="text-blue-400 font-black text-xs uppercase mb-3 text-center">SHOULD HAVE</h3>
+                <ul class="space-y-2 text-[9px] text-slate-300">
+                    <li>• Micro-Certifications.</li>
+                    <li>• Réseau Mentors.</li>
+                    <li>• Outillage Standardisé.</li>
+                    <li>• Sources & Biblio.</li>
                 </ul>
             </div>
-            <div class="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30">
-                <h4 class="text-amber-400 font-black text-xs uppercase mb-2">Could Have</h4>
-                <ul class="text-[9px] text-slate-300 space-y-1">
-                    <li>War Room Hebdo.</li>
-                    <li>Audit Avancé.</li>
-                    <li>Incubation.</li>
+            <div class="p-4 rounded-lg bg-yellow-500/10 border border-yellow-500/20">
+                <h3 class="text-yellow-400 font-black text-xs uppercase mb-3 text-center">COULD HAVE</h3>
+                <ul class="space-y-2 text-[9px] text-slate-300">
+                    <li>• Incident Drills Hebdo.</li>
+                    <li>• Audit Readiness Avancé.</li>
+                    <li>• Offre B2B Corporate.</li>
                 </ul>
             </div>
-            <div class="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30">
-                <h4 class="text-rose-400 font-black text-xs uppercase mb-2">Won't Have</h4>
-                <ul class="text-[9px] text-slate-300 space-y-1">
-                    <li>Trading.</li>
-                    <li>Évasion Fiscale.</li>
-                    <li>Mainnet sans Audit.</li>
+            <div class="p-4 rounded-lg bg-red-500/10 border border-red-500/20 opacity-60">
+                <h3 class="text-red-400 font-black text-xs uppercase mb-3 text-center">WON'T HAVE</h3>
+                <ul class="space-y-2 text-[9px] text-slate-300">
+                    <li>• Contenu Trading.</li>
+                    <li>• Conseils Évasion Fiscale.</li>
+                    <li>• Fluff (Superficiel).</li>
+                    <li>• Mainnet sans Audit.</li>
                 </ul>
             </div>
         </div>
@@ -123,59 +128,74 @@
             <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
                 <i data-lucide="users" class="w-5 h-5"></i>
             </div>
-            <h2 class="text-xl font-bold text-white">Matrice RACI (A.3)</h2>
+            <h2 class="text-xl font-bold text-white">A.3 Matrice RACI (Design & Run)</h2>
         </div>
 
-        <div class="glass-card !p-0 overflow-x-auto border-white/10 mb-8">
-            <table class="w-full text-left text-[10px]">
-                <thead class="bg-slate-800 text-slate-400 uppercase font-bold">
+        <div class="glass-card !p-0 overflow-hidden border-white/10 mb-8 overflow-x-auto">
+            <table class="w-full text-left text-[9px] whitespace-nowrap">
+                <thead class="bg-white/5 text-slate-500 uppercase font-bold">
                     <tr>
-                        <th class="p-3 min-w-[200px]">Activité</th>
-                        <th class="p-3 w-12 text-center bg-blue-900/20">CEO</th>
-                        <th class="p-3 w-12 text-center bg-purple-900/20">HoP</th>
-                        <th class="p-3 w-12 text-center">Tech</th>
-                        <th class="p-3 w-12 text-center">Ops</th>
-                        <th class="p-3 w-12 text-center">Mkt</th>
+                        <th class="p-3">Activité</th>
+                        <th class="p-3 text-emerald-400">R (Doer)</th>
+                        <th class="p-3 text-red-400">A (Accountable)</th>
+                        <th class="p-3 text-blue-400">C (Consulted)</th>
+                        <th class="p-3 text-slate-400">I (Informed)</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-white/5 text-slate-300">
-                    <tr>
-                        <td class="p-3 font-bold text-white">Vision & Stratégie</td>
-                        <td class="p-3 text-center font-bold text-blue-400">R/A</td>
-                        <td class="p-3 text-center text-slate-500">C</td>
-                        <td class="p-3 text-center text-slate-500">I</td>
-                        <td class="p-3 text-center text-slate-500">I</td>
-                        <td class="p-3 text-center text-slate-500">C</td>
+                    <tr class="bg-slate-900/50 font-bold">
+                        <td colspan="5" class="p-2 text-slate-500 uppercase tracking-widest text-[8px]">Design & Build
+                        </td>
                     </tr>
-                    <tr>
-                        <td class="p-3 font-bold text-white">Curriculum & Labs</td>
-                        <td class="p-3 text-center text-slate-500">A</td>
-                        <td class="p-3 text-center font-bold text-purple-400">R</td>
-                        <td class="p-3 text-center text-slate-500">C</td>
-                        <td class="p-3 text-center text-slate-500">I</td>
-                        <td class="p-3 text-center text-slate-500">I</td>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-3">Définir Vision (Studio)</td>
+                        <td class="p-3 text-emerald-400">CEO</td>
+                        <td class="p-3 text-red-400">CEO</td>
+                        <td class="p-3">HoP, Mkt, Legal</td>
+                        <td class="p-3">Ops, Students</td>
                     </tr>
-                    <tr>
-                        <td class="p-3 font-bold text-white">Admissions</td>
-                        <td class="p-3 text-center text-slate-500">A</td>
-                        <td class="p-3 text-center text-slate-500">C</td>
-                        <td class="p-3 text-center text-slate-500">I</td>
-                        <td class="p-3 text-center text-slate-500">C</td>
-                        <td class="p-3 text-center font-bold text-[#14F195]">R</td>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-3">Valid Factsheet (Prix/KPI)</td>
+                        <td class="p-3 text-emerald-400">HoP</td>
+                        <td class="p-3 text-red-400">CEO</td>
+                        <td class="p-3">Ops, Career, Legal</td>
+                        <td class="p-3">Mkt, Students</td>
                     </tr>
-                    <tr>
-                        <td class="p-3 font-bold text-white">Infra Technique</td>
-                        <td class="p-3 text-center text-slate-500">A</td>
-                        <td class="p-3 text-center text-slate-500">C</td>
-                        <td class="p-3 text-center font-bold text-amber-400">R</td>
-                        <td class="p-3 text-center font-bold text-blue-400">R</td>
-                        <td class="p-3 text-center text-slate-500">I</td>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-3">Conception Tracks</td>
+                        <td class="p-3 text-emerald-400">HoP / TechLeads</td>
+                        <td class="p-3 text-red-400">HoP</td>
+                        <td class="p-3">SecLead, Mentors</td>
+                        <td class="p-3">CEO, Ops</td>
+                    </tr>
+
+                    <tr class="bg-slate-900/50 font-bold">
+                        <td colspan="5" class="p-2 text-slate-500 uppercase tracking-widest text-[8px]">Run & Opérations
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-3">Admissions (Tests/Select)</td>
+                        <td class="p-3 text-emerald-400">Mkt</td>
+                        <td class="p-3 text-red-400">CEO</td>
+                        <td class="p-3">HoP, TechLeads</td>
+                        <td class="p-3">Ops, Students</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-3">Encadrement Hebdo</td>
+                        <td class="p-3 text-emerald-400">HoP</td>
+                        <td class="p-3 text-red-400">HoP</td>
+                        <td class="p-3">TechLeads, SecLead</td>
+                        <td class="p-3">CEO, Ops</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-3">Conformité Comms</td>
+                        <td class="p-3 text-emerald-400">Legal</td>
+                        <td class="p-3 text-red-400">CEO</td>
+                        <td class="p-3">HoP, Ops</td>
+                        <td class="p-3">Mkt, Students</td>
                     </tr>
                 </tbody>
             </table>
-            <div class="p-2 text-[9px] text-slate-500 bg-slate-900/50 text-center italic">
-                R = Responsible (Fait), A = Accountable (Valide), C = Consulted, I = Informed
-            </div>
         </div>
     </section>
 
@@ -184,43 +204,35 @@
             <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
                 <i data-lucide="file-text" class="w-5 h-5"></i>
             </div>
-            <h2 class="text-xl font-bold text-white">Gabarit : Incident Drill (A.4)</h2>
+            <h2 class="text-xl font-bold text-white">A.4 Gabarit : Incident Drill</h2>
         </div>
 
-        <div
-            class="p-6 rounded-xl bg-[#0d1117] border border-white/10 font-mono text-[10px] text-slate-300 relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-rose-500 to-orange-500"></div>
-            <div class="mb-4 pb-4 border-b border-white/10 flex justify-between">
-                <span class="text-rose-400 font-bold">INCIDENT POSTMORTEM #ID</span>
-                <span class="text-slate-500">Date: JJ/MM/AAAA</span>
+        <div class="glass-card !p-0 overflow-hidden border-white/10 font-mono text-[10px] text-slate-300">
+            <div class="bg-slate-950 p-3 border-b border-white/10 flex justify-between items-center">
+                <span>Incident_Postmortem_Template.md</span>
+                <span class="text-[9px] bg-red-900/20 text-red-400 px-2 py-0.5 rounded">Markdown</span>
             </div>
+            <pre class="p-5 overflow-x-auto leading-relaxed">
+# Incident Postmortem #ID
+<span class="text-slate-500">Severity :</span> Critical / High / Medium
+<span class="text-slate-500">Duration :</span> 45min
+<span class="text-slate-500">Date :</span> JJ/MM/AAAA    <span class="text-slate-500">Reporter :</span> @StudentName
 
-            <div class="space-y-4">
-                <div>
-                    <strong class="text-white block mb-1">1. The Scenario (What?)</strong>
-                    <p class="text-slate-400 pl-2 border-l-2 border-slate-700">Ex: Smart contract allowed unlimited
-                        withdrawal (underflow).</p>
-                </div>
-                <div>
-                    <strong class="text-white block mb-1">2. Impact</strong>
-                    <p class="text-slate-400 pl-2 border-l-2 border-slate-700">Loss of all Liquidity Pool funds ($50k).
-                    </p>
-                </div>
-                <div>
-                    <strong class="text-white block mb-1">3. Root Cause (Why?)</strong>
-                    <p class="text-slate-400 pl-2 border-l-2 border-slate-700">Unchecked block in Solidity 0.8+ used
-                        without validation.</p>
-                </div>
-                <div>
-                    <strong class="text-white block mb-1">4. The Fix (Patch)</strong>
-                    <p class="text-slate-400 pl-2 border-l-2 border-slate-700">Remove unchecked, add CustomError().</p>
-                </div>
-                <div>
-                    <strong class="text-white block mb-1">5. Prevention</strong>
-                    <p class="text-slate-400 pl-2 border-l-2 border-slate-700">Add Fuzzing test for massive withdrawals.
-                    </p>
-                </div>
-            </div>
+## 1. Le Scénario (What happened ?)
+Exemple : Le smart contract permettait de retirer plus que le solde disponible (underflow).
+
+## 2. Impact (Si Mainnet)
+Exemple : Perte totale des fonds du pool de liquidité (TVL = $50k).
+
+## 3. Root Cause Analysis (The "Why")
+Exemple : Utilisation de `unchecked` block dans Solidity 0.8+ sans vérification préalable.
+
+## 4. Le Fix (Patch)
+Exemple : Retrait du bloc unchecked et ajout d'un `revert CustomError()`.
+
+## 5. Lessons Learned (Prevention)
+Exemple : Ajouter un test Fuzzing qui tente des retraits massifs aléatoires.
+</pre>
         </div>
     </section>
 

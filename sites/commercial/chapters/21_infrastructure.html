@@ -1,0 +1,141 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-cyan-500/20 rounded-full blur-[100px]"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-4 mb-4">
+                <span
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 font-mono">21</span>
+                <div class="h-12 w-px bg-white/10"></div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">21. Infrastructure SBT</h1>
+            </div>
+            <p class="text-sm text-slate-400 max-w-2xl">
+                Certification On-Chain — "Don't Trust, Verify". Une preuve cryptographique incensurable (Soulbound
+                Token).
+            </p>
+        </div>
+    </header>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="shield-check" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">21.1 Philosophie : "Don't Trust, Verify"</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div class="p-5 rounded-xl bg-red-500/5 border border-red-500/10 opacity-75">
+                <h3 class="text-red-400 font-bold text-sm mb-3">Diplôme Traditionnel (PDF)</h3>
+                <ul class="space-y-2 text-[11px] text-slate-400">
+                    <li class="flex items-center gap-2"><i data-lucide="x" class="w-3 h-3"></i> Facilement falsifiable
+                        (Photoshop).</li>
+                    <li class="flex items-center gap-2"><i data-lucide="x" class="w-3 h-3"></i> Centralisé (Si l'école
+                        ferme, preuve perdue).</li>
+                    <li class="flex items-center gap-2"><i data-lucide="x" class="w-3 h-3"></i> Statique (Pas de mise à
+                        jour).</li>
+                </ul>
+            </div>
+            <div class="p-5 rounded-xl bg-cyan-500/5 border border-cyan-500/20">
+                <h3 class="text-cyan-400 font-bold text-sm mb-3">SBT RBK 2.0 (On-Chain)</h3>
+                <ul class="space-y-2 text-[11px] text-slate-300">
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-cyan-400"></i>
+                        <strong>Permanent :</strong> Ancré sur Blockchain (EVM/Solana).</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-cyan-400"></i>
+                        <strong>Révocable :</strong> Slashing en cas de triche avérée.</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-cyan-400"></i>
+                        <strong>Riche :</strong> Métadonnées dynamiques (Repos, Skills).</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="code-2" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">21.2 Stack Technique (ERC-5192)</h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div class="glass-card !p-0 overflow-hidden border-white/10">
+                <div class="bg-slate-950 p-3 border-b border-white/10 flex justify-between items-center">
+                    <span class="text-[10px] text-slate-500 font-mono">ISoulbound.sol</span>
+                    <span class="text-[9px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded">Solidity</span>
+                </div>
+                <pre class="p-4 text-[10px] font-mono leading-relaxed overflow-x-auto text-slate-300">
+interface ISoulbound {
+  <span class="text-slate-500">/// @notice Émis quand un SBT est minté. Locké par défaut.</span>
+  event Locked(uint256 tokenId);
+
+  <span class="text-slate-500">/// @notice Transfert impossible sauf Burn.</span>
+  function locked(uint256 tokenId) external view returns (bool);
+
+  <span class="text-slate-500">/// @notice Only Admin (RBK) can revoke.</span>
+  function revoke(uint256 tokenId) external onlyRole(ADMIN);
+}
+</pre>
+            </div>
+
+            <div class="flex flex-col justify-center space-y-4">
+                <div class="p-4 rounded-lg bg-white/5 border border-white/10">
+                    <h3 class="text-white font-bold text-xs uppercase mb-1">Réseau & Standard</h3>
+                    <p class="text-[11px] text-slate-300">
+                        <strong class="text-purple-400">Polygon POS</strong> (Standard ERC-5192) pour la compatibilité
+                        EVM et les frais nuls.
+                        <br /><span class="text-slate-500 text-[10px]">Alternative : Solana Compressed NFTs pour le
+                            volume massive.</span>
+                    </p>
+                </div>
+                <div class="p-4 rounded-lg bg-white/5 border border-white/10">
+                    <h3 class="text-white font-bold text-xs uppercase mb-1">Cycle de Vie (Workflow)</h3>
+                    <div class="flex items-center gap-2 mt-2 text-[10px] font-mono text-slate-400">
+                        <span class="p-2 bg-slate-800 rounded">LMS</span>
+                        <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                        <span class="p-2 bg-slate-800 rounded">Oracle</span>
+                        <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                        <span class="p-2 bg-cyan-900/30 text-cyan-400 border border-cyan-500/30 rounded">Mint
+                            (SBT)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="lock" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">21.4 Conformité RGPD & Privacy</h2>
+        </div>
+
+        <div class="p-6 rounded-xl bg-white/5 border border-white/10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="space-y-2">
+                    <h3 class="text-cyan-400 font-bold text-sm">1. On-Chain (Publique)</h3>
+                    <p class="text-[11px] text-slate-300 text-justify">
+                        Uniquement un <strong>Hash Cryptographique</strong> (Keccak256) et un pointeur (CID). Aucune
+                        donnée nominative (Nom, Email) n'est visible sur la blockchain.
+                    </p>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="text-indigo-400 font-bold text-sm">2. Off-Chain (Privé)</h3>
+                    <p class="text-[11px] text-slate-300 text-justify">
+                        Les <strong>Verifiable Credentials (VC)</strong> contenant l'identité sont stockés dans une base
+                        sécurisée chiffrée (RBK Vault) et signés par Nexus.
+                    </p>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="text-purple-400 font-bold text-sm">3. ZK Proofs (Magie)</h3>
+                    <p class="text-[11px] text-slate-300 text-justify">
+                        L'étudiant prouve qu'il possède le diplôme (ex: pour un Job Board) sans révéler son identité
+                        complète grâce à <strong>Sismo / Polygon ID</strong>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>

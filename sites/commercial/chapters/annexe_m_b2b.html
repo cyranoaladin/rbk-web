@@ -1,15 +1,16 @@
 <div class="space-y-14 animate-in fade-in duration-700">
-    
+
     <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
-        <div class="absolute -top-24 -right-24 w-64 h-64 bg-blue-500/20 rounded-full blur-[100px]"></div>
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-cyan-600/20 rounded-full blur-[100px]"></div>
         <div class="relative z-10">
             <div class="flex items-center gap-4 mb-4">
-                <span class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600 font-mono">M</span>
+                <span
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 font-mono">M</span>
                 <div class="h-12 w-px bg-white/10"></div>
                 <h1 class="text-3xl font-bold text-white tracking-tight">Offre Partenariat B2B</h1>
             </div>
             <p class="text-sm text-slate-400 max-w-2xl">
-                Modèle d'offre Corporate. Upskilling d'équipes pour ESN, Banques et Startups.
+                Corporate & Upskilling — Packs Entreprise (ESN, Banques, Startups) et Conditions Spécifiques.
             </p>
         </div>
     </header>
@@ -17,51 +18,68 @@
     <section>
         <div class="flex items-center gap-3 mb-6">
             <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
-                <i data-lucide="briefcase" class="w-5 h-5"></i>
+                <i data-lucide="building" class="w-5 h-5"></i>
             </div>
-            <h2 class="text-xl font-bold text-white">Tarification B2B (M.1)</h2>
+            <h2 class="text-xl font-bold text-white">M.1 Les Packs Entreprise</h2>
         </div>
 
+        <p class="text-[10px] text-slate-400 mb-8 max-w-3xl">
+            Ce modèle sert de base aux négociations avec les partenaires souhaitant upskiller leurs équipes.
+            Tarification dégressive au volume.
+        </p>
+
+        <!-- Pricing Cards B2B -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            
-            <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-500/50 transition-colors group relative overflow-hidden">
-                <h4 class="text-white font-bold text-lg mb-2">Starter</h4>
-                <div class="flex items-baseline gap-1 mb-4">
-                    <span class="text-2xl font-black text-blue-400">18 000</span>
-                    <span class="text-[10px] text-slate-400">TND / siège</span>
-                </div>
-                <div class="py-2 px-3 bg-white/5 rounded border border-white/5 mb-4">
-                    <span class="text-xs text-slate-300 block mb-1">Volume</span>
-                    <strong class="text-white">1 à 2 sièges</strong>
-                </div>
-            </div>
-
-            <div class="p-6 rounded-2xl bg-blue-900/10 border border-blue-500/30 hover:border-blue-500/50 transition-colors group relative overflow-hidden">
-                <div class="absolute top-0 right-0 bg-blue-500 text-white text-[9px] font-bold px-2 py-1 rounded-bl">-9%</div>
-                <h4 class="text-blue-300 font-bold text-lg mb-2">Squad</h4>
-                <div class="flex items-baseline gap-1 mb-4">
-                    <span class="text-2xl font-black text-white">16 380</span>
-                    <span class="text-[10px] text-slate-400">TND / siège</span>
-                </div>
-                <div class="py-2 px-3 bg-black/20 rounded border border-white/5 mb-4">
-                    <span class="text-xs text-slate-300 block mb-1">Volume</span>
-                    <strong class="text-white">3 à 5 sièges</strong>
+            <!-- Starter -->
+            <div
+                class="p-6 rounded-xl border border-white/10 bg-white/5 relative group hover:border-cyan-500/50 transition-colors">
+                <div class="text-[10px] text-cyan-400 uppercase font-black mb-2">Pack Starter</div>
+                <div class="text-3xl font-black text-white mb-1">18 000 <span
+                        class="text-sm font-normal text-slate-400">TND</span></div>
+                <div class="text-[10px] text-slate-400 mb-4">Tarif Unitaire</div>
+                <div class="w-full h-px bg-white/5 mb-4"></div>
+                <div class="flex items-center gap-3 text-slate-300">
+                    <div class="w-8 h-8 rounded bg-white/5 flex items-center justify-center font-bold text-white">1-2
+                    </div>
+                    <span class="text-xs">Sièges (Collaborateurs)</span>
                 </div>
             </div>
 
-            <div class="p-6 rounded-2xl bg-[#14F195]/10 border border-[#14F195]/30 hover:border-[#14F195]/50 transition-colors group relative overflow-hidden">
-                <div class="absolute top-0 right-0 bg-[#14F195] text-black text-[9px] font-bold px-2 py-1 rounded-bl">-15%</div>
-                <h4 class="text-[#14F195] font-bold text-lg mb-2">Factory</h4>
-                <div class="flex items-baseline gap-1 mb-4">
-                    <span class="text-2xl font-black text-white">15 300</span>
-                    <span class="text-[10px] text-slate-400">TND / siège</span>
-                </div>
-                <div class="py-2 px-3 bg-black/20 rounded border border-white/5 mb-4">
-                    <span class="text-xs text-slate-300 block mb-1">Volume</span>
-                    <strong class="text-white">6+ sièges</strong>
+            <!-- Squad -->
+            <div
+                class="p-6 rounded-xl border border-cyan-500/30 bg-cyan-500/5 relative group hover:scale-[1.02] transition-transform">
+                <div class="absolute top-0 right-0 p-3 opacity-50"><i data-lucide="users"
+                        class="w-6 h-6 text-cyan-500"></i></div>
+                <div class="text-[10px] text-cyan-400 uppercase font-black mb-2">Pack Squad</div>
+                <div class="text-3xl font-black text-white mb-1">16 380 <span
+                        class="text-sm font-normal text-slate-400">TND</span></div>
+                <div class="text-[10px] text-emerald-400 mb-4 font-bold">-9% de remise</div>
+                <div class="w-full h-px bg-cyan-500/20 mb-4"></div>
+                <div class="flex items-center gap-3 text-white">
+                    <div
+                        class="w-8 h-8 rounded bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center font-bold text-cyan-400">
+                        3-5</div>
+                    <span class="text-xs font-bold">Sièges (Équipe Agile)</span>
                 </div>
             </div>
 
+            <!-- Factory -->
+            <div
+                class="p-6 rounded-xl border border-blue-500/30 bg-blue-500/5 relative group hover:scale-[1.02] transition-transform">
+                <div class="absolute top-0 right-0 p-3 opacity-50"><i data-lucide="factory"
+                        class="w-6 h-6 text-blue-500"></i></div>
+                <div class="text-[10px] text-blue-400 uppercase font-black mb-2">Pack Factory</div>
+                <div class="text-3xl font-black text-white mb-1">15 300 <span
+                        class="text-sm font-normal text-slate-400">TND</span></div>
+                <div class="text-[10px] text-emerald-400 mb-4 font-bold">-15% de remise</div>
+                <div class="w-full h-px bg-blue-500/20 mb-4"></div>
+                <div class="flex items-center gap-3 text-white">
+                    <div
+                        class="w-8 h-8 rounded bg-blue-500/20 border border-blue-500/30 flex items-center justify-center font-bold text-blue-400">
+                        6+</div>
+                    <span class="text-xs font-bold">Sièges (Département)</span>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -70,36 +88,47 @@
             <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
                 <i data-lucide="scale" class="w-5 h-5"></i>
             </div>
-            <h2 class="text-xl font-bold text-white">Conditions Particulières (M.2)</h2>
+            <h2 class="text-xl font-bold text-white">M.2 Conditions Particulières</h2>
         </div>
 
-        <div class="space-y-4">
-            <div class="p-4 rounded-xl bg-white/5 border border-white/10 flex gap-4 items-start">
-                <div class="p-2 bg-slate-700/50 rounded-lg text-slate-300 shrink-0"><i data-lucide="target" class="w-4 h-4"></i></div>
+        <div class="grid grid-cols-1 gap-4">
+            <div class="glass-card p-5 flex gap-4 items-start">
+                <div class="p-2 rounded bg-red-500/10 text-red-400 mt-1">
+                    <i data-lucide="alert-circle" class="w-5 h-5"></i>
+                </div>
                 <div>
-                    <h4 class="text-white font-bold text-sm mb-1">Engagement de Moyens</h4>
-                    <p class="text-[11px] text-slate-400">
-                        Obligation de moyens (formation). Aucun remboursement en cas d'échec individuel aux examens ou Capstones.
+                    <h3 class="text-white font-bold text-sm mb-1">1. Engagement de Résultat</h3>
+                    <p class="text-[10px] text-slate-300 leading-relaxed">
+                        Obligation de <strong>moyens</strong> (formation & encadrement).
+                        <br>Aucun remboursement en cas d'échec aux examens ou Block Checks. L'entreprise accepte le
+                        risque pédagogique.
                     </p>
                 </div>
             </div>
 
-            <div class="p-4 rounded-xl bg-white/5 border border-white/10 flex gap-4 items-start">
-                <div class="p-2 bg-slate-700/50 rounded-lg text-slate-300 shrink-0"><i data-lucide="copyright" class="w-4 h-4"></i></div>
+            <div class="glass-card p-5 flex gap-4 items-start">
+                <div class="p-2 rounded bg-purple-500/10 text-purple-400 mt-1">
+                    <i data-lucide="copyright" class="w-5 h-5"></i>
+                </div>
                 <div>
-                    <h4 class="text-white font-bold text-sm mb-1">Propriété Intellectuelle (Work for Hire)</h4>
-                    <p class="text-[11px] text-slate-400">
-                        Contrairement aux étudiants standards, les projets réalisés par les collaborateurs B2B sont la <strong>propriété exclusive de l'entreprise</strong>.
+                    <h3 class="text-white font-bold text-sm mb-1">2. Propriété Intellectuelle (IP)</h3>
+                    <p class="text-[10px] text-slate-300 leading-relaxed">
+                        Les projets réalisés par les collaborateurs sont la propriété <strong>exclusive de
+                            l'entreprise</strong> (Régime "Work for Hire").
+                        RBK ne revendique aucun droit sur le code produit durant les Labs/Projets d'entreprise.
                     </p>
                 </div>
             </div>
 
-            <div class="p-4 rounded-xl bg-white/5 border border-white/10 flex gap-4 items-start">
-                <div class="p-2 bg-slate-700/50 rounded-lg text-slate-300 shrink-0"><i data-lucide="file-key" class="w-4 h-4"></i></div>
+            <div class="glass-card p-5 flex gap-4 items-start">
+                <div class="p-2 rounded bg-emerald-500/10 text-emerald-400 mt-1">
+                    <i data-lucide="lock" class="w-5 h-5"></i>
+                </div>
                 <div>
-                    <h4 class="text-white font-bold text-sm mb-1">Confidentialité</h4>
-                    <p class="text-[11px] text-slate-400">
-                        Signature d'un NDA spécifique pour permettre le travail sur des Use-Cases métier réels de l'entreprise.
+                    <h3 class="text-white font-bold text-sm mb-1">3. Confidentialité</h3>
+                    <p class="text-[10px] text-slate-300 leading-relaxed">
+                        <strong>NDA (Non-Disclosure Agreement)</strong> signé systématiquement pour protéger les
+                        Use-Cases métier et les données internes apportées par les collaborateurs.
                     </p>
                 </div>
             </div>

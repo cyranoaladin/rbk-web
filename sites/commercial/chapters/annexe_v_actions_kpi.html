@@ -1,0 +1,201 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-violet-600/20 rounded-full blur-[100px]"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-4 mb-4">
+                <span
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-500 font-mono">V</span>
+                <div class="h-12 w-px bg-white/10"></div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">Plan d'Actions & KPI</h1>
+            </div>
+            <p class="text-sm text-slate-400 max-w-2xl">
+                Pilotage Opérationnel — Registre des actions risques (A-001 à A-055), Tableau de bord de pilotage et
+                Journal d'incidents.
+            </p>
+        </div>
+    </header>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="clipboard-list" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">V.1 Registre des Actions (Extrait)</h2>
+        </div>
+
+        <div class="glass-card !p-0 overflow-hidden border-white/10 mb-8 overflow-x-auto">
+            <table class="w-full text-left text-[10px] whitespace-nowrap">
+                <thead class="bg-white/5 text-slate-500 uppercase font-black divide-x divide-white/5">
+                    <tr>
+                        <th class="p-3 w-16 sticky left-0 bg-slate-900/90 z-10">ID</th>
+                        <th class="p-3 w-20 text-center">Prio</th>
+                        <th class="p-3 min-w-[200px]">Action (Verbe + Livrable)</th>
+                        <th class="p-3 w-32">Owner</th>
+                        <th class="p-3 w-32">Échéance</th>
+                        <th class="p-3 w-32">Statut</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-slate-300">
+                    <!-- A-001 Marketing -->
+                    <tr class="hover:bg-white/5">
+                        <td
+                            class="p-3 font-mono text-slate-500 sticky left-0 bg-slate-900/90 z-10 border-r border-white/5">
+                            A-001</td>
+                        <td class="p-3 text-center"><span
+                                class="px-1.5 py-0.5 rounded bg-red-500/20 text-red-400 font-bold">P1</span></td>
+                        <td class="p-3 font-bold text-white">Définir ICP + FAQ anti-trading</td>
+                        <td class="p-3 text-cyan-400">Mkt + CEO</td>
+                        <td class="p-3 font-mono text-slate-400">T0-75</td>
+                        <td class="p-3">
+                            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-slate-500"></span>
+                                À faire</div>
+                        </td>
+                    </tr>
+                    <!-- A-009 Budget -->
+                    <tr class="hover:bg-white/5">
+                        <td
+                            class="p-3 font-mono text-slate-500 sticky left-0 bg-slate-900/90 z-10 border-r border-white/5">
+                            A-009</td>
+                        <td class="p-3 text-center"><span
+                                class="px-1.5 py-0.5 rounded bg-red-500/20 text-red-400 font-bold">P1</span></td>
+                        <td class="p-3 font-bold text-white">Construire Budget Détaillé + Réserve 15%</td>
+                        <td class="p-3 text-emerald-400">CEO + Ops</td>
+                        <td class="p-3 font-mono text-slate-400">T0-60</td>
+                        <td class="p-3">
+                            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-slate-500"></span>
+                                À faire</div>
+                        </td>
+                    </tr>
+                    <!-- A-012 Contingency -->
+                    <tr class="hover:bg-white/5">
+                        <td
+                            class="p-3 font-mono text-slate-500 sticky left-0 bg-slate-900/90 z-10 border-r border-white/5">
+                            A-012</td>
+                        <td class="p-3 text-center"><span
+                                class="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">P2</span></td>
+                        <td class="p-3 text-slate-300 italic">Plan de réduction périmètre (Plan B)</td>
+                        <td class="p-3 text-purple-400">HoP</td>
+                        <td class="p-3 font-mono text-slate-400">T0-14</td>
+                        <td class="p-3">
+                            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-slate-500"></span>
+                                À faire</div>
+                        </td>
+                    </tr>
+                    <!-- A-025 Security -->
+                    <tr class="hover:bg-white/5">
+                        <td
+                            class="p-3 font-mono text-slate-500 sticky left-0 bg-slate-900/90 z-10 border-r border-white/5">
+                            A-025</td>
+                        <td class="p-3 text-center"><span
+                                class="px-1.5 py-0.5 rounded bg-red-500/20 text-red-400 font-bold">P1</span></td>
+                        <td class="p-3 font-bold text-white">Instaurer Security Sprint (S19)</td>
+                        <td class="p-3 text-orange-400">HoP + SecLead</td>
+                        <td class="p-3 font-mono text-slate-400">T0+35</td>
+                        <td class="p-3">
+                            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-slate-500"></span>
+                                À faire</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="px-4 py-2 text-[9px] text-slate-500 border-t border-white/5 bg-slate-900/30">
+                Liste complète des 55 actions disponible dans le document de référence.
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">V.2 & V.3 Dashboard & Heatmap</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <!-- Heatmap -->
+            <div class="glass-card p-5">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-white font-bold text-sm">Heatmap Hebdo (Exemple)</h3>
+                    <div class="px-2 py-1 rounded bg-amber-500/20 text-amber-500 text-[10px] font-bold">Score Global:
+                        3.0/5</div>
+                </div>
+
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border border-white/10">
+                        <span class="text-[10px] text-slate-300">Admissions & Mkt</span>
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] text-red-400 font-bold">Alerte</span>
+                            <div class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border border-white/10">
+                        <span class="text-[10px] text-slate-300">Qualité Studio</span>
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] text-amber-400 font-bold">Alerte Légère</span>
+                            <div class="w-2 h-2 rounded-full bg-amber-500"></div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border border-white/10">
+                        <span class="text-[10px] text-slate-300">Ops & Infra</span>
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] text-emerald-400 font-bold">OK</span>
+                            <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 text-[9px] text-slate-500 leading-relaxed">
+                    <strong>Déclencheurs :</strong> Décision COPIL requise si un domaine est ≤ 2/5 ou si 2 domaines sont
+                    en alerte simultanée.
+                </div>
+            </div>
+
+            <!-- Key Metrics -->
+            <div class="grid grid-cols-2 gap-3">
+                <div class="p-3 rounded-lg bg-slate-900 border border-white/10">
+                    <div class="text-[9px] text-slate-500 uppercase mb-1">Leads ICP</div>
+                    <div class="text-xl font-bold text-white">≥ 40</div>
+                    <div class="text-[9px] text-emerald-400">/ Semaine</div>
+                </div>
+                <div class="p-3 rounded-lg bg-slate-900 border border-white/10">
+                    <div class="text-[9px] text-slate-500 uppercase mb-1">CI Pass Rate</div>
+                    <div class="text-xl font-bold text-white">≥ 85%</div>
+                    <div class="text-[9px] text-emerald-400">Hebdo</div>
+                </div>
+                <div class="p-3 rounded-lg bg-slate-900 border border-white/10">
+                    <div class="text-[9px] text-slate-500 uppercase mb-1">NPS</div>
+                    <div class="text-xl font-bold text-white">≥ 45</div>
+                    <div class="text-[9px] text-emerald-400">Promoteurs</div>
+                </div>
+                <div class="p-3 rounded-lg bg-slate-900 border border-white/10">
+                    <div class="text-[9px] text-slate-500 uppercase mb-1">Security</div>
+                    <div class="text-xl font-bold text-white">0</div>
+                    <div class="text-[9px] text-red-400">Critical Findings</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="activity" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">V.4 Journal d'incidents (Template)</h2>
+        </div>
+
+        <div class="glass-card bg-slate-950 p-4 font-mono text-[10px] text-slate-300 overflow-x-auto">
+            <pre>TYPE   | SÉV  | DATE       | SERVICE | SYMPTÔME                 | ACTIONS
+-------|------|------------|---------|--------------------------|------------------
+DRILL  | SEV3 | 2025-01-22 | RPC     | Scénario "RPC Down"      | Fallback Prov. B
+RÉEL   | SEV1 | 2025-02-03 | SEC     | Secret detecté commit   | Révoquer + Rotate
+RÉEL   | SEV2 | 2025-01-15 | CI/CD   | Echec E2E intermittent   | Freeze Merges</pre>
+        </div>
+        <p class="text-[9px] text-slate-500 mt-2">
+            Règle : Tout incident Sev1/Sev2 déclenche un Postmortem obligatoire et une entrée dans le registre des
+            risques.
+        </p>
+    </section>
+
+</div>

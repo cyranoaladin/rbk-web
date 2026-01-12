@@ -1,0 +1,233 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-red-500/20 rounded-full blur-[100px]"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-4 mb-4">
+                <span
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500 font-mono">13</span>
+                <div class="h-12 w-px bg-white/10"></div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">13. Capstones (Projets Signatures)</h1>
+            </div>
+            <p class="text-sm text-slate-400 max-w-2xl">
+                Le Standard "Studio" — 3 Projets "Mainnet-Ready" pour valider l'excellence (Audit Ready).
+            </p>
+        </div>
+    </header>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="medal" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">13.1 Philosophie : "Studio-Grade"</h2>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white/5 border border-white/10 mb-8">
+            <p class="text-xs text-slate-300 leading-relaxed mb-4 text-justify">
+                Un Capstone RBK n'est pas un projet d'école. C'est un produit qui respecte les standards d'un studio
+                professionnel. Il ne s'agit pas de prouver que "ça marche", mais que "ça ne peut pas casser".
+            </p>
+            <div class="flex flex-wrap gap-4 mt-4">
+                <div class="flex items-center gap-2 px-3 py-2 rounded bg-red-500/10 border border-red-500/20">
+                    <i data-lucide="shield-alert" class="w-4 h-4 text-red-500"></i>
+                    <span class="text-[10px] text-red-400 font-bold uppercase">Sécurité : Threat Model J1</span>
+                </div>
+                <div class="flex items-center gap-2 px-3 py-2 rounded bg-amber-500/10 border border-amber-500/20">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-amber-500"></i>
+                    <span class="text-[10px] text-amber-400 font-bold uppercase">Qualité : 0 Warning, Coverage >
+                        80%</span>
+                </div>
+                <div class="flex items-center gap-2 px-3 py-2 rounded bg-blue-500/10 border border-blue-500/20">
+                    <i data-lucide="server" class="w-4 h-4 text-blue-500"></i>
+                    <span class="text-[10px] text-blue-400 font-bold uppercase">Ops : Déploiement Scripté</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="layers" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">13.2 Les 3 Projets Signatures</h2>
+        </div>
+
+        <div class="grid grid-cols-1 gap-8">
+            <!-- Capstone 1 -->
+            <div class="glass-card !p-0 overflow-hidden border-white/10">
+                <div class="p-4 bg-white/5 border-b border-white/10 flex justify-between items-center">
+                    <h3 class="text-white font-bold text-sm">Capstone 1 : Wallet Reliability Pack</h3>
+                    <span class="text-[10px] bg-black/30 text-slate-400 px-2 py-1 rounded">Frontend/UX Focus</span>
+                </div>
+                <div class="p-5 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-[11px] text-slate-500 font-bold uppercase mb-2">Spécifications (User Stories)
+                        </h4>
+                        <ul class="space-y-2 text-[11px] text-slate-300 list-disc list-inside">
+                            <li><strong class="text-white">Feedback :</strong> Spinner/Toast précis pour chaque état
+                                (Signing, Confirming).</li>
+                            <li><strong class="text-white">Retry :</strong> Backoff exponentiel auto si RPC fail.</li>
+                            <li><strong class="text-white">History :</strong> Log persistant des échecs pour debug.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-[11px] text-slate-500 font-bold uppercase mb-2">Checklist Sécurité & Tech</h4>
+                        <ul class="space-y-2 text-[11px] text-slate-300">
+                            <li class="flex gap-2"><i data-lucide="shield" class="w-3 h-3 text-red-400"></i> Pas de
+                                Private Key stockée (Adapter Only).</li>
+                            <li class="flex gap-2"><i data-lucide="network" class="w-3 h-3 text-blue-400"></i> Failover
+                                RPC (Config Primary/Fallback).</li>
+                            <li class="flex gap-2"><i data-lucide="code" class="w-3 h-3 text-amber-400"></i> State
+                                Machine stricte (XState/TanStack).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Capstone 2 -->
+            <div class="glass-card !p-0 overflow-hidden border-white/10">
+                <div class="p-4 bg-white/5 border-b border-white/10 flex justify-between items-center">
+                    <h3 class="text-white font-bold text-sm">Capstone 2 : Tokenization Admin Control</h3>
+                    <span class="text-[10px] bg-black/30 text-slate-400 px-2 py-1 rounded">RBAC/DeFi Focus</span>
+                </div>
+                <div class="p-5 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-[11px] text-slate-500 font-bold uppercase mb-2">Spécifications (User Stories)
+                        </h4>
+                        <ul class="space-y-2 text-[11px] text-slate-300 list-disc list-inside">
+                            <li><strong class="text-white">Role :</strong> SuperAdmin peut nommer/révoquer Operator.
+                            </li>
+                            <li><strong class="text-white">Freeze :</strong> Operator peut geler un compte (Compliance).
+                            </li>
+                            <li><strong class="text-white">Audit :</strong> Historique on-chain immuable des actions
+                                Admin.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-[11px] text-slate-500 font-bold uppercase mb-2">Checklist Sécurité & Tech</h4>
+                        <ul class="space-y-2 text-[11px] text-slate-300">
+                            <li class="flex gap-2"><i data-lucide="shield" class="w-3 h-3 text-red-400"></i> Access
+                                Control (Two-Step Transfer).</li>
+                            <li class="flex gap-2"><i data-lucide="lock" class="w-3 h-3 text-blue-400"></i> Pattern
+                                Anti-Reentrancy (Checks-Effects).</li>
+                            <li class="flex gap-2"><i data-lucide="database" class="w-3 h-3 text-amber-400"></i> Events
+                                pour chaque changement d'état.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Capstone 3 -->
+            <div class="glass-card !p-0 overflow-hidden border-white/10">
+                <div class="p-4 bg-white/5 border-b border-white/10 flex justify-between items-center">
+                    <h3 class="text-white font-bold text-sm">Capstone 3 : Digital Assets Ecosystem</h3>
+                    <span class="text-[10px] bg-black/30 text-slate-400 px-2 py-1 rounded">NFT/Gaming Focus</span>
+                </div>
+                <div class="p-5 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-[11px] text-slate-500 font-bold uppercase mb-2">Spécifications (User Stories)
+                        </h4>
+                        <ul class="space-y-2 text-[11px] text-slate-300 list-disc list-inside">
+                            <li><strong class="text-white">Gating :</strong> Accès contenu uniquement avec NFT 'Early
+                                Bird'.</li>
+                            <li><strong class="text-white">Claim :</strong> Reward une fois par jour (Logique
+                                temporelle).</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-[11px] text-slate-500 font-bold uppercase mb-2">Checklist Sécurité & Tech</h4>
+                        <ul class="space-y-2 text-[11px] text-slate-300">
+                            <li class="flex gap-2"><i data-lucide="shield" class="w-3 h-3 text-red-400"></i> Bot
+                                Protection (Captcha/Nonce).</li>
+                            <li class="flex gap-2"><i data-lucide="zap" class="w-3 h-3 text-blue-400"></i> Compression
+                                (cNFT) ou ERC721A.</li>
+                            <li class="flex gap-2"><i data-lucide="server" class="w-3 h-3 text-amber-400"></i> Metadata
+                                IPFS (Pas de HTTP centralisé).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="clipboard-check" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">13.3 Rubrique d'Évaluation (100 Pts)</h2>
+        </div>
+
+        <div class="glass-card !p-0 overflow-hidden border-white/10 mb-8">
+            <table class="w-full text-left text-[11px]">
+                <thead class="bg-white/5 text-slate-500 uppercase font-black">
+                    <tr>
+                        <th class="p-4 w-1/4">Pilier</th>
+                        <th class="p-4 w-16 text-center">Pts</th>
+                        <th class="p-4">Critères & Fail Condition</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-slate-300">
+                    <tr class="hover:bg-red-500/5">
+                        <td class="p-4 font-bold text-white">Engineering</td>
+                        <td class="p-4 text-center text-red-500 font-bold">40</td>
+                        <td class="p-4">Architecture propre, Modulaire. <span class="text-red-400 block mt-1">FAIL:
+                                Monolithique, Unwrap sauvage.</span></td>
+                    </tr>
+                    <tr class="hover:bg-red-500/5">
+                        <td class="p-4 font-bold text-white">Sécurité</td>
+                        <td class="p-4 text-center text-red-500 font-bold">30</td>
+                        <td class="p-4">Input validation, Access Control. <span class="text-red-400 block mt-1">FAIL:
+                                Vulnérabilité critique, Private Key commit.</span></td>
+                    </tr>
+                    <tr class="hover:bg-red-500/5">
+                        <td class="p-4 font-bold text-white">Delivery</td>
+                        <td class="p-4 text-center text-red-500 font-bold">20</td>
+                        <td class="p-4">CI/CD, Git Flow, README. <span class="text-red-400 block mt-1">FAIL: Build
+                                cassé, Pas de doc.</span></td>
+                    </tr>
+                    <tr class="hover:bg-red-500/5">
+                        <td class="p-4 font-bold text-white">Comms</td>
+                        <td class="p-4 text-center text-red-500 font-bold">10</td>
+                        <td class="p-4">Vidéo démo, Pitch, Justification des choix.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="package" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">13.4 Le Package (Passeport Emploi)</h2>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-4">
+            <div class="flex-1 p-4 rounded-xl bg-white/5 border border-white/10 text-center">
+                <i data-lucide="code" class="w-6 h-6 text-slate-400 mx-auto mb-2"></i>
+                <h3 class="text-white text-xs font-bold mb-1">1. Le Code</h3>
+                <p class="text-[10px] text-slate-400">Clean, Testé, CI Green.</p>
+            </div>
+            <div class="flex-1 p-4 rounded-xl bg-white/5 border border-white/10 text-center">
+                <i data-lucide="file-text" class="w-6 h-6 text-slate-400 mx-auto mb-2"></i>
+                <h3 class="text-white text-xs font-bold mb-1">2. La Doc</h3>
+                <p class="text-[10px] text-slate-400">Architecture, API, Setup.</p>
+            </div>
+            <div class="flex-1 p-4 rounded-xl bg-white/5 border border-white/10 text-center">
+                <i data-lucide="shield-check" class="w-6 h-6 text-slate-400 mx-auto mb-2"></i>
+                <h3 class="text-white text-xs font-bold mb-1">3. L'Audit</h3>
+                <p class="text-[10px] text-slate-400">Rapport d'Auto-Audit honnête.</p>
+            </div>
+            <div class="flex-1 p-4 rounded-xl bg-white/5 border border-white/10 text-center">
+                <i data-lucide="video" class="w-6 h-6 text-slate-400 mx-auto mb-2"></i>
+                <h3 class="text-white text-xs font-bold mb-1">4. La Démo</h3>
+                <p class="text-[10px] text-slate-400">Vidéo 3min scénarisée.</p>
+            </div>
+        </div>
+    </section>
+
+</div>

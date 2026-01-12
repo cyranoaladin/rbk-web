@@ -1,0 +1,296 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-amber-500/20 rounded-full blur-[100px]"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-4 mb-4">
+                <span
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-rose-500 font-mono">08</span>
+                <div class="h-12 w-px bg-white/10"></div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">08. Syllabus Technique Complet</h1>
+            </div>
+            <p class="text-sm text-slate-400 max-w-2xl">
+                Détail hebdomadaire : Genesis (S1-S4) → Explorer (S5-S16) → Bâtisseur (S17-S32) → Architecte (S33-S48).
+            </p>
+        </div>
+    </header>
+
+    <!-- GENESIS POOL -->
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="flame" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">8.1 Genesis Pool : Sélection Intensive (S1-S4)</h2>
+        </div>
+        <div class="glass-card !p-0 overflow-hidden border-white/10 mb-8">
+            <table class="w-full text-left text-[11px]">
+                <thead class="bg-[#14F195]/10 text-[#14F195] uppercase font-black">
+                    <tr>
+                        <th class="p-3 w-12 text-center">Sem.</th>
+                        <th class="p-3 w-1/3">Focus Technique</th>
+                        <th class="p-3">Livrable Pivot</th>
+                        <th class="p-3">Skill Mirror</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-slate-300">
+                    <tr class="hover:bg-[#14F195]/5">
+                        <td class="p-3 text-center font-bold">S1</td>
+                        <td class="p-3">OS & Git Internals</td>
+                        <td class="p-3">Réplique `ls -la` en Rust</td>
+                        <td class="p-3">Core Shell</td>
+                    </tr>
+                    <tr class="hover:bg-[#14F195]/5">
+                        <td class="p-3 text-center font-bold">S2</td>
+                        <td class="p-3">Memory Safety</td>
+                        <td class="p-3">Custom Allocator</td>
+                        <td class="p-3">Memory</td>
+                    </tr>
+                    <tr class="hover:bg-[#14F195]/5">
+                        <td class="p-3 text-center font-bold">S3</td>
+                        <td class="p-3">Concurrence</td>
+                        <td class="p-3">HTTP Server multithread</td>
+                        <td class="p-3">Concurrency</td>
+                    </tr>
+                    <tr class="hover:bg-[#14F195]/5">
+                        <td class="p-3 text-center font-bold">S4</td>
+                        <td class="p-3">Cryptographie</td>
+                        <td class="p-3">CLI Wallet (Ed25519)</td>
+                        <td class="p-3 font-bold text-[#14F195]">Block Check + NFT Access</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- EXPLORER -->
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="compass" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">8.2 Explorer : Fondamentaux (S5-S16)</h2>
+        </div>
+        <div class="glass-card !p-0 overflow-hidden border-white/10 mb-8">
+            <table class="w-full text-left text-[11px]">
+                <thead class="bg-blue-500/10 text-blue-400 uppercase font-black">
+                    <tr>
+                        <th class="p-3 w-12 text-center">Sem.</th>
+                        <th class="p-3 w-1/3">Cours (Objectifs)</th>
+                        <th class="p-3">Labs (TP Guidés)</th>
+                        <th class="p-3">Livrable (Preuve)</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-slate-300">
+                    <tr>
+                        <td class="p-3 text-center font-bold">S05</td>
+                        <td class="p-3">Sign/verify, key mgmt</td>
+                        <td class="p-3">Module signature</td>
+                        <td class="p-3">Skill Mirror "Crypto"</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 text-center font-bold">S06</td>
+                        <td class="p-3">Blockchain 1: RPC, Finality</td>
+                        <td class="p-3">Client RPC, Parsing tx</td>
+                        <td class="p-3">`explorer` CLI</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 text-center font-bold">S07</td>
+                        <td class="p-3">API Design: REST, Cache</td>
+                        <td class="p-3">API Endpoints, OpenAPI</td>
+                        <td class="p-3">Micro-API + Spec</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 text-center font-bold">S08</td>
+                        <td class="p-3">Indexation: Events, Storage</td>
+                        <td class="p-3">Indexer minimal, Backfill</td>
+                        <td class="p-3">Indexer + Wallet API</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 text-center font-bold">S09</td>
+                        <td class="p-3">Flow connect/sign/read</td>
+                        <td class="p-3">Mini front / CLI UX</td>
+                        <td class="p-3">Tests UI auto</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 text-center font-bold">S10</td>
+                        <td class="p-3">Tokenomics 1: Supply</td>
+                        <td class="p-3">Simu simple, Stress tests</td>
+                        <td class="p-3">"Tokenomics memo"</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 text-center font-bold">S11</td>
+                        <td class="p-3">Intégration E2E</td>
+                        <td class="p-3">Démo fonctionnelle</td>
+                        <td class="p-3">Tests E2E OK</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 text-center font-bold">S12</td>
+                        <td class="p-3">Observabilité Base</td>
+                        <td class="p-3">Logs structurés, Grafana</td>
+                        <td class="p-3">Dashboard Monitoring</td>
+                    </tr>
+                    <tr class="bg-blue-500/5">
+                        <td class="p-3 text-center font-bold text-blue-400">S16</td>
+                        <td class="p-3 font-bold" colspan="2">GATE 1 : Block Check "Explorer"</td>
+                        <td class="p-3 font-bold text-blue-400">NFT "Core"</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- BATISSEUR -->
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="hammer" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">8.3 Bâtisseur : Spécialisation (S17-S32)</h2>
+        </div>
+        <div class="glass-card !p-0 overflow-hidden border-white/10 mb-8">
+            <table class="w-full text-left text-[10px]">
+                <thead class="bg-amber-500/10 text-amber-400 uppercase font-black">
+                    <tr>
+                        <th class="p-3 w-10 text-center">Sem.</th>
+                        <th class="p-3 w-1/3">Cours (A:Solana / B:EVM / C:Product)</th>
+                        <th class="p-3">Livrable Sprint</th>
+                        <th class="p-3">Validation DoD</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-slate-300">
+                    <tr>
+                        <td class="p-3 text-center font-bold">S17</td>
+                        <td class="p-3">
+                            <span class="text-[#14F195] font-bold">A</span> Modèle Solana<br>
+                            <span class="text-blue-400 font-bold">B</span> Solidity Bases<br>
+                            <span class="text-[#9945FF] font-bold">C</span> Discovery
+                        </td>
+                        <td class="p-3">Repo S17 (Tracké) + User Stories</td>
+                        <td class="p-3">Tests + README + Skill Mirror "Kick-off"</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 text-center font-bold">S18</td>
+                        <td class="p-3">
+                            <span class="text-[#14F195] font-bold">A</span> Sérialisation<br>
+                            <span class="text-blue-400 font-bold">B</span> Gas / Erreurs<br>
+                            <span class="text-[#9945FF] font-bold">C</span> Wireframes
+                        </td>
+                        <td class="p-3">PR + ADR #1 (Architecture)</td>
+                        <td class="p-3">ADR clair & reviewable</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 text-center font-bold">S21</td>
+                        <td class="p-3">
+                            <span class="text-[#14F195] font-bold">A</span> Anchor IDL<br>
+                            <span class="text-blue-400 font-bold">B</span> Foundry Mastery<br>
+                            <span class="text-[#9945FF] font-bold">C</span> Tokenomics
+                        </td>
+                        <td class="p-3">Repo S21 / Incentives Model</td>
+                        <td class="p-3">Tests exec, Doc générée</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 text-center font-bold">S25</td>
+                        <td class="p-3">
+                            <span class="text-[#14F195] font-bold">A</span> DeFi Primitives<br>
+                            <span class="text-blue-400 font-bold">B</span> DApp Intég.<br>
+                            <span class="text-[#9945FF] font-bold">C</span> Analytics
+                        </td>
+                        <td class="p-3">Vault / Sign Flow / KPIs</td>
+                        <td class="p-3">Skill Mirror "Analytics"</td>
+                    </tr>
+                    <tr class="bg-amber-500/5">
+                        <td class="p-3 text-center font-bold text-amber-400">S32</td>
+                        <td class="p-3 font-bold" colspan="2">Block Check "Build" (Stabilisation)</td>
+                        <td class="p-3 font-bold text-amber-400">NFT "Build Master"</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ARCHITECTE -->
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="briefcase" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">8.4 Architecte : Studio Production (S33-S48)</h2>
+        </div>
+        <div class="glass-card !p-0 overflow-hidden border-white/10 mb-8">
+            <table class="w-full text-left text-[11px]">
+                <thead class="bg-[#9945FF]/10 text-[#9945FF] uppercase font-black">
+                    <tr>
+                        <th class="p-3 w-12 text-center">Sem.</th>
+                        <th class="p-3 w-1/3">Objectifs (Sprint)</th>
+                        <th class="p-3">Livrable</th>
+                        <th class="p-3">DoD (Validation)</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-slate-300">
+                    <tr>
+                        <td class="p-3 text-center font-bold">S33</td>
+                        <td class="p-3 font-bold text-white">GATE CAPSTONE 1</td>
+                        <td class="p-3">Spec + ADR + Threat Model</td>
+                        <td class="p-3">Menaces mitigées</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 text-center font-bold">S38</td>
+                        <td class="p-3 font-bold text-white">GATE CAPSTONE 2</td>
+                        <td class="p-3">Release Candidate + Audit Pack</td>
+                        <td class="p-3">Security Checklist</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 text-center font-bold">S43</td>
+                        <td class="p-3 font-bold text-white">GATE CAPSTONE 3</td>
+                        <td class="p-3">Go-Live Pack (Perf & Cost)</td>
+                        <td class="p-3">SLO + Dashboards</td>
+                    </tr>
+                    <tr class="bg-[#9945FF]/5">
+                        <td class="p-3 text-center font-bold text-[#9945FF]">S48</td>
+                        <td class="p-3 font-bold">GATE FINAL</td>
+                        <td class="p-3">PACK FINAL (Interview Ready)</td>
+                        <td class="p-3 font-bold text-[#9945FF]">NFT Launch Proof + SBT Audit-Ready</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- EXTENSIONS -->
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="blocks" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">8.5 Modules de Diversification (Opt.)</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h3 class="text-white font-bold text-sm mb-2">Module ZK</h3>
+                <p class="text-[10px] text-slate-400 mb-2">Zero-Knowledge Proofs (8 sem).</p>
+                <ul class="text-[10px] text-slate-300 list-disc list-inside">
+                    <li>Arithmétisation, Circom.</li>
+                    <li>Projet: Mixer compliant.</li>
+                </ul>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h3 class="text-white font-bold text-sm mb-2">Module DePIN</h3>
+                <p class="text-[10px] text-slate-400 mb-2">Physical Infra (6 sem).</p>
+                <ul class="text-[10px] text-slate-300 list-disc list-inside">
+                    <li>Helium, IoT, Proof of Coverage.</li>
+                    <li>Projet: Réseau LoRaWAN.</li>
+                </ul>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h3 class="text-white font-bold text-sm mb-2">Cross-Chain</h3>
+                <p class="text-[10px] text-slate-400 mb-2">Interop (4 sem).</p>
+                <ul class="text-[10px] text-slate-300 list-disc list-inside">
+                    <li>Wormhole, LayerZero.</li>
+                    <li>Projet: Bridge NFT.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+</div>

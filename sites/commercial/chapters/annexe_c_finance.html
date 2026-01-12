@@ -1,0 +1,272 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-emerald-600/20 rounded-full blur-[100px]"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-4 mb-4">
+                <span
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-500 font-mono">C</span>
+                <div class="h-12 w-px bg-white/10"></div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">Annexe C. Modèle Financier Contractuel</h1>
+            </div>
+            <p class="text-sm text-slate-400 max-w-2xl">
+                Nexus Réussite — Définitions Comptables, Structure de Rémunération et Waterfall de Distribution.
+            </p>
+        </div>
+    </header>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="book" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">C.1 Définitions & Montants (Référentiel)</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div class="p-5 rounded-xl bg-white/5 border border-white/10">
+                <h3 class="text-white font-bold text-sm mb-4">Définitions Comptables</h3>
+                <ul class="space-y-3 text-[10px] text-slate-300">
+                    <li class="flex items-start gap-2">
+                        <span class="text-emerald-400 font-mono font-bold">CA_Booked</span>
+                        <span>Valeur catalogue totale signée (Genesis + Explorer + Bâtisseur).</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-emerald-400 font-mono font-bold">CA_Cash</span>
+                        <span>Montants encaissés (Paiements directs + Recouvrements ISA).</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-emerald-400 font-mono font-bold">Coûts_Directs</span>
+                        <span>Mentor Pool (Refacturé) + Outils listés.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-emerald-400 font-mono font-bold">Marge_Projet</span>
+                        <span>CA_Eligible - Coûts_Directs - Franchise_RBK.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="glass-card !p-0 overflow-hidden border-white/10">
+                <table class="w-full text-left text-[10px]">
+                    <thead class="bg-emerald-500/10 text-emerald-400 uppercase font-bold">
+                        <tr>
+                            <th class="p-3">Poste</th>
+                            <th class="p-3 text-right">Montant (TND)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5 text-slate-300">
+                        <tr class="hover:bg-white/5">
+                            <td class="p-3">Tuition Annuelle (Cycle Complet)</td>
+                            <td class="p-3 text-right font-mono font-bold text-white">15 900</td>
+                        </tr>
+                        <tr class="hover:bg-white/5">
+                            <td class="p-3">Forfait Nexus Launchpad</td>
+                            <td class="p-3 text-right font-mono text-slate-400">3 300</td>
+                        </tr>
+                        <tr class="hover:bg-white/5">
+                            <td class="p-3">Mgmt Fee Mensuel</td>
+                            <td class="p-3 text-right font-mono text-slate-400">4 500</td>
+                        </tr>
+                        <tr class="hover:bg-white/5">
+                            <td class="p-3">Budget Acquisition Mensuel</td>
+                            <td class="p-3 text-right font-mono text-slate-400">3 000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="p-4 rounded-lg bg-orange-500/5 border border-orange-500/10 text-[10px] text-slate-300">
+            <strong class="text-orange-400 block mb-1">C.2 Minimum Garanti (Clause "Petite Cohorte")</strong>
+            Si Genesis Pool < 15 apprenants, RBK paie un ajustement : <code
+                class="px-1 py-0.5 bg-slate-900 rounded font-mono text-orange-300">Ajustement = (15 - Réel) × 2 900
+                TND</code>.
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="layers" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">C.3 Rémunération Nexus (4 Briques)</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            <div
+                class="p-4 rounded-lg bg-white/5 border border-white/10 hover:border-emerald-500/30 transition-colors group">
+                <div class="text-[9px] text-slate-500 font-black uppercase mb-2">1. Pilotage (Fixe)</div>
+                <h3 class="text-emerald-400 font-bold text-lg mb-1">Mgmt Fee</h3>
+                <div class="text-2xl font-black text-white mb-2">4 500 <span
+                        class="text-xs font-normal text-slate-400">TND/mo</span></div>
+                <p class="text-[10px] text-slate-400">Payable d'avance (J+1). Non remboursable.</p>
+            </div>
+
+            <div
+                class="p-4 rounded-lg bg-white/5 border border-white/10 hover:border-emerald-500/30 transition-colors group">
+                <div class="text-[9px] text-slate-500 font-black uppercase mb-2">2. Volume (Variable)</div>
+                <h3 class="text-emerald-400 font-bold text-lg mb-1">Delivery Fee</h3>
+                <div class="text-2xl font-black text-white mb-2">12% <span class="text-xs font-normal text-slate-400">CA
+                        Booked</span></div>
+                <p class="text-[10px] text-slate-400">Paiement mensuel au prorata avancement.</p>
+            </div>
+
+            <div
+                class="p-4 rounded-lg bg-white/5 border border-white/10 hover:border-emerald-500/30 transition-colors group">
+                <div class="text-[9px] text-slate-500 font-black uppercase mb-2">3. Expertise (Pass-Through)</div>
+                <h3 class="text-emerald-400 font-bold text-lg mb-1">Mentor Pool</h3>
+                <div class="text-2xl font-black text-white mb-2">CAP 25% <span
+                        class="text-xs font-normal text-slate-400">CA Booked</span></div>
+                <p class="text-[10px] text-slate-400">Refacturation au coût réel sur justificatifs.</p>
+            </div>
+
+            <div
+                class="p-4 rounded-lg bg-white/5 border border-white/10 hover:border-emerald-500/30 transition-colors group">
+                <div class="text-[9px] text-slate-500 font-black uppercase mb-2">4. Performance (Bonus)</div>
+                <h3 class="text-emerald-400 font-bold text-lg mb-1">Success Fee</h3>
+                <div class="text-2xl font-black text-white mb-2">1 000 <span
+                        class="text-xs font-normal text-slate-400">TND/placé</span></div>
+                <p class="text-[10px] text-slate-400">Contrat > 6 mois ou Mission > 3 mois.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="arrow-down-circle" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">C.4 Waterfall (Ordre de Distribution)</h2>
+        </div>
+
+        <div class="p-6 rounded-xl bg-slate-900 border border-white/10 relative overflow-hidden">
+            <div class="absolute inset-y-0 left-8 w-1 bg-gradient-to-b from-emerald-500 to-transparent opacity-20">
+            </div>
+            <ol class="space-y-4 relative z-10 text-[11px] text-slate-300">
+                <li class="flex items-center gap-4">
+                    <span
+                        class="w-8 h-8 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center font-bold text-emerald-400">1</span>
+                    <span class="font-bold text-white">Franchise RBK</span>
+                    <span class="text-slate-500 text-[10px]">(3 000 TND + Frais)</span>
+                </li>
+                <li class="flex items-center gap-4">
+                    <span
+                        class="w-8 h-8 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center font-bold text-slate-400">2</span>
+                    <span>Mentor Pool (Coût réel)</span>
+                </li>
+                <li class="flex items-center gap-4">
+                    <span
+                        class="w-8 h-8 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center font-bold text-slate-400">3</span>
+                    <span>Management Fee Nexus</span>
+                </li>
+                <li class="flex items-center gap-4">
+                    <span
+                        class="w-8 h-8 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center font-bold text-slate-400">4</span>
+                    <span>Delivery Fee Nexus</span>
+                </li>
+                <li class="flex items-center gap-4">
+                    <span
+                        class="w-8 h-8 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center font-bold text-slate-400">5</span>
+                    <span>Success Fees Nexus</span>
+                </li>
+                <li class="flex items-center gap-4">
+                    <span
+                        class="w-8 h-8 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center font-bold text-emerald-400">6</span>
+                    <span class="font-bold text-white">Résiduel RBK</span>
+                    <span class="text-slate-500 text-[10px]">(Marge Finale)</span>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">C.5 Projections (3 Scénarios)</h2>
+        </div>
+
+        <div class="glass-card !p-0 overflow-hidden border-white/10 overflow-x-auto">
+            <table class="w-full text-right text-[10px]">
+                <thead class="bg-white/5 text-slate-500 uppercase font-black divide-x divide-white/5">
+                    <tr>
+                        <th class="p-4 text-left w-48">Paramètre</th>
+                        <th class="p-4 text-slate-300 w-32">Scénario A (15)</th>
+                        <th class="p-4 text-slate-300 w-32">Scénario B (20)</th>
+                        <th class="p-4 text-slate-300 w-32">Scénario C (30)</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-slate-300">
+                    <!-- Volumes -->
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 text-left font-bold text-white">Genesis Pool</td>
+                        <td class="p-4">15</td>
+                        <td class="p-4">20</td>
+                        <td class="p-4 font-bold text-emerald-400">30</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 text-left">Explorer (conv 60%)</td>
+                        <td class="p-4">9</td>
+                        <td class="p-4">12</td>
+                        <td class="p-4">18</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 text-left">Bâtisseur (conv 80%)</td>
+                        <td class="p-4">7,2</td>
+                        <td class="p-4">9,6</td>
+                        <td class="p-4">14,4</td>
+                    </tr>
+
+                    <!-- CA -->
+                    <tr class="bg-white/5 font-bold">
+                        <td class="p-4 text-left text-emerald-400">CA Booked (TND)</td>
+                        <td class="p-4 text-white">160 680</td>
+                        <td class="p-4 text-white">214 240</td>
+                        <td class="p-4 text-emerald-400">321 360</td>
+                    </tr>
+
+                    <!-- Coûts -->
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 text-left border-l-2 border-red-500/50">CAP MentorPool (25%)</td>
+                        <td class="p-4 text-red-300">-40 170</td>
+                        <td class="p-4 text-red-300">-53 560</td>
+                        <td class="p-4 text-red-300">-80 340</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 text-left border-l-2 border-red-500/50">Mgmt Fee (12m x 4.5k)</td>
+                        <td class="p-4 text-red-300">-54 000</td>
+                        <td class="p-4 text-red-300">-54 000</td>
+                        <td class="p-4 text-red-300">-54 000</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 text-left border-l-2 border-red-500/50">Delivery Fee (12%)</td>
+                        <td class="p-4 text-red-300">-19 281</td>
+                        <td class="p-4 text-red-300">-25 708</td>
+                        <td class="p-4 text-red-300">-38 563</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 text-left border-l-2 border-red-500/50">Acquisition (12m x 3k)</td>
+                        <td class="p-4 text-red-300">-36 000</td>
+                        <td class="p-4 text-red-300">-36 000</td>
+                        <td class="p-4 text-red-300">-36 000</td>
+                    </tr>
+
+                    <!-- Marge -->
+                    <tr class="bg-emerald-500/20 font-black text-[11px]">
+                        <td class="p-4 text-left text-emerald-400">Résiduel RBK</td>
+                        <td class="p-4 text-white">11 228</td>
+                        <td class="p-4 text-white">64 971</td>
+                        <td class="p-4 text-emerald-400">111 456</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="p-4 rounded-lg bg-white/5 border border-white/10 text-[10px] text-slate-400 italic text-center">
+            * Scénarios basés sur hypothèses conservatrices. Tous montants HT. Clause "Gross-up" pour retenue à la
+            source.
+        </div>
+    </section>
+
+</div>

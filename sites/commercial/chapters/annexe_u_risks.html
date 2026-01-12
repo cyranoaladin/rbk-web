@@ -1,0 +1,306 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-red-800/20 rounded-full blur-[100px]"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-4 mb-4">
+                <span
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-600 font-mono">U</span>
+                <div class="h-12 w-px bg-white/10"></div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">Registre des Risques Opérationnels</h1>
+            </div>
+            <p class="text-sm text-slate-400 max-w-2xl">
+                Risk Management — Registre v1 validé (R-01 à R-25). Pilotage des impacts financiers, réputationnels et
+                pédagogiques.
+            </p>
+        </div>
+    </header>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">U.1 Méthodologie d'Évaluation</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h3 class="text-slate-400 font-bold text-xs uppercase mb-3">Échelle de Probabilité (P)</h3>
+                <div class="space-y-2">
+                    <div class="flex items-center gap-3 text-[10px] text-slate-300">
+                        <span
+                            class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold font-mono">1</span>
+                        <span>Rare (Peu probable)</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-[10px] text-slate-300">
+                        <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold font-mono">3</span>
+                        <span>Plausible (Possible)</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-[10px] text-slate-300">
+                        <span class="px-2 py-0.5 rounded bg-red-500/20 text-red-400 font-bold font-mono">5</span>
+                        <span>Très Probable (Quasi-certain)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h3 class="text-slate-400 font-bold text-xs uppercase mb-3">Échelle d'Impact (I)</h3>
+                <div class="space-y-2">
+                    <div class="flex items-center gap-3 text-[10px] text-slate-300">
+                        <span
+                            class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold font-mono">1</span>
+                        <span>Mineur (Retard local, peu d'effet)</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-[10px] text-slate-300">
+                        <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold font-mono">3</span>
+                        <span>Significatif (Dégradation qualité / retard majeur)</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-[10px] text-slate-300">
+                        <span class="px-2 py-0.5 rounded bg-red-500/20 text-red-400 font-bold font-mono">5</span>
+                        <span>Critique (Arrêt, Réputation, Perte financière)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="list-checks" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">U.2 Registre des Risques (v1)</h2>
+        </div>
+
+        <div class="glass-card !p-0 overflow-hidden border-white/10 mb-8 overflow-x-auto">
+            <table class="w-full text-left text-[10px] whitespace-nowrap">
+                <thead class="bg-white/5 text-slate-500 uppercase font-black divide-x divide-white/5">
+                    <tr>
+                        <th class="p-3 w-12 sticky left-0 bg-slate-900/90 z-10">ID</th>
+                        <th class="p-3 w-20 text-center">Score</th>
+                        <th class="p-3 w-24">Catégorie</th>
+                        <th class="p-3 min-w-[250px]">Risque & Déclencheurs</th>
+                        <th class="p-3 min-w-[200px]">Prévention</th>
+                        <th class="p-3 min-w-[200px]">Contingence (Plan B)</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-slate-300">
+
+                    <!-- R-01 -->
+                    <tr class="hover:bg-white/5">
+                        <td
+                            class="p-3 font-mono text-slate-500 sticky left-0 bg-slate-900/90 z-10 border-r border-white/5">
+                            R-01</td>
+                        <td class="p-3 text-center"><span
+                                class="px-1.5 py-0.5 rounded bg-red-500/20 text-red-400 font-bold">15</span></td>
+                        <td class="p-3 text-cyan-400">Marketing</td>
+                        <td class="p-3 whitespace-normal"><strong>Sous-remplissage Cohorte
+                                Pilote.</strong><br>Inscriptions insuffisantes, baisse taux conversion.</td>
+                        <td class="p-3 whitespace-normal text-slate-400">Réduire taille cohorte (min), Webinaires,
+                            Partenariats Écoles.</td>
+                        <td class="p-3 whitespace-normal text-slate-400">Basculer format Lead -> Alumni, Financement
+                            bourses.</td>
+                    </tr>
+
+                    <!-- R-02 -->
+                    <tr class="hover:bg-white/5">
+                        <td
+                            class="p-3 font-mono text-slate-500 sticky left-0 bg-slate-900/90 z-10 border-r border-white/5">
+                            R-02</td>
+                        <td class="p-3 text-center"><span
+                                class="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">12</span></td>
+                        <td class="p-3 text-emerald-400">Finance</td>
+                        <td class="p-3 whitespace-normal"><strong>Dérive Budgétaire.</strong><br>Coûts outils/experts >
+                            prévisions. Imprévus.</td>
+                        <td class="p-3 whitespace-normal text-slate-400">Budget Base + 15% réserve, Politique d'achat
+                            stricte.</td>
+                        <td class="p-3 whitespace-normal text-slate-400">Geler options "Could", Renégocier licences,
+                            Alternative open-source.</td>
+                    </tr>
+
+                    <!-- R-03 -->
+                    <tr class="hover:bg-white/5">
+                        <td
+                            class="p-3 font-mono text-slate-500 sticky left-0 bg-slate-900/90 z-10 border-r border-white/5">
+                            R-03</td>
+                        <td class="p-3 text-center"><span
+                                class="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">12</span></td>
+                        <td class="p-3 text-purple-400">Ops/Ped</td>
+                        <td class="p-3 whitespace-normal"><strong>Retard Production Pédago.</strong><br>Labs/Templates
+                            incomplets avant démarrage.</td>
+                        <td class="p-3 whitespace-normal text-slate-400">Plan 90 jours, Jalons hebdo, "Golden Repos".
+                        </td>
+                        <td class="p-3 whitespace-normal text-slate-400">Décaler lancement, Réduire périmètre initial (1
+                            track).</td>
+                    </tr>
+
+                    <!-- R-04 -->
+                    <tr class="hover:bg-white/5">
+                        <td
+                            class="p-3 font-mono text-slate-500 sticky left-0 bg-slate-900/90 z-10 border-r border-white/5">
+                            R-04</td>
+                        <td class="p-3 text-center"><span
+                                class="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">12</span></td>
+                        <td class="p-3 text-pink-400">HR</td>
+                        <td class="p-3 whitespace-normal"><strong>Indisponibilité Expert Clé.</strong><br>Annulations
+                            répétées, surcharge formateur.</td>
+                        <td class="p-3 whitespace-normal text-slate-400">Pool remplaçants (2 niveaux), Documentation
+                            complète.</td>
+                        <td class="p-3 whitespace-normal text-slate-400">Remplacer par Backup, Sessions asynchrones
+                            enregistrées.</td>
+                    </tr>
+
+                    <!-- R-05 -->
+                    <tr class="hover:bg-white/5">
+                        <td
+                            class="p-3 font-mono text-slate-500 sticky left-0 bg-slate-900/90 z-10 border-r border-white/5">
+                            R-05</td>
+                        <td class="p-3 text-center"><span
+                                class="px-1.5 py-0.5 rounded bg-red-500/20 text-red-400 font-bold">16</span></td>
+                        <td class="p-3 text-purple-400">Pedagogie</td>
+                        <td class="p-3 whitespace-normal"><strong>Hétérogénéité Niveau Apprenants.</strong><br>Écart
+                            trop grand, ralentissement du groupe.</td>
+                        <td class="p-3 whitespace-normal text-slate-400">Test Entrée sélectif, Module "Bridge" (2-4
+                            sem).</td>
+                        <td class="p-3 whitespace-normal text-slate-400">Séparer en 2 sous-groupes, Augmenter TA,
+                            Coaching individuel.</td>
+                    </tr>
+
+                    <!-- R-06 -->
+                    <tr class="hover:bg-white/5">
+                        <td
+                            class="p-3 font-mono text-slate-500 sticky left-0 bg-slate-900/90 z-10 border-r border-white/5">
+                            R-06</td>
+                        <td class="p-3 text-center"><span
+                                class="px-1.5 py-0.5 rounded bg-red-500/20 text-red-400 font-bold">15</span></td>
+                        <td class="p-3 text-purple-400">Quality</td>
+                        <td class="p-3 whitespace-normal"><strong>Méthode "Studio" Ignorée.</strong><br>CI Rouge, PR
+                            sans review, merge sans tests.</td>
+                        <td class="p-3 whitespace-normal text-slate-400">Gates stricts, Templates PR, Codeowners
+                            automatiques.</td>
+                        <td class="p-3 whitespace-normal text-slate-400">Bloquer merges, Freeze releases, Rework
+                            obligatoire.</td>
+                    </tr>
+
+                    <!-- R-07 -->
+                    <tr class="hover:bg-white/5">
+                        <td
+                            class="p-3 font-mono text-slate-500 sticky left-0 bg-slate-900/90 z-10 border-r border-white/5">
+                            R-07</td>
+                        <td class="p-3 text-center"><span
+                                class="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">12</span></td>
+                        <td class="p-3 text-blue-400">Tech/Infra</td>
+                        <td class="p-3 whitespace-normal"><strong>Pannes RPC (EVM/Solana).</strong><br>Rate-limits,
+                            timeouts pendant labs.</td>
+                        <td class="p-3 whitespace-normal text-slate-400">Multi-providers, Caching, Mocks locaux.</td>
+                        <td class="p-3 whitespace-normal text-slate-400">Basculer sur environnement local
+                            (Anvil/Solana-test-validator).</td>
+                    </tr>
+
+                    <!-- R-08 -->
+                    <tr class="hover:bg-white/5">
+                        <td
+                            class="p-3 font-mono text-slate-500 sticky left-0 bg-slate-900/90 z-10 border-r border-white/5">
+                            R-08</td>
+                        <td class="p-3 text-center"><span
+                                class="px-1.5 py-0.5 rounded bg-red-500/20 text-red-400 font-bold">15</span></td>
+                        <td class="p-3 text-orange-400">Security</td>
+                        <td class="p-3 whitespace-normal"><strong>Vulnérabilité Grave Capstone.</strong><br>Contrat
+                            déployé avec faille critique.</td>
+                        <td class="p-3 whitespace-normal text-slate-400">Checklist Sécurité, Threat Model, Tests d'abus.
+                        </td>
+                        <td class="p-3 whitespace-normal text-slate-400">Bloquer livraison, Patch immédiat + Re-audit.
+                        </td>
+                    </tr>
+
+                    <!-- R-09 -->
+                    <tr class="hover:bg-white/5">
+                        <td
+                            class="p-3 font-mono text-slate-500 sticky left-0 bg-slate-900/90 z-10 border-r border-white/5">
+                            R-09</td>
+                        <td class="p-3 text-center"><span
+                                class="px-1.5 py-0.5 rounded bg-red-500/20 text-red-400 font-bold">15</span></td>
+                        <td class="p-3 text-slate-400">Reputation</td>
+                        <td class="p-3 whitespace-normal"><strong>Confusion Publique (Trading).</strong><br>Perçu comme
+                            "formation crypto trading".</td>
+                        <td class="p-3 whitespace-normal text-slate-400">Charte Comms "Software Engineering", Interdits
+                            explicites trading.</td>
+                        <td class="p-3 whitespace-normal text-slate-400">Rectificatif public, Retrait contenus ambigus.
+                        </td>
+                    </tr>
+
+                    <!-- R-10 -->
+                    <tr class="hover:bg-white/5">
+                        <td
+                            class="p-3 font-mono text-slate-500 sticky left-0 bg-slate-900/90 z-10 border-r border-white/5">
+                            R-10</td>
+                        <td class="p-3 text-center"><span
+                                class="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">12</span></td>
+                        <td class="p-3 text-slate-400">Legal</td>
+                        <td class="p-3 whitespace-normal"><strong>Incertitudes Réglementaires.</strong><br>Blocage
+                            banque, partenaires frileux.</td>
+                        <td class="p-3 whitespace-normal text-slate-400">Operating Model Export, Paiements classiques.
+                        </td>
+                        <td class="p-3 whitespace-normal text-slate-400">Basculer sur paiement local, Limiter mentions
+                            "Crypto".</td>
+                    </tr>
+
+                    <!-- R-15 -->
+                    <tr class="hover:bg-white/5">
+                        <td
+                            class="p-3 font-mono text-slate-500 sticky left-0 bg-slate-900/90 z-10 border-r border-white/5">
+                            R-15</td>
+                        <td class="p-3 text-center"><span
+                                class="px-1.5 py-0.5 rounded bg-red-500/20 text-red-400 font-bold">16</span></td>
+                        <td class="p-3 text-purple-400">Pedagogie</td>
+                        <td class="p-3 whitespace-normal"><strong>Usage Irresponsable IA.</strong><br>Plagiat, "Vibe
+                            Coding", incapacité à expliquer.</td>
+                        <td class="p-3 whitespace-normal text-slate-400">Règles IA claires, Oral Defense obligatoire.
+                        </td>
+                        <td class="p-3 whitespace-normal text-slate-400">Évaluations orales en live, Sanctions
+                            pédagogiques.</td>
+                    </tr>
+
+                    <!-- R-16 -->
+                    <tr class="hover:bg-white/5">
+                        <td
+                            class="p-3 font-mono text-slate-500 sticky left-0 bg-slate-900/90 z-10 border-r border-white/5">
+                            R-16</td>
+                        <td class="p-3 text-center"><span
+                                class="px-1.5 py-0.5 rounded bg-red-500/20 text-red-400 font-bold">15</span></td>
+                        <td class="p-3 text-orange-400">Security</td>
+                        <td class="p-3 whitespace-normal"><strong>Fuite de Secrets/Clés.</strong><br>API keys ou Private
+                            Keys commitées.</td>
+                        <td class="p-3 whitespace-normal text-slate-400">Scans automatiques (Gitleaks), Politique
+                            secrets.</td>
+                        <td class="p-3 whitespace-normal text-slate-400">Rotation immédiate, Incident report, Formation
+                            express.</td>
+                    </tr>
+
+                    <!-- R-18 -->
+                    <tr class="hover:bg-white/5">
+                        <td
+                            class="p-3 font-mono text-slate-500 sticky left-0 bg-slate-900/90 z-10 border-r border-white/5">
+                            R-18</td>
+                        <td class="p-3 text-center"><span
+                                class="px-1.5 py-0.5 rounded bg-red-500/20 text-red-400 font-bold">16</span></td>
+                        <td class="p-3 text-cyan-400">Scope</td>
+                        <td class="p-3 whitespace-normal"><strong>Programme Trop Dense.</strong><br>Fatigue, baisse
+                            qualité, abandon.</td>
+                        <td class="p-3 whitespace-normal text-slate-400">Modularisation Must/Should/Could, Rythme
+                            réaliste.</td>
+                        <td class="p-3 whitespace-normal text-slate-400">Couper "Could", Étaler sur semaines sup, Option
+                            "Elite".</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="text-[10px] text-slate-500 text-center italic">
+            * Registre complet R-01 à R-25 disponible en version interne. Affichage filtré des risques majeurs.
+        </div>
+    </section>
+
+</div>

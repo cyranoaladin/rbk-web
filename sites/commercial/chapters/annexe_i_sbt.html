@@ -1,0 +1,111 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-indigo-600/20 rounded-full blur-[100px]"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-4 mb-4">
+                <span
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-500 font-mono">I</span>
+                <div class="h-12 w-px bg-white/10"></div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">Spécifications Techniques SBT</h1>
+            </div>
+            <p class="text-sm text-slate-400 max-w-2xl">
+                Certification On-Chain — Standard de Métadonnées (ERC-721/Metaplex) et Protocole de Vérification.
+            </p>
+        </div>
+    </header>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="code-2" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">I.1 Standard de Métadonnées (JSON)</h2>
+        </div>
+
+        <div class="p-1 rounded-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10">
+            <div class="bg-slate-950 rounded-lg overflow-hidden">
+                <div class="flex items-center justify-between px-4 py-2 bg-white/5 border-b border-white/5">
+                    <span class="text-[10px] font-mono text-slate-400">metadata.json</span>
+                    <div class="flex gap-1.5">
+                        <div class="w-2.5 h-2.5 rounded-full bg-red-500/20 border border-red-500/50"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/20 border border-yellow-500/50"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-emerald-500/20 border border-emerald-500/50"></div>
+                    </div>
+                </div>
+                <pre class="p-4 text-[10px] font-mono leading-relaxed overflow-x-auto text-slate-300">
+<span class="text-purple-400">{</span>
+  <span class="text-indigo-400">"name"</span>: <span class="text-emerald-300">"RBK Guardian - Cohort 1"</span>,
+  <span class="text-indigo-400">"symbol"</span>: <span class="text-emerald-300">"RBKC1-G"</span>,
+  <span class="text-indigo-400">"description"</span>: <span class="text-emerald-300">"Certified Solana Smart Contract Engineer."</span>,
+  <span class="text-indigo-400">"image"</span>: <span class="text-emerald-300">"https://arweave.net/..."</span>,
+  <span class="text-indigo-400">"attributes"</span>: <span class="text-purple-400">[</span>
+    <span class="text-blue-400">{</span> <span class="text-indigo-400">"trait_type"</span>: <span class="text-emerald-300">"Track"</span>, <span class="text-indigo-400">"value"</span>: <span class="text-emerald-300">"Solana"</span> <span class="text-blue-400">}</span>,
+    <span class="text-blue-400">{</span> <span class="text-indigo-400">"trait_type"</span>: <span class="text-emerald-300">"Level"</span>, <span class="text-indigo-400">"value"</span>: <span class="text-emerald-300">"Gold"</span> <span class="text-blue-400">}</span>,
+    <span class="text-blue-400">{</span> <span class="text-indigo-400">"trait_type"</span>: <span class="text-emerald-300">"Cohort"</span>, <span class="text-indigo-400">"value"</span>: <span class="text-emerald-300">"Genesis 2025"</span> <span class="text-blue-400">}</span>,
+    <span class="text-blue-400">{</span> <span class="text-indigo-400">"trait_type"</span>: <span class="text-emerald-300">"FinalGrade"</span>, <span class="text-indigo-400">"value"</span>: <span class="text-emerald-300">"92/100"</span> <span class="text-blue-400">}</span>
+  <span class="text-purple-400">]</span>,
+  <span class="text-indigo-400">"properties"</span>: <span class="text-blue-400">{</span>
+    <span class="text-indigo-400">"files"</span>: <span class="text-purple-400">[</span>
+      <span class="text-yellow-400">{</span> <span class="text-indigo-400">"uri"</span>: <span class="text-emerald-300">"https://github.com/student/capstone"</span>, <span class="text-indigo-400">"type"</span>: <span class="text-emerald-300">"text/html"</span> <span class="text-yellow-400">}</span>,
+      <span class="text-yellow-400">{</span> <span class="text-indigo-400">"uri"</span>: <span class="text-emerald-300">"https://rbk.tn/audit/S12345"</span>, <span class="text-indigo-400">"type"</span>: <span class="text-emerald-300">"application/pdf"</span> <span class="text-yellow-400">}</span>
+    <span class="text-purple-400">]</span>
+  <span class="text-blue-400">}</span>
+<span class="text-purple-400">}</span></pre>
+            </div>
+            <div class="px-4 py-2 bg-white/5 border-t border-white/10 text-[9px] text-slate-400 italic">
+                Listing I.1 : Metadata SBT Standard (Metaplex Core / ERC-721 Non-Transferable)
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="shield-check" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">I.2 Processus de Vérification</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+            <!-- Connector Line -->
+            <div
+                class="hidden md:block absolute top-[2.5rem] left-[20%] right-[20%] h-0.5 bg-gradient-to-r from-indigo-500/20 via-white/10 to-indigo-500/20 z-0">
+            </div>
+
+            <div
+                class="relative z-10 p-5 rounded-xl bg-slate-900 border border-white/10 flex flex-col items-center text-center group hover:border-indigo-500/50 transition-colors">
+                <div
+                    class="w-12 h-12 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center mb-4 text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white transition-colors">
+                    <i data-lucide="building-2" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-white font-bold text-sm mb-2">1. Issuer Check</h3>
+                <p class="text-[10px] text-slate-400">Vérifier que l'adresse émettrice est bien le <strong>Multisig RBK
+                        Certifié</strong>.</p>
+            </div>
+
+            <div
+                class="relative z-10 p-5 rounded-xl bg-slate-900 border border-white/10 flex flex-col items-center text-center group hover:border-indigo-500/50 transition-colors">
+                <div
+                    class="w-12 h-12 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center mb-4 text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white transition-colors">
+                    <i data-lucide="wallet" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-white font-bold text-sm mb-2">2. Owner Check</h3>
+                <p class="text-[10px] text-slate-400">L'étudiant prouve qu'il possède le wallet via <strong>Signature de
+                        Message</strong>.</p>
+            </div>
+
+            <div
+                class="relative z-10 p-5 rounded-xl bg-slate-900 border border-white/10 flex flex-col items-center text-center group hover:border-indigo-500/50 transition-colors">
+                <div
+                    class="w-12 h-12 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center mb-4 text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white transition-colors">
+                    <i data-lucide="file-check" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-white font-bold text-sm mb-2">3. Content Check</h3>
+                <p class="text-[10px] text-slate-400">Le lien vers le <strong>Rapport d'Audit</strong> correspond au
+                    hash immuable stocké on-chain.</p>
+            </div>
+        </div>
+    </section>
+
+</div>

@@ -1,0 +1,85 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-slate-100/10 rounded-full blur-[100px]"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-4 mb-4">
+                <span
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-200 to-gray-400 font-mono">X</span>
+                <div class="h-12 w-px bg-white/10"></div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">Traceability Matrix</h1>
+            </div>
+            <p class="text-sm text-slate-400 max-w-2xl">
+                Audit & Compliance — Maîtrise de la donnée contractuelle (SSOT) et contrôles anti-régression automatisés
+                (Release Gate).
+            </p>
+        </div>
+    </header>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="database" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Principes SSOT (Single Source of Truth)</h2>
+        </div>
+
+        <div class="p-4 rounded-lg bg-blue-500/10 border border-blue-500/20 mb-8 flex gap-4 items-start">
+            <i data-lucide="info" class="w-5 h-5 text-blue-400 mt-0.5 shrink-0"></i>
+            <div class="text-[10px] text-blue-200">
+                <p class="mb-2"><strong>Règle Absolue :</strong> Toutes les valeurs contractuelles sont centralisées
+                    dans <code class="bg-blue-900/50 px-1 rounded text-white">tex/params.tex</code>.</p>
+                <p>Toute occurrence en dur (hardcode) dans les fichiers critiques est un <strong
+                        class="text-red-300">NO-GO</strong> bloquant la release.</p>
+            </div>
+        </div>
+
+        <div class="glass-card !p-0 overflow-hidden border-white/10 overflow-x-auto">
+            <table class="w-full text-left text-[10px] whitespace-nowrap">
+                <thead class="bg-white/5 text-slate-500 uppercase font-black divide-x divide-white/5">
+                    <tr>
+                        <th class="p-3 min-w-[150px]">Paramètre</th>
+                        <th class="p-3 font-mono text-cyan-400">Macro SSOT</th>
+                        <th class="p-3">Fichiers Concernés</th>
+                        <th class="p-3 w-40">Contrôle Auto</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-slate-300">
+                    <tr class="hover:bg-white/5">
+                        <td class="p-3 font-bold text-white">ISA Seuil (Brut)</td>
+                        <td class="p-3 font-mono">\ISAThreshold</td>
+                        <td class="p-3 text-slate-400 whitespace-normal">factsheet.tex, offre.tex, finance.tex,
+                            isa.tex...</td>
+                        <td class="p-3 font-mono text-emerald-400">verify_no_hardcode.sh</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-3 font-bold text-white">ISA Taux (%)</td>
+                        <td class="p-3 font-mono">\ISARate</td>
+                        <td class="p-3 text-slate-400 whitespace-normal">factsheet.tex, offre.tex, finance.tex...</td>
+                        <td class="p-3 font-mono text-emerald-400">verify_no_hardcode.sh</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-3 font-bold text-white">ISA Cap (TND)</td>
+                        <td class="p-3 font-mono">\ISACapTND</td>
+                        <td class="p-3 text-slate-400 whitespace-normal">factsheet.tex, ISA contract, finance.tex...
+                        </td>
+                        <td class="p-3 font-mono text-emerald-400">verify_no_hardcode.sh</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-3 font-bold text-white">Durée Max (Mois)</td>
+                        <td class="p-3 font-mono">\ISAMaxPaidMonths</td>
+                        <td class="p-3 text-slate-400 whitespace-normal">factsheet.tex, finance.tex...</td>
+                        <td class="p-3 font-mono text-emerald-400">verify_params.sh</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-3 font-bold text-white">Preuve Exécutable</td>
+                        <td class="p-3 font-mono">-</td>
+                        <td class="p-3 text-slate-400 whitespace-normal">Pipeline CI Global</td>
+                        <td class="p-3 font-mono text-emerald-400">make release-check</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</div>

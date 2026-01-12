@@ -1,0 +1,345 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-blue-600/20 rounded-full blur-[100px]"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-4 mb-4">
+                <span
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-500 font-mono">B</span>
+                <div class="h-12 w-px bg-white/10"></div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">Annexe B. Syllabus Technique & Standards</h1>
+            </div>
+            <p class="text-sm text-slate-400 max-w-2xl">
+                La Bible Technique — Standards de Repositoire, Grilles d'Évaluation, Contrat de Livrable et Syllabus
+                Détaillé (48 semaines).
+            </p>
+        </div>
+    </header>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="folder-tree" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">B.1 Gabarit de Dépôt Obligatoire</h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div
+                class="bg-slate-950 p-5 rounded-xl border border-white/10 overflow-x-auto font-mono text-[10px] text-slate-300 leading-relaxed shadow-inner">
+                <pre class="whitespace-pre">repo-root/
+├── README.md           <span class="text-slate-500"># Présentation, Quickstart</span>
+├── RUNBOOK.md          <span class="text-slate-500"># How-to run/test/debug</span>
+├── PROOFS.md           <span class="text-slate-500"># Ledger hebdo des preuves</span>
+├── THREAT_MODEL.md     <span class="text-slate-500"># Analyse des risques & mitigations</span>
+├── CHANGELOG.md        <span class="text-slate-500"># Historique des versions</span>
+├── LICENSE             <span class="text-slate-500"># MIT / Apache 2.0</span>
+├── .gitignore
+├── adr/                <span class="text-slate-500"># Architecture Decision Records</span>
+│   ├── 0001-template.md
+│   └── index.md
+├── docs/               <span class="text-slate-500"># Documentation additionnelle</span>
+│   ├── architecture/
+│   ├── security/
+│   └── ops/
+├── src/                <span class="text-slate-500"># Code Source</span>
+├── tests/              <span class="text-slate-500"># Tests (Unit, Integ, E2E)</span>
+├── scripts/            <span class="text-slate-500"># Scripts d'automatisation (OBLIGATOIRES)</span>
+│   ├── setup.sh        <span class="text-slate-500"># Installe deps</span>
+│   ├── lint.sh         <span class="text-slate-500"># Format code</span>
+│   ├── test.sh         <span class="text-slate-500"># Run all tests (Exit != 0 if fail)</span>
+│   ├── build.sh        <span class="text-slate-500"># Compile artifacts</span>
+│   ├── dev.sh          <span class="text-slate-500"># Start local env</span>
+│   ├── smoke_test.sh   <span class="text-slate-500"># Healthcheck</span>
+│   └── deploy_devnet.sh
+└── infra/
+    └── setup.sh
+</pre>
+            </div>
+
+            <div class="space-y-6">
+                <!-- KO - Structure -->
+                <div class="p-5 rounded-xl bg-red-500/5 border border-red-500/20">
+                    <h3 class="text-red-400 font-bold text-xs uppercase mb-2 flex items-center gap-2">
+                        <i data-lucide="alert-triangle" class="w-4 h-4"></i> KO-Structure (Éliminatoire)
+                    </h3>
+                    <p class="text-[11px] text-slate-300">
+                        L'absence de <code>PROOFS.md</code>, <code>RUNBOOK.md</code>, <code>THREAT_MODEL.md</code> ou du
+                        dossier <code>adr/</code> est un échec automatique du livrable. <strong
+                            class="text-white">Aucune évaluation technique n'est réalisée.</strong>
+                    </p>
+                </div>
+
+                <!-- KO - Repro -->
+                <div class="p-5 rounded-xl bg-red-500/5 border border-red-500/20">
+                    <h3 class="text-red-400 font-bold text-xs uppercase mb-2 flex items-center gap-2">
+                        <i data-lucide="refresh-cw" class="w-4 h-4"></i> KO-Repro (Éliminatoire)
+                    </h3>
+                    <p class="text-[11px] text-slate-300">
+                        Si la séquence <code>./scripts/setup.sh && ./scripts/test.sh</code> échoue sur la machine de
+                        l'évaluateur (exit code != 0), le projet est <strong class="text-white">rejeté (NO-GO)</strong>.
+                    </p>
+                </div>
+
+                <div class="p-5 rounded-xl bg-blue-500/5 border border-blue-500/20">
+                    <h3 class="text-blue-400 font-bold text-xs uppercase mb-2">Standards de Scripts</h3>
+                    <ul class="space-y-1 text-[10px] text-slate-300 list-disc list-inside">
+                        <li>Exécutables depuis la racine.</li>
+                        <li>Non-interactifs (pas de prompt bloquant).</li>
+                        <li>Support de l'argument <code>--help</code>.</li>
+                        <li>Codes de sortie standards (0 = Succès).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="scale" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">B.4 Qualité & Évaluation (/100)</h2>
+        </div>
+
+        <div class="glass-card !p-0 overflow-hidden border-white/10 mb-8 overflow-x-auto">
+            <table class="w-full text-left text-[10px]">
+                <thead class="bg-white/5 text-slate-500 uppercase font-black divide-x divide-white/5">
+                    <tr>
+                        <th class="p-4 w-32">Critère</th>
+                        <th class="p-4 w-16 text-center">Pts</th>
+                        <th class="p-4 text-center">Attentes (Niveaux)</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-slate-300">
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 font-bold text-white">1. Fonctionnel (Produit)</td>
+                        <td class="p-4 text-center font-mono text-emerald-400">25</td>
+                        <td class="p-4 text-slate-400">
+                            0-10: Cassé. | 11-20: Fragile. | <span class="text-emerald-400 font-bold">21-25: Conforme +
+                                Edge Cases + UI Fluide.</span>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 font-bold text-white">2. Qualité Code & Tests</td>
+                        <td class="p-4 text-center font-mono text-emerald-400">25</td>
+                        <td class="p-4 text-slate-400">
+                            0-10: Illisible/NoTests. | <span class="text-white">KO-Tests si < 10.</span> | <span
+                                        class="text-emerald-400 font-bold">21-25: Unit/Integ solides, Refactor
+                                        propre.</span>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 font-bold text-white">3. Sécurité (Threat Model)</td>
+                        <td class="p-4 text-center font-mono text-emerald-400">20</td>
+                        <td class="p-4 text-slate-400">
+                            0-8: Pas de TM. | <span class="text-white">KO-Secu si < 8.</span> | <span
+                                        class="text-emerald-400 font-bold">16-20: TM Complet + Mitigations
+                                        Prouvées.</span>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 font-bold text-white">4. Ops & Observabilité</td>
+                        <td class="p-4 text-center font-mono text-emerald-400">15</td>
+                        <td class="p-4 text-slate-400">
+                            0-5: Pas de Logs. | 6-11: Runbook incomplet. | <span
+                                class="text-emerald-400 font-bold">12-15: Logs Structurés, Metrics, Playbook.</span>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 font-bold text-white">5. Docs & Repro</td>
+                        <td class="p-4 text-center font-mono text-emerald-400">10</td>
+                        <td class="p-4 text-slate-400">
+                            0-3: Flou. | <span class="text-white">KO-Repro si < 4.</span> | <span
+                                        class="text-emerald-400 font-bold">8-10: Repro en 1 commande.</span>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 font-bold text-white">6. Discipline (Preuves)</td>
+                        <td class="p-4 text-center font-mono text-emerald-400">5</td>
+                        <td class="p-4 text-slate-400">
+                            0-2: PROOFS absent. | <span class="text-emerald-400 font-bold">5: Complet + Tags +
+                                ADR.</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Seuils -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 text-center text-[10px] font-bold uppercase">
+            <div class="p-3 bg-red-500/10 text-red-400 border border-red-500/20 rounded">
+                NO-GO (&lt; 70 ou 1 KO)
+            </div>
+            <div class="p-3 bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 rounded">
+                WARN (70-79 ou 1 Faiblesse)
+            </div>
+            <div class="p-3 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded">
+                GO (&ge; 80 + Zéro KO)
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="file-signature" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">B.6-7 Contrat & Syllabus Opérationnel</h2>
+        </div>
+
+        <div class="p-5 rounded-xl bg-slate-800/50 border border-white/10 mb-8">
+            <h3 class="text-white font-bold text-sm mb-4">Contrat de Livrable Unique (Extraits)</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-[10px] text-slate-400">
+                <ul class="space-y-2 list-disc list-inside">
+                    <li><strong class="text-white">Structure :</strong> <code>PROOFS.md</code> ordonné (PR, Tag, CI,
+                        Démo...).</li>
+                    <li><strong class="text-white">Repro :</strong> Séquence <code>setup && test</code> infaillible.
+                    </li>
+                    <li><strong class="text-white">Tests :</strong> 1 cas nominal + 1 cas d'erreur / feature.</li>
+                </ul>
+                <ul class="space-y-2 list-disc list-inside">
+                    <li><strong class="text-white">Démo :</strong> Vidéo 30-90s User Story + Erreur.</li>
+                    <li><strong class="text-white">Sécurité :</strong> Threat Model à jour + Checklist.</li>
+                    <li><strong class="text-white">Engagement :</strong> Respect des standards dès S01.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Syllabus Genesis -->
+        <h3 class="text-blue-400 font-bold text-xs uppercase mb-3 pl-1">Niveau 1 : Piscine & Fondations (S01-S12)</h3>
+        <div class="glass-card !p-0 overflow-hidden border-white/10 mb-8 overflow-x-auto">
+            <table class="w-full text-left text-[9px] whitespace-nowrap">
+                <thead class="bg-blue-500/10 text-slate-400 uppercase font-bold">
+                    <tr>
+                        <th class="p-2">Sem</th>
+                        <th class="p-2">Objectifs</th>
+                        <th class="p-2">Livrable (Preuve)</th>
+                        <th class="p-2">DoD (Definition of Done)</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-slate-300">
+                    <tr class="hover:bg-white/5">
+                        <td class="p-2 font-mono text-blue-300">S01</td>
+                        <td class="p-2">Linux/CLI, Git Workflow</td>
+                        <td class="p-2">Repo "foundation"</td>
+                        <td class="p-2">CI verte, README exec</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-2 font-mono text-blue-300">S02</td>
+                        <td class="p-2">Rust Bases (Types, Erreurs)</td>
+                        <td class="p-2">CLI Rust v1</td>
+                        <td class="p-2">Zéro panic, Tests &ge; 10</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-2 font-mono text-blue-300">S04</td>
+                        <td class="p-2">Crypto 1 (Hash, Merkle)</td>
+                        <td class="p-2">"crypto-toolkit"</td>
+                        <td class="p-2">Vectors tests, Deterministic</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-2 font-mono text-blue-300">S08</td>
+                        <td class="p-2">API Design (REST, OpenAPI)</td>
+                        <td class="p-2">Micro-API + Spec</td>
+                        <td class="p-2">OpenAPI valid, Err codes</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-2 font-mono text-blue-300">S12</td>
+                        <td class="p-2 border-l-4 border-yellow-500">Intégration E2E (Genesis Check)</td>
+                        <td class="p-2 font-bold text-white">PACK Genesis</td>
+                        <td class="p-2 font-bold text-yellow-400">JURY GO/NO-GO</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Syllabus Bâtisseur -->
+        <h3 class="text-purple-400 font-bold text-xs uppercase mb-3 pl-1">Niveau 2 : Bâtisseur (S13-S28)</h3>
+        <div class="glass-card !p-0 overflow-hidden border-white/10 mb-8 overflow-x-auto">
+            <table class="w-full text-left text-[9px] whitespace-nowrap">
+                <thead class="bg-purple-500/10 text-slate-400 uppercase font-bold">
+                    <tr>
+                        <th class="p-2">Sem</th>
+                        <th class="p-2">Cours (Solana / EVM)</th>
+                        <th class="p-2">Livrable</th>
+                        <th class="p-2">DoD</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-slate-300">
+                    <tr class="hover:bg-white/5">
+                        <td class="p-2 font-mono text-purple-300">S13</td>
+                        <td class="p-2">Modèle Solana / Solidity Bases</td>
+                        <td class="p-2">Repo S13 (Tracké)</td>
+                        <td class="p-2">Tests + README</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-2 font-mono text-purple-300">S17</td>
+                        <td class="p-2">Anchor IDL / Foundry Mastery</td>
+                        <td class="p-2">"Module Pack" v1</td>
+                        <td class="p-2">PRD Final, Tool Gate</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-2 font-mono text-purple-300">S21</td>
+                        <td class="p-2">CPI (Composability) / Architecture</td>
+                        <td class="p-2">Module 2 Clôture</td>
+                        <td class="p-2">ADR #2 + PR</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-2 font-mono text-purple-300">S25</td>
+                        <td class="p-2">Prod Perf / Sec Hardening</td>
+                        <td class="p-2">Module 3 Clôture</td>
+                        <td class="p-2">Repo S25 + Threat Model</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-2 font-mono text-purple-300">S28</td>
+                        <td class="p-2 border-l-4 border-yellow-500">Stabilisation + Docs</td>
+                        <td class="p-2 font-bold text-white">PACK Bâtisseur</td>
+                        <td class="p-2 font-bold text-yellow-400">Release Candidate Tag</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Syllabus Architecte -->
+        <h3 class="text-emerald-400 font-bold text-xs uppercase mb-3 pl-1">Niveau 3 : Architecte (S29-S48)</h3>
+        <div class="glass-card !p-0 overflow-hidden border-white/10 mb-8 overflow-x-auto">
+            <table class="w-full text-left text-[9px] whitespace-nowrap">
+                <thead class="bg-emerald-500/10 text-slate-400 uppercase font-bold">
+                    <tr>
+                        <th class="p-2">Sem</th>
+                        <th class="p-2">Objectifs (Sprint)</th>
+                        <th class="p-2">Livrable</th>
+                        <th class="p-2">DoD</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-slate-300">
+                    <tr class="hover:bg-white/5">
+                        <td class="p-2 font-mono text-emerald-300">S33</td>
+                        <td class="p-2 font-bold">GATE CAPSTONE 1 (Reliability)</td>
+                        <td class="p-2">Spec + Invariants</td>
+                        <td class="p-2">Démo Stable, Tests E2E</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-2 font-mono text-emerald-300">S37</td>
+                        <td class="p-2 font-bold">GATE CAPSTONE 2 (Security)</td>
+                        <td class="p-2">Audit Pack v1</td>
+                        <td class="p-2">Simu Attaques, Mitigations</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-2 font-mono text-emerald-300">S41</td>
+                        <td class="p-2 font-bold">GATE CAPSTONE 3 (Ops/Perf)</td>
+                        <td class="p-2">Ops Playbook v1</td>
+                        <td class="p-2">Incident Simu, Rollback Doc</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-2 font-mono text-emerald-300">S48</td>
+                        <td class="p-2 border-l-4 border-yellow-500">Soutenance & Go-Live</td>
+                        <td class="p-2 font-bold text-white">PACK FINAL</td>
+                        <td class="p-2 font-bold text-yellow-400">Proof Links, GO MARCHÉ</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</div>

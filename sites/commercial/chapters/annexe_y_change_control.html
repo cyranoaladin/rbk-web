@@ -1,0 +1,86 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-purple-600/20 rounded-full blur-[100px]"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-4 mb-4">
+                <span
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500 font-mono">Y</span>
+                <div class="h-12 w-px bg-white/10"></div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">Change Control Protocol</h1>
+            </div>
+            <p class="text-sm text-slate-400 max-w-2xl">
+                Gouvernance — Protocole de modification des paramètres contractuels et sections sensibles.
+            </p>
+        </div>
+    </header>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="git-pull-request" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">Protocole Obligatoire (Release Gate)</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+            <div class="p-4 rounded-lg bg-slate-900 border border-white/10 flex flex-col gap-2 relative">
+                <div class="absolute top-2 right-2 text-slate-600 text-[10px] font-mono">STEP 1</div>
+                <div class="p-2 w-fit rounded bg-blue-500/10 text-blue-400"><i data-lucide="edit-3" class="w-4 h-4"></i>
+                </div>
+                <h3 class="text-white font-bold text-xs">Update SSOT</h3>
+                <p class="text-[9px] text-slate-400">Modifier uniquement <code>tex/params.tex</code> via Macros.</p>
+            </div>
+            <div class="p-4 rounded-lg bg-slate-900 border border-white/10 flex flex-col gap-2 relative">
+                <div class="absolute top-2 right-2 text-slate-600 text-[10px] font-mono">STEP 2</div>
+                <div class="p-2 w-fit rounded bg-purple-500/10 text-purple-400"><i data-lucide="terminal"
+                        class="w-4 h-4"></i></div>
+                <h3 class="text-white font-bold text-xs">Preuve Locale</h3>
+                <p class="text-[9px] text-slate-400">Exécuter <code>make release-check</code> sans erreur.</p>
+            </div>
+            <div class="p-4 rounded-lg bg-slate-900 border border-white/10 flex flex-col gap-2 relative">
+                <div class="absolute top-2 right-2 text-slate-600 text-[10px] font-mono">STEP 3</div>
+                <div class="p-2 w-fit rounded bg-emerald-500/10 text-emerald-400"><i data-lucide="check-circle-2"
+                        class="w-4 h-4"></i></div>
+                <h3 class="text-white font-bold text-xs">Preuve CI</h3>
+                <p class="text-[9px] text-slate-400">Workflow GitHub vert + Artefact PDF généré.</p>
+            </div>
+            <div class="p-4 rounded-lg bg-slate-900 border border-white/10 flex flex-col gap-2 relative">
+                <div class="absolute top-2 right-2 text-slate-600 text-[10px] font-mono">STEP 4</div>
+                <div class="p-2 w-fit rounded bg-amber-500/10 text-amber-400"><i data-lucide="file-signature"
+                        class="w-4 h-4"></i></div>
+                <h3 class="text-white font-bold text-xs">Sign-off</h3>
+                <p class="text-[9px] text-slate-400">Enregistrement dans la table de contrôle.</p>
+            </div>
+        </div>
+
+        <div class="glass-card bg-slate-950 p-5">
+            <h3 class="text-white font-bold text-sm mb-4">Définition des Release Gates</h3>
+            <div class="space-y-3">
+                <div class="flex items-start gap-3">
+                    <span
+                        class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold font-mono text-[10px]">GO</span>
+                    <p class="text-[10px] text-slate-300">
+                        Build OK ; Scripts PASSED ; CI Verte ; Artefact PDF conforme.
+                    </p>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span
+                        class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold font-mono text-[10px]">WARN</span>
+                    <p class="text-[10px] text-slate-300">
+                        Tout OK, mais warnings LaTeX non-bloquants (ex: overfull hbox).
+                    </p>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span
+                        class="px-2 py-0.5 rounded bg-red-500/20 text-red-400 font-bold font-mono text-[10px]">NO-GO</span>
+                    <p class="text-[10px] text-slate-300">
+                        Build KO ; Script Failed ; Hardcode détecté ; Incohérence Brut/Net.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</div>

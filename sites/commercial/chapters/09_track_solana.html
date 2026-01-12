@@ -1,0 +1,242 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-[#14F195]/20 rounded-full blur-[100px]"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-4 mb-4">
+                <span
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#14F195] to-blue-500 font-mono">09</span>
+                <div class="h-12 w-px bg-white/10"></div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">09. Track A : Solana Engineer</h1>
+            </div>
+            <p class="text-sm text-slate-400 max-w-2xl">
+                Rust & Anchor — Devenir un "Guardian" de l'écosystème (S13-S28).
+            </p>
+        </div>
+    </header>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="shield-check" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">9.1 Philosophie : "The Guardian"</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="p-6 rounded-2xl bg-white/5 border border-white/10">
+                <h3 class="text-[#14F195] font-bold text-lg mb-4">L'Approche Adversariale</h3>
+                <p class="text-xs text-slate-300 leading-relaxed mb-4 text-justify">
+                    Un Guardian ne se contente pas de coder une feature. Il pense "adversarial". Il sait comment une
+                    transaction peut échouer, comment un attaquant peut manipuler une instruction, et comment le réseau
+                    réagira sous charge.
+                </p>
+                <div class="flex gap-2">
+                    <span
+                        class="px-2 py-1 bg-[#14F195]/10 text-[#14F195] text-[9px] rounded uppercase font-bold">Safety</span>
+                    <span class="px-2 py-1 bg-blue-500/10 text-blue-400 text-[9px] rounded uppercase font-bold">SVM
+                        Performance</span>
+                    <span
+                        class="px-2 py-1 bg-amber-500/10 text-amber-400 text-[9px] rounded uppercase font-bold">Security</span>
+                </div>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-[#14F195]/5 border border-[#14F195]/20">
+                <h3 class="text-white font-bold text-sm uppercase mb-4">Non Négociable : Le Standard Qualité</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-[#14F195] mt-0.5"></i>
+                        <div class="text-xs text-slate-300">
+                            <strong class="text-white">Tests Systématiques :</strong> Pas de PR sans tests (Unit + E2E).
+                            Coverage > 80%.
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-[#14F195] mt-0.5"></i>
+                        <div class="text-xs text-slate-300">
+                            <strong class="text-white">Reproductibilité :</strong> Builds déterministes (Verifiable
+                            Builds).
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-[#14F195] mt-0.5"></i>
+                        <div class="text-xs text-slate-300">
+                            <strong class="text-white">Audit-Readiness :</strong> Code commenté, Threat Model explicite
+                            dès J1.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="layers" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">9.2 Structure du Track (16 Semaines)</h2>
+        </div>
+
+        <div class="space-y-4">
+            <!-- Module 1 -->
+            <div
+                class="group relative overflow-hidden rounded-xl bg-white/5 border border-white/10 hover:border-[#14F195]/50 transition-all duration-300">
+                <div class="absolute top-0 left-0 w-1 h-full bg-slate-700 group-hover:bg-[#14F195] transition-colors">
+                </div>
+                <div class="p-5 pl-8">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-white font-bold text-sm">Module 1 : Le Modèle Solana & Rust Natif</h3>
+                        <span class="text-[10px] font-mono text-slate-500 bg-black/30 px-2 py-1 rounded">S13-S16</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 mb-3">Comprendre l'Account Model, gérer le Rent, cycle de vie
+                        transaction.</p>
+                    <div class="flex gap-4 text-[10px] text-slate-300 border-t border-white/5 pt-3">
+                        <div><strong class="text-[#14F195]">Lab A :</strong> Messagerie On-chain</div>
+                        <div><strong class="text-[#14F195]">Lab B :</strong> Mini-Escrow</div>
+                        <div><strong class="text-white">Portfolio :</strong> Repo "Raw"</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 2 -->
+            <div
+                class="group relative overflow-hidden rounded-xl bg-white/5 border border-white/10 hover:border-blue-400/50 transition-all duration-300">
+                <div class="absolute top-0 left-0 w-1 h-full bg-slate-700 group-hover:bg-blue-400 transition-colors">
+                </div>
+                <div class="p-5 pl-8">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-white font-bold text-sm">Module 2 : Maîtrise Framework Anchor</h3>
+                        <span class="text-[10px] font-mono text-slate-500 bg-black/30 px-2 py-1 rounded">S17-S20</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 mb-3">Macros de sécurité, Events indexables, PDAs
+                        déterministes.</p>
+                    <div class="flex gap-4 text-[10px] text-slate-300 border-t border-white/5 pt-3">
+                        <div><strong class="text-blue-400">Lab A :</strong> Counter PDA</div>
+                        <div><strong class="text-blue-400">Lab B :</strong> Staking Vault</div>
+                        <div><strong class="text-white">Portfolio :</strong> Program IDL publié</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 3 -->
+            <div
+                class="group relative overflow-hidden rounded-xl bg-white/5 border border-white/10 hover:border-amber-400/50 transition-all duration-300">
+                <div class="absolute top-0 left-0 w-1 h-full bg-slate-700 group-hover:bg-amber-400 transition-colors">
+                </div>
+                <div class="p-5 pl-8">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-white font-bold text-sm">Module 3 : Architecture Avancée & CPI</h3>
+                        <span class="text-[10px] font-mono text-slate-500 bg-black/30 px-2 py-1 rounded">S21-S24</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 mb-3">Cross-Program Invocations, Token Extensions (2022),
+                        Architecture Modulaire.</p>
+                    <div class="flex gap-4 text-[10px] text-slate-300 border-t border-white/5 pt-3">
+                        <div><strong class="text-amber-400">Lab A :</strong> CPI Master/Slave</div>
+                        <div><strong class="text-white">Portfolio :</strong> Diagramme Architecture + Tests Intégration
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 4 -->
+            <div
+                class="group relative overflow-hidden rounded-xl bg-white/5 border border-white/10 hover:border-[#9945FF]/50 transition-all duration-300">
+                <div class="absolute top-0 left-0 w-1 h-full bg-slate-700 group-hover:bg-[#9945FF] transition-colors">
+                </div>
+                <div class="p-5 pl-8">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-white font-bold text-sm">Module 4 : Production Hardening</h3>
+                        <span class="text-[10px] font-mono text-slate-500 bg-black/30 px-2 py-1 rounded">S25-S28</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 mb-3">Optimisation Compute Units (CU), Logs structurés,
+                        Préparation Audit.</p>
+                    <div class="flex gap-4 text-[10px] text-slate-300 border-t border-white/5 pt-3">
+                        <div><strong class="text-[#9945FF]">Projet Final :</strong> Full dApp (AMM/DAO)</div>
+                        <div><strong class="text-white">Portfolio :</strong> Audit Report + CI/CD</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="server-cog" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">9.3 Validator Track (Extension 6 Semaines)</h2>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-black/30 border border-white/10 mb-8">
+            <div class="flex items-start gap-4 mb-4">
+                <div class="p-2 bg-[#14F195]/10 rounded text-[#14F195] font-mono text-xs">SRE</div>
+                <div>
+                    <h3 class="text-white font-bold text-sm uppercase">Objectif : Opérer un Validateur Mainnet</h3>
+                    <p class="text-xs text-slate-400 mt-1">
+                        Pour les diplômés "Bâtisseur" : Uptime > 99.5%, Rotation clés automatisée, Alerting.
+                        Prépare à l'offre Launchpad Nexus.
+                    </p>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-[10px] text-slate-300">
+                <div class="p-3 bg-white/5 rounded border border-white/5">
+                    <strong class="text-white block mb-1">Sem 1-2</strong>
+                    Provision Bare-metal + Ansible.
+                </div>
+                <div class="p-3 bg-white/5 rounded border border-white/5">
+                    <strong class="text-white block mb-1">Sem 3-4</strong>
+                    Sécurité Clés (Multisig) & Vote Mainnet.
+                </div>
+                <div class="p-3 bg-white/5 rounded border border-white/5">
+                    <strong class="text-white block mb-1">Sem 5-6</strong>
+                    Monétisation & Incident Game Day.
+                </div>
+                <div
+                    class="p-3 bg-[#14F195]/10 rounded border border-[#14F195]/20 text-center flex flex-col justify-center">
+                    <strong class="text-[#14F195]">Livrable</strong>
+                    Validator Runbook
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="briefcase" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">9.4 Profil de Sortie : Checklist "Guardian"</h2>
+        </div>
+
+        <div class="glass-card !p-0 overflow-hidden border-white/10">
+            <table class="w-full text-left text-[11px]">
+                <thead class="bg-white/5 text-slate-500 uppercase font-black">
+                    <tr>
+                        <th class="p-4 w-1/3">Artefact</th>
+                        <th class="p-4 w-1/3">Contenu</th>
+                        <th class="p-4">Critère Validation</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-slate-300">
+                    <tr class="hover:bg-[#14F195]/5">
+                        <td class="p-4 font-bold text-white">3 Repos GitHub</td>
+                        <td class="p-4">Code Rust clean, Tests, CI.</td>
+                        <td class="p-4 text-[#14F195]">Green CI Badge.</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 font-bold text-white">Audit Report</td>
+                        <td class="p-4">Analyse d'un protocole tiers.</td>
+                        <td class="p-4">3 failles identifiées + Fixes.</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 font-bold text-white">Demo Live</td>
+                        <td class="p-4">Vidéo Loom (3 min) architecture.</td>
+                        <td class="p-4">Clarté orale & Technique.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</div>

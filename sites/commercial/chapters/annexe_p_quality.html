@@ -1,0 +1,184 @@
+<div class="space-y-14 animate-in fade-in duration-700">
+
+    <header class="relative p-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-amber-600/20 rounded-full blur-[100px]"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-4 mb-4">
+                <span
+                    class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500 font-mono">P</span>
+                <div class="h-12 w-px bg-white/10"></div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">Charte de Qualité & Règles d'Or</h1>
+            </div>
+            <p class="text-sm text-slate-400 max-w-2xl">
+                Code of Conduct — Les valeurs non-négociables de l'Ingénieur RBK. "Tout manquement entraîne une
+                exclusion."
+            </p>
+        </div>
+    </header>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="shield" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">P.1 Les 4 Commandements de l'Ingénieur RBK</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <!-- 1. Broken Windows -->
+            <div
+                class="p-5 rounded-xl border border-red-500/20 bg-red-500/5 relative group hover:border-red-500/40 transition-colors">
+                <div class="absolute top-3 right-3 text-red-500/20 text-4xl font-black font-mono">01</div>
+                <h3 class="text-white font-bold text-sm mb-2 flex items-center gap-2">
+                    <i data-lucide="alert-triangle" class="w-4 h-4 text-red-400"></i> No Broken Windows
+                </h3>
+                <p class="text-[10px] text-slate-300">
+                    Aucun code n'est mergé sur <code>main</code> s'il contient des <strong>warnings de linter</strong>
+                    ou des TODOs non résolus.
+                    <br><span class="text-red-400 italic">"Zero Tolerance for sloppy code."</span>
+                </p>
+            </div>
+
+            <!-- 2. Trust Verify -->
+            <div
+                class="p-5 rounded-xl border border-blue-500/20 bg-blue-500/5 relative group hover:border-blue-500/40 transition-colors">
+                <div class="absolute top-3 right-3 text-blue-500/20 text-4xl font-black font-mono">02</div>
+                <h3 class="text-white font-bold text-sm mb-2 flex items-center gap-2">
+                    <i data-lucide="eye" class="w-4 h-4 text-blue-400"></i> Don't Trust, Verify
+                </h3>
+                <p class="text-[10px] text-slate-300">
+                    Chaque ligne de code générée par IA doit être <strong>auditée</strong>. L'étudiant est responsable
+                    de 100% de son output.
+                </p>
+            </div>
+
+            <!-- 3. Ships -->
+            <div
+                class="p-5 rounded-xl border border-emerald-500/20 bg-emerald-500/5 relative group hover:border-emerald-500/40 transition-colors">
+                <div class="absolute top-3 right-3 text-emerald-500/20 text-4xl font-black font-mono">03</div>
+                <h3 class="text-white font-bold text-sm mb-2 flex items-center gap-2">
+                    <i data-lucide="rocket" class="w-4 h-4 text-emerald-400"></i> Ships or Nothing
+                </h3>
+                <p class="text-[10px] text-slate-300">
+                    Un projet non déployé <strong>n'existe pas</strong>. Le code local ne compte pas. La prod est la
+                    seule vérité.
+                </p>
+            </div>
+
+            <!-- 4. Leave No One -->
+            <div
+                class="p-5 rounded-xl border border-amber-500/20 bg-amber-500/5 relative group hover:border-amber-500/40 transition-colors">
+                <div class="absolute top-3 right-3 text-amber-500/20 text-4xl font-black font-mono">04</div>
+                <h3 class="text-white font-bold text-sm mb-2 flex items-center gap-2">
+                    <i data-lucide="users" class="w-4 h-4 text-amber-400"></i> Leave No One Behind
+                </h3>
+                <p class="text-[10px] text-slate-300">
+                    Le savoir ne vaut que s'il est <strong>partagé</strong>. Aider ses pairs est un devoir, pas une
+                    option.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="gavel" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">P.2 Matrice de Conformité (Sanctions)</h2>
+        </div>
+
+        <div class="glass-card !p-0 overflow-hidden border-white/10 mb-8 overflow-x-auto">
+            <table class="w-full text-left text-[10px] whitespace-nowrap">
+                <thead class="bg-white/5 text-slate-500 uppercase font-black divide-x divide-white/5">
+                    <tr>
+                        <th class="p-4 w-32">Infraction</th>
+                        <th class="p-4">Exemple Concret</th>
+                        <th class="p-4 w-32 text-right">Sanction</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-slate-300">
+                    <tr class="hover:bg-red-500/5">
+                        <td class="p-4 font-bold text-white">Plagiat</td>
+                        <td class="p-4 text-slate-400">Copie repo externe sans crédit / Triche IA flagrante.</td>
+                        <td class="p-4 text-right font-bold text-red-500 uppercase">Exclusion Immédiate</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 font-bold text-white">Négligence Sécurité</td>
+                        <td class="p-4 text-slate-400">Commit de Private Key ou Secrets .env sur GitHub.</td>
+                        <td class="p-4 text-right font-bold text-amber-400 uppercase">Blâme + Reset Projet</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-4 font-bold text-white">Ghosting</td>
+                        <td class="p-4 text-slate-400">Absence non justifiée > 48h aux Standups.</td>
+                        <td class="p-4 text-right font-bold text-yellow-400 uppercase">Avertissement</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-white/5 text-white border border-white/10">
+                <i data-lucide="git-commit" class="w-5 h-5"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">P.3 Processus de Validation Qualité</h2>
+        </div>
+
+        <div class="p-6 rounded-xl bg-slate-900 border border-white/10 overflow-hidden relative">
+            <div
+                class="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left relative z-10">
+
+                <div class="flex flex-col items-center gap-2 group">
+                    <div
+                        class="w-10 h-10 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center text-slate-500 font-bold group-hover:bg-white group-hover:text-slate-900 transition-colors">
+                        1</div>
+                    <span class="text-[9px] font-bold text-slate-300 uppercase">Code Complete</span>
+                </div>
+
+                <div class="h-px w-8 bg-white/10 hidden md:block"></div>
+
+                <div class="flex flex-col items-center gap-2 group">
+                    <div
+                        class="w-10 h-10 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center text-slate-500 font-bold group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                        <i data-lucide="align-left" class="w-4 h-4"></i>
+                    </div>
+                    <span class="text-[9px] font-bold text-blue-400 uppercase">Linter / Format</span>
+                </div>
+
+                <div class="h-px w-8 bg-white/10 hidden md:block"></div>
+
+                <div class="flex flex-col items-center gap-2 group">
+                    <div
+                        class="w-10 h-10 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center text-slate-500 font-bold group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+                        <i data-lucide="test-tube-2" class="w-4 h-4"></i>
+                    </div>
+                    <span class="text-[9px] font-bold text-emerald-400 uppercase">Auto Tests</span>
+                </div>
+
+                <div class="h-px w-8 bg-white/10 hidden md:block"></div>
+
+                <div class="flex flex-col items-center gap-2 group">
+                    <div
+                        class="w-10 h-10 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center text-slate-500 font-bold group-hover:bg-purple-500 group-hover:text-white transition-colors">
+                        <i data-lucide="user-check" class="w-4 h-4"></i>
+                    </div>
+                    <span class="text-[9px] font-bold text-purple-400 uppercase">Audit IA & Humain</span>
+                </div>
+
+                <div class="h-px w-8 bg-white/10 hidden md:block"></div>
+
+                <div class="flex flex-col items-center gap-2 group">
+                    <div
+                        class="w-10 h-10 rounded-full bg-slate-800 border-2 border-dashed border-white/20 flex items-center justify-center text-slate-500 font-bold group-hover:bg-white group-hover:text-black group-hover:border-solid transition-all">
+                        <i data-lucide="git-merge" class="w-4 h-4"></i>
+                    </div>
+                    <span class="text-[9px] font-bold text-white uppercase">Merge</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</div>
