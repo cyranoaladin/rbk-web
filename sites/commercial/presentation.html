@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RBK 3.0 - Investor Deck</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        slate: { 950: '#020617' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #020617;
+            color: #e2e8f0;
+        }
+
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .slide {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease-out;
+        }
+
+        .slide.active {
+            display: flex;
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="h-screen w-screen overflow-hidden bg-slate-950 relative text-slate-200">
+
+    <!-- Background Ambience -->
+    <div class="fixed inset-0 pointer-events-none">
+        <div class="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-indigo-900/20 blur-[150px]"></div>
+        <div class="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] rounded-full bg-emerald-900/10 blur-[150px]">
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <button id="prevBtn"
+        class="fixed left-6 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all text-slate-400 hover:text-white"><i
+            data-lucide="chevron-left"></i></button>
+    <button id="nextBtn"
+        class="fixed right-6 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all text-slate-400 hover:text-white"><i
+            data-lucide="chevron-right"></i></button>
+
+    <!-- Main Viewport -->
+    <div class="w-full h-full flex items-center justify-center p-8">
+        <div
+            class="w-full max-w-[1600px] aspect-video glass-panel rounded-2xl shadow-2xl relative overflow-hidden flex flex-col">
+
+            <!-- Header -->
+            <div class="absolute top-6 left-8 right-8 z-30 flex justify-between items-center opacity-80">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-emerald-500 rounded flex items-center justify-center font-bold text-white text-xs">
+                        R3</div>
+                    <span class="font-mono text-xs tracking-[0.2em] text-slate-400">INVESTOR DECK</span>
+                </div>
+                <div class="text-xs font-mono text-slate-500">CONFIDENTIAL</div>
+            </div>
+
+            <!-- Slides Container -->
+            <div id="slides-container" class="flex-1 relative">
+
+                <!-- SLIDE 1: Title -->
+                <div class="slide active w-full h-full flex-col justify-center items-center text-center p-20"
+                    data-slide="1">
+                    <div
+                        class="mb-6 px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-mono tracking-widest uppercase">
+                        Strategic Pivot 2026
+                    </div>
+                    <h1 class="text-7xl md:text-9xl font-black text-white mb-8 tracking-tighter">
+                        RBK <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-emerald-400">3.0</span>
+                    </h1>
+                    <p class="text-3xl text-slate-400 font-serif italic mb-12">The Sovereign Builders</p>
+                    <div class="max-w-2xl text-lg text-slate-400 border-t border-white/10 pt-8">
+                        De l'École de Code au <strong class="text-white">Venture Studio d'Élite</strong>.<br>
+                        Rentabilité immédiate & Excellence technique.
+                    </div>
+                </div>
+
+                <!-- SLIDE 2: Context -->
+                <div class="slide w-full h-full flex-col p-20 justify-center" data-slide="2">
+                    <h2 class="text-5xl font-bold text-white mb-16 flex items-center gap-6">
+                        <span class="text-indigo-500 opacity-50">01.</span> Le Contexte
+                    </h2>
+                    <div class="grid grid-cols-2 gap-16">
+                        <div class="p-8 rounded-2xl border border-rose-500/20 bg-rose-500/5">
+                            <i data-lucide="triangle-alert" class="w-12 h-12 text-rose-500 mb-6"></i>
+                            <h3 class="text-2xl font-bold text-white mb-4">La Menace IA</h3>
+                            <p class="text-slate-400 leading-relaxed">
+                                L'IA (Cursor, Devin) a détruit la valeur du développeur junior "exécutant".
+                                Le modèle "Bootcamp classique" forme désormais des chômeurs augmentés.
+                                <br><br>
+                                <strong class="text-rose-400">Le "Vibe Coding" remplace le codeur moyen.</strong>
+                            </p>
+                        </div>
+                        <div class="p-8 rounded-2xl border border-emerald-500/20 bg-emerald-500/5">
+                            <i data-lucide="zap" class="w-12 h-12 text-emerald-500 mb-6"></i>
+                            <h3 class="text-2xl font-bold text-white mb-4">L'Opportunité Web3</h3>
+                            <p class="text-slate-400 leading-relaxed">
+                                Pénurie critique d'ingénieurs capables de construire des systèmes financiers <em
+                                    class="text-white">Trustless</em>.
+                                Le marché paie une prime massive pour la <strong>Sécurité</strong> et
+                                l'<strong>Architecture</strong>.
+                                <br><br>
+                                <strong class="text-emerald-400">Besoin de "Sovereign Builders".</strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 3: Description -->
+                <div class="slide w-full h-full flex-col p-20 justify-center" data-slide="3">
+                    <h2 class="text-5xl font-bold text-white mb-16 flex items-center gap-6">
+                        <span class="text-indigo-500 opacity-50">02.</span> Vision RBK 3.0
+                    </h2>
+                    <div class="grid grid-cols-3 gap-8">
+                        <div class="glass-panel p-8 rounded-2xl hover:border-indigo-500/50 transition-colors">
+                            <div
+                                class="h-12 w-12 bg-indigo-500/20 rounded-lg flex items-center justify-center text-indigo-400 mb-6">
+                                <i data-lucide="medal"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Elite Only</h3>
+                            <p class="text-sm text-slate-400">Fin du volume. Focus sur le Top 5% des talents. Sélection
+                                drastique (Cognitif + Résilience).</p>
+                        </div>
+                        <div class="glass-panel p-8 rounded-2xl hover:border-purple-500/50 transition-colors">
+                            <div
+                                class="h-12 w-12 bg-purple-500/20 rounded-lg flex items-center justify-center text-purple-400 mb-6">
+                                <i data-lucide="cpu"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Cyborg Native</h3>
+                            <p class="text-sm text-slate-400">Intégration native de l'IA. Un étudiant RBK 3.0 produit
+                                comme 5 seniors classiques.</p>
+                        </div>
+                        <div class="glass-panel p-8 rounded-2xl hover:border-emerald-500/50 transition-colors">
+                            <div
+                                class="h-12 w-12 bg-emerald-500/20 rounded-lg flex items-center justify-center text-emerald-400 mb-6">
+                                <i data-lucide="rocket"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Venture Studio</h3>
+                            <p class="text-sm text-slate-400">On ne sort pas seulement avec un diplôme, mais avec une
+                                Startup et du Revenu.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 4: Methodology -->
+                <div class="slide w-full h-full flex-col p-20 justify-center relative" data-slide="4">
+                    <h2 class="text-5xl font-bold text-white mb-20 flex items-center gap-6">
+                        <span class="text-indigo-500 opacity-50">03.</span> Le Méthode Cyborg
+                    </h2>
+
+                    <div
+                        class="absolute top-[40%] left-0 w-full h-0.5 bg-gradient-to-r from-slate-800 via-indigo-900 to-slate-800 z-0">
+                    </div>
+
+                    <div class="grid grid-cols-4 gap-8 relative z-10">
+                        <div class="text-center group">
+                            <div
+                                class="w-24 h-24 mx-auto bg-slate-900 border-4 border-slate-700 rounded-full flex items-center justify-center text-2xl font-bold text-slate-500 mb-6 group-hover:border-white transition-colors">
+                                1</div>
+                            <h3 class="text-white font-bold mb-2">Genesis Pool</h3>
+                            <p class="text-xs text-slate-500 uppercase tracking-widest mb-2">4 Semaines</p>
+                            <p class="text-sm text-slate-400 px-4">Sélection "No-AI". Test du brut.</p>
+                        </div>
+                        <div class="text-center group">
+                            <div
+                                class="w-24 h-24 mx-auto bg-slate-900 border-4 border-indigo-900 rounded-full flex items-center justify-center text-2xl font-bold text-indigo-500 mb-6 group-hover:border-indigo-500 transition-colors">
+                                2</div>
+                            <h3 class="text-white font-bold mb-2">Explorer</h3>
+                            <p class="text-xs text-indigo-500/70 uppercase tracking-widest mb-2">12 Semaines</p>
+                            <p class="text-sm text-slate-400 px-4">Fondations Systèmes & Outils.</p>
+                        </div>
+                        <div class="text-center group">
+                            <div
+                                class="w-24 h-24 mx-auto bg-slate-900 border-4 border-indigo-600 rounded-full flex items-center justify-center text-2xl font-bold text-indigo-400 mb-6 group-hover:shadow-[0_0_20px_rgba(99,102,241,0.5)] transition-all">
+                                3</div>
+                            <h3 class="text-white font-bold mb-2">Builder</h3>
+                            <p class="text-xs text-indigo-400 uppercase tracking-widest mb-2">16 Semaines</p>
+                            <p class="text-sm text-slate-400 px-4">Spécialisation & Shipping.</p>
+                        </div>
+                        <div class="text-center group">
+                            <div
+                                class="w-24 h-24 mx-auto bg-slate-900 border-4 border-emerald-500 rounded-full flex items-center justify-center text-2xl font-bold text-emerald-400 mb-6 group-hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all">
+                                4</div>
+                            <h3 class="text-white font-bold mb-2">Architecte</h3>
+                            <p class="text-xs text-emerald-400 uppercase tracking-widest mb-2">16 Semaines</p>
+                            <p class="text-sm text-slate-400 px-4">Audit, Sécurité & Launch.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 5: Tracks -->
+                <div class="slide w-full h-full flex-col p-20 justify-center" data-slide="5">
+                    <h2 class="text-5xl font-bold text-white mb-16 flex items-center gap-6">
+                        <span class="text-indigo-500 opacity-50">04.</span> Dual Track
+                    </h2>
+                    <div class="grid grid-cols-2 gap-12 h-[500px]">
+                        <div class="relative rounded-2xl overflow-hidden group border border-amber-500/20">
+                            <div class="absolute inset-0 bg-gradient-to-br from-amber-950/50 to-slate-950 z-0"></div>
+                            <div class="absolute inset-0 p-10 z-10 flex flex-col">
+                                <i data-lucide="zap" class="w-16 h-16 text-amber-500 mb-6"></i>
+                                <h3 class="text-4xl font-black text-white mb-2">SOLANA</h3>
+                                <p class="text-amber-500 font-mono tracking-wider mb-8">RUST & PERFORMANCE</p>
+                                <ul class="space-y-4 text-slate-300 text-lg">
+                                    <li class="flex gap-3"><span class="text-amber-500">➜</span> Gestion Mémoire Bas
+                                        Niveau</li>
+                                    <li class="flex gap-3"><span class="text-amber-500">➜</span> Anchor Framework</li>
+                                    <li class="flex gap-3"><span class="text-amber-500">➜</span> High-Frequency DeFi
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="relative rounded-2xl overflow-hidden group border border-blue-500/20">
+                            <div class="absolute inset-0 bg-gradient-to-br from-blue-950/50 to-slate-950 z-0"></div>
+                            <div class="absolute inset-0 p-10 z-10 flex flex-col">
+                                <i data-lucide="box" class="w-16 h-16 text-blue-500 mb-6"></i>
+                                <h3 class="text-4xl font-black text-white mb-2">EVM</h3>
+                                <p class="text-blue-500 font-mono tracking-wider mb-8">SOLIDITY & INFRA</p>
+                                <ul class="space-y-4 text-slate-300 text-lg">
+                                    <li class="flex gap-3"><span class="text-blue-500">➜</span> Architecture "Blue Chip"
+                                    </li>
+                                    <li class="flex gap-3"><span class="text-blue-500">➜</span> Assembly / Yul</li>
+                                    <li class="flex gap-3"><span class="text-blue-500">➜</span> Layer 2 Scaling</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 6: Security Labs -->
+                <div class="slide w-full h-full flex-col p-20 justify-center" data-slide="6">
+                    <h2 class="text-5xl font-bold text-white mb-16 flex items-center gap-6">
+                        <span class="text-indigo-500 opacity-50">05.</span> Security Labs
+                    </h2>
+                    <div class="flex gap-16 h-full items-center">
+                        <div class="flex-1 space-y-8">
+                            <div class="flex items-center gap-4 text-rose-500">
+                                <i data-lucide="shield-alert" class="w-12 h-12"></i>
+                                <h3 class="text-4xl font-bold">Wargames Obligatoires</h3>
+                            </div>
+                            <p class="text-xl text-slate-300 leading-relaxed">
+                                On ne forme pas des développeurs qui "connaissent" la sécurité. On forme des auditeurs
+                                qui savent <strong class="text-white">attaquer</strong>.
+                            </p>
+                            <div class="p-6 bg-rose-950/20 border-l-4 border-rose-500 rounded-r-xl">
+                                <ol class="space-y-4 text-lg text-slate-300 list-decimal pl-6">
+                                    <li>Analyser 10 hacks historiques (Re-entrancy, Oracle manipulation...)</li>
+                                    <li>Écrire l'exploit (White Hat)</li>
+                                    <li>Patcher la vulnérabilité</li>
+                                    <li><strong class="text-rose-400">Prouver</strong> via Rapport d'Audit</li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div
+                            class="flex-1 h-[400px] bg-slate-900 rounded-xl border border-white/10 p-4 font-mono text-xs text-rose-300 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-rose-500/5 z-0"></div>
+                            <pre class="relative z-10 p-4">
+contract VulnerableBank {
+    mapping(address => uint) public balances;
+
+    function withdraw() public {
+        uint bal = balances[msg.sender];
+        require(bal > 0);
+        
+        // VULNERABILITY: Interaction before Effect
+        (bool sent, ) = msg.sender.call{value: bal}("");
+        require(sent, "Failed");
+
+        balances[msg.sender] = 0;
+    }
+}
+// <span class="animate-pulse bg-rose-500 text-white px-1"> CRITICAL: RE-ENTRANCY DETECTED </span>
+                             </pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 7: Venture Engine -->
+                <div class="slide w-full h-full flex-col p-20 justify-center" data-slide="7">
+                    <h2 class="text-5xl font-bold text-white mb-16 flex items-center gap-6">
+                        <span class="text-indigo-500 opacity-50">06.</span> Usine à Startups
+                    </h2>
+                    <div class="grid grid-cols-3 gap-8">
+                        <div class="p-8 border border-fuchsia-500/30 bg-fuchsia-500/5 rounded-2xl">
+                            <i data-lucide="users-round" class="w-12 h-12 text-fuchsia-400 mb-6"></i>
+                            <h3 class="text-2xl font-bold text-white mb-4">Binôme Fondateur</h3>
+                            <p class="text-slate-400">
+                                Association systématique :<br>
+                                <strong class="text-white">Tech Lead</strong> (Track A/B)<br>
+                                + <strong class="text-white">Product Builder</strong> (Track C)
+                            </p>
+                        </div>
+                        <div class="p-8 border border-fuchsia-500/30 bg-fuchsia-500/5 rounded-2xl">
+                            <i data-lucide="pie-chart" class="w-12 h-12 text-fuchsia-400 mb-6"></i>
+                            <h3 class="text-2xl font-bold text-white mb-4">Tokenomics</h3>
+                            <p class="text-slate-400">
+                                Design économique du token, gouvernance et capture de valeur on-chain dès le jour 1.
+                            </p>
+                        </div>
+                        <div class="p-8 border border-fuchsia-500/30 bg-fuchsia-500/5 rounded-2xl">
+                            <i data-lucide="gem" class="w-12 h-12 text-fuchsia-400 mb-6"></i>
+                            <h3 class="text-2xl font-bold text-white mb-4">SaaS Web3</h3>
+                            <p class="text-slate-400">
+                                Livraison d'un MVP fonctionnel audité. Deal-flow propriétaire pour le Launchpad Nexus.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 8: Pricing Ladder -->
+                <div class="slide w-full h-full flex-col p-20 justify-center" data-slide="8">
+                    <h2 class="text-5xl font-bold text-white mb-16 flex items-center gap-6">
+                        <span class="text-indigo-500 opacity-50">07.</span> Structure Tarifaire (Détail)
+                    </h2>
+
+                    <div class="flex items-end justify-center gap-4 h-[500px] max-w-5xl mx-auto">
+                        <!-- Step 1 -->
+                        <div
+                            class="w-1/3 h-[40%] bg-slate-800 rounded-t-xl border border-indigo-500/30 flex flex-col justify-end p-6 hover:bg-slate-800/80 transition-cell relative group">
+                            <div class="absolute top-[-50px] w-full text-center text-indigo-400 font-bold mb-2">GENESIS
+                            </div>
+                            <div class="text-3xl font-bold text-white mb-1">25%</div>
+                            <div class="text-xl font-mono text-emerald-400 mb-2">3 975 TND</div>
+                            <p class="text-xs text-slate-400">Paiement Initial (Cash)</p>
+                            <p class="text-xs text-slate-500 mt-2">4 Semaines</p>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div
+                            class="w-1/3 h-[70%] bg-indigo-900/20 rounded-t-xl border border-indigo-500/50 flex flex-col justify-end p-6 hover:bg-indigo-900/30 transition-cell relative group">
+                            <div class="absolute top-[-50px] w-full text-center text-indigo-300 font-bold mb-2">EXPLORER
+                            </div>
+                            <div class="text-3xl font-bold text-white mb-1">50%</div>
+                            <div class="text-xl font-mono text-emerald-400 mb-2">7 950 TND</div>
+                            <p class="text-xs text-slate-400">6 Mensualités de 1 325 TND</p>
+                            <p class="text-xs text-slate-500 mt-2">12 Semaines</p>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div
+                            class="w-1/3 h-[100%] bg-indigo-600/20 rounded-t-xl border-t-4 border-indigo-500 flex flex-col justify-end p-6 hover:bg-indigo-600/30 transition-cell relative shadow-[0_0_50px_rgba(99,102,241,0.2)]">
+                            <div class="absolute top-[-50px] w-full text-center text-white font-black mb-2 text-xl">
+                                TRACKS</div>
+                            <div class="text-5xl font-black text-white mb-1">25%</div>
+                            <div class="text-2xl font-mono text-emerald-400 mb-2">3 975 TND</div>
+                            <p class="text-sm text-indigo-200">Solde (Fin de parcours)</p>
+                            <p class="text-xs text-indigo-300 mt-4">32 Semaines</p>
+                            <div class="mt-8 pt-6 border-t border-indigo-500/30">
+                                <div class="text-3xl font-black text-white">15 900 TND</div>
+                                <div class="text-xs text-indigo-300 uppercase tracking-widest mt-1">Total Formation
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 9: The Package -->
+                <div class="slide w-full h-full flex-col p-20 justify-center" data-slide="9">
+                    <h2 class="text-5xl font-bold text-white mb-12 flex items-center gap-6">
+                        <span class="text-indigo-500 opacity-50">08.</span> Le Pack RBK 3.0
+                    </h2>
+
+                    <div class="glass-panel w-full max-w-5xl mx-auto overflow-hidden rounded-2xl">
+                        <table class="w-full text-left">
+                            <thead class="bg-slate-800 text-slate-400 uppercase font-bold text-sm">
+                                <tr>
+                                    <th class="p-6">Service</th>
+                                    <th class="p-6">Standard</th>
+                                    <th class="p-6 text-center">Inclus ?</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-white/5 text-slate-300 text-lg">
+                                <tr>
+                                    <td class="p-6 font-bold text-white">Formation 48 semaines (1800h+)</td>
+                                    <td class="p-6">Intensif 6j/7</td>
+                                    <td class="p-6 text-center text-emerald-400 font-bold"><i data-lucide="check"
+                                            class="inline"></i></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-6 font-bold text-white">Mentorat Expert</td>
+                                    <td class="p-6">Code Review Hebdo</td>
+                                    <td class="p-6 text-center text-emerald-400 font-bold"><i data-lucide="check"
+                                            class="inline"></i></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-6 font-bold text-white">Certification SBT On-Chain</td>
+                                    <td class="p-6">Vérifiable à vie</td>
+                                    <td class="p-6 text-center text-emerald-400 font-bold"><i data-lucide="check"
+                                            class="inline"></i></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-6 font-bold text-slate-500">Hébergement (Piscine)</td>
+                                    <td class="p-6 text-slate-500">Logistique</td>
+                                    <td class="p-6 text-center text-slate-500 font-bold">NON (Option)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- SLIDE 10: Nexus Launchpad -->
+                <div class="slide w-full h-full flex-col p-20 justify-center" data-slide="10">
+                    <div class="flex gap-16 items-center">
+                        <div class="w-1/2">
+                            <h2 class="text-5xl font-bold text-white mb-8 flex items-center gap-6">
+                                <span class="text-indigo-500 opacity-50">09.</span> Nexus Launchpad
+                            </h2>
+                            <p class="text-2xl text-slate-300 mb-12">
+                                L'option pour ceux qui veulent entreprendre.<br>
+                                Un accélérateur intégré post-graduation.
+                            </p>
+                            <ul class="space-y-6">
+                                <li class="flex items-center gap-4 text-xl text-white">
+                                    <div class="p-3 bg-emerald-500/20 rounded-lg text-emerald-400"><i
+                                            data-lucide="rocket"></i></div>
+                                    <span>Incubation Projet (3 mois)</span>
+                                </li>
+                                <li class="flex items-center gap-4 text-xl text-white">
+                                    <div class="p-3 bg-emerald-500/20 rounded-lg text-emerald-400"><i
+                                            data-lucide="landmark"></i></div>
+                                    <span>Connexions VC & Business Angels</span>
+                                </li>
+                                <li class="flex items-center gap-4 text-xl text-white">
+                                    <div class="p-3 bg-emerald-500/20 rounded-lg text-emerald-400"><i
+                                            data-lucide="gavel"></i></div>
+                                    <span>Support Juridique & Structure</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="w-1/2">
+                            <div
+                                class="bg-gradient-to-br from-slate-900 to-indigo-950 p-10 rounded-3xl border border-indigo-500/50 shadow-2xl relative overflow-hidden">
+                                <div
+                                    class="absolute top-[-50px] right-[-50px] w-48 h-48 bg-indigo-500/30 rounded-full blur-[80px]">
+                                </div>
+                                <h3 class="text-xl font-mono text-indigo-400 mb-2">PRICING</h3>
+                                <div class="text-6xl font-black text-white mb-6">3 300 <span
+                                        class="text-2xl text-slate-400 font-normal">TND</span></div>
+                                <div class="h-px bg-white/10 w-full mb-6"></div>
+                                <div class="flex items-center gap-4 mb-2">
+                                    <span class="text-4xl font-bold text-emerald-400">+ 30%</span>
+                                    <span class="text-xl text-slate-300">Revenue Share</span>
+                                </div>
+                                <p class="text-sm text-slate-500">Sur les revenus futurs de la startup incubée.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 11: Business Model -->
+                <div class="slide w-full h-full flex-col p-20 justify-center" data-slide="11">
+                    <h2 class="text-5xl font-bold text-emerald-400 mb-16 flex items-center gap-6">
+                        <span class="text-white opacity-50">10.</span> Pivot "Cash-First"
+                    </h2>
+                    <div class="grid grid-cols-2 gap-16 items-center">
+                        <div class="space-y-8">
+                            <div class="p-6 rounded-2xl bg-white/5 border-l-4 border-slate-500 opacity-50">
+                                <h3 class="text-xl font-bold text-slate-400 line-through mb-2">Ancien Modèle (100% ISA)
+                                </h3>
+                                <p class="text-slate-500">Risque trésorerie maximal. ROI à 24 mois. Non-bancable.</p>
+                            </div>
+                            <div class="flex justify-center"><i data-lucide="arrow-down"
+                                    class="w-8 h-8 text-emerald-500 animate-bounce"></i></div>
+                            <div
+                                class="p-8 rounded-2xl bg-emerald-900/10 border border-emerald-500/50 shadow-[0_0_30px_rgba(16,185,129,0.1)]">
+                                <h3 class="text-3xl font-black text-white mb-4">Modèle Premium</h3>
+                                <p class="text-lg text-emerald-200 mb-6">Rentabilité immédiate & Trésorerie positive
+                                    J+1.</p>
+                                <ul class="space-y-3">
+                                    <li class="flex items-center gap-3 text-white"><span
+                                            class="w-2 h-2 bg-emerald-500 rounded-full"></span> <strong>85%</strong>
+                                        Paiement Cash (Bancaire/Perso)</li>
+                                    <li class="flex items-center gap-3 text-white"><span
+                                            class="w-2 h-2 bg-blue-500 rounded-full"></span> <strong>10%</strong> B2B /
+                                        Corporate</li>
+                                    <li class="flex items-center gap-3 text-white"><span
+                                            class="w-2 h-2 bg-purple-500 rounded-full"></span> <strong>5%</strong>
+                                        Excellence ISA (Top Talents)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="h-[400px] flex items-center justify-center">
+                            <!-- Simple CSS Pie Chart -->
+                            <div class="w-80 h-80 rounded-full relative"
+                                style="background: conic-gradient(#10b981 0% 85%, #3b82f6 85% 95%, #a855f7 95% 100%); box-shadow: 0 0 50px rgba(16,185,129,0.2);">
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div
+                                        class="w-48 h-48 bg-slate-950 rounded-full flex flex-col items-center justify-center z-10">
+                                        <span class="text-4xl font-black text-white">MIX</span>
+                                        <span class="text-xs text-slate-500">REVENUE</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 12: Unit Economics -->
+                <div class="slide w-full h-full flex-col p-20 justify-center" data-slide="12">
+                    <h2 class="text-5xl font-bold text-white mb-16 flex items-center gap-6">
+                        <span class="text-indigo-500 opacity-50">11.</span> Unit Economics
+                    </h2>
+                    <div class="flex gap-8 justify-center">
+                        <!-- CAC -->
+                        <div class="w-64 p-8 rounded-2xl bg-white/5 border border-white/10 text-center">
+                            <div class="text-slate-400 text-sm uppercase font-bold mb-4">Coût Acquisition (CAC)</div>
+                            <div class="text-4xl font-black text-rose-400 mb-2">800</div>
+                            <div class="text-xs text-slate-500">TND / étudiant</div>
+                        </div>
+
+                        <!-- LTV -->
+                        <div
+                            class="w-80 p-8 rounded-2xl bg-emerald-900/10 border border-emerald-500/50 text-center transform scale-110 shadow-2xl">
+                            <div class="text-emerald-300 text-sm uppercase font-bold mb-4">Valeur Vie (LTV)</div>
+                            <div class="text-5xl font-black text-white mb-2">15.9k</div>
+                            <div class="text-xs text-emerald-400">TND / étudiant</div>
+                        </div>
+
+                        <!-- MARGIN -->
+                        <div class="w-64 p-8 rounded-2xl bg-white/5 border border-white/10 text-center">
+                            <div class="text-slate-400 text-sm uppercase font-bold mb-4">Marge Nette</div>
+                            <div class="text-4xl font-black text-blue-400 mb-2">~25%</div>
+                            <div class="text-xs text-slate-500">Cible</div>
+                        </div>
+                    </div>
+                    <p class="text-center mt-16 text-slate-400 max-w-2xl mx-auto">
+                        Le business model est sain. Le CAC est maîtrisé grâce à la marque forte et le LTV est garanti
+                        par le paiement cash majoritaire.
+                    </p>
+                </div>
+
+
+                <!-- SLIDE 13: Cost Structure (Deep Dive) -->
+                <div class="slide w-full h-full flex-col p-10 justify-center" data-slide="13">
+                    <h2 class="text-4xl font-bold text-white mb-8 flex items-center gap-4">
+                        <span class="text-indigo-500 opacity-50">12.</span> Détail Facturation Nexus
+                    </h2>
+
+                    <div class="grid grid-cols-4 gap-4 h-[60%] mb-8">
+                        <!-- COL 1: MANAGEMENT FEE -->
+                        <div
+                            class="bg-indigo-950/20 border border-indigo-500/30 p-6 rounded-2xl relative overflow-hidden group hover:bg-indigo-950/40 transition-all">
+                            <div
+                                class="absolute top-0 right-0 p-2 bg-indigo-500 text-[10px] font-bold text-white rounded-bl-xl uppercase tracking-wider">
+                                Fixe</div>
+                            <h3 class="text-indigo-400 font-bold text-lg mb-1">1. Management Fee</h3>
+                            <div class="text-2xl font-black text-white mb-4">4 500 <span
+                                    class="text-sm font-normal text-slate-400">TND/mois</span></div>
+
+                            <div class="h-px bg-indigo-500/30 w-full mb-4"></div>
+
+                            <p class="text-[11px] text-slate-500 uppercase font-bold mb-2">Prestations Fournies :</p>
+                            <ul class="space-y-2 text-xs text-slate-300">
+                                <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-indigo-500"></i>
+                                    Pilotage Opérationnel Campus</li>
+                                <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-indigo-500"></i>
+                                    Recrutement & Onboarding Staff</li>
+                                <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-indigo-500"></i> Setup
+                                    & Maintenance LMS</li>
+                                <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-indigo-500"></i>
+                                    Coordination Partenaires</li>
+                            </ul>
+                        </div>
+
+                        <!-- COL 2: DELIVERY FEE -->
+                        <div
+                            class="bg-blue-950/20 border border-blue-500/30 p-6 rounded-2xl relative overflow-hidden group hover:bg-blue-950/40 transition-all">
+                            <div
+                                class="absolute top-0 right-0 p-2 bg-blue-500 text-[10px] font-bold text-white rounded-bl-xl uppercase tracking-wider">
+                                Variable</div>
+                            <h3 class="text-blue-400 font-bold text-lg mb-1">2. Delivery Fee</h3>
+                            <div class="text-2xl font-black text-white mb-4">12% <span
+                                    class="text-sm font-normal text-slate-400">du CA</span></div>
+
+                            <div class="h-px bg-blue-500/30 w-full mb-4"></div>
+
+                            <p class="text-[11px] text-slate-500 uppercase font-bold mb-2">Ingénierie & Qualité :</p>
+                            <ul class="space-y-2 text-xs text-slate-300">
+                                <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-blue-500"></i>
+                                    Conception Syllabus & Tracks</li>
+                                <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-blue-500"></i>
+                                    Formation Formateurs (T3)</li>
+                                <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-blue-500"></i> Code
+                                    Review & Audits</li>
+                                <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-blue-500"></i> Licence
+                                    IP & Contenus</li>
+                            </ul>
+                        </div>
+
+                        <!-- COL 3: MENTOR POOL -->
+                        <div
+                            class="bg-rose-950/20 border border-rose-500/30 p-6 rounded-2xl relative overflow-hidden group hover:bg-rose-950/40 transition-all">
+                            <div
+                                class="absolute top-0 right-0 p-2 bg-rose-500 text-[10px] font-bold text-white rounded-bl-xl uppercase tracking-wider">
+                                Refacturation</div>
+                            <h3 class="text-rose-400 font-bold text-lg mb-1">3. Mentor Pool</h3>
+                            <div class="text-2xl font-black text-white mb-4">Coût Réel <span
+                                    class="text-sm font-normal text-slate-400">(Max 25%)</span></div>
+
+                            <div class="h-px bg-rose-500/30 w-full mb-4"></div>
+
+                            <p class="text-[11px] text-slate-500 uppercase font-bold mb-2">Masse Salariale :</p>
+                            <ul class="space-y-2 text-xs text-slate-300">
+                                <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-rose-500"></i>
+                                    Salaires Lead Instructors</li>
+                                <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-rose-500"></i>
+                                    Salaires Tuteurs Junior</li>
+                                <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-rose-500"></i> Charges
+                                    Sociales</li>
+                                <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-rose-500"></i>
+                                    <strong>Marge Nexus = 0%</strong></li>
+                            </ul>
+                        </div>
+
+                        <!-- COL 4: SUCCESS FEE -->
+                        <div
+                            class="bg-emerald-950/20 border border-emerald-500/30 p-6 rounded-2xl relative overflow-hidden group hover:bg-emerald-950/40 transition-all">
+                            <div
+                                class="absolute top-0 right-0 p-2 bg-emerald-500 text-[10px] font-bold text-white rounded-bl-xl uppercase tracking-wider">
+                                Performance</div>
+                            <h3 class="text-emerald-400 font-bold text-lg mb-1">4. Success Fee</h3>
+                            <div class="text-2xl font-black text-white mb-4">1 000 <span
+                                    class="text-sm font-normal text-slate-400">TND/Job</span></div>
+
+                            <div class="h-px bg-emerald-500/30 w-full mb-4"></div>
+
+                            <p class="text-[11px] text-slate-500 uppercase font-bold mb-2">Résultats :</p>
+                            <ul class="space-y-2 text-xs text-slate-300">
+                                <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-emerald-500"></i>
+                                    Placement CDD/CDI/Freelance</li>
+                                <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-emerald-500"></i>
+                                    Confirmé période essai (>6mois)</li>
+                                <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-emerald-500"></i>
+                                    Coaching Carrière Individuel</li>
+                                <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 text-emerald-500"></i>
+                                    Access Réseau Partners</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- FOOTER: RBK EXPENSES -->
+                    <div class="bg-slate-900 border border-white/10 p-6 rounded-2xl flex items-center justify-between">
+                        <div>
+                            <h4 class="text-white font-bold mb-1">Charges Supportées par RBK</h4>
+                            <p class="text-xs text-slate-400">Le reste du CA (~30%) couvre les dépenses structurelles de
+                                l'école.</p>
+                        </div>
+                        <div class="flex gap-8">
+                            <div class="flex items-center gap-3">
+                                <div class="p-2 bg-white/5 rounded text-white"><i data-lucide="megaphone"
+                                        class="w-4 h-4"></i></div>
+                                <div>
+                                    <div class="text-xs text-slate-400 uppercase font-bold">Marketing</div>
+                                    <div class="text-sm text-white">budget Ads, Evénements</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="p-2 bg-white/5 rounded text-white"><i data-lucide="building"
+                                        class="w-4 h-4"></i></div>
+                                <div>
+                                    <div class="text-xs text-slate-400 uppercase font-bold">Infrastructure</div>
+                                    <div class="text-sm text-white">Loyers, Charges, Internet</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="p-2 bg-white/5 rounded text-white"><i data-lucide="scale"
+                                        class="w-4 h-4"></i></div>
+                                <div>
+                                    <div class="text-xs text-slate-400 uppercase font-bold">Admin</div>
+                                    <div class="text-sm text-white">Juridique, Comptabilité</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 14: Contractual Waterfall -->
+                <div class="slide w-full h-full flex-col p-20 justify-center" data-slide="14">
+                    <h2 class="text-5xl font-bold text-white mb-16 flex items-center gap-6">
+                        <span class="text-indigo-500 opacity-50">13.</span> Waterfall Contractuelle
+                    </h2>
+                    <div class="max-w-4xl mx-auto w-full relative">
+                        <div class="absolute left-1/2 top-0 bottom-0 w-1 bg-white/10 -translate-x-1/2 z-0"></div>
+
+                        <!-- 1 -->
+                        <div class="flex items-center gap-8 mb-6 relative z-10">
+                            <div class="w-1/2 text-right text-slate-400 text-sm">Priorité Absolue</div>
+                            <div
+                                class="w-12 h-12 bg-slate-800 border-2 border-slate-600 rounded-full flex items-center justify-center font-bold text-slate-400">
+                                1</div>
+                            <div class="w-1/2 font-bold text-white text-xl">Franchise RBK</div>
+                        </div>
+
+                        <!-- 2 -->
+                        <div class="flex items-center gap-8 mb-6 relative z-10">
+                            <div class="w-1/2 text-right text-slate-400 text-sm">Coûts Directs</div>
+                            <div
+                                class="w-12 h-12 bg-slate-800 border-2 border-blue-500 rounded-full flex items-center justify-center font-bold text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.3)]">
+                                2</div>
+                            <div class="w-1/2 font-bold text-white text-xl">Mentor Pool (Salaires)</div>
+                        </div>
+
+                        <!-- 3 -->
+                        <div class="flex items-center gap-8 mb-6 relative z-10">
+                            <div class="w-1/2 text-right text-slate-400 text-sm">Opérations</div>
+                            <div
+                                class="w-12 h-12 bg-slate-800 border-2 border-emerald-500 rounded-full flex items-center justify-center font-bold text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+                                3</div>
+                            <div class="w-1/2 font-bold text-white text-xl">Management Fee (Nexus)</div>
+                        </div>
+
+                        <!-- 4 -->
+                        <div class="flex items-center gap-8 mb-6 relative z-10">
+                            <div class="w-1/2 text-right text-slate-400 text-sm">Marge Opérateur</div>
+                            <div
+                                class="w-12 h-12 bg-slate-800 border-2 border-emerald-500 rounded-full flex items-center justify-center font-bold text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+                                4</div>
+                            <div class="w-1/2 font-bold text-white text-xl">Delivery Fee (Nexus)</div>
+                        </div>
+
+                        <!-- 5 -->
+                        <div class="flex items-center gap-8 relative z-10">
+                            <div class="w-1/2 text-right text-slate-400 text-sm">Investisseur</div>
+                            <div
+                                class="w-12 h-12 bg-slate-800 border-2 border-white rounded-full flex items-center justify-center font-bold text-white shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                                5</div>
+                            <div class="w-1/2 font-bold text-white text-xl">Résiduel RBK</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 15: Projections -->
+                <div class="slide w-full h-full flex-col p-20 justify-center" data-slide="15">
+                    <h2 class="text-5xl font-bold text-white mb-12 flex items-center gap-6">
+                        <span class="text-indigo-500 opacity-50">14.</span> Projections (Year 1)
+                    </h2>
+
+                    <div class="glass-panel w-full overflow-hidden rounded-2xl">
+                        <table class="w-full text-left font-mono text-sm">
+                            <thead class="bg-slate-800 text-slate-400 uppercase font-bold">
+                                <tr>
+                                    <th class="p-6">Paramètre</th>
+                                    <th class="p-6 text-center text-slate-500">Conservateur (15)</th>
+                                    <th class="p-6 text-center bg-indigo-500/10 text-indigo-300">Réaliste (20)</th>
+                                    <th class="p-6 text-center text-emerald-400">Optimiste (30)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-white/5 text-slate-300">
+                                <tr>
+                                    <td class="p-6 font-bold text-white">CA Encaissé</td>
+                                    <td class="p-6 text-center">225 000</td>
+                                    <td class="p-6 text-center bg-indigo-500/10 font-bold text-white">300 000</td>
+                                    <td class="p-6 text-center text-[#14F195]">450 000</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-6 text-rose-300">Coûts Nexus & Mentors</td>
+                                    <td class="p-6 text-center text-rose-300">(137 250)</td>
+                                    <td class="p-6 text-center bg-indigo-500/10 text-rose-300">(165 000)</td>
+                                    <td class="p-6 text-center text-rose-300">(220 500)</td>
+                                </tr>
+                                <tr class="bg-white/5 font-bold text-lg">
+                                    <td class="p-6 text-white uppercase">Résiduel RBK</td>
+                                    <td class="p-6 text-center text-white">87 750</td>
+                                    <td class="p-6 text-center bg-indigo-500/10 text-[#14F195]">135 000</td>
+                                    <td class="p-6 text-center text-[#14F195]">229 500</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-center mt-8 text-slate-400">
+                        *Basé sur une hypothèse de paiement cash majoritaire (Modèle Premium).
+                    </p>
+                </div>
+
+                <!-- SLIDE 16: ISA Philosophy -->
+                <div class="slide w-full h-full flex-col p-20 justify-center" data-slide="16">
+                    <h2 class="text-5xl font-bold text-emerald-400 mb-16 flex items-center gap-6">
+                        <span class="text-white opacity-50">15.</span> La Bourse d'Excellence (ISA)
+                    </h2>
+                    <div class="grid grid-cols-2 gap-16">
+                        <div class="space-y-8">
+                            <h3 class="text-3xl font-bold text-white">Un Privilège, pas un Droit.</h3>
+                            <p class="text-xl text-slate-300 leading-relaxed">
+                                L'ISA (Income Share Agreement) n'est plus le standard par défaut. C'est une bourse
+                                stricte réservée à l'élite technique qui n'a pas les moyens.
+                            </p>
+                            <ul class="space-y-4 text-lg">
+                                <li class="flex items-center gap-4 text-emerald-300"><i data-lucide="check-circle"></i>
+                                    Top 2 par Cohorte (Strict)</li>
+                                <li class="flex items-center gap-4 text-emerald-300"><i data-lucide="check-circle"></i>
+                                    Sélection sur "Grit" & Algorithmique</li>
+                                <li class="flex items-center gap-4 text-emerald-300"><i data-lucide="check-circle"></i>
+                                    Zéro Risque Financier (Top-Performers)</li>
+                            </ul>
+                        </div>
+                        <div
+                            class="bg-emerald-900/10 p-10 rounded-3xl border border-emerald-500/30 flex flex-col justify-center items-center text-center">
+                            <i data-lucide="gem"
+                                class="w-24 h-24 text-emerald-400 mb-8 shadow-emerald-500/50 drop-shadow-2xl"></i>
+                            <div class="text-4xl font-black text-white mb-2">MERITOCRATIE</div>
+                            <div class="text-emerald-500 font-mono tracking-widest">ABSOLUTE</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 17: ISA Terms -->
+                <div class="slide w-full h-full flex-col p-20 justify-center" data-slide="17">
+                    <h2 class="text-5xl font-bold text-white mb-16 flex items-center gap-6">
+                        <span class="text-indigo-500 opacity-50">16.</span> Les Termes ISA
+                    </h2>
+                    <div class="grid grid-cols-4 gap-8">
+                        <div
+                            class="p-8 rounded-2xl bg-white/5 border border-white/10 text-center group hover:border-emerald-500/50 transition-all">
+                            <div class="text-sm text-slate-400 uppercase font-bold mb-4 group-hover:text-emerald-400">
+                                Partage</div>
+                            <div class="text-5xl font-black text-white mb-2">15%</div>
+                            <div class="text-xs text-slate-500">du Revenu Brut</div>
+                        </div>
+                        <div
+                            class="p-8 rounded-2xl bg-white/5 border border-white/10 text-center group hover:border-emerald-500/50 transition-all">
+                            <div class="text-sm text-slate-400 uppercase font-bold mb-4 group-hover:text-emerald-400">
+                                Seuil Activation</div>
+                            <div class="text-4xl font-black text-white mb-2">2.5k</div>
+                            <div class="text-xs text-slate-500">TND / Mois</div>
+                        </div>
+                        <div
+                            class="p-8 rounded-2xl bg-white/5 border border-white/10 text-center group hover:border-emerald-500/50 transition-all">
+                            <div class="text-sm text-slate-400 uppercase font-bold mb-4 group-hover:text-emerald-400">
+                                Plafond (Cap)</div>
+                            <div class="text-4xl font-black text-white mb-2">20k</div>
+                            <div class="text-xs text-slate-500">TND Total</div>
+                        </div>
+                        <div
+                            class="p-8 rounded-2xl bg-white/5 border border-white/10 text-center group hover:border-emerald-500/50 transition-all">
+                            <div class="text-sm text-slate-400 uppercase font-bold mb-4 group-hover:text-emerald-400">
+                                Durée Max</div>
+                            <div class="text-5xl font-black text-white mb-2">36</div>
+                            <div class="text-xs text-slate-500">Mensualités</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 18: EVM Tech Stack -->
+                <div class="slide w-full h-full flex-col p-20 justify-center" data-slide="18">
+                    <h2 class="text-5xl font-bold text-white mb-12 flex items-center gap-6">
+                        <span class="text-indigo-500 opacity-50">17.</span> Tech Stack (EVM)
+                    </h2>
+                    <div class="grid grid-cols-3 gap-8">
+                        <!-- Safe -->
+                        <div class="p-8 bg-slate-900 border border-white/10 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+                                <span class="bg-white text-black text-xs font-bold px-2 py-1 rounded">SAFE</span> Wallet
+                            </h3>
+                            <p class="text-slate-400 text-sm mb-4">Multisig 2/3 (Apprenant / Guardian RBK / Recovery).
+                            </p>
+                            <div class="h-1 w-full bg-gradient-to-r from-white to-transparent rounded"></div>
+                        </div>
+                        <!-- Sablier -->
+                        <div class="p-8 bg-slate-900 border border-white/10 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-orange-500 mb-4 flex items-center gap-3">
+                                <span
+                                    class="bg-orange-500 text-black text-xs font-bold px-2 py-1 rounded">SABLIER</span>
+                                Stream
+                            </h3>
+                            <p class="text-slate-400 text-sm mb-4">Paiement programmable seconde par seconde. Pas de
+                                défaut possible.</p>
+                            <div class="h-1 w-full bg-gradient-to-r from-orange-500 to-transparent rounded"></div>
+                        </div>
+                        <!-- 0xSplits -->
+                        <div class="p-8 bg-slate-900 border border-white/10 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-indigo-400 mb-4 flex items-center gap-3">
+                                <span class="bg-indigo-500 text-white text-xs font-bold px-2 py-1 rounded">SPLITS</span>
+                                Routing
+                            </h3>
+                            <p class="text-slate-400 text-sm mb-4">Distribution automatique (RBK / Nexus / Alumni).</p>
+                            <div class="h-1 w-full bg-gradient-to-r from-indigo-500 to-transparent rounded"></div>
+                        </div>
+                    </div>
+                    <div
+                        class="mt-8 p-6 bg-slate-800/50 rounded-xl border border-white/5 font-mono text-sm text-slate-400 text-center">
+                        Architecture Trustless : Le code fait loi. Pas de courtiers, pas d'huissiers.
+                    </div>
+                </div>
+
+                <!-- SLIDE 19: Solana Tech Stack -->
+                <div class="slide w-full h-full flex-col p-20 justify-center" data-slide="19">
+                    <h2 class="text-5xl font-bold text-white mb-12 flex items-center gap-6">
+                        <span class="text-indigo-500 opacity-50">18.</span> Tech Stack (Solana)
+                    </h2>
+                    <div class="grid grid-cols-2 gap-8 h-[400px]">
+                        <!-- Squads -->
+                        <div
+                            class="p-8 bg-gradient-to-br from-slate-900 to-black border border-indigo-500/30 rounded-2xl relative overflow-hidden group">
+                            <div
+                                class="absolute right-0 top-0 p-32 bg-indigo-500/10 blur-[60px] group-hover:bg-indigo-500/20 transition-all">
+                            </div>
+                            <h3 class="text-3xl font-bold text-white mb-4">Squads V4</h3>
+                            <p class="text-slate-400 mb-6">Programmation Spending Limits. RBAC (Role Based Access
+                                Control) pour empêcher le détournement de fonds.</p>
+                            <ul class="space-y-2 text-indigo-300 font-mono text-sm">
+                                <li>> Multisig Pro</li>
+                                <li>> Securité Auditée</li>
+                            </ul>
+                        </div>
+                        <!-- Token-2022 -->
+                        <div
+                            class="p-8 bg-gradient-to-br from-slate-900 to-black border border-emerald-500/30 rounded-2xl relative overflow-hidden group">
+                            <div
+                                class="absolute right-0 top-0 p-32 bg-emerald-500/10 blur-[60px] group-hover:bg-emerald-500/20 transition-all">
+                            </div>
+                            <h3 class="text-3xl font-bold text-white mb-4">Token-2022</h3>
+                            <p class="text-slate-400 mb-6">Extensions natives : <strong>Transfer Hooks</strong> pour
+                                appliquer les règles ISA directement au niveau du protocole.</p>
+                            <ul class="space-y-2 text-emerald-300 font-mono text-sm">
+                                <li>> Non-Transferable SBT</li>
+                                <li>> Interest-bearing Token</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 20: Risk Management -->
+                <div class="slide w-full h-full flex-col p-20 justify-center" data-slide="20">
+                    <h2 class="text-5xl font-bold text-white mb-16 flex items-center gap-6">
+                        <span class="text-indigo-500 opacity-50">19.</span> Gestion des Risques
+                    </h2>
+                    <div class="grid grid-cols-2 gap-8">
+                        <div class="bg-rose-900/10 border border-rose-500/30 p-8 rounded-2xl">
+                            <div class="text-rose-400 font-bold uppercase text-sm mb-4">Risque Défaut (ISA)</div>
+                            <h3 class="text-2xl font-bold text-white mb-4">Neutalisé</h3>
+                            <p class="text-slate-400">
+                                1. Volume faible (2 étudiants max)<br>
+                                2. Tech Enforcement (Multisig/Stream)<br>
+                                3. Fonds de Garantie (10k TND séquestre)
+                            </p>
+                        </div>
+                        <div class="bg-amber-900/10 border border-amber-500/30 p-8 rounded-2xl">
+                            <div class="text-amber-400 font-bold uppercase text-sm mb-4">Risque Commercial</div>
+                            <h3 class="text-2xl font-bold text-white mb-4">Mitigé</h3>
+                            <p class="text-slate-400">
+                                Le pivot "Cash-First" réduit l'exposition.
+                                Partenariats bancaires pour le crédit étudiant classique.
+                            </p>
+                        </div>
+                        <div
+                            class="bg-slate-800 border border-white/10 p-8 rounded-2xl col-span-2 flex items-center justify-between">
+                            <div>
+                                <div class="text-slate-400 font-bold uppercase text-sm mb-2">Risque Régulatoire</div>
+                                <h3 class="text-xl font-bold text-white">Structure Offshore</h3>
+                            </div>
+                            <div class="text-right text-slate-400 text-sm">
+                                Exportateur de Services.<br>
+                                Entités UK/US pour la facturation Crypto.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 21: Partnership Architecture -->
+                <div class="slide w-full h-full flex-col p-20 justify-center" data-slide="21">
+                    <h2 class="text-5xl font-bold text-white mb-16 flex items-center gap-6">
+                        <span class="text-indigo-500 opacity-50">20.</span> Architecture Partenariale
+                    </h2>
+                    <div class="flex items-center justify-center gap-12">
+                        <!-- RBK -->
+                        <div
+                            class="w-80 h-80 bg-slate-900 border border-white/10 rounded-full flex flex-col items-center justify-center relative p-8 text-center z-10">
+                            <div class="text-4xl font-black text-white mb-2">RBK</div>
+                            <div class="text-xs text-slate-500 uppercase tracking-widest mb-4">Stratégie & Finance</div>
+                            <ul class="text-sm text-slate-400 space-y-2">
+                                <li>Marque & IP</li>
+                                <li>Conformité Légale</li>
+                                <li>Relation Investisseurs</li>
+                            </ul>
+                        </div>
+
+                        <!-- Link -->
+                        <div class="h-1 w-24 bg-white/10"></div>
+
+                        <!-- NEXUS -->
+                        <div
+                            class="w-96 h-96 bg-indigo-950/30 border border-indigo-500/50 rounded-full flex flex-col items-center justify-center relative p-8 text-center shadow-[0_0_60px_rgba(99,102,241,0.2)] z-20">
+                            <div class="text-5xl font-black text-white mb-2">NEXUS</div>
+                            <div class="text-xs text-indigo-400 uppercase tracking-widest mb-4">Opérateur Exclusif</div>
+                            <ul class="text-base text-slate-300 space-y-2">
+                                <li>Recrutement & Admissions</li>
+                                <li>Délivrance Pédagogique</li>
+                                <li>Mentorat & Tech Support</li>
+                            </ul>
+                        </div>
+
+                        <!-- Link -->
+                        <div class="h-1 w-24 bg-white/10"></div>
+
+                        <!-- MFAI -->
+                        <div
+                            class="w-80 h-80 bg-slate-900 border border-white/10 rounded-full flex flex-col items-center justify-center relative p-8 text-center z-10">
+                            <div class="text-4xl font-black text-white mb-2">MFAI</div>
+                            <div class="text-xs text-slate-500 uppercase tracking-widest mb-4">Tech Provider</div>
+                            <ul class="text-sm text-slate-400 space-y-2">
+                                <li>Plateforme LMS</li>
+                                <li>Smart Contracts</li>
+                                <li>Infrastructure IA</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 22: SLA -->
+                <div class="slide w-full h-full flex-col p-20 justify-center" data-slide="22">
+                    <h2 class="text-5xl font-bold text-white mb-16 flex items-center gap-6">
+                        <span class="text-indigo-500 opacity-50">21.</span> SLA & Livrables
+                    </h2>
+                    <div class="grid grid-cols-2 gap-16">
+                        <div>
+                            <h3 class="text-3xl font-bold text-white mb-6">Obligation de Moyens Renforcée</h3>
+                            <p class="text-xl text-slate-300 leading-relaxed mb-8">
+                                Nexus s'engage contractuellement sur la qualité de service, pas seulement sur la
+                                présence.
+                            </p>
+                            <div class="space-y-4">
+                                <div
+                                    class="flex items-center justify-between p-4 bg-white/5 rounded-lg border-l-4 border-emerald-500">
+                                    <span class="text-white font-bold">Taux Satisfaction (NPS)</span>
+                                    <span class="text-emerald-400 font-mono">> 50</span>
+                                </div>
+                                <div
+                                    class="flex items-center justify-between p-4 bg-white/5 rounded-lg border-l-4 border-emerald-500">
+                                    <span class="text-white font-bold">Réponse Mentor</span>
+                                    <span class="text-emerald-400 font-mono">
+                                        < 30 min</span>
+                                </div>
+                                <div
+                                    class="flex items-center justify-between p-4 bg-white/5 rounded-lg border-l-4 border-emerald-500">
+                                    <span class="text-white font-bold">Uptime Plateforme</span>
+                                    <span class="text-emerald-400 font-mono">99.9%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-indigo-900/10 p-8 rounded-2xl border border-indigo-500/20">
+                            <div class="text-indigo-400 font-bold uppercase text-sm mb-6">Reporting Mensuel</div>
+                            <ul class="space-y-4">
+                                <li class="flex gap-4">
+                                    <div
+                                        class="w-8 h-8 rounded bg-slate-800 flex items-center justify-center font-bold text-slate-400">
+                                        1</div>
+                                    <div>
+                                        <strong class="text-white block">Suivi Académique</strong>
+                                        <span class="text-sm text-slate-500">Progression par étudiant, taux de
+                                            décrochage.</span>
+                                    </div>
+                                </li>
+                                <li class="flex gap-4">
+                                    <div
+                                        class="w-8 h-8 rounded bg-slate-800 flex items-center justify-center font-bold text-slate-400">
+                                        2</div>
+                                    <div>
+                                        <strong class="text-white block">Suivi Financier</strong>
+                                        <span class="text-sm text-slate-500">Encaissements, prévisions
+                                            trésorerie.</span>
+                                    </div>
+                                </li>
+                                <li class="flex gap-4">
+                                    <div
+                                        class="w-8 h-8 rounded bg-slate-800 flex items-center justify-center font-bold text-slate-400">
+                                        3</div>
+                                    <div>
+                                        <strong class="text-white block">Incidents</strong>
+                                        <span class="text-sm text-slate-500">Post-mortem des problèmes
+                                            techniques/humains.</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 23: Staffing -->
+                <div class="slide w-full h-full flex-col p-20 justify-center" data-slide="23">
+                    <h2 class="text-5xl font-bold text-white mb-16 flex items-center gap-6">
+                        <span class="text-indigo-500 opacity-50">22.</span> Staffing & Ratios
+                    </h2>
+                    <div class="flex gap-16 justify-center">
+                        <div class="text-center group">
+                            <div
+                                class="w-48 h-48 mx-auto rounded-full bg-slate-800 border-4 border-indigo-500 flex flex-col items-center justify-center mb-6 shadow-[0_0_30px_rgba(99,102,241,0.2)]">
+                                <span class="text-5xl font-black text-white">1:10</span>
+                                <span class="text-xs text-indigo-400 uppercase mt-2">Mentor / Étudiant</span>
+                            </div>
+                            <p class="text-slate-400 px-8">Ratio Premium. Encadrement quasi-individuel.</p>
+                        </div>
+                        <div class="text-center group">
+                            <div
+                                class="w-48 h-48 mx-auto rounded-full bg-slate-800 border-4 border-white/20 flex flex-col items-center justify-center mb-6">
+                                <span class="text-5xl font-black text-white">1</span>
+                                <span class="text-xs text-slate-500 uppercase mt-2">Lead Instructor</span>
+                            </div>
+                            <p class="text-slate-400 px-8">Expert Senior (ex-CTO) garant de la qualité.</p>
+                        </div>
+                        <div class="text-center group">
+                            <div
+                                class="w-48 h-48 mx-auto rounded-full bg-slate-800 border-4 border-white/20 flex flex-col items-center justify-center mb-6">
+                                <span class="text-5xl font-black text-white">2</span>
+                                <span class="text-xs text-slate-500 uppercase mt-2">Tuteurs Junior</span>
+                            </div>
+                            <p class="text-slate-400 px-8">Support technique quotidien (Alumni Top Tier).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 24: GTM -->
+                <div class="slide w-full h-full flex-col p-20 justify-center" data-slide="24">
+                    <h2 class="text-5xl font-bold text-white mb-16 flex items-center gap-6">
+                        <span class="text-indigo-500 opacity-50">23.</span> Go-to-Market
+                    </h2>
+                    <div class="relative border-l-2 border-white/10 ml-8 space-y-12">
+                        <!-- Phase 1 -->
+                        <div class="relative pl-12">
+                            <div
+                                class="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-slate-800 border-2 border-slate-500">
+                            </div>
+                            <h3 class="text-2xl font-bold text-slate-400 mb-2">Phase 1 : Teasing (J-30)</h3>
+                            <p class="text-slate-500">Contenu "Fear of Missing Out". L'IA va vous remplacer.</p>
+                        </div>
+                        <!-- Phase 2 -->
+                        <div class="relative pl-12">
+                            <div
+                                class="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]">
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Phase 2 : Reveal (J-15)</h3>
+                            <p class="text-indigo-300">"Devenez Sovereign". Présentation du programme Cyborg. Webinars
+                                High-Ticket.</p>
+                        </div>
+                        <!-- Phase 3 -->
+                        <div class="relative pl-12">
+                            <div
+                                class="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]">
+                            </div>
+                            <h3 class="text-2xl font-bold text-emerald-400 mb-2">Phase 3 : Sales (J-0)</h3>
+                            <p class="text-slate-300">Ouverture Pool Genesis. Closing teléphonique pour les leads
+                                qualifiés.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 25: Roadmap -->
+                <div class="slide w-full h-full flex-col p-20 justify-center" data-slide="25">
+                    <h2 class="text-5xl font-bold text-white mb-16 flex items-center gap-6">
+                        <span class="text-indigo-500 opacity-50">24.</span> Roadmap Lancement
+                    </h2>
+                    <div class="flex items-center justify-between w-full relative">
+                        <div class="absolute top-1/2 left-0 right-0 h-1 bg-white/10 -translate-y-1/2 z-0"></div>
+
+                        <div class="relative z-10 bg-slate-950 p-4 border border-white/20 rounded-xl text-center w-48">
+                            <div class="text-xs text-slate-500 mb-1">NOW</div>
+                            <div class="font-bold text-white">Signature Nexus</div>
+                        </div>
+
+                        <div class="relative z-10 bg-slate-950 p-4 border border-white/20 rounded-xl text-center w-48">
+                            <div class="text-xs text-slate-500 mb-1">M+1</div>
+                            <div class="font-bold text-white">Recrutement Team</div>
+                        </div>
+
+                        <div
+                            class="relative z-10 bg-indigo-900/50 p-4 border border-indigo-500 rounded-xl text-center w-48 shadow-[0_0_20px_rgba(99,102,241,0.3)]">
+                            <div class="text-xs text-indigo-300 mb-1">M+2</div>
+                            <div class="font-bold text-white">Lancement Marketing</div>
+                        </div>
+
+                        <div
+                            class="relative z-10 bg-emerald-900/50 p-4 border border-emerald-500 rounded-xl text-center w-48 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                            <div class="text-xs text-emerald-400 mb-1">M+3</div>
+                            <div class="font-bold text-white">Début Genesis</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 26: Ask -->
+                <div class="slide w-full h-full flex-col p-20 justify-center" data-slide="26">
+                    <h2 class="text-5xl font-bold text-white mb-16 flex items-center gap-6">
+                        <span class="text-indigo-500 opacity-50">25.</span> Next Steps
+                    </h2>
+                    <div class="grid grid-cols-2 gap-8">
+                        <div
+                            class="p-8 border border-white/10 rounded-2xl bg-slate-900 hover:bg-slate-800 transition-colors cursor-pointer">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-2xl font-bold text-white">Validation Budget</h3>
+                                <div class="w-8 h-8 rounded-full border-2 border-white/30"></div>
+                            </div>
+                            <p class="text-slate-400">Approbation du modèle financier et de la grille tarifaire Nexus.
+                            </p>
+                        </div>
+                        <div
+                            class="p-8 border border-white/10 rounded-2xl bg-slate-900 hover:bg-slate-800 transition-colors cursor-pointer">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-2xl font-bold text-white">Signature Contrat</h3>
+                                <div class="w-8 h-8 rounded-full border-2 border-white/30"></div>
+                            </div>
+                            <p class="text-slate-400">Formalisation du partenariat RBK / Nexus pour la Cohorte 1.</p>
+                        </div>
+                        <div
+                            class="p-8 border border-white/10 rounded-2xl bg-slate-900 hover:bg-slate-800 transition-colors cursor-pointer">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-2xl font-bold text-white">Go Marketing</h3>
+                                <div class="w-8 h-8 rounded-full border-2 border-white/30"></div>
+                            </div>
+                            <p class="text-slate-400">Déclenchement de la campagne de teasing J-30.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 27: Closing -->
+                <div class="slide w-full h-full flex-col justify-center items-center text-center p-20" data-slide="27">
+                    <div
+                        class="mb-12 w-24 h-24 bg-gradient-to-br from-indigo-500 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto shadow-[0_0_50px_rgba(16,185,129,0.3)]">
+                        <span class="font-black text-white text-4xl">R3</span>
+                    </div>
+                    <h1 class="text-7xl font-black text-white mb-8 tracking-tighter">
+                        Let's Build.
+                    </h1>
+                    <p class="text-2xl text-slate-400 font-serif italic mb-12">The Future is Sovereign.</p>
+
+                    <div class="flex gap-8 text-slate-500 font-mono text-sm">
+                        <span>contact@nexusreussite.academy</span>
+                        <span>•</span>
+                        <span>CONFIDENTIAL</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer -->
+            <div class="h-16 px-10 border-t border-white/5 flex items-center justify-between bg-slate-900/50">
+                <div class="flex items-center gap-4">
+                    <span id="slide-current" class="text-2xl font-mono text-white font-bold">01</span>
+                    <span class="text-slate-600">/</span>
+                    <span class="text-slate-600 font-mono">27</span>
+                </div>
+                <div class="w-64 h-1 bg-slate-800 rounded-full overflow-hidden">
+                    <div id="progress-bar" class="h-full bg-emerald-500 w-0 transition-all duration-300"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const currentEl = document.getElementById('slide-current');
+        const progressEl = document.getElementById('progress-bar');
+
+        let currentIndex = 0;
+
+        function update() {
+            // Re-query slides in case of dynamic injection
+            const allSlides = document.querySelectorAll('.slide');
+            const total = allSlides.length;
+
+            allSlides.forEach((s, i) => {
+                if (i === currentIndex) s.classList.add('active');
+                else s.classList.remove('active');
+            });
+
+            currentEl.innerText = String(currentIndex + 1).padStart(2, '0');
+            progressEl.style.width = `${((currentIndex + 1) / total) * 100}%`;
+
+            // Buttons logic could be refined but basics work
+        }
+
+        nextBtn.onclick = () => {
+            const total = document.querySelectorAll('.slide').length;
+            if (currentIndex < total - 1) { currentIndex++; update(); }
+        }
+        prevBtn.onclick = () => {
+            if (currentIndex > 0) { currentIndex--; update(); }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            const total = document.querySelectorAll('.slide').length;
+            if (e.key === 'ArrowRight') { if (currentIndex < total - 1) { currentIndex++; update(); } }
+            if (e.key === 'ArrowLeft') { if (currentIndex > 0) { currentIndex--; update(); } }
+        });
+
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

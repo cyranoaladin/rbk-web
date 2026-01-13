@@ -45,14 +45,14 @@
                     <div class="w-full overflow-x-auto flex justify-center">
                         <pre class="mermaid text-sm leading-relaxed">
 flowchart LR
-  LMS[("LMS: Résultats")] --> RULES["Moteur de Règles"]
-  RULES -->|Validation| MULTISIG(("Émetteur Multisig"))
-  MULTISIG -->|Mint| SBT["SBT On-Chain"]
-  style LMS fill:#111,stroke:#64748b,stroke-width:2px,color:#fff,font-size:14px
-  style RULES fill:#2e1a47,stroke:#9945FF,color:#fff,stroke-width:2px,font-size:14px
-  style MULTISIG fill:#063,stroke:#14F195,color:#fff,stroke-width:2px,font-size:14px
-  style SBT fill:#0b1220,stroke:#e2e8f0,color:#fff,stroke-width:2px,font-size:14px
-  linkStyle 0,1,2 stroke-width:2px,fill:none,stroke:#64748b;
+  LMS[("LMS<br/>Résultats")] --> RULES["Moteur<br/>de Règles"]
+  RULES -->|Validation| MULTISIG(("Émetteur<br/>Multisig"))
+  MULTISIG -->|Mint| SBT["SBT<br/>On-Chain"]
+  style LMS fill:#111111,stroke:#64748b,stroke-width:2px,color:#fff
+  style RULES fill:#2e1a47,stroke:#9945FF,color:#fff,stroke-width:2px
+  style MULTISIG fill:#006633,stroke:#14F195,color:#fff,stroke-width:2px
+  style SBT fill:#0b1220,stroke:#e2e8f0,color:#fff,stroke-width:2px
+  linkStyle 0,1,2 stroke-width:2px,fill:none,stroke:#64748b
                         </pre>
                     </div>
                 </div>
